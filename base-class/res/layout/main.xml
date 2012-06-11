@@ -8,13 +8,19 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/hello" />
-
+    <Button 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/increment_launch_count"
+        android:onClick="incrementLaunchCount"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"/>
     <Button
         android:id="@+id/button"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:onClick="doSomething"
-        android:text="Do something!" />
+        android:onClick="incrementSigEvent"
+        android:text="@string/increment_event" />
 
     <Button
         android:layout_width="fill_parent"

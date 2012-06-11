@@ -20,6 +20,9 @@ public class MainActivity extends Activity {
         TrackingContext.Instance().initialize(this, configuration);
         TrackingContext.Instance().applicationLaunched();
     }
+	public void incrementLaunchCount(View view){
+    	TrackingContext.Instance().applicationLaunched();
+    }
     public void resetCounters(View view)
     {
     	TrackingContext.Instance().resetState();

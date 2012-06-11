@@ -63,7 +63,7 @@ public class MainActivity extends Activity {
 		TrackingContext.Instance().applicationExited();
 	}
 
-	public void incrementLaunchcCount(View view){
+	public void incrementLaunchCount(View view){
     	TrackingContext.Instance().applicationLaunched();
     }
     public void resetCounters(View view)

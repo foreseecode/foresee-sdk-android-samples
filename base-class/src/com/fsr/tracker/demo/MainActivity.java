@@ -24,8 +24,10 @@ public class MainActivity extends TrackerActivityBase {
     protected  String getDefaultSurveyId() {
         return "mobile";
     }
-    
-    public void doSomething(View source)
+	public void incrementLaunchCount(View view){
+    	TrackingContext.Instance().applicationLaunched();
+    }
+    public void incrementSigEvent(View source)
     {
     	TrackingContext.Instance().incrementSignificantEventsCountWithKey("doSomething");
     }

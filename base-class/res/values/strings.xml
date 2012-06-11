@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="hello">Hello World, MainActivity!</string>
+    <string name="hello">Implementation demo - using provided base classes</string>
     <string name="app_name">Base-Class-Demo</string>
     <string name="reset_counters">Reset counters</string>
+    <string name="increment_event">Increment event count</string>
+    <string name="increment_launch_count">Increment launch count</string>
 
 </resources>
