@@ -27,7 +27,7 @@ public class MainActivity extends TrackerActivityBase {
     
     public void doSomething(View source)
     {
-    	TrackingContext.Instance().incrementSignificantEventsCountWithKey("doSomething");
+    	TrackingContext.Instance().incrementSignificantEventsCountWithKey("doSomething);
     }
 
 	@Override
