@@ -2,6 +2,7 @@ package com.fsr.tracker.demo;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.View;
 
 import com.fsr.tracker.app.TrackingContext;
 import com.fsr.tracker.demo.R;
@@ -18,5 +19,9 @@ public class MainActivity extends Activity {
         				.withMaxLaunchCount(2));
         TrackingContext.Instance().initialize(this, configuration);
         TrackingContext.Instance().applicationLaunched();
+    }
+    public void resetCounters(View view)
+    {
+    	TrackingContext.Instance().resetState();
     }
 }

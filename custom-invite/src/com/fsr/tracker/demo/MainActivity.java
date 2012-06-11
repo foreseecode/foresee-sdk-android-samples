@@ -7,6 +7,7 @@ import com.fsr.tracker.domain.MeasureConfiguration;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.View;
 
 public class MainActivity extends Activity {
     /** Called when the activity is first created. */
@@ -22,7 +23,14 @@ public class MainActivity extends Activity {
         TrackingContext.Instance().initialize(this, configuration,new MyStringsProvider());
         TrackingContext.Instance().applicationLaunched();
     }
-    
+    public void resetCounters(View view)
+    {
+    	TrackingContext.Instance().resetState();
+    }
+    public void launchInvite(View view)
+    {
+    	TrackingContext.Instance().triggerInvitation("DefaultMeasure");
+    }
     private class MyStringsProvider extends DefaultStringsProvider
     {
     	
@@ -36,8 +44,16 @@ public class MainActivity extends Activity {
 		public String getInviteText() {
 			return "We'd like to invite you to participate in a brief customer satisfaction survey";
 		}
+
+		@Override
+		public String getAcceptButtonText() {
+			return "Yes";
+		}
+
+		@Override
+		public String getDeclineButtonText() {
+			return "No";
+		}
 		
-
-
     }
 }

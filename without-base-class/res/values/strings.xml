@@ -3,5 +3,6 @@
 
     <string name="hello">Hello World, MainActivity!</string>
     <string name="app_name">Implementation demo (without using base classes)</string>
+    <string name="reset_counters">Reset counters</string>
 
 </resources>

@@ -1,6 +1,6 @@
 package com.fsr.tracker.demo;
 
-import android.app.Activity;
+
 import android.os.Bundle;
 import android.view.View;
 
@@ -27,7 +27,7 @@ public class MainActivity extends TrackerActivityBase {
     
     public void doSomething(View source)
     {
-    	TrackingContext.Instance().incrementSignificantEventsCountWithKey("doSomething);
+    	TrackingContext.Instance().incrementSignificantEventsCountWithKey("doSomething");
     }
 
 	@Override
@@ -40,5 +40,8 @@ public class MainActivity extends TrackerActivityBase {
 						.addSignificantEventThreshold("doSomething", 5));
 	}
     
-    
+    public void resetCounters(View view)
+    {
+    	TrackingContext.Instance().resetState();
+    }
 }
