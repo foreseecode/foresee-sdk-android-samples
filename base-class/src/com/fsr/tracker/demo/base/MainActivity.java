@@ -1,4 +1,4 @@
-package com.fsr.tracker.demo;
+package com.fsr.tracker.demo.base;
 
 
 import android.os.Bundle;

@@ -1,11 +1,11 @@
-package com.fsr.tracker.demo;
+package com.fsr.tracker.demo.nobase;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 
 import com.fsr.tracker.app.TrackingContext;
-import com.fsr.tracker.demo.R;
+import com.fsr.tracker.demo.nobase.R;
 import com.fsr.tracker.domain.*;
 public class MainActivity extends Activity {
     /** Called when the activity is first created. */

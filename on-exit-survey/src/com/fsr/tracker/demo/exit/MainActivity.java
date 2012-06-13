@@ -1,4 +1,4 @@
-package com.fsr.tracker.demo;
+package com.fsr.tracker.demo.exit;
 
 import com.fsr.tracker.app.TrackingContext;
 import com.fsr.tracker.domain.Configuration;

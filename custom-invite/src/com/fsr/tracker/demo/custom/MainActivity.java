@@ -1,4 +1,4 @@
-package com.fsr.tracker.demo;
+package com.fsr.tracker.demo.custom;
 
 import com.fsr.tracker.app.DefaultStringsProvider;
 import com.fsr.tracker.app.TrackingContext;
