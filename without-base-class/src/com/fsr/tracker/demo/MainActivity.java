@@ -20,6 +20,25 @@ public class MainActivity extends Activity {
         TrackingContext.Instance().initialize(this, configuration);
         TrackingContext.Instance().applicationLaunched();
     }
+    
+    /**
+     * Since we are handling configuration changes
+     *(android:configChanges="orientation|screenSize|keyboard|keyboardHidden"), we need 
+     * to deal with orientation changes ourselves if we want to use a different layout
+     * for each orientation. The code below will load the appropriate XML layout (either 
+     * layout/main.xml or layout-land/main.xml, depending on the orientation).
+     */
+    @Override
+    public void onConfigurationChanged(android.content.res.Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        switch(newConfig.orientation)
+        {
+            case android.content.res.Configuration.ORIENTATION_LANDSCAPE:
+            case android.content.res.Configuration.ORIENTATION_PORTRAIT:
+                setContentView(R.layout.main);
+                break;
+        }
+    }
 	public void incrementLaunchCount(View view){
     	TrackingContext.Instance().applicationLaunched();
     }

@@ -57,7 +57,8 @@ public class MainActivity extends Activity {
 
     }
     
-    @Override
+
+	@Override
 	protected void onDestroy() {
 		super.onDestroy();
 		TrackingContext.Instance().applicationExited();
