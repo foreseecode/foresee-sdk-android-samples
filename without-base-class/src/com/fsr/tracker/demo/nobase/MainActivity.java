@@ -17,7 +17,10 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         //Create a configuration to be used by the TrackingContext
-        Configuration configuration = Configuration.defaultConfiguration("7PzwF4wMfCv/r3yXCc0GFw==")
+        Configuration configuration 
+        	= Configuration
+        		.defaultConfiguration("7PzwF4wMfCv/r3yXCc0GFw==")
+        		.addCpp("myCustomCpp", "myCppValue")
         		.addMeasure(MeasureConfiguration.defaultConfig("DefaultMeasure", "mobile", 0)
         				.withMaxLaunchCount(2));
         TrackingContext.Instance().initialize(this, configuration);
