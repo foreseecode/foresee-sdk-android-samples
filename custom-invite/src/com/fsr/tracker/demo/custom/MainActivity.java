@@ -19,7 +19,7 @@ public class MainActivity extends Activity {
         Configuration configuration = Configuration.defaultConfiguration("7PzwF4wMfCv/r3yXCc0GFw==")
         		.withCustomLogo("acme_logo.jpg")
         		.addMeasure(MeasureConfiguration.defaultConfig("DefaultMeasure", "mobile", 0)
-        				.withMaxLaunchCount(2));
+        				.withMaxDaysSinceLaunch(30));
         TrackingContext.Instance().initialize(this, configuration,new MyStringsProvider());
         TrackingContext.Instance().applicationLaunched();
     }

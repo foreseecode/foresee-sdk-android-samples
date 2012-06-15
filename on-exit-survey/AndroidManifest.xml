@@ -19,39 +19,39 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!-- ForeSee -->
-        <activity
-            android:name="com.fsr.tracker.app.SurveyInviteActivity"
-            android:configChanges="orientation|screenSize|keyboard|keyboardHidden"
-            android:label="@null"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
-            <intent-filter>
-                <action android:name="com.fsr.tracker.app.LAUNCH_INVITE" />
+ <!-- ForeSee -->
+ <activity
+     android:name="com.fsr.tracker.app.SurveyInviteActivity"
+     android:configChanges="orientation|screenSize|keyboard|keyboardHidden"
+     android:label="@null"
+     android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+     <intent-filter>
+         <action android:name="com.fsr.tracker.app.LAUNCH_INVITE" />
 
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name="com.fsr.tracker.app.OnExitSurveyInviteActivity"
-            android:configChanges="orientation|screenSize|keyboard|keyboardHidden"
-            android:label="@null"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
-            <intent-filter>
-                <action android:name="com.fsr.tracker.app.LAUNCH_INVITE" />
+         <category android:name="android.intent.category.DEFAULT" />
+     </intent-filter>
+ </activity>
+ <activity
+     android:name="com.fsr.tracker.app.OnExitSurveyInviteActivity"
+     android:configChanges="orientation|screenSize|keyboard|keyboardHidden"
+     android:label="@null"
+     android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+     <intent-filter>
+         <action android:name="com.fsr.tracker.app.LAUNCH_INVITE" />
 
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name="com.fsr.tracker.app.SurveyActivity"
-            android:configChanges="orientation|screenSize|keyboard|keyboardHidden"
-            android:hardwareAccelerated="true" >
-            <intent-filter>
-                <action android:name="com.fsr.tracker.app.LAUNCH_SURVEY" />
+         <category android:name="android.intent.category.DEFAULT" />
+     </intent-filter>
+ </activity>
+ <activity
+     android:name="com.fsr.tracker.app.SurveyActivity"
+     android:configChanges="orientation|screenSize|keyboard|keyboardHidden"
+     android:hardwareAccelerated="true" >
+     <intent-filter>
+         <action android:name="com.fsr.tracker.app.LAUNCH_SURVEY" />
 
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
+         <category android:name="android.intent.category.DEFAULT" />
+     </intent-filter>
+ </activity>
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />

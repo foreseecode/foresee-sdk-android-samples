@@ -38,8 +38,7 @@ public class MainActivity extends TrackerActivityBase {
 		//we can customize the configuration by overriding the getConfiguration() method
 		//and adding our own settings
 		return config
-				.addMeasure(MeasureConfiguration.defaultConfig("Measure 2", "mobile", 1)
-						.addSignificantEventThreshold("doSomething", 5));
+				.shouldRepeatSurveyAfterMinutes(3);
 	}
     
     public void resetCounters(View view)
