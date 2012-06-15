@@ -1,12 +1,15 @@
 package com.fsr.tracker.demo.nobase;
 
+
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
+import com.fsr.tracker.TrackerEventListener;
 import com.fsr.tracker.app.TrackingContext;
-import com.fsr.tracker.demo.nobase.R;
-import com.fsr.tracker.domain.*;
+import com.fsr.tracker.domain.Configuration;
+import com.fsr.tracker.domain.MeasureConfiguration;
 public class MainActivity extends Activity {
     /** Called when the activity is first created. */
     @Override
@@ -19,6 +22,40 @@ public class MainActivity extends Activity {
         				.withMaxLaunchCount(2));
         TrackingContext.Instance().initialize(this, configuration);
         TrackingContext.Instance().applicationLaunched();
+        
+		//log some events
+		TrackingContext.Instance().setTrackerEventListener(new TrackerEventListener(){
+	
+		@Override
+		public void onInviteAccepted(MeasureConfiguration measure) {
+			Log.d("MainActivity", String.format("onInviteAccepted: name=%s, sid=%s", measure.getName(),measure.getSurveyId()));
+		}
+	
+		@Override
+		public void onInviteDeclined(MeasureConfiguration measure) {
+			Log.d("MainActivity", String.format("onInviteDeclined: name=%s, sid=%s", measure.getName(),measure.getSurveyId()));
+			
+		}
+	
+		@Override
+		public void onInvitePresented(MeasureConfiguration measure) {
+			Log.d("MainActivity", String.format("onInvitePresented: name=%s, sid=%s", measure.getName(),measure.getSurveyId()));
+			
+		}
+	
+		@Override
+		public void onSurveyAborted(MeasureConfiguration measure) {
+			Log.d("MainActivity", String.format("onSurveyAborted: name=%s, sid=%s", measure.getName(),measure.getSurveyId()));
+			
+		}
+	
+		@Override
+		public void onSurveyCompleted(MeasureConfiguration measure) {
+			Log.d("MainActivity", String.format("onSurveyCompleted: name=%s, sid=%s", measure.getName(),measure.getSurveyId()));
+			
+		}
+		
+	});
     }
     
     /**
