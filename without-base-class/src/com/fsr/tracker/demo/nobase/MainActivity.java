@@ -19,7 +19,7 @@ public class MainActivity extends Activity {
         //Create a configuration to be used by the TrackingContext
         Configuration configuration 
         	= Configuration
-        		.defaultConfiguration("7PzwF4wMfCv/r3yXCc0GFw==")
+        		.defaultConfiguration("ForeSee","7PzwF4wMfCv/r3yXCc0GFw==")
         		.addCpp("myCustomCpp", "myCppValue")
         		.addMeasure(MeasureConfiguration.defaultConfig("DefaultMeasure", "mobile", 0)
         				.withMaxLaunchCount(2));

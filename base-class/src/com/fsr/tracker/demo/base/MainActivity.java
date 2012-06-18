@@ -45,4 +45,9 @@ public class MainActivity extends TrackerActivityBase {
     {
     	TrackingContext.Instance().resetState();
     }
+
+	@Override
+	protected String getCompanyName() {
+		return "ForeSee";
+	}
 }
