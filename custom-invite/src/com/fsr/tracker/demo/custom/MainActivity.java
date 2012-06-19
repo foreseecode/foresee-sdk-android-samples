@@ -20,7 +20,7 @@ public class MainActivity extends Activity {
         		.withCustomLogo("acme_logo.jpg")
         		.addMeasure(MeasureConfiguration.defaultConfig("DefaultMeasure", "mobile", 0)
         				.withMaxDaysSinceLaunch(30));
-        TrackingContext.Instance().initialize(this, configuration,new MyStringsProvider());
+        TrackingContext.Instance().initialize(this, configuration);
         TrackingContext.Instance().applicationLaunched();
     }
     public void resetCounters(View view)
