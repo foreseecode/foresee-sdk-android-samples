@@ -21,7 +21,7 @@ public class MainActivity extends Activity {
         //Create a configuration to be used by the TrackingContext
         configuration = Configuration.defaultConfiguration("ForeSee","7PzwF4wMfCv/r3yXCc0GFw==")
         		.withCustomLogo("acme_logo.jpg")
-        		.shouldPresentOnExit(true)
+        		.shouldPresentOnExit()
         		.addMeasure(MeasureConfiguration.defaultConfig("DefaultMeasure", "mobile", 0)
         				.withMaxLaunchCount(2));
         TrackingContext.Instance().initialize(this, configuration);
@@ -36,12 +36,11 @@ public class MainActivity extends Activity {
 				String selected = (String)parent.getItemAtPosition(arg2);
 				if("Email or SMS notification".equals(selected))
 				{
-					configuration.shouldPresentOnExit(true);
+					configuration.shouldPresentOnExit();
 					
 				}
 				else if("Local notification".equals(selected)){
-					configuration.shouldPresentOnExit(true)
-					.useLocalNotification(R.layout.notification, R.drawable.ic_invitation, LocalNotificationSurvey.IN_BROWSER);
+					configuration.shouldPresentOnExitLocal(LocalNotificationSurvey.IN_APP);
 				}
 				reInitializeContext();
 				
