@@ -17,7 +17,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.main);
         //Create a configuration to be used by the TrackingContext
         Configuration configuration = Configuration.defaultConfiguration("ForeSee","7PzwF4wMfCv/r3yXCc0GFw==")
-        		.withCustomLogo("acme_logo.jpg")
+        		.withCustomLogo("com/fsr/tracker/demo/custom/acme_logo.jpg")
         		.addMeasure(MeasureConfiguration.defaultConfig("DefaultMeasure", "mobile", 0)
         				.withMaxDaysSinceLaunch(30));
         TrackingContext.Instance().initialize(this, configuration);
