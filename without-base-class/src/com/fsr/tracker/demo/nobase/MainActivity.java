@@ -25,6 +25,7 @@ public class MainActivity extends Activity {
         				.withMaxLaunchCount(2));
         TrackingContext.Instance().initialize(this, configuration);
         TrackingContext.Instance().applicationLaunched();
+        TrackingContext.Instance().checkState();
         
 		//log some events
 		TrackingContext.Instance().setTrackerEventListener(new TrackerEventListener(){
@@ -81,6 +82,7 @@ public void onConfigurationChanged(android.content.res.Configuration newConfig) 
 }
 	public void incrementLaunchCount(View view){
     	TrackingContext.Instance().applicationLaunched();
+    	TrackingContext.Instance().checkState();
     }
     public void resetCounters(View view)
     {

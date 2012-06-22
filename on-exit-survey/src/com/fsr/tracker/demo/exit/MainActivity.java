@@ -26,6 +26,7 @@ public class MainActivity extends Activity {
         				.withMaxLaunchCount(2));
         TrackingContext.Instance().initialize(this, configuration);
         TrackingContext.Instance().applicationLaunched();
+        TrackingContext.Instance().checkState();
         setContentView(R.layout.main);
         Spinner spinner = (Spinner)findViewById(R.id.spinner);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -65,6 +66,7 @@ public class MainActivity extends Activity {
 
 	public void incrementLaunchCount(View view){
     	TrackingContext.Instance().applicationLaunched();
+    	TrackingContext.Instance().checkState();
     }
     public void resetCounters(View view)
     {

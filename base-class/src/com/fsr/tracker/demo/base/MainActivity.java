@@ -26,10 +26,12 @@ public class MainActivity extends TrackerActivityBase {
     }
 	public void incrementLaunchCount(View view){
     	TrackingContext.Instance().applicationLaunched();
+    	TrackingContext.Instance().checkState();
     }
     public void incrementSigEvent(View source)
     {
     	TrackingContext.Instance().incrementSignificantEventsCountWithKey("doSomething");
+    	TrackingContext.Instance().checkState();
     }
 
 	@Override

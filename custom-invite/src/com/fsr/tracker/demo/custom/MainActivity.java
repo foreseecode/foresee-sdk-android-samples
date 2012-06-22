@@ -22,6 +22,7 @@ public class MainActivity extends Activity {
         				.withMaxDaysSinceLaunch(30));
         TrackingContext.Instance().initialize(this, configuration);
         TrackingContext.Instance().applicationLaunched();
+        TrackingContext.Instance().checkState();
     }
     public void resetCounters(View view)
     {
