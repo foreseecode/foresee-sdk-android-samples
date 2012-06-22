@@ -25,8 +25,8 @@ public class MainActivity extends TrackerActivityBase {
         return "mobile";
     }
 	public void incrementLaunchCount(View view){
-    	TrackingContext.Instance().applicationLaunched();
-    	TrackingContext.Instance().checkState();
+		TrackingContext.Instance().applicationLaunched();
+		TrackingContext.Instance().checkState();
     }
     public void incrementSigEvent(View source)
     {
@@ -40,6 +40,7 @@ public class MainActivity extends TrackerActivityBase {
 		//we can customize the configuration by overriding the getConfiguration() method
 		//and adding our own settings
 		return config
+				.debug(true)
 				.shouldRepeatSurveyAfterMinutes(3);
 	}
     
