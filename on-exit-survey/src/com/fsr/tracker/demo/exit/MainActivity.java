@@ -19,7 +19,7 @@ public class MainActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //Create a configuration to be used by the TrackingContext
-        configuration = Configuration.defaultConfiguration("ForeSee","7PzwF4wMfCv/r3yXCc0GFw==")
+        configuration = Configuration.defaultConfiguration("7PzwF4wMfCv/r3yXCc0GFw==")
         		.withCustomLogo("acme_logo.jpg")
         		.shouldPresentOnExit()
         		.addMeasure(MeasureConfiguration.defaultConfig("DefaultMeasure", "mobile", 0)
