@@ -1,0 +1,12 @@
+{
+	"clientId":"Ij6P1lfZHchO/co10lQ4BQ==",
+	"customLogoName":"acme_logo.jpg",
+	"notificationType":"ON_EXIT",
+	"measures":
+	[
+		{
+			"surveyId":"app_test_1",
+			"launchCount":2
+		}
+	]
+}

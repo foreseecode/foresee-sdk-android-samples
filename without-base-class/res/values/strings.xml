@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-
-    <string name="hello">Implementaion demo - without using base classes</string>
-    <string name="app_name">Implementation demo</string>
-    <string name="reset_counters">Reset counters</string>
-    <string name="increment_launch_count">Increment launch count</string>
-
-</resources>

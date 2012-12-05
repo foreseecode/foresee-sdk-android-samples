@@ -2,8 +2,6 @@ package com.fsr.tracker.demo.exit;
 
 import com.fsr.tracker.app.TrackingContext;
 import com.fsr.tracker.domain.Configuration;
-import com.fsr.tracker.domain.Configuration.LocalNotificationSurvey;
-import com.fsr.tracker.domain.MeasureConfiguration;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -18,15 +16,24 @@ public class MainActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //Create a configuration to be used by the TrackingContext
-        configuration = Configuration.defaultConfiguration("7PzwF4wMfCv/r3yXCc0GFw==")
-        		.withCustomLogo("acme_logo.jpg")
-        		.shouldPresentOnExit()
-        		.addMeasure(MeasureConfiguration.defaultConfig("DefaultMeasure", "mobile", 0)
-        				.withMaxLaunchCount(2));
-        TrackingContext.Instance().initialize(this, configuration);
-        TrackingContext.Instance().applicationLaunched();
-        TrackingContext.Instance().checkState();
+        
+        // Load the configuration from configuration.json
+    	try
+    	{
+	        if (TrackingContext.Instance().start(this))
+	        {
+	                configuration = TrackingContext.Instance().getConfiguration();        		
+	        }
+	        else
+	        {
+	        	// Configuration not loaded - handle error here
+	        }
+    	}
+    	catch (RuntimeException e)
+    	{
+    		Log.e("FORESEE", e.toString());
+    	}
+                
         setContentView(R.layout.main);
         Spinner spinner = (Spinner)findViewById(R.id.spinner);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -38,10 +45,9 @@ public class MainActivity extends Activity {
 				if("Email or SMS notification".equals(selected))
 				{
 					configuration.shouldPresentOnExit();
-					
 				}
 				else if("Local notification".equals(selected)){
-					configuration.shouldPresentOnExitLocal(LocalNotificationSurvey.IN_APP);
+					configuration.shouldPresentOnExitLocal();
 				}
 				reInitializeContext();
 				
@@ -70,7 +76,7 @@ public class MainActivity extends Activity {
     }
     public void resetCounters(View view)
     {
-    	TrackingContext.Instance().resetState();
+    	TrackingContext.Instance().resetAll();
     }
     private void reInitializeContext()
     {
