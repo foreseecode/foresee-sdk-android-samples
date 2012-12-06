@@ -1,10 +1,11 @@
 {
-	"clientId":"7PzwF4wMfCv/r3yXCc0GFw==",
+	"clientId":"Ij6P1lfZHchO/co10lQ4BQ==",
+	"repeatDaysAfterDecline":5,
 	"customLogoName":"acme_logo.jpg",
 	"measures":
 	[
 		{
-			"surveyId":"DefaultMeasure",
+			"surveyId":"app_test_1",
 			"daysSinceLaunch":30
 		}
 	]

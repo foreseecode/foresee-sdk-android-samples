@@ -25,6 +25,6 @@ public class MainActivity extends Activity {
     }
     public void launchInvite(View view)
     {
-    	TrackingContext.Instance().triggerInvitation("DefaultMeasure");
+    	TrackingContext.Instance().triggerInvitation("mobile");
     }
 }

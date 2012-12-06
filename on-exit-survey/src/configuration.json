@@ -1,6 +1,7 @@
 {
 	"clientId":"Ij6P1lfZHchO/co10lQ4BQ==",
 	"customLogoName":"acme_logo.jpg",
+	"repeatDaysAfterDecline":5,
 	"notificationType":"ON_EXIT",
 	"measures":
 	[
