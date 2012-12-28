@@ -60,9 +60,8 @@ public class MainActivity extends Activity {
 		}
 
 		@Override
-		public void onSamplingCheckCompleted(MeasureConfiguration arg0,
-				boolean arg1) {
-			// TODO Auto-generated method stub
+		public void onSamplingCheckCompleted(MeasureConfiguration measure, boolean result) {
+			Log.d("MainActivity", String.format("onSamplingCheckCompleted: name=%s, sid=%s, result=%s", measure.getName(),measure.getSurveyId(), new Boolean(result).toString()));
 			
 		}
 		
