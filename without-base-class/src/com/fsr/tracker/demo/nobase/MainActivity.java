@@ -58,6 +58,13 @@ public class MainActivity extends Activity {
 			Log.d("MainActivity", String.format("onSurveyCompleted: name=%s, sid=%s", measure.getName(),measure.getSurveyId()));
 			
 		}
+
+		@Override
+		public void onSamplingCheckCompleted(MeasureConfiguration arg0,
+				boolean arg1) {
+			// TODO Auto-generated method stub
+			
+		}
 		
 	});
     }

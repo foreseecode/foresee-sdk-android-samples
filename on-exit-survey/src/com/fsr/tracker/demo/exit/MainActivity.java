@@ -41,7 +41,7 @@ public class MainActivity extends Activity {
 					
 				}
 				else if("Local notification".equals(selected)){
-					configuration.shouldPresentOnExitLocal(LocalNotificationSurvey.IN_APP);
+					configuration.shouldPresentOnExitLocal();
 				}
 				reInitializeContext();
 				
@@ -70,7 +70,7 @@ public class MainActivity extends Activity {
     }
     public void resetCounters(View view)
     {
-    	TrackingContext.Instance().resetState();
+    	TrackingContext.Instance().resetAll();
     }
     private void reInitializeContext()
     {
