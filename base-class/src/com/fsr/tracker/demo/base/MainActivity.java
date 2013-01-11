@@ -17,6 +17,13 @@ public class MainActivity extends TrackerActivityBase {
     }
 
     @Override
+    public void onDestroy()
+    {
+    	TrackingContext.end();
+    	super.onDestroy();
+    }
+    
+    @Override
     protected String getCustomerId() {
         return "7PzwF4wMfCv/r3yXCc0GFw==";
     }

@@ -21,10 +21,18 @@ public class MainActivity extends Activity {
         		.withCustomLogo("com/fsr/tracker/demo/custom/acme_logo.jpg")
         		.addMeasure(MeasureConfiguration.defaultConfig("DefaultMeasure", "mobile", 0)
         				.withMaxDaysSinceLaunch(30));
-        TrackingContext.Instance().initialize(this, configuration, stringsProvider);
+        TrackingContext.start(this, configuration);
         TrackingContext.Instance().applicationLaunched();
         TrackingContext.Instance().checkState();
     }
+    
+    @Override
+    public void onDestroy()
+    {
+    	TrackingContext.end();
+    	super.onDestroy();
+    }
+    
     public void resetCounters(View view)
     {
     	TrackingContext.Instance().resetState();

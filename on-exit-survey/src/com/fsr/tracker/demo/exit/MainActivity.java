@@ -22,7 +22,7 @@ public class MainActivity extends Activity {
         		.shouldPresentOnExit()
         		.addMeasure(MeasureConfiguration.defaultConfig("DefaultMeasure", "mobile", 0)
         				.withMaxLaunchCount(2));
-        TrackingContext.Instance().initialize(this, configuration);
+        TrackingContext.start(this, configuration);
         TrackingContext.Instance().applicationLaunched();
         TrackingContext.Instance().checkState();
         setContentView(R.layout.main);
@@ -55,13 +55,14 @@ public class MainActivity extends Activity {
 
     }
     
-
-	@Override
-	protected void onDestroy() {
-		super.onDestroy();
+    @Override
+    public void onDestroy()
+    {
 		TrackingContext.Instance().applicationExited();
-	}
-
+    	TrackingContext.end();
+    	super.onDestroy();
+    }
+    
 	public void incrementLaunchCount(View view){
     	TrackingContext.Instance().applicationLaunched();
     	TrackingContext.Instance().checkState();

@@ -23,7 +23,7 @@ public class MainActivity extends Activity {
         		.addCpp("myCustomCpp", "myCppValue")
         		.addMeasure(MeasureConfiguration.defaultConfig("DefaultMeasure", "mobile", 0)
         				.withMaxLaunchCount(2));
-        TrackingContext.Instance().initialize(this, configuration);
+        TrackingContext.start(this, configuration);
         TrackingContext.Instance().applicationLaunched();
         TrackingContext.Instance().checkState();
         
@@ -66,6 +66,14 @@ public class MainActivity extends Activity {
 		}
 		
 	});
+    }
+    
+    @Override
+    public void onDestroy()
+    {
+		TrackingContext.Instance().applicationExited();
+    	TrackingContext.end();
+    	super.onDestroy();
     }
     
     /**
