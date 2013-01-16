@@ -15,12 +15,13 @@ public class MainActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        MyStringsProvider stringsProvider = new MyStringsProvider();
         //Create a configuration to be used by the TrackingContext
         Configuration configuration = Configuration.defaultConfiguration("7PzwF4wMfCv/r3yXCc0GFw==")
         		.withCustomLogo("com/fsr/tracker/demo/custom/acme_logo.jpg")
         		.addMeasure(MeasureConfiguration.defaultConfig("DefaultMeasure", "mobile", 0)
         				.withMaxDaysSinceLaunch(30));
-        TrackingContext.Instance().initialize(this, configuration);
+        TrackingContext.Instance().initialize(this, configuration, stringsProvider);
         TrackingContext.Instance().applicationLaunched();
         TrackingContext.Instance().checkState();
     }
@@ -34,12 +35,7 @@ public class MainActivity extends Activity {
     }
     private class MyStringsProvider extends DefaultStringsProvider
     {
-    	
-
-		@Override
-		public String getInviteTitle() {
-			return "How are we doing?";
-		}
+        // Custom strings can be set here or in custom-strings.properties
 
 		@Override
 		public String getInviteText() {

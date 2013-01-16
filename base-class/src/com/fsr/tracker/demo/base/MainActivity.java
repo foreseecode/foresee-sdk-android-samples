@@ -24,6 +24,7 @@ public class MainActivity extends TrackerActivityBase {
     protected  String getDefaultSurveyId() {
         return "mobile";
     }
+    
 	public void incrementLaunchCount(View view){
 		TrackingContext.Instance().applicationLaunched();
 		TrackingContext.Instance().checkState();
@@ -39,9 +40,13 @@ public class MainActivity extends TrackerActivityBase {
 		Configuration config =  super.getConfiguration();
 		//we can customize the configuration by overriding the getConfiguration() method
 		//and adding our own settings
+		MeasureConfiguration newMeasure = MeasureConfiguration.defaultConfig("measure_1", "mobile", 0);
+		newMeasure.addSignificantEventThreshold("doSomething", 3);
 		return config
 				.debug(true)
-				.shouldRepeatSurveyAfterMinutes(3);
+				.shouldRepeatSurveyAfterMinutes(3)
+				.addMeasure(newMeasure);
+				
 	}
     
     public void resetCounters(View view)

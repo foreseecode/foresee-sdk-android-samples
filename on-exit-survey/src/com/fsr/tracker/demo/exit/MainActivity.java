@@ -2,12 +2,10 @@ package com.fsr.tracker.demo.exit;
 
 import com.fsr.tracker.app.TrackingContext;
 import com.fsr.tracker.domain.Configuration;
-import com.fsr.tracker.domain.Configuration.LocalNotificationSurvey;
 import com.fsr.tracker.domain.MeasureConfiguration;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Spinner;
