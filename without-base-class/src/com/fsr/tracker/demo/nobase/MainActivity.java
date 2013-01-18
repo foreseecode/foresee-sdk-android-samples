@@ -72,7 +72,7 @@ public class MainActivity extends Activity {
     public void onDestroy()
     {
 		TrackingContext.Instance().applicationExited();
-    	TrackingContext.end();
+    	TrackingContext.stop();
     	super.onDestroy();
     }
     

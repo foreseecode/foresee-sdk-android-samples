@@ -29,7 +29,7 @@ public class MainActivity extends Activity {
     @Override
     public void onDestroy()
     {
-    	TrackingContext.end();
+    	TrackingContext.stop();
     	super.onDestroy();
     }
     
