@@ -2,6 +2,7 @@ package com.fsr.tracker.demo.exit;
 
 import com.fsr.tracker.app.TrackingContext;
 import com.fsr.tracker.domain.Configuration;
+import com.fsr.tracker.domain.MeasureConfiguration;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -20,7 +21,7 @@ public class MainActivity extends Activity {
         // Load the configuration from configuration.json
     	try
     	{
-	        if (TrackingContext.Instance().start(this))
+	        if (TrackingContext.start(this))
 	        {
 	                configuration = TrackingContext.Instance().getConfiguration();        		
 	        }
@@ -63,13 +64,14 @@ public class MainActivity extends Activity {
 
     }
     
-
-	@Override
-	protected void onDestroy() {
-		super.onDestroy();
+    @Override
+    public void onDestroy()
+    {
 		TrackingContext.Instance().applicationExited();
-	}
-
+    	TrackingContext.stop();
+    	super.onDestroy();
+    }
+    
 	public void incrementLaunchCount(View view){
     	TrackingContext.Instance().applicationLaunched();
     	TrackingContext.Instance().checkState();
@@ -80,7 +82,7 @@ public class MainActivity extends Activity {
     }
     private void reInitializeContext()
     {
-    	TrackingContext.Instance().initialize(this, configuration);
+    	TrackingContext.start(this);
     }
 
 }
