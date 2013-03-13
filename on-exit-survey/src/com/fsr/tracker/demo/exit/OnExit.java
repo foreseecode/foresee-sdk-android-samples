@@ -11,30 +11,22 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Spinner;
 
-public class MainActivity extends Activity {
+public class OnExit extends Activity {
 	private Configuration configuration;
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        
-        // Load the configuration from configuration.json
-    	try
-    	{
-	        if (TrackingContext.start(this))
-	        {
-	                configuration = TrackingContext.Instance().getConfiguration();        		
-	        }
-	        else
-	        {
-	        	// Configuration not loaded - handle error here
-	        }
-    	}
-    	catch (RuntimeException e)
-    	{
-    		Log.e("FORESEE", e.toString());
-    	}
-                
+        //Create a configuration to be used by the TrackingContext
+        configuration = Configuration.defaultConfiguration("7PzwF4wMfCv/r3yXCc0GFw==")
+        		.withCustomLogo("acme_logo.jpg")
+        		.shouldPresentOnExit()
+        		.addMeasure(MeasureConfiguration.defaultConfig("DefaultMeasure", "mobile", 0)
+        				.withMaxLaunchCount(2)
+        				.withMaxDaysSinceLaunch(0));
+        TrackingContext.start(this.getApplication(), configuration);
+        TrackingContext.Instance().applicationLaunched();
+        TrackingContext.Instance().checkState();
         setContentView(R.layout.main);
         Spinner spinner = (Spinner)findViewById(R.id.spinner);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -68,13 +60,13 @@ public class MainActivity extends Activity {
     public void onDestroy()
     {
 		TrackingContext.Instance().applicationExited();
-    	TrackingContext.stop();
     	super.onDestroy();
     }
     
 	public void incrementLaunchCount(View view){
     	TrackingContext.Instance().applicationLaunched();
     	TrackingContext.Instance().checkState();
+    	TrackingContext.Instance().triggerInvitation("mobile");
     }
     public void resetCounters(View view)
     {
@@ -82,7 +74,11 @@ public class MainActivity extends Activity {
     }
     private void reInitializeContext()
     {
+<<<<<<< HEAD:samples/on-exit-survey/src/com/fsr/tracker/demo/exit/MainActivity.java
     	TrackingContext.start(this);
+=======
+        TrackingContext.start(this.getApplication(), configuration);
+>>>>>>> Adjusted samples and docs to match latest version:samples/on-exit-survey/src/com/fsr/tracker/demo/exit/OnExit.java
     }
 
 }
