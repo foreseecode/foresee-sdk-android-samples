@@ -1,8 +1,8 @@
 package com.fsr.tracker.demo.exit;
 
 import com.fsr.tracker.app.TrackingContext;
-import com.fsr.tracker.domain.Configuration;
-import com.fsr.tracker.domain.MeasureConfiguration;
+import com.foresee.sdk.configuration.Configuration;
+import com.foresee.sdk.configuration.MeasureConfiguration;
 
 import android.app.Activity;
 import android.os.Bundle;

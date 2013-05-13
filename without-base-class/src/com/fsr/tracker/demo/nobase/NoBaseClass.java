@@ -8,8 +8,8 @@ import android.view.View;
 
 import com.fsr.tracker.TrackerEventListener;
 import com.fsr.tracker.app.TrackingContext;
-import com.fsr.tracker.domain.Configuration;
-import com.fsr.tracker.domain.MeasureConfiguration;
+import com.foresee.sdk.configuration.Configuration;
+import com.foresee.sdk.configuration.MeasureConfiguration;
 public class NoBaseClass extends Activity {
     /** Called when the activity is first created. */
     @Override
