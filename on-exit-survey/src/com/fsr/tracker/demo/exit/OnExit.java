@@ -1,6 +1,6 @@
-package com.fsr.tracker.demo.exit;
+package com.foresee.sdk.tracker.demo.exit;
 
-import com.fsr.tracker.app.TrackingContext;
+import com.foresee.sdk.tracker.app.TrackingContext;
 import com.foresee.sdk.configuration.Configuration;
 import com.foresee.sdk.configuration.MeasureConfiguration;
 

@@ -1,7 +1,7 @@
-package com.fsr.tracker.demo.custom;
+package com.foresee.sdk.tracker.demo.custom;
 
-import com.fsr.tracker.app.DefaultStringsProvider;
-import com.fsr.tracker.app.TrackingContext;
+import com.foresee.sdk.tracker.app.DefaultStringsProvider;
+import com.foresee.sdk.tracker.app.TrackingContext;
 
 import android.app.Activity;
 import android.os.Bundle;

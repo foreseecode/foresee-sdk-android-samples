@@ -1,4 +1,4 @@
-package com.fsr.tracker.demo.nobase;
+package com.foresee.sdk.tracker.demo.nobase;
 
 
 import android.app.Activity;
@@ -6,8 +6,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
-import com.fsr.tracker.TrackerEventListener;
-import com.fsr.tracker.app.TrackingContext;
+import com.foresee.sdk.tracker.TrackerEventListener;
+import com.foresee.sdk.tracker.app.TrackingContext;
 import com.foresee.sdk.configuration.Configuration;
 import com.foresee.sdk.configuration.MeasureConfiguration;
 public class NoBaseClass extends Activity {
