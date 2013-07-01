@@ -3,7 +3,7 @@
 	"repeatDaysAfterDecline":5,
 	"repeatDaysAfterComplete":5,
 	"repeatDaysAfterAccept":3,
-	"notificationType":"ON_EXIT",
+	"notificationType":"LOCAL",
 	"supportsReinvitation":true,
 	"sessionReplayEnabled":false,
 	"whitelistedHosts":

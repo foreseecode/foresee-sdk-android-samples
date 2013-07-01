@@ -22,35 +22,7 @@ public class OnExit extends Activity {
         
         // Do normal UI setup
         setContentView(R.layout.main);
-        spinner = (Spinner)findViewById(R.id.spinner);
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-
-			@Override
-			public void onItemSelected(AdapterView<?> parent, View arg1,
-					int arg2, long arg3) {
-				String selected = (String)parent.getItemAtPosition(arg2);
-				if("Email or SMS notification".equals(selected))
-				{
-					Log.d("test", "changing configuration to on-exit");
-					
-					// Change configuration of ForeSee SDK
-					Configuration config = ForeSee.getConfiguration();
-					config.shouldPresentOnExit();
-				}
-				else if("Local notification".equals(selected)){
-					Log.d("test", "changing configuration to local");
-
-					// Change configuration of ForeSee SDK
-					Configuration config = ForeSee.getConfiguration();
-					config.shouldPresentOnExitLocal();
-				}				
-			}
-
-			@Override
-			public void onNothingSelected(AdapterView<?> parent) {
-			}
-        });
-    }
+     }
     
     @Override
     public void onStart() {
@@ -64,6 +36,7 @@ public class OnExit extends Activity {
     	super.onResume();
     	// Notify ForeSee SDK of activity resume
     	ForeSee.activityResumed(this);
+    	ForeSee.checkIfEligibleForSurvey();
     }
     
     @Override
@@ -76,7 +49,6 @@ public class OnExit extends Activity {
     public void launchInvite(View view)
     {
     	// Launch an invite as a demo
-    	ForeSee.getConfiguration().shouldPresentOnExit();
     	ForeSee.showInviteForSurveyID("app_test_1");
     }
 
