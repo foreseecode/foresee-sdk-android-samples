@@ -1,4 +1,4 @@
-package com.fsr.tracker.demo.custom;
+package com.foresee.sdk.demo.exit;
 
 import com.foresee.sdk.ForeSee;
 

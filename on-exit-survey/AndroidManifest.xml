@@ -4,56 +4,70 @@
     android:versionCode="1"
     android:versionName="1.0" >
 
-    <uses-sdk android:minSdkVersion="4" android:targetSdkVersion="15"/>
+    <uses-sdk android:minSdkVersion="4" android:targetSdkVersion="17"/>
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    
     <application
+        android:name="com.foresee.sdk.demo.exit.CustomApplication"
         android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name" >
+        android:label="@string/app_name" 
+        android:allowBackup="false">
         <activity
-            android:name="com.foresee.sdk.tracker.demo.exit.OnExit"
+            android:name="com.foresee.sdk.demo.exit.OnExit"
             android:label="@string/app_name"
             android:configChanges="orientation|screenSize|keyboard|keyboardHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
- <!-- ForeSee -->
- <activity
-     android:name="com.foresee.sdk.tracker.app.SurveyInviteActivity"
-     android:configChanges="orientation|screenSize|keyboard|keyboardHidden"
-     android:label="@null"
-     android:theme="@android:style/Theme.Translucent.NoTitleBar" >
-     <intent-filter>
-         <action android:name="com.foresee.sdk.tracker.app.LAUNCH_INVITE" />
+        <!-- Trigger -->
+        <activity
+            android:name="com.foresee.sdk.tracker.app.SurveyInviteActivity"
+            android:configChanges="orientation|screenSize|keyboard|keyboardHidden"
+            android:label="@null"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+            <intent-filter>
+                <action android:name="com.foresee.sdk.tracker.app.LAUNCH_INVITE" />
 
-         <category android:name="android.intent.category.DEFAULT" />
-     </intent-filter>
- </activity>
- <activity
-     android:name="com.foresee.sdk.tracker.app.OnExitSurveyInviteActivity"
-     android:configChanges="orientation|screenSize|keyboard|keyboardHidden"
-     android:label="@null"
-     android:theme="@android:style/Theme.Translucent.NoTitleBar" >
-     <intent-filter>
-         <action android:name="com.foresee.sdk.tracker.app.LAUNCH_INVITE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.foresee.sdk.tracker.app.OnExitSurveyInviteActivity"
+            android:configChanges="orientation|screenSize|keyboard|keyboardHidden"
+            android:label="@null"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+            <intent-filter>
+                <action android:name="com.foresee.sdk.tracker.app.LAUNCH_INVITE" />
 
-         <category android:name="android.intent.category.DEFAULT" />
-     </intent-filter>
- </activity>
- <activity
-     android:name="com.foresee.sdk.tracker.app.SurveyActivity"
-     android:configChanges="orientation|screenSize|keyboard|keyboardHidden"
-     android:hardwareAccelerated="true" >
-     <intent-filter>
-         <action android:name="com.foresee.sdk.tracker.app.LAUNCH_SURVEY" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.foresee.sdk.tracker.app.SurveyActivity"
+            android:configChanges="orientation|screenSize|keyboard|keyboardHidden"
+            android:hardwareAccelerated="true" >
+            <intent-filter>
+                <action android:name="com.foresee.sdk.tracker.app.LAUNCH_SURVEY" />
 
-         <category android:name="android.intent.category.DEFAULT" />
-     </intent-filter>
- </activity>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <!-- Replay -->
+        <service android:name="com.foresee.mobileReplay.jobQueue.JobQueueIntentService"
+                 android:process=":jobqueue"/>
+        <service android:name="com.foresee.mobileReplay.services.PerfLogService"/>
+        <receiver android:name="com.foresee.mobileReplay.receivers.ConnectivityChangeEventReceiver">
+            <intent-filter>
+                <action android:name="android.net.wifi.STATE_CHANGE"/>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+            </intent-filter>
+        </receiver>        
+        
     </application>
+</manifest>    
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-</manifest>

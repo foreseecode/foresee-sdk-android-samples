@@ -21,8 +21,8 @@
     <Button 
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/increment_launch_count"
-        android:onClick="incrementLaunchCount"
+        android:text="@string/launch_invite"
+        android:onClick="launchInvite"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"/>
     

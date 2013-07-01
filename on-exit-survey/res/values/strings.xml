@@ -8,6 +8,6 @@
 	    <item>Email or SMS notification</item>
 	    <item>Local notification</item>
 	</string-array>
-	    <string name="increment_launch_count">Increment Launch Count</string>
+	    <string name="launch_invite">Launch invitation</string>
 	    <string name="reset_counters">Reset counters</string>
 </resources>
