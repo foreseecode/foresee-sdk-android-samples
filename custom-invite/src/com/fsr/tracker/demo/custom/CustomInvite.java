@@ -15,14 +15,17 @@ public class CustomInvite extends Activity {
     }
     @Override
     public void onStart() {
+    	super.onStart();
     	ForeSee.activityStarted(this);
     }
     @Override
     public void onPause() {
+    	super.onPause();
     	ForeSee.activityPaused(this);
     }
     @Override
     public void onResume() {
+    	super.onResume();
     	ForeSee.activityResumed(this);
     }
     
