@@ -1,7 +1,6 @@
-package com.foresee.sdk.tracker.demo.custom;
+package com.fsr.tracker.demo.custom;
 
-import com.foresee.sdk.tracker.app.DefaultStringsProvider;
-import com.foresee.sdk.tracker.app.TrackingContext;
+import com.foresee.sdk.ForeSee;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -13,31 +12,26 @@ public class CustomInvite extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-
-        //Create a configuration to be used by the TrackingContext
-        Configuration configuration = Configuration.defaultConfiguration("7PzwF4wMfCv/r3yXCc0GFw==")
-        		.withCustomLogo("com/fsr/tracker/demo/custom/acme_logo.jpg")
-        		.addMeasure(MeasureConfiguration.defaultConfig("DefaultMeasure", "mobile", 0)
-        				.withMaxDaysSinceLaunch(30));
-        TrackingContext.start(this.getApplication(), configuration);
-        TrackingContext.Instance().applicationLaunched();
-        TrackingContext.Instance().checkState();
     }
-    
     @Override
-    public void onDestroy()
-    {
-    	TrackingContext.stop();
-    	super.onDestroy();
+    public void onStart() {
+    	ForeSee.activityStarted(this);
+    }
+    @Override
+    public void onPause() {
+    	ForeSee.activityPaused(this);
+    }
+    @Override
+    public void onResume() {
+    	ForeSee.activityResumed(this);
     }
     
     public void resetCounters(View view)
     {
-    	TrackingContext.Instance().resetAll();
+    	ForeSee.resetState();
     }
     public void launchInvite(View view)
     {
-
-    	TrackingContext.Instance().triggerInvitation("DefaultMeasure");
+    	ForeSee.showInviteForSurveyID("app_test_1");
     }
 }
