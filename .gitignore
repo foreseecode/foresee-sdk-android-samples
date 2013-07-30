@@ -3,3 +3,6 @@
 bin
 gen
 libs
+*.iml
+.idea
+out
