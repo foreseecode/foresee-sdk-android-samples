@@ -4,10 +4,34 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
-
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Test"
-            android:id="@+id/textView" android:layout_gravity="center_horizontal"/>
+            android:text="A label (not automatically masked)"
+            android:id="@+id/label1" android:layout_gravity="center_horizontal"
+            android:textSize="10pt" android:textIsSelectable="false" android:layout_marginTop="12pt"/>
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mask Label"
+            android:id="@+id/maskButton" android:layout_gravity="center_horizontal" android:layout_marginTop="12pt"
+            />
+    <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textField" android:layout_gravity="center_horizontal" android:layout_marginTop="36pt"
+            android:hint="A text field (automatically masked)" android:lines="1" android:linksClickable="false"
+            android:minLines="1" android:maxLines="1" android:singleLine="true"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="A text view (automatically masked)"
+            android:id="@+id/label2" android:layout_gravity="center_horizontal" android:layout_marginTop="12pt"
+            android:textSize="10pt"/>
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Unmask Text Views"
+            android:id="@+id/unmaskButton" android:layout_gravity="center_horizontal" android:layout_marginTop="12pt"
+            />
 </LinearLayout>
