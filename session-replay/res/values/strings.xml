@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">session-replay</string>
+    <string name="app_name">Session Replay Test App</string>
     <string name="show_invite">Show Invite</string>
+    <string name="action_search">Search</string>
+    <string name="action_settings">Settings</string>
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
 </resources>
