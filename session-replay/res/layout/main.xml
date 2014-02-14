@@ -7,7 +7,12 @@
     <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Hello World, MyActivity"
+            android:text="Session Replay Test App"
             />
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/show_invite"
+            android:id="@+id/button" android:layout_gravity="center_horizontal" android:onClick="showInvite"/>
 </LinearLayout>
 

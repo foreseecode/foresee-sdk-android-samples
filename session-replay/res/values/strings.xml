@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">session-replay</string>
+    <string name="show_invite">Show Invite</string>
 </resources>
