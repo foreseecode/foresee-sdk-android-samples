@@ -7,16 +7,11 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
-import android.webkit.WebViewFragment;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import com.foresee.sdk.ForeSee;
-
-import java.lang.reflect.Array;
 
 public class MainActivity extends Activity {
     private DrawerLayout mDrawerLayout;
@@ -38,7 +33,7 @@ public class MainActivity extends Activity {
         mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
         mListView = (ListView)findViewById(R.id.left_drawer);
 
-        String[] items = {"Instructions", "Native UI Masking", "Webview Masking"};
+        String[] items = {"Instructions", "Native UI Masking", "Webview Masking", "Submit Survey"};
         mListView.setAdapter(new ArrayAdapter<String>(this, R.layout.drawer_list_item, items));
         mListView.setOnItemClickListener(new DrawerItemClickListener());
 
@@ -86,8 +81,11 @@ public class MainActivity extends Activity {
         else if (position == 0) {
             fragment = new InstructionsFragment();
         }
-        else {
+        else if (position == 2) {
             fragment = new WebviewMaskingFragment();
+        }
+        else {
+            fragment = new SurveySubmissionFragment();
         }
 
         FragmentManager fragmentManager = getFragmentManager();
@@ -138,9 +136,5 @@ public class MainActivity extends Activity {
     protected void onResume() {
         super.onResume();
         ForeSee.activityResumed(this);
-    }
-
-    public void showInvite(View view) {
-        ForeSee.showInviteForSurveyID("app_test_1");
     }
 }
