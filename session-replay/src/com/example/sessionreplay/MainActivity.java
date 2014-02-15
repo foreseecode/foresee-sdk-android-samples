@@ -10,6 +10,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
+import android.webkit.WebViewFragment;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -86,7 +87,7 @@ public class MainActivity extends Activity {
             fragment = new InstructionsFragment();
         }
         else {
-            fragment = new Fragment();
+            fragment = new WebviewMaskingFragment();
         }
 
         FragmentManager fragmentManager = getFragmentManager();
