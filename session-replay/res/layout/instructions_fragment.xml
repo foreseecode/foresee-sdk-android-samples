@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:paddingLeft="8pt"
+              android:paddingRight="8pt">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Instructions"
+        android:layout_marginTop="12pt"
+        android:textSize="18pt"
+        android:id="@+id/header"
+        android:layout_gravity="left"/>
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="This sample app demonstrates how to use the masking feature to mask both native views and elements embedded within a WebView."
+            android:layout_marginTop="8pt"
+            android:textSize="10pt"
+            android:id="@+id/description"
+            android:layout_gravity="left"/>
+</LinearLayout>

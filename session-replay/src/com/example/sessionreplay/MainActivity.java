@@ -37,7 +37,7 @@ public class MainActivity extends Activity {
         mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
         mListView = (ListView)findViewById(R.id.left_drawer);
 
-        String[] items = {"Native Controls"};
+        String[] items = {"Instructions", "Native UI Masking", "Webview Masking"};
         mListView.setAdapter(new ArrayAdapter<String>(this, R.layout.drawer_list_item, items));
         mListView.setOnItemClickListener(new DrawerItemClickListener());
 
@@ -78,27 +78,22 @@ public class MainActivity extends Activity {
     }
 
     private void selectItem(int position) {
-        Fragment fragment = new NativeControlsFragment();
+        Fragment fragment;
+        if (position == 1) {
+            fragment = new NativeControlsFragment();
+        }
+        else if (position == 0) {
+            fragment = new InstructionsFragment();
+        }
+        else {
+            fragment = new Fragment();
+        }
 
         FragmentManager fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
 
         mListView.setItemChecked(position, true);
-        setTitle("Native Controls");
         mDrawerLayout.closeDrawer(mListView);
-//        // update the main content by replacing fragments
-//        Fragment fragment = new PlanetFragment();
-//        Bundle args = new Bundle();
-//        args.putInt(PlanetFragment.ARG_PLANET_NUMBER, position);
-//        fragment.setArguments(args);
-//
-//        FragmentManager fragmentManager = getFragmentManager();
-//        fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
-//
-//        // update selected item and title, then close the drawer
-//        mDrawerList.setItemChecked(position, true);
-//        setTitle(mPlanetTitles[position]);
-//        mDrawerLayout.closeDrawer(mDrawerList);
     }
 
     @Override
@@ -124,14 +119,6 @@ public class MainActivity extends Activity {
         super.onConfigurationChanged(newConfig);
         // Pass any configuration change to the drawer toggls
         mDrawerToggle.onConfigurationChanged(newConfig);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu items for use in the action bar
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.main_menu, menu);
-        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
