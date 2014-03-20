@@ -1,4 +1,4 @@
-package com.fsr.tracker.demo.custom;
+package com.foresee.sdk.tracker.demo.custom;
 
 import com.foresee.sdk.ForeSee;
 

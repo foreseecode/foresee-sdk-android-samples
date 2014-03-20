@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.fsr.tracker.demo.custom"
+    package="com.foresee.sdk.tracker.demo.custom"
     android:versionCode="1"
     android:versionName="1.0" >
 
     <uses-sdk android:minSdkVersion="10" android:targetSdkVersion="17"/>
 
     <application
-        android:name="com.fsr.tracker.demo.custom.CustomApplication"
+        android:name="com.foresee.sdk.tracker.demo.custom.CustomApplication"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name" >
         <activity
-            android:name="com.fsr.tracker.demo.custom.CustomInvite"
+            android:name="com.foresee.sdk.tracker.demo.custom.CustomInvite"
             android:label="@string/app_name"
             android:configChanges="orientation|screenSize|keyboard|keyboardHidden" >
             <intent-filter>
