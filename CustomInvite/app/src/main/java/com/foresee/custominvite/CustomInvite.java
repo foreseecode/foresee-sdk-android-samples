@@ -26,8 +26,16 @@ public class CustomInvite extends CustomInviteBase {
      */
     @Override
     public void show() {
-        snackbarInvite = Snackbar.make(hostingView, "Would you like to take a survey?", Snackbar.LENGTH_INDEFINITE);
+        snackbarInvite = Snackbar.make(hostingView, "Would you like to take a survey?", Snackbar.LENGTH_LONG);
         snackbarInvite.setAction("Sure", snackbarAction);
+
+        // Every way of exiting the app should result in a call to onClose; having accurate numbers on
+        // accepts and declines helps us track the success rate of your invite strategy
+
+        // In this case, the snackbar will dismiss after 3 seconds so we need to call onClose when it does
+
+        snackbarInvite.setCallback(snackbarCallback);
+
         snackbarInvite.show();
     }
 
@@ -65,6 +73,24 @@ public class CustomInvite extends CustomInviteBase {
             // details by calling 'ForeSee.setContactDetails()' before calling this method
 
             CustomInvite.this.onClose(true, inviteCallback);
+        }
+    };
+
+    Snackbar.Callback snackbarCallback = new Snackbar.Callback() {
+        @Override
+        public void onDismissed(Snackbar snackbar, int event) {
+            super.onDismissed(snackbar, event);
+            if (event == Snackbar.Callback.DISMISS_EVENT_TIMEOUT) {
+
+                // Call the onClose method when the snackbar is dismissed from a timeout
+
+                onClose(false, null);
+            }
+        }
+
+        @Override
+        public void onShown(Snackbar snackbar) {
+            super.onShown(snackbar);
         }
     };
 }
