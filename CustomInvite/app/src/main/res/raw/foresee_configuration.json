@@ -4,7 +4,7 @@
 	"repeatDaysAfterComplete":5,
 	"repeatDaysAfterAccept":3,
 	"customLogoName":"foresee_logo.png",
-	"notificationType":"IMMEDIATE",
+	"notificationType":"ON_EXIT",
 	"supportsReinvitation":true,
 	"sessionReplayEnabled":false,
 	"whitelistedHosts":

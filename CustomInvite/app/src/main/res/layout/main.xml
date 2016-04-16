@@ -1,25 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:orientation="vertical" >
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical">
 
     <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/hello" />
-        <Button 
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/launch_invite"
-        android:onClick="launchInvite"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"/>
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:gravity="center_horizontal"
+            android:text="@string/description"/>
+
     <Button
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:layout_marginTop="5dp"
-        android:onClick="resetCounters"
-        android:text="@string/reset_counters" />
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="@string/launch_invite"
+            android:onClick="launchInvite"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"/>
+    <EditText
+            android:id="@+id/contactField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:hint="@string/contact"
+            android:imeOptions="actionDone"
+            android:singleLine="true"/>
 </LinearLayout>

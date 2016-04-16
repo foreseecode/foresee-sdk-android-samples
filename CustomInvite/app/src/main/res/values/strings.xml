@@ -2,12 +2,8 @@
 <resources>
 
     <string name="hello">Custom Invitation demo</string>
-    <string name="app_name">Custom Invitation</string>
-    <string name="reset_counters">Reset counters</string>
+    <string name="app_name">Custom Invitation Demo</string>
     <string name="launch_invite">Launch Invitation</string>
-	<!--Custom -->
-    <string name="inviteTitle">You\'re awesome!</string>
-    <string name="inviteBody">To let us know exactly how your awesomeness can help us, please fill out the following survey</string>
-    <string name="acceptButtonText">Sure thing!</string>
-    <string name="declineButtonText">No Way!</string>
+    <string name="description">Click \'Launch invitation\' to see a custom invitation appear at the bottom of the screen</string>
+    <string name="contact">Enter an email or mobile number...</string>
 </resources>
