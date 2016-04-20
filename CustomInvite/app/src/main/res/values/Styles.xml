@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<resources>
+	<style name="CustomTheme.Base" parent="Theme.AppCompat.Light.DarkActionBar">
+		<item name="colorPrimary">@color/CustomMedBlue</item>
+		<item name="colorPrimaryDark">@color/CustomDarkBlue</item>
+		<item name="colorAccent">@color/CustomMedBlue</item>
+		<item name="colorControlNormal">@color/CustomLightHighlight</item>
+		<item name="colorButtonNormal">@color/CustomMedBlue</item>
+		<item name="colorControlHighlight">@color/CustomDarkBlue</item>
+		<item name="actionMenuTextColor">#ffffff</item>   
+	</style>
+	<style name="CustomTheme.Dialog" parent="Theme.AppCompat.Light.Dialog">
+		<item name="android:textColor">@color/CustomMedBlue</item>
+        <item name="colorAccent">@color/CustomMedBlue</item>
+        <item name="colorPrimaryDark">@color/CustomDarkBlue</item>
+        <item name="colorPrimary">@color/CustomMedBlue</item>
+    </style>
+</resources>

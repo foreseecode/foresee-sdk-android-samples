@@ -6,4 +6,6 @@
     <string name="launch_invite">Launch Invitation</string>
     <string name="description">Click \'Launch invitation\' to see a custom invitation appear at the bottom of the screen</string>
     <string name="contact">Enter an email or mobile number...</string>
+
+
 </resources>

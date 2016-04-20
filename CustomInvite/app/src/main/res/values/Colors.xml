@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<resources>
+	<color name="CustomBorderLightGray">#EAEBEC</color>
+	<color name="CustomBorderDarkGray">#DFE2E3</color>
+	<color name="CustomBrightBlue">#1CBDFF</color>
+	<color name="CustomLightGray">#F0F0F0</color>
+	<color name="CustomGray">#B2B2B2</color>
+	<color name="CustomDarkestGray">#222B3C</color>
+	<color name="CustomMedBlue">#009FEA</color>
+	<color name="CustomDarkBlue">#007BCA</color>
+	<color name="CustomPositiveGreen">#2BB13E</color>
+	<color name="CustomNegativeRed">#F43D58</color>
+	<color name="CustomNeutralOrange">#FF8635</color>
+	<color name="CustomLightHighlight">#FFFFFF</color>
+	<color name="CustomLightBackground">#FFFFFF</color>
+	<color name="CustomTextLight">#FFFFFF</color>
+	<color name="CustomTextDisabledGray">#B7C0CC</color>
+	<color name="CustomTextMedGray">#353A41</color>
+	<color name="CustomTextDarkGray">#222B3C</color>
+	<color name="CustomTextHighlight">#00B9FF</color>
+	<color name="CustomAddHierarchyBacking">#222B3C</color>
+	<color name="CustomOverlayBackground">#C01CBDFF</color>
+	<color name="CustomOverlayText">#FFFFFF</color>
+
+</resources>

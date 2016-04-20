@@ -9,6 +9,7 @@ public class CustomApplication extends Application {
 	public void onCreate() {
 		super.onCreate();
 		// Notify ForeSee SDK of application start
+		ForeSee.setDebugLogEnabled(true);
 		ForeSee.start(this);
 	}
 }
