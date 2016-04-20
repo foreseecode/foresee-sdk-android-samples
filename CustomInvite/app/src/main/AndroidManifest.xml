@@ -19,50 +19,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!-- Trigger -->
-        <activity
-            android:name="com.foresee.sdk.tracker.app.SurveyInviteActivity"
-            android:configChanges="orientation|screenSize|keyboard|keyboardHidden"
-            android:label="@null"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
-            <intent-filter>
-                <action android:name="com.foresee.sdk.tracker.app.LAUNCH_INVITE" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name="com.foresee.sdk.tracker.app.OnExitSurveyInviteActivity"
-            android:configChanges="orientation|screenSize|keyboard|keyboardHidden"
-            android:label="@null"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
-            <intent-filter>
-                <action android:name="com.foresee.sdk.tracker.app.LAUNCH_INVITE" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name="com.foresee.sdk.tracker.app.SurveyActivity"
-            android:configChanges="orientation|screenSize|keyboard|keyboardHidden"
-            android:hardwareAccelerated="true" >
-            <intent-filter>
-                <action android:name="com.foresee.sdk.tracker.app.LAUNCH_SURVEY" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <!-- Replay -->
-        <service android:name="com.foresee.mobileReplay.jobQueue.JobQueueIntentService"
-                 android:process=":jobqueue"/>
-        <service android:name="com.foresee.mobileReplay.services.PerfLogService"/>
-        <receiver android:name="com.foresee.mobileReplay.receivers.ConnectivityChangeEventReceiver">
-            <intent-filter>
-                <action android:name="android.net.wifi.STATE_CHANGE"/>
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
-            </intent-filter>
-        </receiver>        
-        
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />
