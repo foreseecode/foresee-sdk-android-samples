@@ -1,8 +1,8 @@
-package com.foresee.custominvite;
-
-import com.foresee.sdk.ForeSee;
+package com.foresee.demo.custominvite;
 
 import android.app.Application;
+
+import com.foresee.sdk.ForeSee;
 
 public class CustomApplication extends Application {
 	@Override

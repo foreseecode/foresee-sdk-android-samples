@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="hello">Custom Invitation demo</string>
+
     <string name="app_name">Custom Invitation Demo</string>
     <string name="launch_invite">Launch Invitation</string>
     <string name="description">Click \'Launch invitation\' to see a custom invitation appear at the bottom of the screen</string>
     <string name="contact">Enter an email or mobile number...</string>
+    <string name="title_activity_main">Custom Invite Demo App</string>
+    <string name="default_invite">Default Invite</string>
+    <string name="custom_invite_1">Custom Invite #1</string>
+    <string name="custom_invite_2">Custom Invite #2</string>
 
 
 </resources>
