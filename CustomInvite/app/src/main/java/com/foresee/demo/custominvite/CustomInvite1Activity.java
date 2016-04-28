@@ -1,8 +1,9 @@
 package com.foresee.demo.custominvite;
 
+import android.app.ProgressDialog;
 import android.content.Context;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -16,42 +17,44 @@ import com.foresee.sdk.cxMeasure.tracker.listeners.ICustomContactInviteListener;
 public class CustomInvite1Activity extends AppCompatActivity {
 
     private static final String TAG = "CustomInvite1Activity";
-    EditText contactField;
+    private ProgressDialog progressDialog;
+    private EditText contactField;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_custom_invite_1);
+
         contactField = (EditText)findViewById(R.id.contactField);
         if (ForeSee.getContactDetails() != null) {
             contactField.setText(ForeSee.getContactDetails());
         }
-    }
-
-    public void launchCustomInvite1(View view)
-    {
-        // For ON_EXIT notification, the contact details must be provided before the invite is accepted
-        // Let's take them from the UI right now
-        ForeSee.setContactDetails(contactField.getText().toString());
 
         ForeSee.setInviteListener(new ICustomContactInviteListener() {
             @Override
             public void showInvite(IContactInviteResultListener iContactInviteResultListener) {
                 Log.d(TAG, "showInvite");
 
+                showProgress();
+
                 iContactInviteResultListener.contactInviteAccepted();
+
             }
 
             @Override
             public void onContactFormatError(IContactInviteResultListener iContactInviteResultListener) {
                 Log.d(TAG, "onContactFormatError");
                 contactField.setError(getString(R.string.FORESEE_invalidFormat));
+
+                hideProgress();
             }
 
             @Override
             public void onContactMissing(IContactInviteResultListener iContactInviteResultListener) {
                 Log.d(TAG, "onContactMissing");
                 contactField.setError(getString(R.string.FORESEE_requiredField));
+
+                hideProgress();
             }
 
             @Override
@@ -59,6 +62,8 @@ public class CustomInvite1Activity extends AppCompatActivity {
                 Log.d(TAG, "onCompleteWithAccept");
                 // By this point the SDK is finished with the invite process, this is for information only
                 Toast.makeText(getApplicationContext(), "A survey will be sent to " + ForeSee.getContactDetails(), Toast.LENGTH_SHORT).show();
+
+                hideProgress();
 
                 //Reset
                 ForeSee.resetState();
@@ -68,34 +73,55 @@ public class CustomInvite1Activity extends AppCompatActivity {
             public void onCompleteWithDecline() {
                 Log.d(TAG, "onCompleteWithDecline");
                 Toast.makeText(getApplicationContext(), "Invitation declined by user", Toast.LENGTH_SHORT).show();
+
+                hideProgress();
             }
 
             @Override
             public void onCancelledWithNetworkError() {
                 Log.d(TAG, "onCancelledWithNetworkError");
                 Toast.makeText(getApplicationContext(), "Invitation cancelled with network error", Toast.LENGTH_SHORT).show();
+
+                hideProgress();
             }
 
             @Override
             public void onInviteNotShownWithNetworkError() {
                 Log.d(TAG, "onInviteNotShownWithNetworkError");
                 Toast.makeText(getApplicationContext(), "Invitation not shown with network error", Toast.LENGTH_SHORT).show();
+
+                hideProgress();
             }
 
             @Override
             public void onInviteNotShownWithEligibilityFailed() {
                 Log.d(TAG, "onInviteNotShownWithEligibilityFailed");
                 Toast.makeText(getApplicationContext(), "Invitation not shown with eligibility failed", Toast.LENGTH_SHORT).show();
+
+                hideProgress();
             }
 
             @Override
             public void onInviteNotShownWithSamplingFailed() {
                 Log.d(TAG, "onInviteNotShownWithSamplingFailed");
                 Toast.makeText(getApplicationContext(), "Invitation not shown with sampling failed", Toast.LENGTH_SHORT).show();
+
+                hideProgress();
             }
 
         });
 
+
+    }
+
+    public void launchCustomInvite1(View view)
+    {
+
+        showProgress();
+
+        // For ON_EXIT notification, the contact details must be provided before the invite is accepted
+        // Let's take them from the UI right now
+        ForeSee.setContactDetails(contactField.getText().toString());
 
         // Launch an invite as a demo
         ForeSee.checkIfEligibleForSurvey();
@@ -104,5 +130,20 @@ public class CustomInvite1Activity extends AppCompatActivity {
         // Hide keyboard
         InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
+
+
+    private void showProgress()
+    {
+        if (progressDialog == null || (progressDialog != null && !progressDialog.isShowing())) {
+            progressDialog = ProgressDialog.show(this, "", "Please wait...", true, true);
+        }
+    }
+
+    private void hideProgress()
+    {
+        if (progressDialog != null && progressDialog.isShowing()) {
+            progressDialog.dismiss();
+        }
     }
 }
