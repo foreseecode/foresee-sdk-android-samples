@@ -194,6 +194,10 @@ public class CustomInvite2Activity extends AppCompatActivity {
 
         messageView.setText(messageText);
 
+        if (iContactInviteResultListener.getContactDetails() != null) {
+            input.setText(iContactInviteResultListener.getContactDetails());
+        }
+
         if (errorMessage != null) {
             inputLayout.setError(errorMessage);
         } else {

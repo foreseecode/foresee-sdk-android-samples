@@ -1,9 +1,10 @@
 package com.foresee.demo.custominvite;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.foresee.sdk.ForeSee;
@@ -13,16 +14,18 @@ public class DefaultInviteActivity extends AppCompatActivity {
 
     private static final String TAG = "DefaultInviteActivity";
 
+    private EditText contactField;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_default_invite);
 
-    }
+        contactField = (EditText)findViewById(R.id.contactField);
+        if (ForeSee.getContactDetails() != null) {
+            contactField.setText(ForeSee.getContactDetails());
+        }
 
-
-    public void launchDefaultInvite(View view)
-    {
         //Set Listeners (optional)
         ForeSee.setInviteListener(new IDefaultInviteListener() {
             @Override
@@ -89,7 +92,20 @@ public class DefaultInviteActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+
+    public void launchDefaultInvite(View view)
+    {
         // Launch an invite as a demo
+        ForeSee.checkIfEligibleForSurvey();
+        ForeSee.showInviteForSurveyID("app_test_1");
+    }
+
+    public void launchDefaultInviteWithContactDetails(View view)
+    {
+        // Launch an invite as a demo
+        ForeSee.setContactDetails(contactField.getText().toString());
         ForeSee.checkIfEligibleForSurvey();
         ForeSee.showInviteForSurveyID("app_test_1");
     }

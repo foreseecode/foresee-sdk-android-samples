@@ -10,6 +10,7 @@
     <string name="default_invite">Default Invite</string>
     <string name="custom_invite_1">Custom Invite #1</string>
     <string name="custom_invite_2">Custom Invite #2</string>
+    <string name="set_contact_details_launch_invite">Set contact details &amp; launch invite</string>
 
 
 </resources>
