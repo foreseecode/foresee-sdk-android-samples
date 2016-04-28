@@ -7,6 +7,7 @@ import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.internal.view.ContextThemeWrapper;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -21,6 +22,8 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class CustomInvite2Activity extends AppCompatActivity {
+
+    private static final String TAG = "CustomInvite2Activity";
 
     private Snackbar snackbarInvite;
     private Timer snackBarTimer;
@@ -42,6 +45,8 @@ public class CustomInvite2Activity extends AppCompatActivity {
         ForeSee.setInviteListener(new ICustomContactInviteListener() {
             @Override
             public void showInvite(final IContactInviteResultListener iContactInviteResultListener) {
+                Log.d(TAG, "showInvite");
+
                 setSnackBarUpdateTimers();
 
                 snackbarInvite = Snackbar.make(findViewById(R.id.coordinator_layout), getSnackbarMessage(), Snackbar.LENGTH_INDEFINITE);
@@ -76,42 +81,53 @@ public class CustomInvite2Activity extends AppCompatActivity {
 
             @Override
             public void onContactFormatError(IContactInviteResultListener iContactInviteResultListener) {
+                Log.d(TAG, "onContactFormatError");
                 showInputDialog("Please ensure your contact details", getApplicationContext().getString(R.string.FORESEE_invalidFormat), iContactInviteResultListener);
             }
 
             @Override
             public void onContactMissing(IContactInviteResultListener iContactInviteResultListener) {
+                Log.d(TAG, "onContactMissing");
                 showInputDialog("Please enter some contact details", null, iContactInviteResultListener);
             }
 
             @Override
             public void onCompleteWithAccept() {
+                Log.d(TAG, "onCompleteWithAccept");
                 // By this point the SDK is finished with the invite process, this is for information only
                 Toast.makeText(getApplicationContext(), "A survey will be sent to " + ForeSee.getContactDetails(), Toast.LENGTH_SHORT).show();
+
+                //Reset
+                ForeSee.resetState();
             }
 
             @Override
             public void onCompleteWithDecline() {
+                Log.d(TAG, "onCompleteWithDecline");
                 Toast.makeText(getApplicationContext(), "Invitation declined by user", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onCancelledWithNetworkError() {
+                Log.d(TAG, "onCancelledWithNetworkError");
                 Toast.makeText(getApplicationContext(), "Invitation cancelled with network error", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onInviteNotShownWithNetworkError() {
+                Log.d(TAG, "onInviteNotShownWithNetworkError");
                 Toast.makeText(getApplicationContext(), "Invitation not shown with network error", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onInviteNotShownWithEligibilityFailed() {
+                Log.d(TAG, "onInviteNotShownWithEligibilityFailed");
                 Toast.makeText(getApplicationContext(), "Invitation not shown with eligibility failed", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onInviteNotShownWithSamplingFailed() {
+                Log.d(TAG, "onInviteNotShownWithSamplingFailed");
                 Toast.makeText(getApplicationContext(), "Invitation not shown with sampling failed", Toast.LENGTH_SHORT).show();
             }
         });
