@@ -35,7 +35,7 @@ public class DefaultInviteActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onInviteAccepted() {
+            public void onInviteCompleteWithAccept() {
                 Log.d(TAG, "onInviteAccepted");
                 Toast.makeText(getApplicationContext(), "A survey will be sent to " + ForeSee.getContactDetails(), Toast.LENGTH_SHORT).show();
 
@@ -44,7 +44,7 @@ public class DefaultInviteActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onInviteDeclined() {
+            public void onInviteCompleteWithDecline() {
                 Log.d(TAG, "onInviteDeclined");
                 Toast.makeText(getApplicationContext(), "Invitation declined by user", Toast.LENGTH_SHORT).show();
             }

@@ -103,7 +103,7 @@ public class CustomInvite2Activity extends AppCompatActivity {
             }
 
             @Override
-            public void onCompleteWithAccept() {
+            public void onInviteCompleteWithAccept() {
                 Log.d(TAG, "onCompleteWithAccept");
                 // By this point the SDK is finished with the invite process, this is for information only
                 Toast.makeText(getApplicationContext(), "A survey will be sent to " + ForeSee.getContactDetails(), Toast.LENGTH_SHORT).show();
@@ -115,7 +115,7 @@ public class CustomInvite2Activity extends AppCompatActivity {
             }
 
             @Override
-            public void onCompleteWithDecline() {
+            public void onInviteCompleteWithDecline() {
                 Log.d(TAG, "onCompleteWithDecline");
                 Toast.makeText(getApplicationContext(), "Invitation declined by user", Toast.LENGTH_SHORT).show();
 
