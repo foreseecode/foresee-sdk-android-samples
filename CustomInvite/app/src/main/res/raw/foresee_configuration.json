@@ -2,18 +2,10 @@
 	"clientId":"Ij6P1lfZHchO/co10lQ4BQ==",
 	"customLogoName":"foresee_logo.png",
 	"notificationType":"ON_EXIT",
-	"supportsReinvitation":true,
-	"sessionReplayEnabled":false,
-	"whitelistedHosts":
-	[
-		"www.google.com",
-		"www.hotmail.com"
-	],
 	"measures":
 	[
 		{
-			"surveyId":"app_test_1",
-			"launchCount":0
+			"surveyId":"app_test_1"
 		}
 	],
 	"cppParameters":
