@@ -98,7 +98,6 @@ public class DefaultInviteActivity extends AppCompatActivity {
     public void launchDefaultInvite(View view)
     {
         // Launch an invite as a demo
-        ForeSee.checkIfEligibleForSurvey();
         ForeSee.showInviteForSurveyID("app_test_1");
     }
 
@@ -106,7 +105,6 @@ public class DefaultInviteActivity extends AppCompatActivity {
     {
         // Launch an invite as a demo
         ForeSee.setContactDetails(contactField.getText().toString());
-        ForeSee.checkIfEligibleForSurvey();
         ForeSee.showInviteForSurveyID("app_test_1");
     }
 }

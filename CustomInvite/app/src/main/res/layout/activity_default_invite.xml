@@ -11,6 +11,14 @@
     tools:context="com.foresee.demo.custominvite.DefaultInviteActivity"
     android:orientation="vertical">
 
+    <TextView android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_margin="10dp"
+              android:layout_marginBottom="5dp"
+              android:layout_marginTop="5dp"
+              android:text="@string/description_default"
+              android:textAlignment="center"
+              android:gravity="center_horizontal"/>
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"

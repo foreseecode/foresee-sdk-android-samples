@@ -22,7 +22,7 @@
 	<color name="CustomOverlayBackground">#C01CBDFF</color>
 	<color name="CustomOverlayText">#FFFFFF</color>
 
-	<color name="primary">#F44336</color>
+	<color name="primary">#E4362B</color>
 	<color name="primary_dark">#D32F2F</color>
 	<color name="primary_light">#FFFFFF</color>
 	<color name="accent">#448AFF</color>

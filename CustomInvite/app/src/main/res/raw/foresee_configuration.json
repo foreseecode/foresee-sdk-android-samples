@@ -1,8 +1,5 @@
 {
 	"clientId":"Ij6P1lfZHchO/co10lQ4BQ==",
-	"repeatDaysAfterDecline":0,
-	"repeatDaysAfterComplete":0,
-	"repeatDaysAfterAccept":0,
 	"customLogoName":"foresee_logo.png",
 	"notificationType":"ON_EXIT",
 	"supportsReinvitation":true,

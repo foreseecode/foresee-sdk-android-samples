@@ -48,8 +48,6 @@ public class CustomInvite2Activity extends AppCompatActivity {
             public void showInvite(final IContactInviteResultListener iContactInviteResultListener) {
                 Log.d(TAG, "showInvite");
 
-                setSnackBarUpdateTimers();
-
                 snackbarInvite = Snackbar.make(findViewById(R.id.coordinator_layout), getSnackbarMessage(), Snackbar.LENGTH_INDEFINITE);
                 snackbarInvite.setAction("OK, sure", new View.OnClickListener() {
                     @Override
@@ -59,6 +57,8 @@ public class CustomInvite2Activity extends AppCompatActivity {
                         iContactInviteResultListener.contactInviteAccepted();
                     }
                 });
+
+                setSnackBarUpdateTimers();
 
                 // Every way of exiting the invite should result in a call to iContactInviteResultListener.contactInviteAccepted() or iContactInviteResultListener.contactInviteDeclined();
                 // having accurate numbers on accepts and declines helps us track the success rate of your invite strategy
