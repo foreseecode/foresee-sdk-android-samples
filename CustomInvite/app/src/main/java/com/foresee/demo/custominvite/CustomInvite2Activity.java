@@ -73,8 +73,6 @@ public class CustomInvite2Activity extends AppCompatActivity {
                                 || event == Snackbar.Callback.DISMISS_EVENT_CONSECUTIVE
                                 || event == Snackbar.Callback.DISMISS_EVENT_SWIPE) {
 
-                            showProgress();
-
                             // Call the iContactInviteResultListener.contactInviteDeclined() method whenever the custom invite is dismissed
                             iContactInviteResultListener.contactInviteDeclined();
                         }
@@ -160,6 +158,21 @@ public class CustomInvite2Activity extends AppCompatActivity {
         ForeSee.showInviteForSurveyID("app_test_1");
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+
+        if (snackBarTimer != null) {
+            snackBarTimer.cancel();
+        }
+        if (snackBarUpdateTimer != null) {
+            snackBarUpdateTimer.cancel();
+        }
+        if (snackbarInvite != null && snackbarInvite.isShown()) {
+            snackbarInvite.dismiss();
+        }
+
+    }
 
     private void setSnackBarUpdateTimers()
     {
