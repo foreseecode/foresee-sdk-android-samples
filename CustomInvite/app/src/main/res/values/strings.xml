@@ -6,6 +6,9 @@
     <string name="launch_invite">Launch Invitation</string>
     <string name="contact">Enter an email or mobile number...</string>
     <string name="title_activity_main">Custom Invite Demo App</string>
+    <string name="title_activity_default_invite">Default Invite Demo</string>
+    <string name="title_activity_custom_invite_1">Custom Invite Demo #1</string>
+    <string name="title_activity_custom_invite_2">Custom Invite Demo #2</string>
     <string name="default_invite">Default Invite</string>
     <string name="custom_invite_1">Custom Invite #1</string>
     <string name="custom_invite_2">Custom Invite #2</string>

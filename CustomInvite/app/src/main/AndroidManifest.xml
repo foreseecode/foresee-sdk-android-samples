@@ -21,13 +21,18 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".DefaultInviteActivity">
+        <activity android:name=".DefaultInviteActivity"
+                  android:label="@string/title_activity_default_invite"
+                  android:theme="@style/CustomTheme.Base">
         </activity>
-        <activity android:name=".CustomInvite1Activity">
+        <activity
+            android:name=".CustomInvite1Activity"
+            android:label="@string/title_activity_custom_invite_1"
+            android:theme="@style/CustomTheme.Base">
         </activity>
         <activity
             android:name=".CustomInvite2Activity"
-            android:label="@string/app_name"
+            android:label="@string/title_activity_custom_invite_2"
             android:theme="@style/CustomTheme.Base">
         </activity>
     </application>
