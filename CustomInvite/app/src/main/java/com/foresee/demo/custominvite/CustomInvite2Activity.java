@@ -270,9 +270,9 @@ public class CustomInvite2Activity extends AppCompatActivity {
             }
         });
 
-        builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
+        builder.setOnCancelListener(new DialogInterface.OnCancelListener() {
             @Override
-            public void onDismiss(DialogInterface dialog) {
+            public void onCancel(DialogInterface dialog) {
                 showProgress();
                 iContactInviteResultListener.contactInviteDeclined();
             }
