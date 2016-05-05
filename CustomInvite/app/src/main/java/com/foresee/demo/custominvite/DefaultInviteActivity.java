@@ -8,7 +8,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.foresee.sdk.ForeSee;
-import com.foresee.sdk.cxMeasure.tracker.listeners.IDefaultInviteListener;
+import com.foresee.sdk.common.configuration.MeasureConfiguration;
+import com.foresee.sdk.cxMeasure.tracker.listeners.DefaultInviteListener;
 
 public class DefaultInviteActivity extends AppCompatActivity {
 
@@ -27,9 +28,9 @@ public class DefaultInviteActivity extends AppCompatActivity {
         }
 
         //Set Listeners (optional)
-        ForeSee.setInviteListener(new IDefaultInviteListener() {
+        ForeSee.setInviteListener(new DefaultInviteListener() {
             @Override
-            public void onInvitePresented() {
+            public void onInvitePresented(MeasureConfiguration measureConfiguration) {
                 Log.d(TAG, "onInvitePresented");
                 Toast.makeText(getApplicationContext(), "Invite presented", Toast.LENGTH_SHORT).show();
             }
@@ -62,9 +63,15 @@ public class DefaultInviteActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onSurveyCancelled() {
+            public void onSurveyCancelledByUser() {
                 Log.d(TAG, "onSurveyCancelled");
                 Toast.makeText(getApplicationContext(), "Survey cancelled", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onSurveyCancelledWithNetworkError() {
+                Log.d(TAG, "onSurveyCancelledWithNetworkError");
+                Toast.makeText(getApplicationContext(), "Survey cancelled with network error", Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -74,19 +81,19 @@ public class DefaultInviteActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onInviteNotShownWithNetworkError() {
+            public void onInviteNotShownWithNetworkError(MeasureConfiguration measureConfiguration) {
                 Log.d(TAG, "onInviteNotShownWithNetworkError");
                 Toast.makeText(getApplicationContext(), "Invitation not shown with network error", Toast.LENGTH_SHORT).show();
             }
 
             @Override
-            public void onInviteNotShownWithEligibilityFailed() {
+            public void onInviteNotShownWithEligibilityFailed(MeasureConfiguration measureConfiguration) {
                 Log.d(TAG, "onInviteNotShownWithEligibilityFailed");
                 Toast.makeText(getApplicationContext(), "Invitation not shown with eligibility failed", Toast.LENGTH_SHORT).show();
             }
 
             @Override
-            public void onInviteNotShownWithSamplingFailed() {
+            public void onInviteNotShownWithSamplingFailed(MeasureConfiguration measureConfiguration) {
                 Log.d(TAG, "onInviteNotShownWithSamplingFailed");
                 Toast.makeText(getApplicationContext(), "Invitation not shown with sampling failed", Toast.LENGTH_SHORT).show();
             }

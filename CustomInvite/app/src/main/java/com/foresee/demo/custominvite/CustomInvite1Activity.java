@@ -11,8 +11,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.foresee.sdk.ForeSee;
-import com.foresee.sdk.cxMeasure.tracker.listeners.IContactInviteResultListener;
-import com.foresee.sdk.cxMeasure.tracker.listeners.ICustomContactInviteListener;
+import com.foresee.sdk.common.configuration.MeasureConfiguration;
+import com.foresee.sdk.cxMeasure.tracker.listeners.ContactInviteResultListener;
+import com.foresee.sdk.cxMeasure.tracker.listeners.CustomContactInviteListener;
 
 public class CustomInvite1Activity extends AppCompatActivity {
 
@@ -30,19 +31,19 @@ public class CustomInvite1Activity extends AppCompatActivity {
             contactField.setText(ForeSee.getContactDetails());
         }
 
-        ForeSee.setInviteListener(new ICustomContactInviteListener() {
+        ForeSee.setInviteListener(new CustomContactInviteListener() {
             @Override
-            public void showInvite(IContactInviteResultListener iContactInviteResultListener) {
+            public void showInvite(MeasureConfiguration measureConfiguration, ContactInviteResultListener contactInviteResultListener) {
                 Log.d(TAG, "showInvite");
 
                 showProgress();
 
-                iContactInviteResultListener.contactInviteAccepted();
+                contactInviteResultListener.contactInviteAccepted();
 
             }
 
             @Override
-            public void onContactFormatError(IContactInviteResultListener iContactInviteResultListener) {
+            public void onContactFormatError(ContactInviteResultListener iContactInviteResultListener) {
                 Log.d(TAG, "onContactFormatError");
                 contactField.setError(getString(R.string.FORESEE_invalidFormat));
 
@@ -50,7 +51,7 @@ public class CustomInvite1Activity extends AppCompatActivity {
             }
 
             @Override
-            public void onContactMissing(IContactInviteResultListener iContactInviteResultListener) {
+            public void onContactMissing(ContactInviteResultListener iContactInviteResultListener) {
                 Log.d(TAG, "onContactMissing");
                 contactField.setError(getString(R.string.FORESEE_requiredField));
 
@@ -78,7 +79,7 @@ public class CustomInvite1Activity extends AppCompatActivity {
             }
 
             @Override
-            public void onCancelledWithNetworkError() {
+            public void onInviteCancelledWithNetworkError() {
                 Log.d(TAG, "onCancelledWithNetworkError");
                 Toast.makeText(getApplicationContext(), "Invitation cancelled with network error", Toast.LENGTH_SHORT).show();
 
@@ -86,7 +87,7 @@ public class CustomInvite1Activity extends AppCompatActivity {
             }
 
             @Override
-            public void onInviteNotShownWithNetworkError() {
+            public void onInviteNotShownWithNetworkError(MeasureConfiguration measureConfiguration) {
                 Log.d(TAG, "onInviteNotShownWithNetworkError");
                 Toast.makeText(getApplicationContext(), "Invitation not shown with network error", Toast.LENGTH_SHORT).show();
 
@@ -94,7 +95,7 @@ public class CustomInvite1Activity extends AppCompatActivity {
             }
 
             @Override
-            public void onInviteNotShownWithEligibilityFailed() {
+            public void onInviteNotShownWithEligibilityFailed(MeasureConfiguration measureConfiguration) {
                 Log.d(TAG, "onInviteNotShownWithEligibilityFailed");
                 Toast.makeText(getApplicationContext(), "Invitation not shown with eligibility failed", Toast.LENGTH_SHORT).show();
 
@@ -102,7 +103,7 @@ public class CustomInvite1Activity extends AppCompatActivity {
             }
 
             @Override
-            public void onInviteNotShownWithSamplingFailed() {
+            public void onInviteNotShownWithSamplingFailed(MeasureConfiguration measureConfiguration) {
                 Log.d(TAG, "onInviteNotShownWithSamplingFailed");
                 Toast.makeText(getApplicationContext(), "Invitation not shown with sampling failed", Toast.LENGTH_SHORT).show();
 
@@ -135,7 +136,7 @@ public class CustomInvite1Activity extends AppCompatActivity {
 
     private void showProgress()
     {
-        if (progressDialog == null || (progressDialog != null && !progressDialog.isShowing())) {
+        if (progressDialog == null || (!progressDialog.isShowing())) {
             progressDialog = ProgressDialog.show(this, "", "Please wait...", true, true);
         }
     }
