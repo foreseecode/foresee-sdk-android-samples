@@ -12,7 +12,7 @@
         android:theme="@style/CustomTheme.Base"
         android:icon="@mipmap/ic_launcher">
         <activity
-            android:name=".MainActivity"
+            android:name="com.foresee.demo.custominvite.MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/CustomTheme.Base.NoActionBar">
             <intent-filter>
