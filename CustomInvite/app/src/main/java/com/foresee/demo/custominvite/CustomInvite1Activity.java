@@ -37,7 +37,7 @@ public class CustomInvite1Activity extends AppCompatActivity {
 
                 showProgress();
 
-                contactInviteResultListener.contactInviteAccepted();
+                contactInviteResultListener.inviteAccepted();
 
             }
 

@@ -55,7 +55,7 @@ public class CustomInvite2Activity extends AppCompatActivity {
                     public void onClick(View v) {
                         showProgress();
 
-                        contactInviteResultListener.contactInviteAccepted();
+                        contactInviteResultListener.inviteAccepted();
                     }
                 });
 
@@ -75,7 +75,7 @@ public class CustomInvite2Activity extends AppCompatActivity {
                                 || event == Snackbar.Callback.DISMISS_EVENT_SWIPE) {
 
                             // Call the iContactInviteResultListener.contactInviteDeclined() method whenever the custom invite is dismissed
-                            contactInviteResultListener.contactInviteDeclined();
+                            contactInviteResultListener.inviteDeclined();
                         }
                     }
                 });
@@ -259,7 +259,7 @@ public class CustomInvite2Activity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
                 ForeSee.setContactDetails(input.getText().toString());
                 showProgress();
-                contactInviteResultListener.contactInviteAccepted();
+                contactInviteResultListener.inviteAccepted();
 
             }
         });
@@ -275,7 +275,7 @@ public class CustomInvite2Activity extends AppCompatActivity {
             @Override
             public void onCancel(DialogInterface dialog) {
                 showProgress();
-                contactInviteResultListener.contactInviteDeclined();
+                contactInviteResultListener.inviteDeclined();
             }
         });
 
