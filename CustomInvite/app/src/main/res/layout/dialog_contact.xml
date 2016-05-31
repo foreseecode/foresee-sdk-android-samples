@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:theme="@style/CustomTheme.Dialog"
+              android:padding="24dp"
+              android:focusable="true"
+              android:focusableInTouchMode="true">
+    <TextView
+            android:id="@+id/message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="24dp"
+            android:textSize="18dp"
+    />
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/contactInputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+                android:id="@+id/contactInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter an email or SMS number"
+                android:singleLine="true"
+                android:nextFocusUp="@id/contactInput"
+                android:nextFocusLeft="@id/contactInput"
+        />
+    </android.support.design.widget.TextInputLayout>
+</LinearLayout>

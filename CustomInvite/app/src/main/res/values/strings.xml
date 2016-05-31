@@ -1,13 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="hello">Custom Invitation demo</string>
-    <string name="app_name">Custom Invitation</string>
-    <string name="reset_counters">Reset counters</string>
+
+    <string name="app_name">Custom Invitation Demo</string>
     <string name="launch_invite">Launch Invitation</string>
-	<!--Custom -->
-    <string name="inviteTitle">You\'re awesome!</string>
-    <string name="inviteBody">To let us know exactly how your awesomeness can help us, please fill out the following survey</string>
-    <string name="acceptButtonText">Sure thing!</string>
-    <string name="declineButtonText">No Way!</string>
+    <string name="contact">Enter an email or mobile number...</string>
+    <string name="title_activity_main">Custom Invite Demo App</string>
+    <string name="title_activity_default_invite">Default Invite Demo</string>
+    <string name="title_activity_custom_invite_1">Custom Invite Demo #1</string>
+    <string name="title_activity_custom_invite_2">Custom Invite Demo #2</string>
+    <string name="default_invite">Default Invite</string>
+    <string name="custom_invite_1">Custom Invite #1</string>
+    <string name="custom_invite_2">Custom Invite #2</string>
+    <string name="set_contact_details_launch_invite">Set contact details &amp; launch invite</string>
+    <string name="description_default">This example demonstrates how you can supply your user\'s contact details to speed up the invite process, and also use the default invite listener interface to be informed of any events involving the invitation and survey process</string>
+    <string name="description_custom1">This example shows how to use the custom invite framework to include an in-line prompt to receive an email or SMS survey. Enter contact details in the text field and click the button to receive a sample survey.</string>
+    <string name="description_custom2">This example shows a simple snackbar implementation of the invite process. Click \'Launch invitation\' to see a custom invitation appear at the bottom of the screen</string>
+
+
 </resources>

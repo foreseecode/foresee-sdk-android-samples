@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.foresee.demo.custominvite.DefaultInviteActivity"
+    android:orientation="vertical">
+
+    <TextView android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_margin="10dp"
+              android:layout_marginBottom="5dp"
+              android:layout_marginTop="5dp"
+              android:text="@string/description_default"
+              android:textAlignment="center"
+              android:gravity="center_horizontal"/>
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
+        android:onClick="launchDefaultInvite"
+        android:text="@string/launch_invite"/>
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
+        android:onClick="launchDefaultInviteWithContactDetails"
+        android:text="@string/set_contact_details_launch_invite"/>
+    <EditText
+        android:id="@+id/contactField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:hint="@string/contact"
+        android:imeOptions="actionDone"
+        android:singleLine="true"/>
+
+</LinearLayout>
