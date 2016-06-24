@@ -13,10 +13,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.foresee.sdk.ForeSee;
 import com.foresee.sdk.common.configuration.MeasureConfiguration;
-import com.foresee.sdk.cxMeasure.tracker.listeners.ContactInviteResultListener;
 import com.foresee.sdk.cxMeasure.tracker.listeners.CustomContactInviteListener;
 
 import java.util.Locale;
@@ -46,7 +44,7 @@ public class CustomInvite2Activity extends AppCompatActivity {
 
         ForeSee.setInviteListener(new CustomContactInviteListener() {
             @Override
-            public void showInvite(MeasureConfiguration measureConfiguration, final ContactInviteResultListener contactInviteResultListener) {
+            public void showInvite(MeasureConfiguration measureConfiguration) {
                 Log.d(TAG, "showInvite");
 
                 snackbarInvite = Snackbar.make(findViewById(R.id.coordinator_layout), getSnackbarMessage(), Snackbar.LENGTH_INDEFINITE);
@@ -55,7 +53,7 @@ public class CustomInvite2Activity extends AppCompatActivity {
                     public void onClick(View v) {
                         showProgress();
 
-                        contactInviteResultListener.inviteAccepted();
+                        ForeSee.customInviteAccepted();
                     }
                 });
 
@@ -75,7 +73,7 @@ public class CustomInvite2Activity extends AppCompatActivity {
                                 || event == Snackbar.Callback.DISMISS_EVENT_SWIPE) {
 
                             // Call the iContactInviteResultListener.contactInviteDeclined() method whenever the custom invite is dismissed
-                            contactInviteResultListener.inviteDeclined();
+                            ForeSee.customInviteDeclined();
                         }
                     }
                 });
@@ -84,21 +82,21 @@ public class CustomInvite2Activity extends AppCompatActivity {
             }
 
             @Override
-            public void onContactFormatError(ContactInviteResultListener contactInviteResultListener) {
+            public void onContactFormatError() {
                 Log.d(TAG, "onContactFormatError");
 
                 hideProgress();
 
-                showInputDialog("Please ensure your contact details", getApplicationContext().getString(R.string.FORESEE_invalidFormat), contactInviteResultListener);
+                showInputDialog("Please ensure your contact details", getApplicationContext().getString(R.string.FORESEE_contactDetailsInvalidInputError));
             }
 
             @Override
-            public void onContactMissing(ContactInviteResultListener contactInviteResultListener) {
+            public void onContactMissing() {
                 Log.d(TAG, "onContactMissing");
 
                 hideProgress();
 
-                showInputDialog("Please enter some contact details", null, contactInviteResultListener);
+                showInputDialog("Please enter some contact details", null);
             }
 
             @Override
@@ -231,7 +229,7 @@ public class CustomInvite2Activity extends AppCompatActivity {
         }
     }
 
-    private void showInputDialog(String messageText, String errorMessage, final ContactInviteResultListener contactInviteResultListener)
+    private void showInputDialog(String messageText, String errorMessage)
     {
         AlertDialog.Builder builder  = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.CustomTheme_Dialog));
         View                rootView = getLayoutInflater().inflate(R.layout.dialog_contact, null);
@@ -244,8 +242,8 @@ public class CustomInvite2Activity extends AppCompatActivity {
 
         messageView.setText(messageText);
 
-        if (contactInviteResultListener.getContactDetails() != null) {
-            input.setText(contactInviteResultListener.getContactDetails());
+        if (ForeSee.getContactDetails() != null) {
+            input.setText(ForeSee.getContactDetails());
         }
 
         if (errorMessage != null) {
@@ -259,7 +257,7 @@ public class CustomInvite2Activity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
                 ForeSee.setContactDetails(input.getText().toString());
                 showProgress();
-                contactInviteResultListener.inviteAccepted();
+                ForeSee.customInviteAccepted();
 
             }
         });
@@ -275,7 +273,7 @@ public class CustomInvite2Activity extends AppCompatActivity {
             @Override
             public void onCancel(DialogInterface dialog) {
                 showProgress();
-                contactInviteResultListener.inviteDeclined();
+                ForeSee.customInviteDeclined();
             }
         });
 

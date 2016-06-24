@@ -11,7 +11,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 import com.foresee.sdk.ForeSee;
 import com.foresee.sdk.common.configuration.MeasureConfiguration;
-import com.foresee.sdk.cxMeasure.tracker.listeners.ContactInviteResultListener;
 import com.foresee.sdk.cxMeasure.tracker.listeners.CustomContactInviteListener;
 
 public class CustomInvite1Activity extends AppCompatActivity {
@@ -32,27 +31,27 @@ public class CustomInvite1Activity extends AppCompatActivity {
 
         ForeSee.setInviteListener(new CustomContactInviteListener() {
             @Override
-            public void showInvite(MeasureConfiguration measureConfiguration, ContactInviteResultListener contactInviteResultListener) {
+            public void showInvite(MeasureConfiguration measureConfiguration) {
                 Log.d(TAG, "showInvite");
 
                 showProgress();
 
-                contactInviteResultListener.inviteAccepted();
+                ForeSee.customInviteAccepted();
 
             }
 
             @Override
-            public void onContactFormatError(ContactInviteResultListener iContactInviteResultListener) {
+            public void onContactFormatError() {
                 Log.d(TAG, "onContactFormatError");
-                contactField.setError(getString(R.string.FORESEE_invalidFormat));
+                contactField.setError(getString(R.string.FORESEE_contactDetailsInvalidInputError));
 
                 hideProgress();
             }
 
             @Override
-            public void onContactMissing(ContactInviteResultListener iContactInviteResultListener) {
+            public void onContactMissing() {
                 Log.d(TAG, "onContactMissing");
-                contactField.setError(getString(R.string.FORESEE_requiredField));
+                contactField.setError(getString(R.string.FORESEE_contactDetailsEmptyInputError));
 
                 hideProgress();
             }
@@ -124,7 +123,6 @@ public class CustomInvite1Activity extends AppCompatActivity {
         ForeSee.setContactDetails(contactField.getText().toString());
 
         // Launch an invite as a demo
-        ForeSee.checkIfEligibleForSurvey();
         ForeSee.showInviteForSurveyID("app_test_1");
 
         // Hide keyboard
