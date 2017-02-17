@@ -1,0 +1,23 @@
+{
+	"clientId":"Ij6P1lfZHchO/co10lQ4BQ==",
+	"repeatDaysAfterDecline":5,
+	"repeatDaysAfterComplete":5,
+	"repeatDaysAfterAccept":3,
+	"notificationType":"CONTACT",
+	"whitelistedHosts":
+	[
+		"www.google.com",
+		"www.hotmail.com"
+	],
+	"measures":
+	[
+		{
+			"surveyId":"app_test_1",
+			"launchCount":1
+		}
+	],
+    "cppParameters":
+    {
+        "sample_app":"Contact Survey 2.0"
+    }
+}
