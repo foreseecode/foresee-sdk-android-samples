@@ -31,6 +31,7 @@
                 android:id="@+id/main.backdrop"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:padding="10dp"
                 android:background="@color/primary_light"
                 android:fitsSystemWindows="false"
                 android:paddingBottom="20dp"
