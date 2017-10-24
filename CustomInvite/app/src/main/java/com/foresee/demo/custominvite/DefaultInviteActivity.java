@@ -32,7 +32,7 @@ public class DefaultInviteActivity extends AppCompatActivity {
             @Override
             public void onInvitePresented(MeasureConfiguration measureConfiguration) {
                 Log.d(TAG, "onInvitePresented");
-                Toast.makeText(getApplicationContext(), "Invite presented", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Invite presented for " + measureConfiguration.getSurveyId(), Toast.LENGTH_SHORT).show();
             }
 
             @Override
