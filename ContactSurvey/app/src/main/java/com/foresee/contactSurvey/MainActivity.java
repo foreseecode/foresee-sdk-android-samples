@@ -7,7 +7,7 @@ import android.widget.Spinner;
 import com.foresee.sdk.ForeSee;
 
 
-public class OnExit extends Activity {
+public class MainActivity extends Activity {
 	
 	Spinner spinner;
 	
@@ -21,7 +21,11 @@ public class OnExit extends Activity {
 
     public void launchInvite(View view)
     {
-    	// Launch an invite as a demo
+        // Increment the significant event count so that we're eligible for an invite
+        // based on the criteria in foresee_configuration.json
+        ForeSee.incrementSignificantEventCountWithKey("instant_invite");
+
+        // Launch an invite as a demo
         ForeSee.checkIfEligibleForSurvey();
     }
 
