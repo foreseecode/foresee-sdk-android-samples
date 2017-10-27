@@ -13,7 +13,9 @@
 	[
 		{
 			"surveyId":"app_test_1",
-			"launchCount":1
+			"significantEventThresholds": {
+				"instant_invite":1
+			}
 		}
 	],
     "cppParameters":
