@@ -1,12 +1,22 @@
 # Android SDK Samples
 
-To run these samples, you'll need to import them as individual projects in Android studio. First of all, clone the repo
+To run these samples, you'll need to import the project in Android studio. First of all, clone the repo
 
 ```
 git checkout git@github.com:foreseecode/foresee-sdk-android-samples.git
 ```
 
-Then select a project to load from the options below...
+Then import the project to Android Studio as described below...
+
+* Load Android Studio
+
+* Select 'File' > 'New' > 'Import Project...' and browse to the location of your new git repo
+
+* Select the repo root folder and click 'OK'
+
+* Android Studio will automatically import the project
+
+The project contains below two examples...
 
 ---
 
@@ -18,11 +28,9 @@ To install, follow these steps:
 
 * Load Android Studio
 
-* Select 'File' > 'New' > 'Import Project...' and browse to the location of your new git repo
+* Open the 'foresee-sdk-android-samples' project
 
-* Select the 'ContactSurvey' folder and click 'OK'
-
-* Android Studio will automatically import the project
+* Select the 'ContactSurvey' configuration
 
 * Run the project by pressing Android Studio's 'Play' button
 
@@ -36,10 +44,8 @@ To install, follow these steps:
 
 * Load Android Studio
 
-* Select 'File' > 'New' > 'Import Project...' and browse to the location of your new git repo
+* Open the 'foresee-sdk-android-samples' project
 
-* Select the 'CustomInvite' folder and click 'OK'
-
-* Android Studio will automatically import the project
+* Select the 'CustomInvite' configuration
 
 * Run the project by pressing Android Studio's 'Play' button
