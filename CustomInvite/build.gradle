@@ -2,7 +2,6 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 23
-    buildToolsVersion '25.0.0'
 
     defaultConfig {
         applicationId "com.foresee.custominvite"
@@ -20,9 +19,9 @@ android {
 }
 
 dependencies {
-    compile 'com.foresee.sdk:sdk:+'
+    implementation 'com.foresee.sdk:sdk:+'
 
-    compile 'com.android.support:appcompat-v7:23.0.1'
-    compile 'com.android.support:design:23.0.1'
+    implementation 'com.android.support:appcompat-v7:23.0.1'
+    implementation 'com.android.support:design:23.0.1'
 }
 
