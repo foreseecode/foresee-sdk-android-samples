@@ -2,7 +2,6 @@ package com.foresee.demo.custominvite;
 
 import android.app.Application;
 import android.util.Log;
-
 import com.foresee.sdk.ForeSee;
 
 public class CustomApplication extends Application {
