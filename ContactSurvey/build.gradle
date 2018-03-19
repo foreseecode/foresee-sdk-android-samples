@@ -22,7 +22,7 @@ android {
 
 dependencies {
 //    compile 'com.foresee.sdk:sdk:+'
-    implementation(name:'sdk-oldscript-4.3.0', ext:'aar')
+    implementation(name:'foresee-sdk-android-4.3.0-jenkins', ext:'aar')
     implementation 'com.google.code.gson:gson:2.2.4'
     
     implementation 'com.android.support:appcompat-v7:24.2.1'
