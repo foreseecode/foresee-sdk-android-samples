@@ -6,3 +6,5 @@ libs
 *.iml
 .idea
 out
+.gradle
+build
