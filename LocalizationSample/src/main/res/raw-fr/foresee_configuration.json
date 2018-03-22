@@ -1,0 +1,16 @@
+{
+	"clientId":"Ij6P1lfZHchO/co10lQ4BQ==",
+	"repeatDaysAfterDecline":60,
+	"repeatDaysAfterComplete":120,
+	"measures":
+	[
+		{
+			"surveyId":"app_test_1-fc",
+			"daysSinceLaunch":0,
+			"launchCount":0,
+			"significantEventThresholds": {
+				"instant_invite":1
+			}
+		}
+	]
+}

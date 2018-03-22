@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Localization Sample</string>
+	<string name="description">This is a sample project demonstrating how to customize the provided survey invitation for internationalization support.</string>
+	<string name="how_to">Change the language of your device to French or Spanish to see the localized invitation.</string>
+    <string name="show_invite">Show Invite</string>
+</resources>

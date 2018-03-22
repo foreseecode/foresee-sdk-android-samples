@@ -8,3 +8,4 @@ libs
 out
 .gradle
 build
+local.properties

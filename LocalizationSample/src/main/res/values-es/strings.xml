@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="description">Ceci est un exemple de projet démontrant comment personnaliser l\'invitation de l\'enquête prévue à l\'appui de l\'internationalisation.</string>
+	<string name="how_to">Changer la langue de votre appareil pour le français ou l\'espagnol pour voir l\'invitation localisée</string>
+</resources>
