@@ -6,7 +6,7 @@ android {
     useLibrary 'org.apache.http.legacy'
 
     defaultConfig {
-        applicationId "com.foresee.custominvite"
+        applicationId "com.foresee.contactSurvey"
         minSdkVersion 19 // The minimum minSdkVersion we support
         targetSdkVersion 24 // The minimum targetSdkVersion we support
         versionCode 1

@@ -14,7 +14,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.foresee.sdk.ForeSee;
-import com.foresee.sdk.common.configuration.MeasureConfiguration;
+import com.foresee.sdk.common.configuration.EligibleMeasureConfigurations;
 import com.foresee.sdk.cxMeasure.tracker.listeners.CustomContactInviteListener;
 
 import java.util.Locale;
@@ -44,7 +44,7 @@ public class CustomInvite2Activity extends AppCompatActivity {
 
         ForeSee.setInviteListener(new CustomContactInviteListener() {
             @Override
-            public void showInvite(MeasureConfiguration measureConfiguration) {
+            public void showInvite(EligibleMeasureConfigurations eligibleMeasureConfigurations) {
                 Log.d(TAG, "showInvite");
 
                 snackbarInvite = Snackbar.make(findViewById(R.id.coordinator_layout), getSnackbarMessage(), Snackbar.LENGTH_INDEFINITE);
@@ -100,7 +100,7 @@ public class CustomInvite2Activity extends AppCompatActivity {
             }
 
             @Override
-            public void onInviteCompleteWithAccept() {
+            public void onInviteCompleteWithAccept(EligibleMeasureConfigurations eligibleMeasureConfigurations) {
                 Log.d(TAG, "onCompleteWithAccept");
                 // By this point the SDK is finished with the invite process, this is for information only
                 Toast.makeText(getApplicationContext(), "A survey will be sent to " + ForeSee.getContactDetails(), Toast.LENGTH_SHORT).show();
@@ -112,7 +112,7 @@ public class CustomInvite2Activity extends AppCompatActivity {
             }
 
             @Override
-            public void onInviteCompleteWithDecline() {
+            public void onInviteCompleteWithDecline(EligibleMeasureConfigurations eligibleMeasureConfigurations) {
                 Log.d(TAG, "onCompleteWithDecline");
                 Toast.makeText(getApplicationContext(), "Invitation declined by user", Toast.LENGTH_SHORT).show();
 
@@ -128,7 +128,7 @@ public class CustomInvite2Activity extends AppCompatActivity {
             }
 
             @Override
-            public void onInviteNotShownWithNetworkError(MeasureConfiguration measureConfiguration) {
+            public void onInviteNotShownWithNetworkError(EligibleMeasureConfigurations eligibleMeasureConfigurations) {
                 Log.d(TAG, "onInviteNotShownWithNetworkError");
                 Toast.makeText(getApplicationContext(), "Invitation not shown with network error", Toast.LENGTH_SHORT).show();
 
@@ -136,7 +136,7 @@ public class CustomInvite2Activity extends AppCompatActivity {
             }
 
             @Override
-            public void onInviteNotShownWithEligibilityFailed(MeasureConfiguration measureConfiguration) {
+            public void onInviteNotShownWithEligibilityFailed(EligibleMeasureConfigurations eligibleMeasureConfigurations) {
                 Log.d(TAG, "onInviteNotShownWithEligibilityFailed");
                 Toast.makeText(getApplicationContext(), "Invitation not shown with eligibility failed", Toast.LENGTH_SHORT).show();
 
@@ -144,7 +144,7 @@ public class CustomInvite2Activity extends AppCompatActivity {
             }
 
             @Override
-            public void onInviteNotShownWithSamplingFailed(MeasureConfiguration measureConfiguration) {
+            public void onInviteNotShownWithSamplingFailed(EligibleMeasureConfigurations eligibleMeasureConfigurations) {
                 Log.d(TAG, "onInviteNotShownWithSamplingFailed");
                 Toast.makeText(getApplicationContext(), "Invitation not shown with sampling failed", Toast.LENGTH_SHORT).show();
 
