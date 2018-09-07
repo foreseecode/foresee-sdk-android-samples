@@ -5,7 +5,10 @@
 	"measures":
 	[
 		{
-			"surveyId":"app_test_1"
+			"surveyId":"app_test_1",
+			"significantEventThresholds": {
+				"instant_invite":1
+			}
 		}
 	],
 	"cppParameters":

@@ -153,8 +153,12 @@ public class CustomInvite2Activity extends AppCompatActivity {
         });
 
 
+        // Increment the significant event count so that we're eligible for an invite
+        // based on the criteria in foresee_configuration.json
+        ForeSee.incrementSignificantEventCountWithKey("instant_invite");
+
         // Launch an invite as a demo
-        ForeSee.showInviteForSurveyID("app_test_1");
+        ForeSee.checkIfEligibleForSurvey();
     }
 
     @Override
@@ -279,6 +283,13 @@ public class CustomInvite2Activity extends AppCompatActivity {
 
         builder.show();
 
+    }
+
+    public void resetState(View view)
+    {
+        // Reset the state of the ForeSee SDK. So that we may be eligible for a new invite
+        // based on the criteria in foresee_configuration.json
+        ForeSee.resetState();
     }
 
 }

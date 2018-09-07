@@ -37,4 +37,13 @@
         android:imeOptions="actionDone"
         android:singleLine="true"/>
 
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
+        android:onClick="resetState"
+        android:text="@string/reset_state"/>
+
 </LinearLayout>
