@@ -6,9 +6,34 @@
     android:padding="10dp" >
 
     <TextView
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
+        android:textAlignment="center"
+        android:gravity="center_horizontal"
         android:text="@string/hello" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
+        android:textAlignment="center"
+        android:gravity="center_horizontal"
+        android:text="@string/launch_count_desc" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
+        android:textAlignment="center"
+        android:gravity="center_horizontal"
+        android:text="@string/significant_event_count_desc" />
 
     <Button 
         android:layout_width="fill_parent"
@@ -17,6 +42,16 @@
         android:onClick="launchInvite"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
+        android:textAlignment="center"
+        android:gravity="center_horizontal"
+        android:text="@string/reset_counters_desc" />
     
     <Button 
         android:layout_width="fill_parent"
