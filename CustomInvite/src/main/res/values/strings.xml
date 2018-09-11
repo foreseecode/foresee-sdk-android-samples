@@ -13,6 +13,7 @@
     <string name="custom_invite_1">Custom Invite #1</string>
     <string name="custom_invite_2">Custom Invite #2</string>
     <string name="set_contact_details_launch_invite">Set contact details &amp; launch invite</string>
+    <string name="reset_state">Reset state</string>
     <string name="description_default">This example demonstrates how you can supply your user\'s contact details to speed up the invite process, and also use the default invite listener interface to be informed of any events involving the invitation and survey process</string>
     <string name="description_custom1">This example shows how to use the custom invite framework to include an in-line prompt to receive an email or SMS survey. Enter contact details in the text field and click the button to receive a sample survey.</string>
     <string name="description_custom2">This example shows a simple snackbar implementation of the invite process. Click \'Launch invitation\' to see a custom invitation appear at the bottom of the screen</string>
