@@ -46,4 +46,14 @@
         android:onClick="resetState"
         android:text="@string/reset_state"/>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
+        android:textAlignment="center"
+        android:gravity="center_horizontal"
+        android:text="@string/reset_button_desc" />
+
 </LinearLayout>

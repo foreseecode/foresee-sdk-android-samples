@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="hello">This is a demo of an "CONTACT" invite mode survey implementation.</string>
+    <string name="hello">This sample demonstrates the Contact invite type, which delivers survey links via email or SMS. Follow the instructions below to check eligibility</string>
     <string name="launch_count_desc">Option 1: The app can trigger an invite by launching 3 times. Try exiting the app and re-entering again.</string>
     <string name="significant_event_count_desc">Option 2: Significant events can also be used to trigger an invite. Click the button below a few times to trigger an event.</string>
-    <string name="reset_counters_desc">Click the bellow button to reset the state of the ForeSee SDK.</string>
+    <string name="reset_button_desc">Once the invite is shown, the SDK drops into an idle state until the repeat days have elapsed. Click here to reset the state of the SDK.</string>
     <string name="app_name">Contact Survey Demo</string>
     <string name="selectModeLabel">Contact survey notification mode</string>
     <string-array name="onExitModes">
         <item>Email or SMS notification</item>
         <item>Local notification</item>
     </string-array>
-    <string name="launch_invite">Increase significant event</string>
-    <string name="reset_counters">Reset counters</string>
+    <string name="launch_invite">Check eligibility</string>
+    <string name="reset_counters">Reset state</string>
 </resources>
