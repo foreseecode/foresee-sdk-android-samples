@@ -123,8 +123,12 @@ public class CustomInvite1Activity extends AppCompatActivity {
         // Let's take them from the UI right now
         ForeSee.setContactDetails(contactField.getText().toString());
 
+        // Increment the significant event count so that we're eligible for an invite
+        // based on the criteria in foresee_configuration.json
+        ForeSee.incrementSignificantEventCountWithKey("instant_invite");
+
         // Launch an invite as a demo
-        ForeSee.showInviteForSurveyID("app_test_1");
+        ForeSee.checkIfEligibleForSurvey();
 
         // Hide keyboard
         InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -144,5 +148,12 @@ public class CustomInvite1Activity extends AppCompatActivity {
         if (progressDialog != null && progressDialog.isShowing()) {
             progressDialog.dismiss();
         }
+    }
+
+    public void resetState(View view)
+    {
+        // Reset the state of the ForeSee SDK. So that we may be eligible for a new invite
+        // based on the criteria in foresee_configuration.json
+        ForeSee.resetState();
     }
 }

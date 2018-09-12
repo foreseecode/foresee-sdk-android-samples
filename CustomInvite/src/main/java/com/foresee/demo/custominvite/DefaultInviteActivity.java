@@ -104,14 +104,32 @@ public class DefaultInviteActivity extends AppCompatActivity {
 
     public void launchDefaultInvite(View view)
     {
+        // Increment the significant event count so that we're eligible for an invite
+        // based on the criteria in foresee_configuration.json
+        ForeSee.incrementSignificantEventCountWithKey("instant_invite");
+
         // Launch an invite as a demo
-        ForeSee.showInviteForSurveyID("app_test_1");
+        ForeSee.checkIfEligibleForSurvey();
     }
 
     public void launchDefaultInviteWithContactDetails(View view)
     {
-        // Launch an invite as a demo
+        // Set contact details
+        // TODO: We should make use of the new setContactDetails API (MOBILSDK-2187)
         ForeSee.setContactDetails(contactField.getText().toString());
-        ForeSee.showInviteForSurveyID("app_test_1");
+
+        // Increment the significant event count so that we're eligible for an invite
+        // based on the criteria in foresee_configuration.json
+        ForeSee.incrementSignificantEventCountWithKey("instant_invite");
+
+        // Launch an invite as a demo
+        ForeSee.checkIfEligibleForSurvey();
+    }
+
+    public void resetState(View view)
+    {
+        // Reset the state of the ForeSee SDK. So that we may be eligible for a new invite
+        // based on the criteria in foresee_configuration.json
+        ForeSee.resetState();
     }
 }
