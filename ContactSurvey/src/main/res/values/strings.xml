@@ -3,7 +3,7 @@
 
     <string name="hello">This sample demonstrates the Contact invite type, which delivers survey links via email or SMS. Follow the instructions below to check eligibility</string>
     <string name="launch_count_desc">Option 1: The app can trigger an invite by launching 3 times. Try exiting the app and re-entering again.</string>
-    <string name="significant_event_count_desc">Option 2: Significant events can also be used to trigger an invite. Click the button below a few times to trigger an event.</string>
+    <string name="significant_event_count_desc">Option 2: Significant events can also be used to trigger an invite. Click the button below a few times to trigger an invite.</string>
     <string name="reset_button_desc">Once the invite is shown, the SDK drops into an idle state until the repeat days have elapsed. Click here to reset the state of the SDK.</string>
     <string name="app_name">Contact Survey Demo</string>
     <string name="selectModeLabel">Contact survey notification mode</string>
