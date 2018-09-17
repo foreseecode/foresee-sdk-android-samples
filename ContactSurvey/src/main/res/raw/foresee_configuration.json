@@ -13,8 +13,9 @@
 	[
 		{
 			"surveyId":"app_test_1",
+			"launchCount": 3,
 			"significantEventThresholds": {
-				"instant_invite":1
+				"instant_invite":3
 			}
 		}
 	],

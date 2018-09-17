@@ -14,7 +14,15 @@ public class MainActivity extends Activity {
         
         // Do normal UI setup
         setContentView(R.layout.main);
-     }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        // Launch an invite as a demo if we're eligible
+        ForeSee.checkIfEligibleForSurvey();
+    }
 
     public void launchInvite(View view)
     {
@@ -22,7 +30,7 @@ public class MainActivity extends Activity {
         // based on the criteria in foresee_configuration.json
         ForeSee.incrementSignificantEventCountWithKey("instant_invite");
 
-        // Launch an invite as a demo
+        // Launch an invite as a demo if we're eligible
         ForeSee.checkIfEligibleForSurvey();
     }
 
