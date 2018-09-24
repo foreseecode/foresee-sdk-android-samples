@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">This sample demonstrates the feedback survey. Follow the instructions below to launch a feedback survey</string>
+    <string name="launch_feedback">Launch Feedback</string>
+    <string name="app_name">Feedback Survey Demo</string>
+</resources>
