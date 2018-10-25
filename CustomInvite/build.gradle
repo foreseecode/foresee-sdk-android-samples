@@ -19,7 +19,7 @@ android {
 }
 
 dependencies {
-    implementation 'com.foresee.sdk:sdk:5.1.0'
+    implementation 'com.foresee.sdk:sdk:5.1.1'
 
     implementation 'com.android.support:appcompat-v7:24.2.1'
     implementation 'com.android.support:design:24.2.1'
