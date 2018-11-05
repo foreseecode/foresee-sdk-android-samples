@@ -22,11 +22,39 @@
             android:gravity="center_horizontal"
             android:text="@string/hello" />
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:textAlignment="center"
+            android:gravity="center_horizontal"
+            android:text="@string/feedback_sample_1_description" />
+
         <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="@string/launch_feedback"
-            android:onClick="launchFeedback"
+            android:text="@string/launch_feedback_1"
+            android:onClick="launchFeedback1"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:textAlignment="center"
+            android:gravity="center_horizontal"
+            android:text="@string/feedback_sample_2_description" />
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/launch_feedback_2"
+            android:onClick="launchFeedback2"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"/>
 

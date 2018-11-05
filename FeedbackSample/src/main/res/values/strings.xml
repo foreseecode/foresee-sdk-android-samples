@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <string name="hello">This sample demonstrates the feedback survey. Follow the instructions below to launch a feedback survey</string>
-    <string name="launch_feedback">Launch Feedback</string>
+    <string name="hello">This sample demonstrates the feedback survey. See foresee_configuration.json file to find out how feedback surveys are defined. Follow the instructions below to launch a feedback survey.</string>
+    <string name="feedback_sample_1_description">1. Launch feedback survey sample #1. This sample will auto close the survey completion page (the Thank You page) after 3 seconds.</string>
+    <string name="feedback_sample_2_description">2. Launch feedback survey sample #2. In this sample we will check whether the feedback survey is enabled first, then only launch the sample when it is enabled. This sample will not auto close the survey completion page.</string>
+    <string name="launch_feedback_1">Launch Feedback #1</string>
+    <string name="launch_feedback_2">Launch Feedback #2</string>
     <string name="app_name">Feedback Survey Demo</string>
 </resources>

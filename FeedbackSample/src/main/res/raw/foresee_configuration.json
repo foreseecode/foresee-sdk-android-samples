@@ -1,46 +1,20 @@
 {
-	"clientId":"Ij6P1lfZHchO/co10lQ4BQ==",
-	"repeatDaysAfterDecline":5,
-	"repeatDaysAfterComplete":5,
-	"repeatDaysAfterAccept":3,
-	"notificationType":"CONTACT",
-	"whitelistedHosts":
-	[
-		"www.google.com",
-		"www.hotmail.com"
-	],
-	"measures":
-	[
-		{
-			"surveyId":"app_test_1",
-			"launchCount": 3,
-			"significantEventThresholds": {
-				"instant_invite":3
-			}
-		}
-	],
-    "cppParameters":
-    {
-        "sample_app":"Contact Survey 2.0"
-    },
-
-	"feedback": [
-		{
-			"name": "qa",
-			"feedbackId": "NZKyizjYQs"
-		},
-		{
-			"name": "dev",
-			"feedbackId": "QLZuDMLGpH"
-		},
-		{
-			"name": "prod",
-			"feedbackId": "40egY2o9Jt"
-		},
-		{
-			"name": "fake",
-			"feedbackId": "incorrect_id"
-		}
-
-	]
+  "clientId":"Ij6P1lfZHchO/co10lQ4BQ==",
+  "cppParameters":{
+    "sample_app":"Feedback Survey"
+  },
+  "feedback":{
+    "feedbackSurveys":[
+      {
+        "name":"Sample 1",
+        "feedbackId":"q9IvXiloOG"
+      },
+      {
+        "name":"Sample 2",
+        "feedbackId":"gPzT3hhhSw",
+        "surveyCompletionPageDelay":-1
+      }
+    ],
+    "surveyCompletionPageDelay":3
+  }
 }

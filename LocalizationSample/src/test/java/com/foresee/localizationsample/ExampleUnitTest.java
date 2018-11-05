@@ -1,7 +1,8 @@
-package com.foresee.feedbackSample;
+package com.foresee.localizationsample;
 
 import org.junit.Test;
 
+import static junit.framework.Assert.assertEquals;
 import static org.junit.Assert.*;
 
 /**
