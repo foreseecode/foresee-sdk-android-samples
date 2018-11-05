@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+	<string name="app_name">Localization Sample</string>
+	<string name="show_invite">Show Invite</string>
 	<string name="description">Este es un proyecto de ejemplo que muestra cómo personalizar la invitación a la encuesta prevista en apoyo a la internacionalización.</string>
 	<string name="how_to">Cambiar el idioma de su dispositivo a francés o español para ver la invitación localizada.</string>
 </resources>
