@@ -1,4 +1,4 @@
-package com.foresee.contactSurvey;
+package com.foresee.localizationsample;
 
 import org.junit.Test;
 

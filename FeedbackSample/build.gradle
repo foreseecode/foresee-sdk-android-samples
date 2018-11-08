@@ -3,8 +3,10 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 24 // The minimum compileSdkVersion we support
 
+    useLibrary 'org.apache.http.legacy'
+
     defaultConfig {
-        applicationId "com.foresee.custominvite"
+        applicationId "com.foresee.feedbackSample"
         minSdkVersion 19 // The minimum minSdkVersion we support
         targetSdkVersion 24 // The minimum targetSdkVersion we support
         versionCode 1
@@ -19,10 +21,11 @@ android {
 }
 
 dependencies {
-    implementation 'com.foresee.sdk:sdk:5.1.1'
-
+    implementation 'com.foresee.sdk:sdk:5.2.0'
+    implementation 'com.foresee.sdk:feedback:5.2.0'
+    
     implementation 'com.android.support:appcompat-v7:24.2.1'
-    implementation 'com.android.support:design:24.2.1'
+    implementation 'com.android.support:support-v4:24.2.1'
 
     testImplementation 'junit:junit:4.10'
 }

@@ -1,0 +1,20 @@
+{
+  "clientId":"Ij6P1lfZHchO/co10lQ4BQ==",
+  "cppParameters":{
+    "sample_app":"Feedback Survey"
+  },
+  "feedback":{
+    "feedbackSurveys":[
+      {
+        "name":"Sample 1",
+        "feedbackId":"q9IvXiloOG"
+      },
+      {
+        "name":"Sample 2",
+        "feedbackId":"gPzT3hhhSw",
+        "surveyCompletionPageDelay":-1
+      }
+    ],
+    "surveyCompletionPageDelay":3
+  }
+}
