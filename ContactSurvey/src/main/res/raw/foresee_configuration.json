@@ -4,11 +4,6 @@
 	"repeatDaysAfterComplete":5,
 	"repeatDaysAfterAccept":3,
 	"notificationType":"CONTACT",
-	"whitelistedHosts":
-	[
-		"www.google.com",
-		"www.hotmail.com"
-	],
 	"measures":
 	[
 		{
@@ -22,25 +17,5 @@
     "cppParameters":
     {
         "sample_app":"Contact Survey 2.0"
-    },
-
-	"feedback": [
-		{
-			"name": "qa",
-			"feedbackId": "NZKyizjYQs"
-		},
-		{
-			"name": "dev",
-			"feedbackId": "QLZuDMLGpH"
-		},
-		{
-			"name": "prod",
-			"feedbackId": "40egY2o9Jt"
-		},
-		{
-			"name": "fake",
-			"feedbackId": "incorrect_id"
-		}
-
-	]
+    }
 }
