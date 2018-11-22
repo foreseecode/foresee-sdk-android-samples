@@ -21,7 +21,7 @@
         <activity
             android:name="com.foresee.contactSurvey.SetContactDetailsActivity"
             android:label="@string/set_contact_details"
-            android:configChanges="orientation|screenSize|keyboard|keyboardHidden"
+            android:configChanges="orientation|screenSize|keyboard"
             android:parentActivityName="com.foresee.contactSurvey.MainActivity"
             android:theme="@style/AppTheme">
         </activity>
