@@ -2,6 +2,7 @@ package com.foresee.demo.custominvite;
 
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
@@ -11,9 +12,11 @@ import android.support.v7.view.ContextThemeWrapper;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.foresee.sdk.ForeSee;
+import com.foresee.sdk.common.configuration.ContactType;
 import com.foresee.sdk.common.configuration.EligibleMeasureConfigurations;
 import com.foresee.sdk.cxMeasure.tracker.listeners.CustomContactInviteListener;
 
@@ -38,6 +41,9 @@ public class CustomInvite2Activity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_custom_invite_2);
+
+        // Back button
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     public void launchCustomInvite2(View view) {
@@ -47,7 +53,8 @@ public class CustomInvite2Activity extends AppCompatActivity {
             public void showInvite(EligibleMeasureConfigurations eligibleMeasureConfigurations) {
                 Log.d(TAG, "showInvite");
 
-                snackbarInvite = Snackbar.make(findViewById(R.id.coordinator_layout), getSnackbarMessage(), Snackbar.LENGTH_INDEFINITE);
+                snackbarInvite = Snackbar.make(findViewById(R.id.coordinator_layout),
+                        getSnackbarMessage(), Snackbar.LENGTH_INDEFINITE);
                 snackbarInvite.setAction("OK, sure", new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -78,6 +85,9 @@ public class CustomInvite2Activity extends AppCompatActivity {
                     }
                 });
 
+                View view = snackbarInvite.getView();
+                TextView tv = (TextView) view.findViewById(android.support.design.R.id.snackbar_text);
+                tv.setTextColor(Color.WHITE);
                 snackbarInvite.show();
             }
 
@@ -240,14 +250,27 @@ public class CustomInvite2Activity extends AppCompatActivity {
         builder.setView(rootView);
         builder.setTitle("Contact details");
 
-        final TextView        messageView = (TextView) rootView.findViewById(R.id.message);
-        final TextInputLayout inputLayout = (TextInputLayout) rootView.findViewById(R.id.contactInputLayout);
-        final EditText        input       = (EditText) rootView.findViewById(R.id.contactInput);
+        final TextView messageView = (TextView)rootView.findViewById(R.id.message);
+        final TextInputLayout inputLayout = (TextInputLayout)rootView.findViewById(R.id.contactInputLayout);
+        final EditText contactInput = (EditText)rootView.findViewById(R.id.contactInput);
+        final RadioGroup preferredContactType = (RadioGroup)rootView.findViewById(R.id.preferredContactType);
 
         messageView.setText(messageText);
 
-        if (ForeSee.getContactDetails() != null) {
-            input.setText(ForeSee.getContactDetails());
+        // Setup UI components
+        ContactType type = ForeSee.getPreferredContactType();
+        if (type != null) {
+            switch (type) {
+                case Email:
+                    preferredContactType.check(R.id.preferredContactTypeEmail);
+                    break;
+                case PhoneNumber:
+                    preferredContactType.check(R.id.preferredContactTypePhoneNumber);
+                    break;
+                default:
+                    break;
+            }
+            contactInput.setText(ForeSee.getContactDetails(type));
         }
 
         if (errorMessage != null) {
@@ -259,7 +282,19 @@ public class CustomInvite2Activity extends AppCompatActivity {
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                ForeSee.setContactDetails(input.getText().toString());
+                ContactType type = ContactType.PhoneNumber;
+                switch (preferredContactType.getCheckedRadioButtonId()) {
+                    case R.id.preferredContactTypeEmail:
+                        type = ContactType.Email;
+                        ForeSee.setPreferredContactType(ContactType.Email);
+                        break;
+                    case R.id.preferredContactTypePhoneNumber:
+                        type = ContactType.PhoneNumber;
+                        ForeSee.setPreferredContactType(ContactType.PhoneNumber);
+                        break;
+                }
+                ForeSee.setPreferredContactType(type);
+                ForeSee.setContactDetails(type, contactInput.getText().toString());
                 showProgress();
                 ForeSee.customInviteAccepted();
 
