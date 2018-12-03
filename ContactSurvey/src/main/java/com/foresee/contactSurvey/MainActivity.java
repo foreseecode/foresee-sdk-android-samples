@@ -1,13 +1,13 @@
 package com.foresee.contactSurvey;
 
-import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import com.foresee.sdk.ForeSee;
 
 
-public class MainActivity extends Activity {
+public class MainActivity extends AppCompatActivity {
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -15,6 +15,9 @@ public class MainActivity extends Activity {
         
         // Do normal UI setup
         setContentView(R.layout.main);
+
+        // Back button
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
     }
 
     @Override
@@ -25,8 +28,7 @@ public class MainActivity extends Activity {
         ForeSee.checkIfEligibleForSurvey();
     }
 
-    public void launchInvite(View view)
-    {
+    public void launchInvite(View view) {
         // Increment the significant event count so that we're eligible for an invite
         // based on the criteria in foresee_configuration.json
         ForeSee.incrementSignificantEventCountWithKey("instant_invite");
@@ -35,9 +37,12 @@ public class MainActivity extends Activity {
         ForeSee.checkIfEligibleForSurvey();
     }
 
-    public void resetCounters(View view)
-    {
+    public void resetCounters(View view) {
     	// Reset the state of the ForeSee SDK
     	ForeSee.resetState();
+    }
+
+    public void setContactDetails(View view) {
+        startActivity(new Intent(this, SetContactDetailsActivity.class));
     }
 }

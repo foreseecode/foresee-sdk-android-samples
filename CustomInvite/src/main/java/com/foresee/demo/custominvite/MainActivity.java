@@ -6,20 +6,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+import com.foresee.sdk.ForeSee;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
-        setSupportActionBar(toolbar);
 
-    }
-
-
-    public void launchDefaultInviteActivity(View view) {
-        startActivity(new Intent(this, DefaultInviteActivity.class));
+        // Back button
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
     }
 
     public void launchCustomInvite1Activity(View view) {
@@ -30,4 +27,9 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(this, CustomInvite2Activity.class));
     }
 
+    public void resetState(View view) {
+        // Reset the state of the ForeSee SDK. So that we may be eligible for a new invite
+        // based on the criteria in foresee_configuration.json
+        ForeSee.resetState();
+    }
 }

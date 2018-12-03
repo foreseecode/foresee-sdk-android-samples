@@ -12,6 +12,15 @@
         android:orientation="vertical"
         android:padding="10dp" >
 
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_margin="10dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/foresee_logo"/>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -38,7 +47,9 @@
             android:text="@string/launch_feedback_1"
             android:onClick="launchFeedback1"
             android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"/>
+            android:layout_marginBottom="5dp"
+            android:textAllCaps="false"
+            style="@style/AppTheme.Button"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -56,7 +67,9 @@
             android:text="@string/launch_feedback_2"
             android:onClick="launchFeedback2"
             android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"/>
+            android:layout_marginBottom="5dp"
+            android:textAllCaps="false"
+            style="@style/AppTheme.Button"/>
 
 
     </LinearLayout>

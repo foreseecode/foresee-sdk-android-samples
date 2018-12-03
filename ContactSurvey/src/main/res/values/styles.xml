@@ -1,0 +1,12 @@
+<resources>
+    <style name="AppTheme" parent="Theme.AppCompat.Light">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/foresee_red</item>
+        <item name="android:textColor">@color/textColor</item>
+    </style>
+    <style name="AppTheme.Button" parent="Widget.AppCompat.Button.Colored">
+        <item name="colorButtonNormal">@color/foresee_red</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+</resources>
