@@ -7,7 +7,7 @@ android {
 
     defaultConfig {
         applicationId "com.foresee.feedbackSample"
-        minSdkVersion 19 // The minimum minSdkVersion we support
+        minSdkVersion 21 // The minimum minSdkVersion we support
         targetSdkVersion 24
         versionCode 1
         versionName "1.0"
