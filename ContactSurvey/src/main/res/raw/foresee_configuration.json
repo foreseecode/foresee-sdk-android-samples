@@ -4,11 +4,6 @@
 	"repeatDaysAfterComplete":5,
 	"repeatDaysAfterAccept":3,
 	"notificationType":"CONTACT",
-	"whitelistedHosts":
-	[
-		"www.google.com",
-		"www.hotmail.com"
-	],
 	"measures":
 	[
 		{
@@ -22,5 +17,9 @@
     "cppParameters":
     {
         "sample_app":"Contact Survey 2.0"
-    }
+    },
+	"invite": {
+		"logo": "foresee_logo",
+		"baseColor": [235, 43, 61]
+	}
 }

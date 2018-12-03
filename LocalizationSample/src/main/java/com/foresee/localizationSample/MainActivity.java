@@ -1,13 +1,13 @@
 package com.foresee.localizationSample;
 
-import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.foresee.sdk.ForeSee;
 
 
-public class MainActivity extends Activity {
+public class MainActivity extends AppCompatActivity {
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {

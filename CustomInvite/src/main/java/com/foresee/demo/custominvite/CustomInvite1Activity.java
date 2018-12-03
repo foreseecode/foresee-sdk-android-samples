@@ -8,26 +8,33 @@ import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 import com.foresee.sdk.ForeSee;
+import com.foresee.sdk.common.configuration.ContactType;
 import com.foresee.sdk.common.configuration.EligibleMeasureConfigurations;
 import com.foresee.sdk.cxMeasure.tracker.listeners.CustomContactInviteListener;
 
 public class CustomInvite1Activity extends AppCompatActivity {
 
     private static final String TAG = "CustomInvite1Activity";
+
+    // Variables
     private ProgressDialog progressDialog;
-    private EditText contactField;
+    private EditText contactInput;
+    private RadioGroup preferredContactType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_custom_invite_1);
 
-        contactField = (EditText)findViewById(R.id.contactField);
-        if (ForeSee.getContactDetails() != null) {
-            contactField.setText(ForeSee.getContactDetails());
-        }
+        // Find UI components
+        contactInput = (EditText)findViewById(R.id.contactInput);
+        preferredContactType = (RadioGroup)findViewById(R.id.preferredContactType);
+
+        // Back button
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         ForeSee.setInviteListener(new CustomContactInviteListener() {
 
@@ -44,7 +51,7 @@ public class CustomInvite1Activity extends AppCompatActivity {
             @Override
             public void onContactFormatError() {
                 Log.d(TAG, "onContactFormatError");
-                contactField.setError(getString(R.string.FORESEE_contactDetailsInvalidInputError));
+                contactInput.setError(getString(R.string.FORESEE_contactDetailsInvalidInputError));
 
                 hideProgress();
             }
@@ -52,7 +59,7 @@ public class CustomInvite1Activity extends AppCompatActivity {
             @Override
             public void onContactMissing() {
                 Log.d(TAG, "onContactMissing");
-                contactField.setError(getString(R.string.FORESEE_contactDetailsEmptyInputError));
+                contactInput.setError(getString(R.string.FORESEE_contactDetailsEmptyInputError));
 
                 hideProgress();
             }
@@ -110,8 +117,36 @@ public class CustomInvite1Activity extends AppCompatActivity {
             }
 
         });
+    }
 
+    /**
+     * Dispatch onResume() to fragments.  Note that for better inter-operation
+     * with older versions of the platform, at the point of this call the
+     * fragments attached to the activity are <em>not</em> resumed.  This means
+     * that in some cases the previous state may still be saved, not allowing
+     * fragment transactions that modify the state.  To correctly interact
+     * with fragments in their proper state, you should instead override
+     * {@link #onResumeFragments()}.
+     */
+    @Override
+    protected void onResume() {
+        super.onResume();
 
+        // Setup UI components
+        ContactType type = ForeSee.getPreferredContactType();
+        if (type != null) {
+            switch (type) {
+                case Email:
+                    preferredContactType.check(R.id.preferredContactTypeEmail);
+                    break;
+                case PhoneNumber:
+                    preferredContactType.check(R.id.preferredContactTypePhoneNumber);
+                    break;
+                default:
+                    break;
+            }
+            contactInput.setText(ForeSee.getContactDetails(type));
+        }
     }
 
     public void launchCustomInvite1(View view)
@@ -119,9 +154,21 @@ public class CustomInvite1Activity extends AppCompatActivity {
 
         showProgress();
 
-        // For ON_EXIT notification, the contact details must be provided before the invite is accepted
+        // For Contact Invite mode, the contact details must be provided before the invite is accepted
         // Let's take them from the UI right now
-        ForeSee.setContactDetails(contactField.getText().toString());
+        ContactType type = ContactType.PhoneNumber;
+        switch (preferredContactType.getCheckedRadioButtonId()) {
+            case R.id.preferredContactTypeEmail:
+                type = ContactType.Email;
+                ForeSee.setPreferredContactType(ContactType.Email);
+                break;
+            case R.id.preferredContactTypePhoneNumber:
+                type = ContactType.PhoneNumber;
+                ForeSee.setPreferredContactType(ContactType.PhoneNumber);
+                break;
+        }
+        ForeSee.setPreferredContactType(type);
+        ForeSee.setContactDetails(type, contactInput.getText().toString());
 
         // Increment the significant event count so that we're eligible for an invite
         // based on the criteria in foresee_configuration.json

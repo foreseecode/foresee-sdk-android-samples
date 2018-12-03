@@ -12,5 +12,9 @@
 				"instant_invite":1
 			}
 		}
-	]
+	],
+	"invite": {
+		"logo": "foresee_logo",
+		"baseColor": [235, 43, 61]
+	}
 }
