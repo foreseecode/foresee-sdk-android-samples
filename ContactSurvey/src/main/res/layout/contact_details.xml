@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp">
+
+    <!-- Email Address -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:text="Email Address"/>
+    <EditText
+        android:id="@+id/contactInfoEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:imeOptions="actionDone"
+        android:inputType="text"
+        android:hint="Enter an Email address..."/>
+
+    <!-- Mobile number -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mobile Number"/>
+    <EditText
+        android:id="@+id/contactInfoPhoneNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:imeOptions="actionDone"
+        android:inputType="textEmailAddress"
+        android:hint="Enter a mobile number..."/>
+
+    <!-- Preferred contact type -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Preferred Contact Type"/>
+
+    <RadioGroup
+        android:id="@+id/preferredContactType"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/preferredContactTypePhoneNumber"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Phone Number"/>
+
+        <RadioButton
+            android:id="@+id/preferredContactTypeEmail"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Email"/>
+    </RadioGroup>
+</LinearLayout>

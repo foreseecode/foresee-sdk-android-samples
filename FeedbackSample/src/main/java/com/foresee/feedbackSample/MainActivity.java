@@ -1,14 +1,14 @@
 package com.foresee.feedbackSample;
 
-import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import com.foresee.sdk.ForeSeeFeedback;
 import com.foresee.sdk.ForeSeeFeedbackListener;
 
 
-public class MainActivity extends Activity {
+public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

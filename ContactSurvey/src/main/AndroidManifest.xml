@@ -11,11 +11,19 @@
         <activity
             android:name="com.foresee.contactSurvey.MainActivity"
             android:label="@string/app_name"
-            android:configChanges="orientation|screenSize|keyboard|keyboardHidden">
+            android:configChanges="orientation|screenSize|keyboard|keyboardHidden"
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name="com.foresee.contactSurvey.SetContactDetailsActivity"
+            android:label="@string/set_contact_details"
+            android:configChanges="orientation|screenSize|keyboard"
+            android:parentActivityName="com.foresee.contactSurvey.MainActivity"
+            android:theme="@style/AppTheme">
         </activity>
     </application>
 </manifest>    
