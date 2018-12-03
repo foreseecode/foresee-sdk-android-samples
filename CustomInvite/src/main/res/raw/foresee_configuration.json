@@ -1,11 +1,11 @@
 {
-	"clientId":"Ij6P1lfZHchO/co10lQ4BQ==",
+	"clientId":"FSRTESTINGCODECID12345==",
 	"customLogoName":"custom_logo.png",
 	"notificationType":"CONTACT",
 	"measures":
 	[
 		{
-			"surveyId":"app_test_1",
+			"surveyId":"iphone_app_QA",
 			"significantEventThresholds": {
 				"instant_invite":1
 			}

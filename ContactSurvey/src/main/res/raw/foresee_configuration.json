@@ -1,5 +1,5 @@
 {
-	"clientId":"Ij6P1lfZHchO/co10lQ4BQ==",
+	"clientId":"FSRTESTINGCODECID12345==",
 	"repeatDaysAfterDecline":5,
 	"repeatDaysAfterComplete":5,
 	"repeatDaysAfterAccept":3,
@@ -7,7 +7,7 @@
 	"measures":
 	[
 		{
-			"surveyId":"app_test_1",
+			"surveyId":"iphone_app_QA",
 			"launchCount": 3,
 			"significantEventThresholds": {
 				"instant_invite":3
