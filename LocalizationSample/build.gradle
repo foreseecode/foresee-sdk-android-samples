@@ -1,14 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 24 // The minimum compileSdkVersion we support
+    compileSdkVersion 24
 
     useLibrary 'org.apache.http.legacy'
 
     defaultConfig {
         applicationId "com.foresee.localizationsample"
-        minSdkVersion 19 // The minimum minSdkVersion we support
-        targetSdkVersion 24 // The minimum targetSdkVersion we support
+        minSdkVersion 21 // The minimum minSdkVersion we support
+        targetSdkVersion 24
         versionCode 1
         versionName "1.0"
     }
