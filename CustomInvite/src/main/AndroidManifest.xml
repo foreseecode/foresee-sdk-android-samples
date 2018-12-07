@@ -14,26 +14,24 @@
         <activity
             android:name="com.foresee.demo.custominvite.MainActivity"
             android:label="@string/title_activity_main"
-            android:theme="@style/CustomTheme.Base.NoActionBar">
+            android:theme="@style/CustomTheme.Base">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".DefaultInviteActivity"
-                  android:label="@string/title_activity_default_invite"
-                  android:theme="@style/CustomTheme.Base">
-        </activity>
         <activity
             android:name=".CustomInvite1Activity"
             android:label="@string/title_activity_custom_invite_1"
-            android:theme="@style/CustomTheme.Base">
+            android:theme="@style/CustomTheme.Base"
+            android:parentActivityName="com.foresee.demo.custominvite.MainActivity">
         </activity>
         <activity
             android:name=".CustomInvite2Activity"
             android:label="@string/title_activity_custom_invite_2"
-            android:theme="@style/CustomTheme.Base">
+            android:theme="@style/CustomTheme.Base"
+            android:parentActivityName="com.foresee.demo.custominvite.MainActivity">
         </activity>
     </application>
 

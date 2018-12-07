@@ -12,6 +12,15 @@
         android:orientation="vertical"
         android:padding="10dp" >
 
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_margin="10dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/foresee_logo"/>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -19,7 +28,7 @@
             android:layout_marginBottom="5dp"
             android:layout_marginTop="5dp"
             android:textAlignment="center"
-            android:gravity="center_horizontal"
+            android:gravity="fill_horizontal"
             android:text="@string/hello" />
 
         <TextView
@@ -29,7 +38,7 @@
             android:layout_marginBottom="5dp"
             android:layout_marginTop="5dp"
             android:textAlignment="center"
-            android:gravity="center_horizontal"
+            android:gravity="fill_horizontal"
             android:text="@string/launch_count_desc" />
 
         <TextView
@@ -39,7 +48,7 @@
             android:layout_marginBottom="5dp"
             android:layout_marginTop="5dp"
             android:textAlignment="center"
-            android:gravity="center_horizontal"
+            android:gravity="fill_horizontal"
             android:text="@string/significant_event_count_desc" />
 
         <Button
@@ -48,7 +57,17 @@
             android:text="@string/launch_invite"
             android:onClick="launchInvite"
             android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"/>
+            android:layout_marginBottom="5dp"
+            style="@style/AppTheme.Button"/>
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/set_contact_details"
+            android:onClick="setContactDetails"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            style="@style/AppTheme.Button"/>
 
         <Button
             android:layout_width="fill_parent"
@@ -56,7 +75,8 @@
             android:text="@string/reset_counters"
             android:onClick="resetCounters"
             android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"/>
+            android:layout_marginBottom="5dp"
+            style="@style/AppTheme.Button"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -65,7 +85,7 @@
             android:layout_marginBottom="5dp"
             android:layout_marginTop="5dp"
             android:textAlignment="center"
-            android:gravity="center_horizontal"
+            android:gravity="fill_horizontal"
             android:text="@string/reset_button_desc" />
 
     </LinearLayout>
