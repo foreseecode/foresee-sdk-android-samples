@@ -1,16 +1,20 @@
 {
-	"clientId":"Ij6P1lfZHchO/co10lQ4BQ==",
+	"clientId":"9NNs9GIBQIVdk1LpDlJpAQ==",
 	"repeatDaysAfterDecline":60,
 	"repeatDaysAfterComplete":120,
 	"measures":
 	[
 		{
-			"surveyId":"app_test_1-fc",
+			"surveyId":"mobile_app-fr",
 			"daysSinceLaunch":0,
 			"launchCount":0,
 			"significantEventThresholds": {
 				"instant_invite":1
 			}
 		}
-	]
+	],
+	"invite": {
+		"logo": "foresee_logo",
+		"baseColor": [235, 43, 61]
+	}
 }
