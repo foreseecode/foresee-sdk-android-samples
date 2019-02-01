@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" ?>
 <resources>
-    <string name="app_name">Localization Sample</string>
+	<string name="app_name">Localization Sample</string>
 	<string name="description">This is a sample project demonstrating how to customize the provided survey invitation for internationalization support.</string>
 	<string name="how_to">Change the language of your device to French or Spanish to see the localized invitation.</string>
-    <string name="show_invite">Show Invite</string>
-    <string name="reset_button_desc">Once the invite is shown, the SDK drops into an idle state until the repeat days have elapsed. Click here to reset the state of the SDK.</string>
-    <string name="reset_state">Reset state</string>
+	<string name="reset_button_desc">Once the invite is shown, the SDK drops into an idle state until the repeat days have elapsed. Click here to reset the state of the SDK.</string>
+	<string name="reset_state">Reset state</string>
+	<string name="show_invite">Show Invite</string>
 </resources>

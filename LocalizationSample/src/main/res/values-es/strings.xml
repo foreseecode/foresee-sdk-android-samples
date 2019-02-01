@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" ?>
 <resources>
 	<string name="app_name">Localization Sample</string>
-	<string name="show_invite">Show Invite</string>
 	<string name="description">Este es un proyecto de ejemplo que muestra cómo personalizar la invitación a la encuesta prevista en apoyo a la internacionalización.</string>
 	<string name="how_to">Cambiar el idioma de su dispositivo a francés o español para ver la invitación localizada.</string>
-	<string name="reset_button_desc">Once the invite is shown, the SDK drops into an idle state until the repeat days have elapsed. Click here to reset the state of the SDK.</string>
-	<string name="reset_state">Reset state</string>
+	<string name="reset_button_desc">Una vez que se muestre la invitación, el SDK pasa a un estado de inactividad hasta que hayan transcurrido los días de repetición. Haga clic aquí para restablecer el estado del SDK.</string>
+	<string name="reset_state">Restablecer estado</string>
+	<string name="show_invite">Mostrar invitación</string>
 </resources>
