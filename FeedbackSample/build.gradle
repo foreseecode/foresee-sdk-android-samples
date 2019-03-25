@@ -21,8 +21,8 @@ android {
 }
 
 dependencies {
-    implementation 'com.foresee.sdk:sdk:5.2.1'
-    implementation 'com.foresee.sdk:feedback:5.2.1'
+    implementation 'com.foresee.sdk:sdk:5.2.2'
+    implementation 'com.foresee.sdk:feedback:5.2.2'
     
     implementation 'com.android.support:appcompat-v7:26.1.0'
     implementation 'com.android.support:support-v4:26.1.0'
