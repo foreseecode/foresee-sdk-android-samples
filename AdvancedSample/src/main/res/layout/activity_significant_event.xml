@@ -29,46 +29,10 @@
             android:layout_marginTop="5dp"
             android:textAlignment="center"
             android:gravity="fill_horizontal"
-            android:text="@string/hello" />
-
-        <Button
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/page_views_button"
-            android:onClick="onPageViewsClicked"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            style="@style/AppTheme.Button"/>
-
-
-        <Button
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/launch_count_button"
-            android:onClick="onLaunchCountClicked"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            style="@style/AppTheme.Button"/>
-
-        <Button
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/significant_event_button"
-            android:onClick="onSignificantEventClicked"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            style="@style/AppTheme.Button"/>
-
-        <Button
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/reset_counters"
-            android:onClick="resetCounters"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            style="@style/AppTheme.Button"/>
+            android:text="@string/significant_event_desc" />
 
         <TextView
+            android:id="@+id/significantEventTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
@@ -76,7 +40,17 @@
             android:layout_marginTop="5dp"
             android:textAlignment="center"
             android:gravity="fill_horizontal"
-            android:text="@string/reset_button_desc" />
+            android:text="" />
+
+        <Button
+            android:id="@+id/incrementButton"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/increment"
+            android:onClick="onIncrementClicked"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            style="@style/AppTheme.Button"/>
 
     </LinearLayout>
 </ScrollView>

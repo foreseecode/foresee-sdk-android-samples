@@ -7,9 +7,10 @@
 			"surveyId": "iphone_app_QA",
 			"surveyStyle": "modern",
 			"significantEventThresholds": {
-				"instant_invite":1
+				"custom_event":3
 			},
-			"pageViews": 5
+			"launchCount": 5,
+			"pageViews": 3
 		}
 	],
 	"cppParameters": {

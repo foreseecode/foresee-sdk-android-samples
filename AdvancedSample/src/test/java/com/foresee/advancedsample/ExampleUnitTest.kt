@@ -1,4 +1,4 @@
-package com.foresee.kotlinsample
+package com.foresee.advancedsample
 
 import org.junit.Test
 

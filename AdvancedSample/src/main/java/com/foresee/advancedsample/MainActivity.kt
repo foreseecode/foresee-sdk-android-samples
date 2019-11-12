@@ -1,5 +1,6 @@
-package com.foresee.kotlinsample
+package com.foresee.advancedsample
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
@@ -12,18 +13,33 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.main)
     }
 
-
-    fun checkEligibility(@Suppress("UNUSED_PARAMETER") view: View) {
-        // Increment the significant event count so that we're eligible for an invite
-        // based on the criteria in foresee_configuration.json
-        ForeSee.incrementSignificantEventCountWithKey("instant_invite")
-
-        // Launch an invite as a demo
-        ForeSee.checkIfEligibleForSurvey()
-    }
-
     fun resetCounters(@Suppress("UNUSED_PARAMETER") view: View) {
         // Reset the state of the ForeSee SDK
         ForeSee.resetState()
+    }
+
+    fun onPageViewsClicked(view: View) {
+        ForeSee.resetState()
+
+        PageActivity.pageId = 1
+        // Invite will be triggered after 3 page views
+        val intent = Intent(this, PageActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun onLaunchCountClicked(view: View) {
+        ForeSee.resetState()
+
+        // Invite will be triggered after 5 launch count
+        val intent = Intent(this, LaunchCountActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun onSignificantEventClicked(view: View) {
+        ForeSee.resetState()
+
+        // Invite will be triggered after 5 launch count
+        val intent = Intent(this, SignificantEventActivity::class.java)
+        startActivity(intent)
     }
 }
