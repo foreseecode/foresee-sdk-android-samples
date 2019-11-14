@@ -7,10 +7,10 @@ To run this Sample, you need a Adobe Experience Platform Launch account, and hav
 
 ## Installing
 1.  In the Adobe Launch dashboard, create a new Property for Mobile platform.
-2.  Find and install the ForeSee SDK from the extension category. In the Configuration page, you can choose to enable `Debug Logging` and `Skip Pooling Check`
+2.  Find and install the ForeSee SDK from the extension category. In the Configuration page, you can choose to enable `Debug Logging` and `Skip Pooling Check`<br/>
      ![Configuration](https://raw.githubusercontent.com/foreseecode/foresee-sdk-android-samples/MOBILSDK-2750/AdobeExtensionSample/docresources/configuration.png)
 3.  Create a Rule  
-    Set the rule to trigger the ForeSee extension's Action: `ForeSee - Check Eligibility`. This will allow ForeSee SDK to check if the user is eligible for a survey. As below:
+    Set the rule to trigger the ForeSee extension's Action: `ForeSee - Check Eligibility`. This will allow ForeSee SDK to check if the user is eligible for a survey. As below:<br/>
     ![Rule](https://raw.githubusercontent.com/foreseecode/foresee-sdk-android-samples/MOBILSDK-2750/AdobeExtensionSample/docresources/rule.png)
 4.  Create an Environment.
 5.  In Publishing, create a Library.
