@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">This sample demonstrates how to use the ForeSee Adobe Extension. Follow the instructions on the Github repository to setup this Sample App and check eligibility.</string>
+    <string name="reset_button_desc">Once the invite is shown, the SDK drops into an idle state until the repeat days have elapsed. Use this button to reset the state of the SDK.</string>
+    <string name="app_name">Adobe Extension Sample</string>
+    <string name="launch_invite">Check eligibility</string>
+    <string name="reset_counters">Reset state</string>
+</resources>
