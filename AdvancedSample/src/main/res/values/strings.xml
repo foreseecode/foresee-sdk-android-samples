@@ -2,11 +2,11 @@
 <resources>
     <string name="hello">This sample demonstrates some advanced features of the ForeSee SDK. Follow the instructions below to check eligibility.</string>
     <string name="page_views_button">1. Invite triggered by page views</string>
-    <string name="page_views_desc">Page views criteria is the number of activities that the user must view in a single app session before they are eligible to be invited to participate in this measure’s survey. This count is reset when the app is put into the background. In this sample, the invite will be triggered after 3 page views</string>
+    <string name="page_views_desc">Page views criteria is the number of activities that the user must view in a single app session before they are eligible to be invited to participate in this measure’s survey. This count is reset when the app is put into the background. In this sample, the invite will be triggered after 3 page views.</string>
     <string name="launch_count_button">2. Invite triggered by launch count</string>
     <string name="launch_count_desc">Launch count criteria is the number of times the app is launched before the user is eligible for an invitation to participate in this measure’s survey. In this sample, the invite will be triggered after 5 launch counts. Please try to background/foreground the app 5 times.</string>
     <string name="significant_event_button">3. Invite triggered by significant event</string>
-    <string name="significant_event_desc">Significant event is a key-value pair that defines custom events for your app that cause an invitation for this measure to display. You are responsible for informing the SDK when the custom event occur through calls to the ForeSee.incrementSignificantEventCountWithKey() method. in this sample, the invite triggered by incrementing significant event 3 times.</string>
+    <string name="significant_event_desc">Significant events are key-value pairs that define custom events for your app that cause an invitation for this measure to display. You are responsible for informing the SDK when the custom events occur through calls to the ForeSee.incrementSignificantEventCountWithKey() method. In this sample, the invite is triggered by incrementing the significant event 3 times.</string>
     <string name="reset_button_desc">Once the invite is shown, the SDK drops into an idle state until the repeat days have elapsed. Use this button to reset the state of the SDK.</string>
     <string name="app_name">Advanced Sample</string>
     <string name="launch_invite">Check eligibility</string>
