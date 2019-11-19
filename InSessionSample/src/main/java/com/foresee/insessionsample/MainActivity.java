@@ -16,9 +16,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onCheckEligibilityClicked(View view) {
-        // Increment the significant event count so that we're eligible for an invite
-        // based on the criteria in foresee_configuration.json
-        ForeSee.incrementSignificantEventCountWithKey("instant_invite");
 
         // Launch an invite as a demo
         ForeSee.checkIfEligibleForSurvey();
