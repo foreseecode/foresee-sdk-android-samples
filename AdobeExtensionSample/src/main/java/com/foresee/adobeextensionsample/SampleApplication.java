@@ -24,23 +24,10 @@ public class SampleApplication extends Application {
         registerAdobeExtension();
     }
 
-    ForeSee.ForeSeeSDKConfigurationListener configurationListener = new ForeSee.ForeSeeSDKConfigurationListener() {
-        @Override
-        public void onSDKReady() {
-            Log.d(TAG, "ForeSee SDK is ready.");
-        }
-
-        @Override
-        public void onFailedInitializingSDK() {
-            Log.e(TAG, "Failed to start the ForeSee SDK.");
-        }
-    };
-
     private void registerAdobeExtension() {
         MobileCore.setApplication(this);
         MobileCore.setLogLevel(LoggingMode.DEBUG);
         try {
-            ForeSeeAdobeExtension.setForeSeeSDKConfigurationListener(configurationListener);
             ForeSeeAdobeExtension.registerExtension();
 
             Identity.registerExtension();

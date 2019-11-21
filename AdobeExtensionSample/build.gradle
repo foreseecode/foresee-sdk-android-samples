@@ -27,8 +27,7 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation 'com.foresee.sdk:sdk:5.3.1'
-    implementation 'com.foresee.sdk:adobeExtension:1.0.0'
+    implementation 'com.foresee.sdk:adobeExtension:1.+'
 
     implementation 'com.adobe.marketing.mobile:userprofile:1.+'
     implementation 'com.adobe.marketing.mobile:sdk-core:1.+'
