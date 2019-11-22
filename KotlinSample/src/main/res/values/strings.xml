@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">This sample demonstrates the In Session type, which denotes that the survey is presented at the point where the user accepts the invitation. Follow the instructions below to check eligibility.</string>
+    <string name="reset_button_desc">Once the invite is shown, the SDK drops into an idle state until the repeat days have elapsed. Use this button to reset the state of the SDK.</string>
+    <string name="app_name">Kotlin Sample</string>
+    <string name="launch_invite">Check eligibility</string>
+    <string name="reset_counters">Reset state</string>
+</resources>

@@ -1,1 +1,1 @@
-include ':CustomInvite', ':ContactSurvey', ':LocalizationSample', ':FeedbackSample'
+include ':CustomInvite', ':ContactSurvey', ':LocalizationSample', ':FeedbackSample', ':KotlinSample', 'AdvancedSample'

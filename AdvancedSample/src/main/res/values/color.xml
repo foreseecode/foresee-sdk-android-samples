@@ -1,0 +1,22 @@
+<resources>
+    <!-- Foresee base colors -->
+    <color name="foresee_quartz">#E9ECF2</color>
+    <color name="foresee_red">#EB2B3D</color>
+    <color name="foresee_black">#222B3B</color>
+    <color name="foresee_coal">#3A475A</color>
+    <color name="foresee_teal">#38D1C8</color>
+    <color name="foresee_azure">#00A2E7</color>
+    <color name="foresee_redpink">#F83459</color>
+    <color name="foresee_green">#92CE3F</color>
+    <color name="foresee_white">#FFFFFF</color>
+
+    <!-- Derived colors -->
+    <color name="foresee_positive">@color/foresee_green</color>
+    <color name="foresee_negative">@color/foresee_redpink</color>
+
+    <!-- System analogues -->
+    <color name="colorPrimary">@color/foresee_quartz</color>
+    <color name="colorPrimaryDark">@color/foresee_coal</color>
+    <color name="colorAccent">@color/foresee_azure</color>
+    <color name="textColor">@color/foresee_coal</color>
+</resources>

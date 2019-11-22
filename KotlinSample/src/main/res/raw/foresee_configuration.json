@@ -1,0 +1,21 @@
+{
+	"clientId":"FSRTESTINGCODECID12345==",
+	"notificationType": "IN_SESSION",
+	"measures":
+	[
+		{
+			"surveyId": "iphone_app_QA",
+			"surveyStyle": "modern",
+			"significantEventThresholds": {
+				"instant_invite":1
+			}
+		}
+	],
+	"cppParameters": {
+		"sample_app":"Kotlin Sample CPP"
+	},
+	"invite": {
+		"logo": "foresee_logo",
+		"baseColor": [235, 43, 61]
+	}
+}
