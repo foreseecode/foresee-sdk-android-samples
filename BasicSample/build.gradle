@@ -6,7 +6,7 @@ android {
 
 
     defaultConfig {
-        applicationId "com.foresee.insessionsample"
+        applicationId "com.foresee.basicSample"
         minSdkVersion 21
         targetSdkVersion 29
         versionCode 1

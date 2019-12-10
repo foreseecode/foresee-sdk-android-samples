@@ -1,4 +1,4 @@
-package com.foresee.insessionsample;
+package com.foresee.basicSample;
 
 import android.content.Context;
 
@@ -22,6 +22,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
 
-        assertEquals("com.foresee.insessionsample", appContext.getPackageName());
+        assertEquals("com.foresee.basicSample", appContext.getPackageName());
     }
 }

@@ -1,4 +1,4 @@
-package com.foresee.insessionsample;
+package com.foresee.basicSample;
 
 
 import android.os.Bundle;

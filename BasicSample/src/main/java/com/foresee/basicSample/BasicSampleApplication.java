@@ -1,10 +1,10 @@
-package com.foresee.insessionsample;
+package com.foresee.basicSample;
 
 import android.app.Application;
 
 import com.foresee.sdk.ForeSee;
 
-public class InSessionSampleApplication extends Application {
+public class BasicSampleApplication extends Application {
 	@Override
 	public void onCreate() {
 		super.onCreate();
