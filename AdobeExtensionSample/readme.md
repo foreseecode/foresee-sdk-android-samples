@@ -3,7 +3,7 @@
 
 ## Prerequisites
 
-To run this Sample, you need a Adobe Experience Platform Launch account, and have set it up to use in mobile Apps.  
+To run this Sample, you need a [Adobe Experience Platform Launch](https://www.adobe.com/experience-platform/launch.html) account, and have set it up to use in mobile Apps.  
 
 ## Installing
 1.  In the Adobe Launch dashboard, create a new Property for Mobile platform.
