@@ -31,7 +31,7 @@ class ProductsActivity : AppCompatActivity() {
         val gridLayoutManager = GridLayoutManager(this@ProductsActivity, 2)
         this.recyclerView.layoutManager = gridLayoutManager
 
-        setupCards(false)
+        reloadCards(hasInvite = false)
 
         setupCustomInvite()
 
@@ -62,13 +62,12 @@ class ProductsActivity : AppCompatActivity() {
         ForeSee.setInviteListener(object : CustomInSessionInviteListener {
             override fun showInvite(eligibleMeasureConfigurations: EligibleMeasureConfigurations?) {
                 Log.d(TAG, "showInvite")
-
-                setupCards(true)
+                reloadCards(hasInvite = true)
             }
 
             override fun onSurveyPresented() {
                 Log.d(TAG, "onSurveyPresented")
-                setupCards(false)
+                reloadCards(hasInvite = false)
             }
 
             override fun onSurveyCancelledByUser() {
@@ -81,7 +80,7 @@ class ProductsActivity : AppCompatActivity() {
 
             override fun onSurveyCancelledWithNetworkError() {
                 Log.d(TAG, "onSurveyCancelledWithNetworkError")
-                setupCards(false)
+                reloadCards(hasInvite = false)
             }
 
             override fun onInviteCompleteWithAccept(eligibleMeasureConfigurations: EligibleMeasureConfigurations?) {
@@ -109,7 +108,7 @@ class ProductsActivity : AppCompatActivity() {
         })
     }
 
-    private fun setupCards(withInvite: Boolean) {
+    private fun reloadCards(hasInvite: Boolean = false) {
         val cards = mutableListOf<CardData>()
 
         cards.add(ProductCardData("Striped tee", R.drawable.top_0000))
@@ -122,11 +121,11 @@ class ProductsActivity : AppCompatActivity() {
         cards.add(ProductCardData("Chiffon tank", R.drawable.top_0007))
         cards.add(ProductCardData("Cashmere Sweater", R.drawable.sweater))
 
-        if (withInvite) {
+        if (hasInvite) {
             cards.add(3, InviteCardData("You are invited!", "Can we send you a brief survey?"))
         }
 
-        this.recyclerView.adapter = Adapter(this, cards)
+        this.recyclerView.adapter = Adapter(cards)
     }
 
     fun onInviteAcceptedClicked(view: View) {
