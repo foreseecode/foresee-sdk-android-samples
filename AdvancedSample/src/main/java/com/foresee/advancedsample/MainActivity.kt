@@ -42,4 +42,9 @@ class MainActivity : AppCompatActivity() {
         val intent = Intent(this, SignificantEventActivity::class.java)
         startActivity(intent)
     }
+
+    fun onCustomInviteClicked(view: View) {
+        val intent = Intent(this, ProductsActivity::class.java)
+        startActivity(intent)
+    }
 }
