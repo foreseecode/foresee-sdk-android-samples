@@ -16,6 +16,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.foresee.sdk.ForeSee;
+import com.foresee.sdk.ForeSeeCxMeasure;
 import com.foresee.sdk.common.configuration.ContactType;
 import com.foresee.sdk.common.configuration.EligibleMeasureConfigurations;
 import com.foresee.sdk.cxMeasure.tracker.listeners.CustomContactInviteListener;
@@ -48,7 +49,7 @@ public class CustomInvite2Activity extends AppCompatActivity {
 
     public void launchCustomInvite2(View view) {
 
-        ForeSee.setInviteListener(new CustomContactInviteListener() {
+        ForeSeeCxMeasure.setInviteListener(new CustomContactInviteListener() {
             @Override
             public void showInvite(EligibleMeasureConfigurations eligibleMeasureConfigurations) {
                 Log.d(TAG, "showInvite");
@@ -60,7 +61,7 @@ public class CustomInvite2Activity extends AppCompatActivity {
                     public void onClick(View v) {
                         showProgress();
 
-                        ForeSee.customInviteAccepted();
+                        ForeSeeCxMeasure.customInviteAccepted();
                     }
                 });
 
@@ -80,7 +81,7 @@ public class CustomInvite2Activity extends AppCompatActivity {
                                 || event == Snackbar.Callback.DISMISS_EVENT_SWIPE) {
 
                             // Call the iContactInviteResultListener.contactInviteDeclined() method whenever the custom invite is dismissed
-                            ForeSee.customInviteDeclined();
+                            ForeSeeCxMeasure.customInviteDeclined();
                         }
                     }
                 });
@@ -113,7 +114,7 @@ public class CustomInvite2Activity extends AppCompatActivity {
             public void onInviteCompleteWithAccept(EligibleMeasureConfigurations eligibleMeasureConfigurations) {
                 Log.d(TAG, "onCompleteWithAccept");
                 // By this point the SDK is finished with the invite process, this is for information only
-                Toast.makeText(getApplicationContext(), "A survey will be sent to " + ForeSee.getContactDetails(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "A survey will be sent to " + ForeSeeCxMeasure.getContactDetails(), Toast.LENGTH_SHORT).show();
 
                 hideProgress();
 
@@ -165,10 +166,10 @@ public class CustomInvite2Activity extends AppCompatActivity {
 
         // Increment the significant event count so that we're eligible for an invite
         // based on the criteria in foresee_configuration.json
-        ForeSee.incrementSignificantEventCountWithKey("instant_invite");
+        ForeSeeCxMeasure.incrementSignificantEventCountWithKey("instant_invite");
 
         // Launch an invite as a demo
-        ForeSee.checkIfEligibleForSurvey();
+        ForeSeeCxMeasure.checkIfEligibleForSurvey();
     }
 
     @Override
@@ -258,7 +259,7 @@ public class CustomInvite2Activity extends AppCompatActivity {
         messageView.setText(messageText);
 
         // Setup UI components
-        ContactType type = ForeSee.getPreferredContactType();
+        ContactType type = ForeSeeCxMeasure.getPreferredContactType();
         if (type != null) {
             switch (type) {
                 case Email:
@@ -270,7 +271,7 @@ public class CustomInvite2Activity extends AppCompatActivity {
                 default:
                     break;
             }
-            contactInput.setText(ForeSee.getContactDetails(type));
+            contactInput.setText(ForeSeeCxMeasure.getContactDetails(type));
         }
 
         if (errorMessage != null) {
@@ -286,17 +287,17 @@ public class CustomInvite2Activity extends AppCompatActivity {
                 switch (preferredContactType.getCheckedRadioButtonId()) {
                     case R.id.preferredContactTypeEmail:
                         type = ContactType.Email;
-                        ForeSee.setPreferredContactType(ContactType.Email);
+                        ForeSeeCxMeasure.setPreferredContactType(ContactType.Email);
                         break;
                     case R.id.preferredContactTypePhoneNumber:
                         type = ContactType.PhoneNumber;
-                        ForeSee.setPreferredContactType(ContactType.PhoneNumber);
+                        ForeSeeCxMeasure.setPreferredContactType(ContactType.PhoneNumber);
                         break;
                 }
-                ForeSee.setPreferredContactType(type);
-                ForeSee.setContactDetails(type, contactInput.getText().toString());
+                ForeSeeCxMeasure.setPreferredContactType(type);
+                ForeSeeCxMeasure.setContactDetails(type, contactInput.getText().toString());
                 showProgress();
-                ForeSee.customInviteAccepted();
+                ForeSeeCxMeasure.customInviteAccepted();
 
             }
         });
@@ -312,7 +313,7 @@ public class CustomInvite2Activity extends AppCompatActivity {
             @Override
             public void onCancel(DialogInterface dialog) {
                 showProgress();
-                ForeSee.customInviteDeclined();
+                ForeSeeCxMeasure.customInviteDeclined();
             }
         });
 

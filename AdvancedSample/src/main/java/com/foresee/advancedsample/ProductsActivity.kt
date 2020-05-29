@@ -10,7 +10,7 @@ import android.support.v7.widget.GridLayoutManager
 import android.util.Log
 import android.view.View
 import com.foresee.advancedsample.customInvite.Adapter
-import com.foresee.sdk.ForeSee
+import com.foresee.sdk.ForeSeeCxMeasure
 import com.foresee.sdk.common.configuration.EligibleMeasureConfigurations
 import com.foresee.sdk.cxMeasure.tracker.listeners.CustomInSessionInviteListener
 
@@ -43,13 +43,13 @@ class ProductsActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
 
-        ForeSee.checkIfEligibleForSurvey()
+        ForeSeeCxMeasure.checkIfEligibleForSurvey()
     }
 
     override fun onDestroy() {
         super.onDestroy()
 
-        ForeSee.setInviteListener(null)
+        ForeSeeCxMeasure.setInviteListener(null)
     }
 
 
@@ -59,7 +59,7 @@ class ProductsActivity : AppCompatActivity() {
     }
 
     private fun setupCustomInvite() {
-        ForeSee.setInviteListener(object : CustomInSessionInviteListener {
+        ForeSeeCxMeasure.setInviteListener(object : CustomInSessionInviteListener {
             override fun showInvite(eligibleMeasureConfigurations: EligibleMeasureConfigurations?) {
                 Log.d(TAG, "showInvite")
                 reloadCards(hasInvite = true)
@@ -128,8 +128,8 @@ class ProductsActivity : AppCompatActivity() {
         this.recyclerView.adapter = Adapter(cards)
     }
 
-    fun onInviteAcceptedClicked(view: View) {
-        ForeSee.customInviteAccepted()
+    fun onInviteAcceptedClicked(@Suppress("UNUSED_PARAMETER") view: View) {
+        ForeSeeCxMeasure.customInviteAccepted()
 
     }
 }
