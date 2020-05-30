@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.foresee.sdk.ForeSee;
+import com.foresee.sdk.ForeSeeCxMeasure;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     public void onCheckEligibilityClicked(View view) {
 
         // Launch an invite as a demo
-        ForeSee.checkIfEligibleForSurvey();
+        ForeSeeCxMeasure.checkIfEligibleForSurvey();
     }
 
     public void resetCounters(View view) {

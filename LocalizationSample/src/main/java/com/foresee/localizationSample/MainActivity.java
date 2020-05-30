@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.foresee.sdk.ForeSee;
+import com.foresee.sdk.ForeSeeCxMeasure;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -21,10 +22,10 @@ public class MainActivity extends AppCompatActivity {
     {
         // Increment the significant event count so that we're eligible for an invite
         // based on the criteria in foresee_configuration.json
-        ForeSee.incrementSignificantEventCountWithKey("instant_invite");
+        ForeSeeCxMeasure.incrementSignificantEventCountWithKey("instant_invite");
 
         // Launch an invite as a demo
-        ForeSee.checkIfEligibleForSurvey();
+        ForeSeeCxMeasure.checkIfEligibleForSurvey();
     }
 
     public void resetState(View view) {

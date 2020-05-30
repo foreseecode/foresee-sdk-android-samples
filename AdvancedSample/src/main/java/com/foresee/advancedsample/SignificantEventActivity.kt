@@ -4,7 +4,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
-import com.foresee.sdk.ForeSee
+import com.foresee.sdk.ForeSeeCxMeasure
 
 class SignificantEventActivity : AppCompatActivity() {
 
@@ -27,15 +27,15 @@ class SignificantEventActivity : AppCompatActivity() {
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
     }
 
-    fun onIncrementClicked(view: View) {
+    fun onIncrementClicked(@Suppress("UNUSED_PARAMETER") view: View) {
         customEvent++
 
         // Increment the significant event count so that we're eligible for an invite
         // based on the criteria in foresee_configuration.json
-        ForeSee.incrementSignificantEventCountWithKey("custom_event")
+        ForeSeeCxMeasure.incrementSignificantEventCountWithKey("custom_event")
 
         // Launch an invite as a demo
-        ForeSee.checkIfEligibleForSurvey()
+        ForeSeeCxMeasure.checkIfEligibleForSurvey()
     }
 
     override fun onSupportNavigateUp(): Boolean {

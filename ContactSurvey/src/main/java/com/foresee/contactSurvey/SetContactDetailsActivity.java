@@ -6,7 +6,7 @@ import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 
-import com.foresee.sdk.ForeSee;
+import com.foresee.sdk.ForeSeeCxMeasure;
 import com.foresee.sdk.common.configuration.ContactType;
 
 /**
@@ -49,9 +49,9 @@ public class SetContactDetailsActivity extends AppCompatActivity {
         super.onResume();
 
         // Setup UI components
-        contactInfoEmail.setText(ForeSee.getContactDetails(ContactType.Email));
-        contactInfoPhone.setText(ForeSee.getContactDetails(ContactType.PhoneNumber));
-        ContactType type = ForeSee.getPreferredContactType();
+        contactInfoEmail.setText(ForeSeeCxMeasure.getContactDetails(ContactType.Email));
+        contactInfoPhone.setText(ForeSeeCxMeasure.getContactDetails(ContactType.PhoneNumber));
+        ContactType type = ForeSeeCxMeasure.getPreferredContactType();
         if (type != null) {
             switch (type) {
                 case Email:
@@ -74,17 +74,17 @@ public class SetContactDetailsActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
 
-        ForeSee.setContactDetails(ContactType.Email,
+        ForeSeeCxMeasure.setContactDetails(ContactType.Email,
                 contactInfoEmail.getText().toString());
-        ForeSee.setContactDetails(ContactType.PhoneNumber,
+        ForeSeeCxMeasure.setContactDetails(ContactType.PhoneNumber,
                 contactInfoPhone.getText().toString());
 
         switch (preferredContactType.getCheckedRadioButtonId()) {
             case R.id.preferredContactTypeEmail:
-                ForeSee.setPreferredContactType(ContactType.Email);
+                ForeSeeCxMeasure.setPreferredContactType(ContactType.Email);
                 break;
             case R.id.preferredContactTypePhoneNumber:
-                ForeSee.setPreferredContactType(ContactType.PhoneNumber);
+                ForeSeeCxMeasure.setPreferredContactType(ContactType.PhoneNumber);
                 break;
         }
 

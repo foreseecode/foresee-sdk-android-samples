@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         ForeSee.resetState()
     }
 
-    fun onPageViewsClicked(view: View) {
+    fun onPageViewsClicked(@Suppress("UNUSED_PARAMETER") view: View) {
         ForeSee.resetState()
 
         PageActivity.pageId = 1
@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    fun onLaunchCountClicked(view: View) {
+    fun onLaunchCountClicked(@Suppress("UNUSED_PARAMETER") view: View) {
         ForeSee.resetState()
 
         // Invite will be triggered after 5 launch count
@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    fun onSignificantEventClicked(view: View) {
+    fun onSignificantEventClicked(@Suppress("UNUSED_PARAMETER") view: View) {
         ForeSee.resetState()
 
         // Invite will be triggered after 5 launch count
@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    fun onCustomInviteClicked(view: View) {
+    fun onCustomInviteClicked(@Suppress("UNUSED_PARAMETER") view: View) {
         val intent = Intent(this, ProductsActivity::class.java)
         startActivity(intent)
     }

@@ -14,13 +14,13 @@ public class CustomApplication extends Application {
 		ForeSee.setDebugLogEnabled(true);
 		ForeSee.start(this, new ForeSee.ForeSeeSDKConfigurationListener() {
 			@Override
-			public void onSDKReady() {
+			public void onSDKStarted() {
 				Log.d(TAG, "onSDKReady");
 			}
 
 			@Override
-			public void onFailedInitializingSDK() {
-				Log.d(TAG, "onFailedInitializingSDK");
+			public void onSDKFailedToStart(ForeSee.ForeSeeError error) {
+				Log.d(TAG, "onSDKFailedToStart. Reason: " + error.name());
 			}
 		});
 	}
