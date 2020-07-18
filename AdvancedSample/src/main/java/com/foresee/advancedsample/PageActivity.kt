@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
-import com.foresee.sdk.ForeSee
+import com.foresee.sdk.ForeSeeCxMeasure
 
 class PageActivity : AppCompatActivity() {
 
@@ -37,7 +37,7 @@ class PageActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
 
-        ForeSee.checkIfEligibleForSurvey()
+        ForeSeeCxMeasure.checkIfEligibleForSurvey()
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -45,7 +45,8 @@ class PageActivity : AppCompatActivity() {
         return true
     }
 
-    fun onNextClicked(view: View) {
+    @Suppress("UNUSED_VARIABLE")
+    fun onNextClicked(@Suppress("UNUSED_PARAMETER") view: View) {
         // Invite will be triggered after 3 page views
         val intent = Intent(this, PageActivity::class.java)
         startActivity(intent)

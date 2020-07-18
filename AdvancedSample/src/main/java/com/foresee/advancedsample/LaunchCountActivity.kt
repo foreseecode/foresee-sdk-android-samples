@@ -2,7 +2,7 @@ package com.foresee.advancedsample
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import com.foresee.sdk.ForeSee
+import com.foresee.sdk.ForeSeeCxMeasure
 
 class LaunchCountActivity : AppCompatActivity() {
 
@@ -18,7 +18,7 @@ class LaunchCountActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
 
-        ForeSee.checkIfEligibleForSurvey()
+        ForeSeeCxMeasure.checkIfEligibleForSurvey()
     }
 
     override fun onSupportNavigateUp(): Boolean {
