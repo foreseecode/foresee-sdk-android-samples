@@ -6,7 +6,7 @@
     android:layout_gravity="center_vertical"
     android:orientation="vertical"
     android:fillViewport="true">
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:orientation="vertical"
@@ -58,6 +58,13 @@
             android:textAlignment="center"
             android:gravity="fill_horizontal"
             android:text="@string/reset_button_desc" />
+
+        <Button
+            android:id="@+id/start SDK"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="startSDK"
+            android:text="Start SDK" />
 
     </LinearLayout>
 </ScrollView>

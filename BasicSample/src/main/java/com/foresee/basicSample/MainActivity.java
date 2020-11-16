@@ -26,4 +26,9 @@ public class MainActivity extends AppCompatActivity {
         // Reset the SDK
         ForeSee.resetState();
     }
+
+    public void startSDK(View view) {
+        // Reset the SDK
+        ForeSee.start(this.getApplication());
+    }
 }
