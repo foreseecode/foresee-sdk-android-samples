@@ -60,7 +60,7 @@
             android:text="@string/reset_button_desc" />
 
         <Button
-            android:id="@+id/start SDK"
+            android:id="@+id/startSDK"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="startSDK"

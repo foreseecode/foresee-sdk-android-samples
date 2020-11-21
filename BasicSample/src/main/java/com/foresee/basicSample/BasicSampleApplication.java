@@ -10,6 +10,6 @@ public class BasicSampleApplication extends Application {
 		super.onCreate();
 		// Notify ForeSee SDK of application start
 		ForeSee.setDebugLogEnabled(true);
-		ForeSee.start(this);
+//		ForeSee.start(this);
 	}
 }
