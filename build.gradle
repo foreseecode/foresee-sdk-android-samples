@@ -11,20 +11,20 @@ buildscript {
         }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.2.1'
+        classpath 'com.android.tools.build:gradle:3.5.4'
     classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version" }
 }
 
 
 allprojects {
     repositories {
+        google()
+        mavenLocal()
         maven {
             name = "GitHubPackages"
             url = uri("https://maven.pkg.github.com/foreseecode/public-packages")
         }
         jcenter()
-        google()
-        mavenLocal()
         flatDir {
             dirs '../libs'
         }

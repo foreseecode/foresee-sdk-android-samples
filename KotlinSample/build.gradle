@@ -3,7 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 android {
     compileSdkVersion 28
-    buildToolsVersion "29.0.0"
+    buildToolsVersion "29.0.2"
 
 
     defaultConfig {
@@ -28,11 +28,14 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation 'com.foresee.sdk:cxMeasure:6.0.3'
+    implementation 'com.foresee.sdk:cxmeasure:6.0.3-github-test-0.1'
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'com.android.support:appcompat-v7:28.0.0'
     implementation 'com.android.support:support-v4:28.0.0'
+
+    // This is not the latest available, but the latest that is compatible with the required appCompat library
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+
     testImplementation 'junit:junit:4.12'
 }
