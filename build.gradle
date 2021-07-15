@@ -5,10 +5,6 @@ buildscript {
     repositories {
         google()
         mavenCentral()
-        maven {
-            name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/foreseecode/public-packages")
-        }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.5.4'
@@ -23,6 +19,12 @@ allprojects {
         maven {
             name = "GitHubPackages"
             url = uri("https://maven.pkg.github.com/foreseecode/public-packages")
+            credentials {
+                // Please see the 'Getting Started' guide for information on how to create these
+                // https://developer.foresee.com/docs/tutorial
+                username = System.getenv("GITHUB_USERNAME")
+                password = System.getenv("GITHUB_PERSONAL_KEY")
+            }
         }
         jcenter()
         flatDir {
