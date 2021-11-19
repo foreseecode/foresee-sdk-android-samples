@@ -32,7 +32,6 @@ dependencies {
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'com.android.support:appcompat-v7:28.0.0'
-    implementation 'com.android.support:support-v4:28.0.0'
 
     // This is not the latest available, but the latest that is compatible with the required appCompat library
     implementation 'com.android.support.constraint:constraint-layout:2.0.4'
