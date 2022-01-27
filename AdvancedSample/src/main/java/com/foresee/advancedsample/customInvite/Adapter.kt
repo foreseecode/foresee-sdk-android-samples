@@ -1,6 +1,6 @@
 package com.foresee.advancedsample.customInvite
 
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,7 +9,7 @@ import android.widget.TextView
 import com.foresee.advancedsample.R
 
 
-class Adapter (private val cardList: List<CardData>): RecyclerView.Adapter<CardViewHolder>() {
+class Adapter (private val cardList: List<CardData>): androidx.recyclerview.widget.RecyclerView.Adapter<CardViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardViewHolder {
         return when (DataType.fromInt(viewType)) {
@@ -53,7 +53,7 @@ class Adapter (private val cardList: List<CardData>): RecyclerView.Adapter<CardV
     }
 }
 
-open class CardViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+open class CardViewHolder(itemView: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView)
 
 class ProductCardViewHolder(itemView: View) : CardViewHolder(itemView) {
 

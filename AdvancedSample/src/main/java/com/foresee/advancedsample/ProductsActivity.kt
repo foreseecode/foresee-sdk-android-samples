@@ -1,12 +1,12 @@
 package com.foresee.advancedsample
 
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import com.foresee.advancedsample.customInvite.CardData
 import com.foresee.advancedsample.customInvite.InviteCardData
 import com.foresee.advancedsample.customInvite.ProductCardData
-import android.support.v7.widget.GridLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import android.util.Log
 import android.view.View
 import com.foresee.advancedsample.customInvite.Adapter
@@ -21,14 +21,14 @@ class ProductsActivity : AppCompatActivity() {
         const val TAG: String = "ProductsActivity"
     }
 
-    lateinit var recyclerView: RecyclerView
+    lateinit var recyclerView: androidx.recyclerview.widget.RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_products)
 
         this.recyclerView = findViewById(R.id.recyclerView)
-        val gridLayoutManager = GridLayoutManager(this@ProductsActivity, 2)
+        val gridLayoutManager = androidx.recyclerview.widget.GridLayoutManager(this@ProductsActivity, 2)
         this.recyclerView.layoutManager = gridLayoutManager
 
         reloadCards(hasInvite = false)
