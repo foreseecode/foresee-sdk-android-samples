@@ -4,11 +4,11 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
-import android.support.design.widget.TextInputLayout;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.view.ContextThemeWrapper;
+import com.google.android.material.snackbar.Snackbar;
+import com.google.android.material.textfield.TextInputLayout;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.view.ContextThemeWrapper;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -87,7 +87,7 @@ public class CustomInvite2Activity extends AppCompatActivity {
                 });
 
                 View view = snackbarInvite.getView();
-                TextView tv = (TextView) view.findViewById(android.support.design.R.id.snackbar_text);
+                TextView tv = (TextView) view.findViewById(R.id.snackbar_text);
                 tv.setTextColor(Color.WHITE);
                 snackbarInvite.show();
             }
