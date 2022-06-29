@@ -1,0 +1,46 @@
+{
+	"customerId":"Ij6P1lfZHchO/co10lQ4BQ==",
+	"siteId": 50092,
+	"customerKey": 4453888,
+	"supportsReinvitation":true,
+	"replayStorage": {
+		"replayStorageLimitAsPercentageOfTotalSpace": 0.02
+	},
+	"perfLoggingEnabled":false,
+    "debugLoggingEnabled":true,
+	"whitelistedHosts":
+	[
+		"www.google.com",
+		"www.hotmail.com"
+	],
+
+    "cppParameters":
+    {
+        "MyCPP":0,
+        "AnotherCPP":"hello"
+    },
+
+	"replay": {
+		"recordingRate": 100,
+		"recordingQuality": "HIGH",
+		"minStoragePercent": 1,
+		"maxStorageUsage": 250,
+		"percentageOfSampleUsersToEnable": 100,
+		"enabled": true,
+		"timeout": 30,
+		"repeatDaysAfterDecline": 90
+	},
+
+	"notificationType": "CONTACT",
+	"measures": [
+		{
+			"surveyId": "app_test_1",
+			"launchCount": 1
+		}
+	],
+	"invite": {
+		"logo": "cat",
+		"header": "custom_header",
+		"baseColor": [3, 160, 175]
+	}
+}
