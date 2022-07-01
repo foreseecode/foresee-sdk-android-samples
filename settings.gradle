@@ -1,2 +1,1 @@
-include ':CustomInvite', ':ContactSurvey', ':LocalizationSample', ':FeedbackSample', ':KotlinSample', 'AdvancedSample', 'BasicSample'
-include ':ReplaySample'
+include ':CustomInvite', ':ContactSurvey', ':LocalizationSample', ':FeedbackSample', ':KotlinSample', 'AdvancedSample', 'BasicSample', 'ReplaySample'
