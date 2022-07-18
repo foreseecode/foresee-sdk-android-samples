@@ -10,7 +10,6 @@ public class ReplaySampleApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-
         // Regular startup
         Core.setDebugLogEnabled(true);
         Core.setQALogsEnabled(true);

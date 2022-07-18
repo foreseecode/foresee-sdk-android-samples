@@ -61,11 +61,6 @@
                 android:layout_gravity="center"
                 android:layout_margin="5dip"
                 android:text="New ToggleButton"/>
-
-
-
-
-
         </LinearLayout>
     </ScrollView>
 </FrameLayout>

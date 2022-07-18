@@ -32,7 +32,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void masking(View view) {
-        Intent intent = new Intent(getApplicationContext(), MaskingActivity.class);
-        startActivity(intent);
+        startActivity(new Intent(this, MaskingActivity.class));
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
     }
 }
