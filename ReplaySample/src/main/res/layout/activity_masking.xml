@@ -27,7 +27,7 @@
                 android:layout_marginTop="5dp"
                 android:textAlignment="center"
                 android:gravity="fill_horizontal"
-                android:text="@string/warning_recording_to_user" />
+                android:text="@string/instructions_for_replay" />
 
             <EditText
                 android:id="@+id/maskingText"
@@ -35,6 +35,12 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="Mask this text"/>
+
+            <TextView
+                android:id="@+id/maskingTextLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center" />
 
             <ToggleButton
                 android:id="@+id/toggleButtonText"
@@ -53,6 +59,12 @@
                 android:layout_marginTop="5dp"
                 android:layout_gravity="center_horizontal"
                 android:src="@drawable/testimage"/>
+
+            <TextView
+                android:id="@+id/maskingImageLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center" />
 
             <ToggleButton
                 android:id="@+id/toggleButtonImage"

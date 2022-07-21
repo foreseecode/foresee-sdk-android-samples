@@ -3,31 +3,13 @@
 	"siteId": 50092,
 	"customerKey": 4453888,
 	"supportsReinvitation":true,
-	"replayStorage": {
-		"replayStorageLimitAsPercentageOfTotalSpace": 0.02
-	},
-	"perfLoggingEnabled":false,
-    "debugLoggingEnabled":true,
-	"whitelistedHosts":
-	[
-		"www.google.com",
-		"www.hotmail.com"
-	],
-
-    "cppParameters":
-    {
-        "MyCPP":0,
-        "AnotherCPP":"hello"
-    },
 
 	"replay": {
 		"recordingRate": 100,
-		"recordingQuality": "HIGH",
 		"minStoragePercent": 1,
 		"maxStorageUsage": 250,
 		"percentageOfSampleUsersToEnable": 100,
 		"enabled": true,
-		"timeout": 30,
 		"repeatDaysAfterDecline": 90
 	},
 
