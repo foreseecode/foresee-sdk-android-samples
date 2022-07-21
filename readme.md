@@ -93,7 +93,8 @@ Once you have that key, you should set 2 environment variables on your machine: 
 
 Add the following code to your build.gradle file(s):
 
-```allprojects {
+```
+allprojects {
     repositories {
         maven {
             name = "GitHubPackages"
@@ -112,7 +113,8 @@ dependencies {
     implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.4'
     implementation 'androidx.appcompat:appcompat:1.0.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-}```
+}
+```
 
 
 
