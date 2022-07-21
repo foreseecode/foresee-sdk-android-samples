@@ -34,14 +34,15 @@ public class MaskingActivity extends AppCompatActivity {
         maskingTextLabel = (TextView) findViewById(R.id.maskingTextLabel);
         maskingImageLabel = (TextView) findViewById(R.id.maskingImageLabel);
 
+        maskEditTextToggleButton.setChecked(true);
+        maskImageToggleButton.setChecked(true);
+
         maskEditTextToggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (maskEditTextToggleButton.isChecked()) {
-                    maskingTextLabel.setText("Text field masking: OFF");
+                if (!maskEditTextToggleButton.isChecked()) {
                     Replay.unmaskView(editText);
                 } else {
-                    maskingTextLabel.setText("Text field masking: ON");
                     Replay.maskView(editText);
                 }
             }
@@ -52,11 +53,9 @@ public class MaskingActivity extends AppCompatActivity {
         maskImageToggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean imageToggleChecked) {
-                if (imageToggleChecked) {
-                    maskingImageLabel.setText("ImageView masking: OFF");
+                if (!imageToggleChecked) {
                     Replay.unmaskView(imageView);
                 } else {
-                    maskingImageLabel.setText("ImageView masking: ON");
                     Replay.maskView(imageView);
                 }
             }

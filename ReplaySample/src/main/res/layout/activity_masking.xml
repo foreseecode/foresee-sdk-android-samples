@@ -12,12 +12,11 @@
         android:layout_gravity="center"
         >
 
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingBottom="100dp"
-            >
+            android:paddingBottom="100dp">
 
             <TextView
                 android:layout_width="match_parent"
@@ -36,19 +35,25 @@
                 android:layout_gravity="center"
                 android:text="Mask this text"/>
 
-            <TextView
-                android:id="@+id/maskingTextLabel"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center" />
+                android:orientation="horizontal"
+                android:layout_alignParentBottom="true">
 
-            <ToggleButton
-                android:id="@+id/toggleButtonText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="5dip"
-                android:text="New ToggleButton"/>
+                <TextView
+                    android:id="@+id/maskingTextLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:text="Text field masking:"/>
+
+                <ToggleButton
+                    android:id="@+id/toggleButtonText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="New ToggleButton" />
+            </LinearLayout>
 
             <ImageView
                 android:id="@+id/maskingImage"
@@ -60,11 +65,19 @@
                 android:layout_gravity="center_horizontal"
                 android:src="@drawable/testimage"/>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_alignParentBottom="true">
+
             <TextView
                 android:id="@+id/maskingImageLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center" />
+                android:layout_gravity="center"
+                android:layout_marginLeft="30dp"
+                android:text="ImageView masking:"/>
 
             <ToggleButton
                 android:id="@+id/toggleButtonImage"
@@ -73,6 +86,8 @@
                 android:layout_gravity="center"
                 android:layout_margin="5dip"
                 android:text="New ToggleButton"/>
+
+        </LinearLayout>
         </LinearLayout>
     </ScrollView>
 </FrameLayout>
