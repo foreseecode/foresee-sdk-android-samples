@@ -16,6 +16,8 @@ Then import the project to Android Studio as described below...
 
 * Android Studio will automatically import the project
 
+To download the SDK for the samples, you'll need to be set up to access GitHub Packages (see [**Authenticating with the package repository**](#authenticating-with-the-package-repository))
+
 The project contains the following examples, all of which can be installed using a similar set of steps:
 
 * Select the module of your choice (see below for examples)
@@ -89,10 +91,9 @@ To generate the personal key follow these steps;
 8) Select the scopes, or permissions, you'd like to grant this token. To use your token to access repositories from the command line, select repo. (The token will need the read:packages permission)
 9) Click Generate token.
 
-Once you have that key, you should set 2 environment variables on your machine: GITHUB_USERNAME for your username, and GITHUB_PERSONAL_KEY for your personal key - these will be used in the next step
+Once you have that key, you should set 2 environment variables on your machine: `GITHUB_USERNAME` for your username, and `GITHUB_PERSONAL_KEY` for your personal key - these will be used in the next step
 
-Add the following code to your build.gradle file(s):
-
+Those environment variables will be picked up by the following lines in the sample project's [build.gradle](./build.gradle) file
 ```
 allprojects {
     repositories {
@@ -105,14 +106,6 @@ allprojects {
             }
         }
     }
-}
-
-dependencies {
-    implementation 'com.foresee.sdk:cxmeasure:+'
-    implementation 'com.foresee.sdk:feedback:+'  // Add this line if you wish to use the Feedback Survey feature
-    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.4'
-    implementation 'androidx.appcompat:appcompat:1.0.0'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
 }
 ```
 
