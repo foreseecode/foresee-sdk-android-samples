@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="viewport" content="initial-scale=1, user-scalable=no"/>
+    <script type="text/javascript">
+    function addElement() {
+        var mutationZone = document.getElementById("mutationZone");
+        var div = document.createElement('div');
+        var textInput = document.createElement("input");
+        textInput.type = "text";
+        textInput.class = "textinput";
+        div.appendChild(textInput);
+        mutationZone.appendChild(div);
+    }
+
+    function removeElement() {
+        var mutationZone = document.getElementById("mutationZone");
+        var lastChild = mutationZone.lastChild;
+        if(lastChild!=undefined && lastChild.id!='mutationZone') {
+            lastChild.parentNode.removeChild(lastChild);
+        }
+    }
+
+    </script>
+
+    <style type="text/css">
+
+        body {
+            font-family:helvetica;
+            font-size: 0.8em;
+        }
+
+        #output td {
+            padding: 5px;
+        }
+        input {
+            height:25px;
+            margin-top:2px;
+            margin-bottom:2px;
+        }
+        .textinput, select, .secret, .fs-masked {
+            background-color:#FAF2AD;
+            width:100%;
+        }
+        input[type=button] {
+            height:30px;
+            width:100%;
+        }
+        input[type=text] {
+            width:100%;
+        }
+        textarea {
+            background-color:#FAF2AD;
+            width:100%;
+        }
+        div {
+            width:100%;
+        }
+
+        #viewport {
+            width:90%;
+            margin-left:auto;
+            margin-right:auto;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<hr/>
+<div id="viewport">
+    <h3>Default masking</h3>
+
+    <div>
+        <div><input class="textinput" type="text" placeholder="text field"/></div>
+        <div><input class="textinput" type="search" placeholder="search field"/></div>
+        <div><input class="textinput" type="number" placeholder="0"/></div>
+        <div><input class="textinput" type="email" placeholder="email field"/></div>
+        <div><input class="textinput" type="url" placeholder="url field"/></div>
+        <div><input class="textinput" type="color" placeholder="color field"/></div>
+        <div><input class="textinput" type="tel" placeholder="1231231234"/></div>
+        <div>
+            <h4>Select:</h4>
+        <select>
+            <option value="volvo">Volvo</option>
+            <option value="saab">Saab</option>
+            <option value="mercedes">Mercedes</option>
+            <option value="audi">Audi</option>
+        </select></div>
+        <div>
+            <textarea rows="5" cols="20" placeholder="text area"></textarea>
+        </div>
+        <hr/>
+    </div>
+    <div>
+        <h3>Unmasking</h3>
+        <input type="text" class="FSR" value="not masked"/>
+        <input type="text" class="foo FSR" value="not masked"/>
+        <input type="text" class="fs-unmasked" value="not masked"/>
+        <hr/>
+    </div>
+    <div>
+        <h3>Inline masking</h3>
+
+        <div>
+            Guilty-Looks lift inner ladle cordage saturated adder shirt dissidence firmer bag
+            florist, <br/>
+            any ladle gull orphan aster <span class="secret">murder</span> toe letter <span
+                class="fs-masked">gore entity florist oil buyer shelf</span>.
+        </div>
+        <hr/>
+    </div>
+
+
+    <div>
+        <h3>DOM mutation tests</h3>
+
+        <div>
+            <input onclick="addElement();" type="button" value="Add element"/>
+        </div>
+        <div>
+            <input onclick="removeElement();" type="button" value="Remove element"/>
+        </div>
+        <hr/>
+        <div id='mutationZone'>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
+
