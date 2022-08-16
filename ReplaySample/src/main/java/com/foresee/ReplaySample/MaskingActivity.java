@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
-import com.verint.xm.sdk.Replay;
+import com.verint.xm.sdk.DBA;
 
 public class MaskingActivity extends AppCompatActivity {
 
@@ -41,22 +41,22 @@ public class MaskingActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (!maskEditTextToggleButton.isChecked()) {
-                    Replay.unmaskView(editText);
+                    DBA.unmaskView(editText);
                 } else {
-                    Replay.maskView(editText);
+                    DBA.maskView(editText);
                 }
             }
         });
 
-       Replay.maskView(imageView);
+        DBA.maskView(imageView);
 
         maskImageToggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean imageToggleChecked) {
                 if (!imageToggleChecked) {
-                    Replay.unmaskView(imageView);
+                    DBA.unmaskView(imageView);
                 } else {
-                    Replay.maskView(imageView);
+                    DBA.maskView(imageView);
                 }
             }
         });

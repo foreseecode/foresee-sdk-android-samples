@@ -4,12 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
-import com.verint.xm.sdk.Replay;
-import com.verint.xm.sdk.common.Logging;
-import com.verint.xm.sdk.common.constants.LogTags;
-
+import com.verint.xm.sdk.DBA;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,15 +18,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void startRecording(View view) {
-        if (Replay.isRecording()) {
-            Logging.alwaysLog(Logging.LogLevel.INFO, LogTags.REPLAY_SESSION, "Recording is already in progress");
+        if (DBA.isRecording()) {
+            Log.i("DBA", "Recording is already in progress");
         } else {
-            Replay.requestBeginRecording();
+            DBA.requestBeginRecording();
         }
     }
 
     public void stopRecording(View view) {
-        Replay.stopRecording();
+        DBA.stopRecording();
     }
 
     public void masking(View view) {
