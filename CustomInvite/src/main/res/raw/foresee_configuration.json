@@ -1,5 +1,5 @@
 {
-	"clientId":"FSRTESTINGCODECID12345==",
+	"customerId":"FSRTESTINGCODECID12345==",
 	"notificationType":"CONTACT",
 	"measures":
 	[
@@ -10,6 +10,11 @@
 			}
 		}
 	],
+	"invite": {
+		"logo": "invite_logo_qa",
+		"header": "custom_header",
+		"baseColor": [255, 159, 234]
+	},
 	"cppParameters":
 	{
 		"sample_app":"Custom Invite 2.0"
