@@ -1,5 +1,6 @@
 {
 	"clientId":"9NNs9GIBQIVdk1LpDlJpAQ==",
+	"notificationType": "IN_SESSION",
 	"repeatDaysAfterDecline":60,
 	"repeatDaysAfterComplete":120,
 	"measures":
