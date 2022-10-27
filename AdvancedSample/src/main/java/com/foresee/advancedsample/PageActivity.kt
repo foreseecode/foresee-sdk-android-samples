@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
-import com.foresee.sdk.ForeSeeCxMeasure
+import com.verint.xm.sdk.Predictive
 
 class PageActivity : AppCompatActivity() {
 
@@ -37,7 +37,7 @@ class PageActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
 
-        ForeSeeCxMeasure.checkIfEligibleForSurvey()
+        Predictive.checkIfEligibleForSurvey()
     }
 
     override fun onSupportNavigateUp(): Boolean {

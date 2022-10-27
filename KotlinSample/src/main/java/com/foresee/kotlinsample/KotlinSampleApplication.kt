@@ -1,7 +1,7 @@
 package com.foresee.kotlinsample
 
 import android.app.Application
-import com.foresee.sdk.ForeSee
+import com.verint.xm.sdk.Core
 
 class KotlinSampleApplication : Application() {
 
@@ -9,7 +9,7 @@ class KotlinSampleApplication : Application() {
         super.onCreate()
 
         // Notify ForeSee SDK of application start
-        ForeSee.setDebugLogEnabled(true)
-        ForeSee.start(this)
+        Core.setDebugLogEnabled(true)
+        Core.start(this)
     }
 }

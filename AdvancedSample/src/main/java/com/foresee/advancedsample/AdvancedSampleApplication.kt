@@ -3,7 +3,7 @@ package com.foresee.advancedsample
 import android.app.Activity
 import android.app.Application
 import android.content.Intent
-import com.foresee.sdk.ForeSee
+import com.verint.xm.sdk.Core
 
 class AdvancedSampleApplication : Application() {
 
@@ -11,8 +11,8 @@ class AdvancedSampleApplication : Application() {
         super.onCreate()
 
         // Notify ForeSee SDK of application start
-        ForeSee.setDebugLogEnabled(true)
-        ForeSee.start(this)
+        Core.setDebugLogEnabled(true)
+        Core.start(this)
     }
 }
 

@@ -4,9 +4,8 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 
-import com.foresee.sdk.ForeSee;
-import com.foresee.sdk.ForeSeeCxMeasure;
-
+import com.verint.xm.sdk.Core;
+import com.verint.xm.sdk.Predictive;
 
 public class MainActivity extends AppCompatActivity {
 	
@@ -22,14 +21,14 @@ public class MainActivity extends AppCompatActivity {
     {
         // Increment the significant event count so that we're eligible for an invite
         // based on the criteria in foresee_configuration.json
-        ForeSeeCxMeasure.incrementSignificantEventCountWithKey("instant_invite");
+        Predictive.incrementSignificantEventCountWithKey("instant_invite");
 
         // Launch an invite as a demo
-        ForeSeeCxMeasure.checkIfEligibleForSurvey();
+        Predictive.checkIfEligibleForSurvey();
     }
 
     public void resetState(View view) {
         // Reset the state of the ForeSee SDK
-        ForeSee.resetState();
+        Core.resetState();
     }
 }
