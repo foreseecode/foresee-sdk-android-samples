@@ -10,11 +10,12 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ProductsActivity"></activity>
+        <activity android:name=".ProductsActivity" />
         <activity android:name=".SignificantEventActivity" />
         <activity android:name=".LaunchCountActivity" />
         <activity android:name=".PageActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
