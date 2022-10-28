@@ -20,8 +20,7 @@ android {
 
 dependencies {
 
-    implementation fileTree(dir: '../libs', include: ['*.aar'])
-    implementation 'com.google.code.gson:gson:2.2.4'
+    implementation 'com.verint.xm.sdk.predictive:7.0.0'
 
     implementation 'androidx.appcompat:appcompat:1.0.0'
     implementation 'com.google.android.material:material:1.0.0'
