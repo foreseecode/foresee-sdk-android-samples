@@ -15,7 +15,6 @@ buildscript {
 allprojects {
     repositories {
         google()
-        mavenLocal()
         maven {
             name = "GitHubPackages"
             url = uri("https://maven.pkg.github.com/foreseecode/public-packages")
@@ -26,10 +25,11 @@ allprojects {
                 password = System.getenv("GITHUB_PERSONAL_KEY")
             }
         }
+//        mavenLocal()
         jcenter()
-        flatDir {
-            dirs '../libs'
-        }
+//        flatDir {
+//            dirs '../libs'
+//        }
     }
 
     println("");

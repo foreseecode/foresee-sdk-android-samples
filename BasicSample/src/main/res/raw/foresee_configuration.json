@@ -1,6 +1,7 @@
 {
 	"clientId":"FSRTESTINGCODECID12345==",
-	"notificationType": "IN_SESSION",
+	"notificationType": "EXIT_SURVEY",
+	"localNotificationDelay": 10,
 	"measures":
 	[
 		{

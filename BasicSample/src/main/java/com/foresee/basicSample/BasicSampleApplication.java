@@ -11,5 +11,6 @@ public class BasicSampleApplication extends Application {
 		// Notify ForeSee SDK of application start
 		ForeSee.setDebugLogEnabled(true);
 		ForeSee.start(this);
+		ForeSee.setSkipPoolingCheck(true);
 	}
 }
