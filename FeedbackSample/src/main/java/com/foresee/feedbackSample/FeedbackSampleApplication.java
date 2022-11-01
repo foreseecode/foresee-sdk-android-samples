@@ -1,7 +1,8 @@
 package com.foresee.feedbackSample;
 
-import com.foresee.sdk.ForeSee;
 import android.app.Application;
+
+import com.verint.xm.sdk.Core;
 
 public class FeedbackSampleApplication extends Application {
 	@Override
@@ -9,6 +10,6 @@ public class FeedbackSampleApplication extends Application {
 		super.onCreate();
 
 		// Start the ForeSee SDK
-		ForeSee.start(this);
+		Core.start(this);
 	}
 }

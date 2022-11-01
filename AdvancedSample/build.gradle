@@ -1,11 +1,13 @@
 //noinspection GradleCompatible
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
+plugins {
+    id('com.android.application')
+    id("kotlin-android")
+    id('kotlin-android-extensions')
+}
 android {
-    compileSdkVersion 33
-    buildToolsVersion "29.0.0"
 
+    compileSdkVersion 33
+    buildToolsVersion "30.0.3"
 
     defaultConfig {
         applicationId "com.foresee.advancedsample"
@@ -29,7 +31,7 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation 'com.foresee.sdk:cxmeasure:6.0.9'
+    implementation 'com.verint.xm.sdk:predictive:7.0.0'
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.0.0'

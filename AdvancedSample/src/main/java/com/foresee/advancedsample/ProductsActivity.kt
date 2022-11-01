@@ -10,9 +10,9 @@ import androidx.recyclerview.widget.GridLayoutManager
 import android.util.Log
 import android.view.View
 import com.foresee.advancedsample.customInvite.Adapter
-import com.foresee.sdk.ForeSeeCxMeasure
-import com.foresee.sdk.common.configuration.EligibleMeasureConfigurations
-import com.foresee.sdk.cxMeasure.tracker.listeners.CustomInSessionInviteListener
+import com.verint.xm.sdk.Predictive
+import com.verint.xm.sdk.common.configuration.EligibleMeasureConfigurations
+import com.verint.xm.sdk.predictive.tracker.listeners.CustomInSessionInviteListener
 
 
 class ProductsActivity : AppCompatActivity() {
@@ -43,13 +43,13 @@ class ProductsActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
 
-        ForeSeeCxMeasure.checkIfEligibleForSurvey()
+        Predictive.checkIfEligibleForSurvey()
     }
 
     override fun onDestroy() {
         super.onDestroy()
 
-        ForeSeeCxMeasure.setInviteListener(null)
+        Predictive.setInviteListener(null)
     }
 
 
@@ -59,7 +59,7 @@ class ProductsActivity : AppCompatActivity() {
     }
 
     private fun setupCustomInvite() {
-        ForeSeeCxMeasure.setInviteListener(object : CustomInSessionInviteListener {
+        Predictive.setInviteListener(object : CustomInSessionInviteListener {
             override fun showInvite(eligibleMeasureConfigurations: EligibleMeasureConfigurations?) {
                 Log.d(TAG, "showInvite")
                 reloadCards(hasInvite = true)
@@ -129,7 +129,7 @@ class ProductsActivity : AppCompatActivity() {
     }
 
     fun onInviteAcceptedClicked(@Suppress("UNUSED_PARAMETER") view: View) {
-        ForeSeeCxMeasure.customInviteAccepted()
+        Predictive.customInviteAccepted()
 
     }
 }

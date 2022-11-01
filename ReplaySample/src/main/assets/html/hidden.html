@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Show/hide</title>
+    <meta name="viewport" content="initial-scale=1, user-scalable=no"/>
+    <script src="js/jquery-2.0.3.js" type="text/javascript"></script>
+    <script>
+
+        var toggleCssVisibility = function() {
+            if($('#css-display').css("display")=='none') {
+                $('#css-display').css("display","inline");
+            }
+            else {
+                $('#css-display').css("display","none");
+            }
+        };
+        function addElement() {
+            var mutationZone = document.getElementById("mutationZone");
+            var div = document.createElement('div');
+            var textInput = document.createElement("input");
+            textInput.type = "text";
+            div.appendChild(textInput);
+            mutationZone.appendChild(div);
+	    }
+
+	    function removeElement() {
+            var mutationZone = document.getElementById("mutationZone");
+            var lastChild = mutationZone.lastChild;
+            if(lastChild!=undefined && lastChild.id!='mutationZone') {
+           		lastChild.parentNode.removeChild(lastChild);
+		}
+	   }
+	</script>
+    <style>
+        body {
+            font-font-family:helvetica;
+            font-size: 0.8em;
+        }
+
+        div.center {
+            width:90%;
+            margin-left:auto;
+            margin-right:auto;
+        }
+        .section {
+            margin-top:15px;
+            margin-bottom:15px;
+        }
+        .section-heading {
+            font-size: 150%;
+        }
+
+        input[type='text'] {
+            background-color:#FAF2AD;
+            height:25px;
+            width:50%;
+        }
+        .input-section {
+            height:30px;
+        }
+
+        input[type=button] {
+            margin-top:5px;
+            margin-bottom:5px;
+            height:40px;
+        }
+        input[type=button].halfish {
+            width:49%;
+            margin-left:0px;
+            margin-right:0px;
+        }
+
+        input[type=button].full {
+            width:98%;
+            margin-left:0px;
+            margin-right:0px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="center">
+    <div class="section">
+        <div id="css-visibility" class="section-heading">CSS visibility</div>
+        <div><input id="css-visible" type="text" style="visibility:visible" value="visibility:visible"/></div>
+        <div><input id="css-hidden" type="text" style="visibility:hidden" value="visibility:hidden"/></div>
+        <div><input type="text" style="visibility:collapse" value="visiblity:collapse"/></div>
+        <div><input id="css-display" type="text" style="display:none" value="display:none"/></div>
+        <div><input type="button" class="full" value="Toggle visiblity" onclick="toggleCssVisibility();"/></div>
+    </div>
+    <div class="section">
+        <div class="section-heading">JQuery</div>
+        <div >
+            <div>jQuery.show (no animation)</div>
+            <div>
+                <input class="halfish" type="button" value="show()" onclick="$('#jquery_show_input').show();"/>
+                <input class="halfish" type="button" value="hide()" onclick="$('#jquery_show_input').hide();"/>
+            </div>
+            <hr/>
+            <div class="input-section"><input id="jquery_show_input" type="text" value="secret" style="display:none"/></div>
+        </div>
+        <hr/>
+        <div >
+            <div>jQuery.show (with animation)</div>
+            <div>
+                <input  class="halfish" type="button" value="show()" onclick="$('#jquery_show_input_anim').show(1000);"/>
+                <input  class="halfish" type="button" value="hide()" onclick="$('#jquery_show_input_anim').hide(1000);"/>
+            </div>
+            <hr/>
+            <div class="input-section"><input id="jquery_show_input_anim" type="text" value="secret" style="display:none"/></div>
+        </div>
+        <hr/>
+        <div>
+            <div>jQuery.toggle (no animation)</div>
+            <div>
+                <input type="button" class="full" value="toggle()" onclick="$('#jquery_input').toggle();"/>
+            </div>
+            <div class="input-section"><input id="jquery_input" type="text" value="secret"/></div>
+        </div>
+        <hr/>
+        <div>
+            <div>jQuery.toggle (with animation)</div>
+            <div>
+                <input type="button" class="full" value="toggle()" onclick="$('.jquery_input_anim').toggle(1000);"/>
+            </div>
+            <div class="input-section"><input class="jquery_input_anim" type="text" value="animated input 1"/></div>
+            <div class="input-section"><input class="jquery_input_anim" type="text" style="display:none" value="animated input 2"/></div>
+        </div>
+        <div>
+            <div>jQuery.toggle (with mutation) <input type="button" class="full" value="toggle()" onclick="$('#mutationZone > div').toggle(1000);"/></div>
+            <div>
+                <input class="full" onclick="addElement();" type="button" value="Add element"/>
+            </div>
+            <div>
+                <input class="full" onclick="removeElement();" type="button" value="Remove element"/>
+            </div>
+            <div id="mutationZone">
+
+            </div>
+        </div>
+</div>
+
+</div>
+</body>
+</html>
+
+

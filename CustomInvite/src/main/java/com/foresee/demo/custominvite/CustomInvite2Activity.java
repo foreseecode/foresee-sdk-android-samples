@@ -6,6 +6,12 @@ import android.graphics.Color;
 import android.os.Bundle;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
+import com.verint.xm.sdk.Core;
+import com.verint.xm.sdk.Predictive;
+import com.verint.xm.sdk.common.configuration.ContactType;
+import com.verint.xm.sdk.common.configuration.EligibleMeasureConfigurations;
+import com.verint.xm.sdk.predictive.tracker.listeners.CustomContactInviteListener;
+
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.view.ContextThemeWrapper;
@@ -15,11 +21,6 @@ import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.foresee.sdk.ForeSee;
-import com.foresee.sdk.ForeSeeCxMeasure;
-import com.foresee.sdk.common.configuration.ContactType;
-import com.foresee.sdk.common.configuration.EligibleMeasureConfigurations;
-import com.foresee.sdk.cxMeasure.tracker.listeners.CustomContactInviteListener;
 
 import java.util.Locale;
 import java.util.Timer;
@@ -49,7 +50,7 @@ public class CustomInvite2Activity extends AppCompatActivity {
 
     public void launchCustomInvite2(View view) {
 
-        ForeSeeCxMeasure.setInviteListener(new CustomContactInviteListener() {
+        Predictive.setInviteListener(new CustomContactInviteListener() {
             @Override
             public void showInvite(EligibleMeasureConfigurations eligibleMeasureConfigurations) {
                 Log.d(TAG, "showInvite");
@@ -61,7 +62,7 @@ public class CustomInvite2Activity extends AppCompatActivity {
                     public void onClick(View v) {
                         showProgress();
 
-                        ForeSeeCxMeasure.customInviteAccepted();
+                        Predictive.customInviteAccepted();
                     }
                 });
 
@@ -81,7 +82,7 @@ public class CustomInvite2Activity extends AppCompatActivity {
                                 || event == Snackbar.Callback.DISMISS_EVENT_SWIPE) {
 
                             // Call the iContactInviteResultListener.contactInviteDeclined() method whenever the custom invite is dismissed
-                            ForeSeeCxMeasure.customInviteDeclined();
+                            Predictive.customInviteDeclined();
                         }
                     }
                 });
@@ -114,12 +115,12 @@ public class CustomInvite2Activity extends AppCompatActivity {
             public void onInviteCompleteWithAccept(EligibleMeasureConfigurations eligibleMeasureConfigurations) {
                 Log.d(TAG, "onCompleteWithAccept");
                 // By this point the SDK is finished with the invite process, this is for information only
-                Toast.makeText(getApplicationContext(), "A survey will be sent to " + ForeSeeCxMeasure.getContactDetails(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "A survey will be sent to " + Predictive.getContactDetails(Predictive.getPreferredContactType()), Toast.LENGTH_SHORT).show();
 
                 hideProgress();
 
                 //Reset
-                ForeSee.resetState();
+                Core.resetState();
             }
 
             @Override
@@ -166,10 +167,10 @@ public class CustomInvite2Activity extends AppCompatActivity {
 
         // Increment the significant event count so that we're eligible for an invite
         // based on the criteria in foresee_configuration.json
-        ForeSeeCxMeasure.incrementSignificantEventCountWithKey("instant_invite");
+        Predictive.incrementSignificantEventCountWithKey("instant_invite");
 
         // Launch an invite as a demo
-        ForeSeeCxMeasure.checkIfEligibleForSurvey();
+        Predictive.checkIfEligibleForSurvey();
     }
 
     @Override
@@ -259,7 +260,7 @@ public class CustomInvite2Activity extends AppCompatActivity {
         messageView.setText(messageText);
 
         // Setup UI components
-        ContactType type = ForeSeeCxMeasure.getPreferredContactType();
+        ContactType type = Predictive.getPreferredContactType();
         if (type != null) {
             switch (type) {
                 case Email:
@@ -271,7 +272,7 @@ public class CustomInvite2Activity extends AppCompatActivity {
                 default:
                     break;
             }
-            contactInput.setText(ForeSeeCxMeasure.getContactDetails(type));
+            contactInput.setText(Predictive.getContactDetails(type));
         }
 
         if (errorMessage != null) {
@@ -287,17 +288,17 @@ public class CustomInvite2Activity extends AppCompatActivity {
                 switch (preferredContactType.getCheckedRadioButtonId()) {
                     case R.id.preferredContactTypeEmail:
                         type = ContactType.Email;
-                        ForeSeeCxMeasure.setPreferredContactType(ContactType.Email);
+                        Predictive.setPreferredContactType(ContactType.Email);
                         break;
                     case R.id.preferredContactTypePhoneNumber:
                         type = ContactType.PhoneNumber;
-                        ForeSeeCxMeasure.setPreferredContactType(ContactType.PhoneNumber);
+                        Predictive.setPreferredContactType(ContactType.PhoneNumber);
                         break;
                 }
-                ForeSeeCxMeasure.setPreferredContactType(type);
-                ForeSeeCxMeasure.setContactDetails(type, contactInput.getText().toString());
+                Predictive.setPreferredContactType(type);
+                Predictive.setContactDetails(type, contactInput.getText().toString());
                 showProgress();
-                ForeSeeCxMeasure.customInviteAccepted();
+                Predictive.customInviteAccepted();
 
             }
         });
@@ -313,7 +314,7 @@ public class CustomInvite2Activity extends AppCompatActivity {
             @Override
             public void onCancel(DialogInterface dialog) {
                 showProgress();
-                ForeSeeCxMeasure.customInviteDeclined();
+                Predictive.customInviteDeclined();
             }
         });
 
@@ -325,7 +326,7 @@ public class CustomInvite2Activity extends AppCompatActivity {
     {
         // Reset the state of the ForeSee SDK. So that we may be eligible for a new invite
         // based on the criteria in foresee_configuration.json
-        ForeSee.resetState();
+        Core.resetState();
     }
 
 }

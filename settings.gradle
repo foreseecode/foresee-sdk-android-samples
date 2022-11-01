@@ -1,1 +1,16 @@
-include ':CustomInvite', ':ContactSurvey', ':LocalizationSample', ':FeedbackSample', ':KotlinSample', 'AdvancedSample', 'BasicSample'
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
+    dependencyResolutionManagement {
+        repositories {
+            google()
+            mavenCentral()
+        }
+    }
+}
+
+include ':CustomInvite', ':ContactSurvey', ':LocalizationSample', ':FeedbackSample', ':KotlinSample', 'AdvancedSample', 'BasicSample', 'ReplaySample'
+
