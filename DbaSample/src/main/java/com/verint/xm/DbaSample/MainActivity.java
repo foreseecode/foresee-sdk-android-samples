@@ -1,4 +1,4 @@
-package com.foresee.ReplaySample;
+package com.verint.xm.DbaSample;
 
 import androidx.appcompat.app.AppCompatActivity;
 

@@ -8,7 +8,7 @@ android {
 
 
     defaultConfig {
-        applicationId "com.foresee.ReplaySample"
+        applicationId "com.verint.xm.DbaSample"
         minSdkVersion 21
         targetSdkVersion 30
         versionCode 1

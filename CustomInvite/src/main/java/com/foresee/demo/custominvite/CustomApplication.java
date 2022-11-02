@@ -12,7 +12,6 @@ public class CustomApplication extends Application {
 		super.onCreate();
 		// Notify ForeSee SDK of application start
 		Core.setDebugLogEnabled(true);
-		Core.start(this);
 		Core.setSDKListener(new Core.VerintSDKListener() {
 
 			@Override
@@ -30,5 +29,6 @@ public class CustomApplication extends Application {
 				Log.d(TAG, "onSDKFailedToStart. Reason: " + error.name());
 			}
 		});
+		Core.start(this);
 	}
 }

@@ -1,4 +1,4 @@
-package com.foresee.ReplaySample;
+package com.verint.xm.DbaSample;
 
 import android.app.Application;
 
@@ -7,7 +7,7 @@ import com.verint.xm.sdk.DBA;
 import com.verint.xm.sdk.internal.CoreProxy;
 
 
-public class ReplaySampleApplication extends Application {
+public class DbaSampleApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();

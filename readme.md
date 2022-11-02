@@ -69,9 +69,9 @@ This example shows how to use localization in the SDK. It's possible not only to
 
 ---
 
-## Replay Sample
+## DBA Sample
 
-This example shows how to use Replay module. The recording is started using the request recording API provided in the SDK. Also shown is the mask view API provided by the SDK. This mask view is demonstrated on an imageview.
+This example shows how to use DBA module. The recording is started using the request recording API provided in the SDK. Also shown is the mask view API provided by the SDK. This mask view is demonstrated on an imageview.
 
 ---
 

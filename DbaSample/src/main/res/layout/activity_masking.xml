@@ -26,7 +26,7 @@
                 android:layout_marginTop="5dp"
                 android:textAlignment="center"
                 android:gravity="fill_horizontal"
-                android:text="@string/instructions_for_replay" />
+                android:text="@string/instructions_for_dba" />
 
             <EditText
                 android:id="@+id/maskingText"

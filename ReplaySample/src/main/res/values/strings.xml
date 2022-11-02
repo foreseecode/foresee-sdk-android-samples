@@ -1,9 +1,0 @@
-<resources>
-    <string name="app_name">ReplaySample</string>
-    <string name="hello">This sample demonstrates the Contact invite type, which delivers survey links via email or SMS. Use the "Set Contact Details" page to pre-set contact details for the invite. The SDK transitions to an idle state after an invite is displayed. Use "Reset State" to test again. (This will also delete pre-set contact details.). Follow the instructions below to check eligibility. Internet connection is required.</string>
-    <string name="instructions_for_replay">Input fields are masked automatically by the SDK, but you have full control of the masking and unmasking of any views. You can use the toggles below to set the masking status for each view. \n\n In this app, debug masking is enabled so that you can verify the position of the masks you set using the red overlays. These overlays are not present when debug masking is not enabled </string>
-    <string name="reset_button_desc">Once the invite is shown, the SDK drops into an idle state until the repeat days have elapsed. Click here to reset the state of the SDK.</string>
-    <string name="start_recording">Start Recording</string>
-    <string name="stop_recording">Stop Recording</string>
-    <string name="masking">Masking</string>
-</resources>
