@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 33
+    buildToolsVersion "30.0.3"
 
     useLibrary 'org.apache.http.legacy'
 
@@ -21,7 +22,8 @@ android {
 }
 
 dependencies {
-    implementation 'com.foresee.sdk:cxmeasure:6.0.9'
+
+    implementation 'com.verint.xm.sdk:predictive:7.0.0'
     
     implementation 'androidx.appcompat:appcompat:1.0.0'
 

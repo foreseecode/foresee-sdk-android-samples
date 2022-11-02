@@ -10,11 +10,12 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Toast;
-import com.foresee.sdk.ForeSee;
-import com.foresee.sdk.ForeSeeCxMeasure;
-import com.foresee.sdk.common.configuration.ContactType;
-import com.foresee.sdk.common.configuration.EligibleMeasureConfigurations;
-import com.foresee.sdk.cxMeasure.tracker.listeners.CustomContactInviteListener;
+
+import com.verint.xm.sdk.Core;
+import com.verint.xm.sdk.Predictive;
+import com.verint.xm.sdk.common.configuration.ContactType;
+import com.verint.xm.sdk.common.configuration.EligibleMeasureConfigurations;
+import com.verint.xm.sdk.predictive.tracker.listeners.CustomContactInviteListener;
 
 public class CustomInvite1Activity extends AppCompatActivity {
 
@@ -37,7 +38,7 @@ public class CustomInvite1Activity extends AppCompatActivity {
         // Back button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        ForeSeeCxMeasure.setInviteListener(new CustomContactInviteListener() {
+        Predictive.setInviteListener(new CustomContactInviteListener() {
 
             @Override
             public void showInvite(EligibleMeasureConfigurations eligibleMeasureConfigurations) {
@@ -45,7 +46,7 @@ public class CustomInvite1Activity extends AppCompatActivity {
 
                 showProgress();
 
-                ForeSeeCxMeasure.customInviteAccepted();
+                Predictive.customInviteAccepted();
 
             }
 
@@ -69,12 +70,12 @@ public class CustomInvite1Activity extends AppCompatActivity {
             public void onInviteCompleteWithAccept(EligibleMeasureConfigurations eligibleMeasureConfigurations) {
                 Log.d(TAG, "onCompleteWithAccept");
                 // By this point the SDK is finished with the invite process, this is for information only
-                Toast.makeText(getApplicationContext(), "A survey will be sent to " + ForeSeeCxMeasure.getContactDetails(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "A survey will be sent to " + Predictive.getContactDetails(Predictive.getPreferredContactType()), Toast.LENGTH_SHORT).show();
 
                 hideProgress();
 
                 //Reset
-                ForeSee.resetState();
+                Core.resetState();
             }
 
             @Override
@@ -134,7 +135,7 @@ public class CustomInvite1Activity extends AppCompatActivity {
         super.onResume();
 
         // Setup UI components
-        ContactType type = ForeSeeCxMeasure.getPreferredContactType();
+        ContactType type = Predictive.getPreferredContactType();
         if (type != null) {
             switch (type) {
                 case Email:
@@ -146,7 +147,7 @@ public class CustomInvite1Activity extends AppCompatActivity {
                 default:
                     break;
             }
-            contactInput.setText(ForeSeeCxMeasure.getContactDetails(type));
+            contactInput.setText(Predictive.getContactDetails(type));
         }
     }
 
@@ -161,22 +162,22 @@ public class CustomInvite1Activity extends AppCompatActivity {
         switch (preferredContactType.getCheckedRadioButtonId()) {
             case R.id.preferredContactTypeEmail:
                 type = ContactType.Email;
-                ForeSeeCxMeasure.setPreferredContactType(ContactType.Email);
+                Predictive.setPreferredContactType(ContactType.Email);
                 break;
             case R.id.preferredContactTypePhoneNumber:
                 type = ContactType.PhoneNumber;
-                ForeSeeCxMeasure.setPreferredContactType(ContactType.PhoneNumber);
+                Predictive.setPreferredContactType(ContactType.PhoneNumber);
                 break;
         }
-        ForeSeeCxMeasure.setPreferredContactType(type);
-        ForeSeeCxMeasure.setContactDetails(type, contactInput.getText().toString());
+        Predictive.setPreferredContactType(type);
+        Predictive.setContactDetails(type, contactInput.getText().toString());
 
         // Increment the significant event count so that we're eligible for an invite
         // based on the criteria in foresee_configuration.json
-        ForeSeeCxMeasure.incrementSignificantEventCountWithKey("instant_invite");
+        Predictive.incrementSignificantEventCountWithKey("instant_invite");
 
         // Launch an invite as a demo
-        ForeSeeCxMeasure.checkIfEligibleForSurvey();
+        Predictive.checkIfEligibleForSurvey();
 
         // Hide keyboard
         InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -202,6 +203,6 @@ public class CustomInvite1Activity extends AppCompatActivity {
     {
         // Reset the state of the ForeSee SDK. So that we may be eligible for a new invite
         // based on the criteria in foresee_configuration.json
-        ForeSee.resetState();
+        Core.resetState();
     }
 }

@@ -1,11 +1,13 @@
 package com.foresee.feedbackSample;
 
+import android.content.Context;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import com.foresee.sdk.ForeSeeFeedback;
-import com.foresee.sdk.ForeSeeFeedbackListener;
+
+import com.verint.xm.sdk.Digital;
+import com.verint.xm.sdk.ExpDigitalListener;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -18,56 +20,56 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.main);
 
         // Setup a ForeSee Feedback listener
-        ForeSeeFeedback.setFeedbackListener(foreSeeFeedbackListener);
+        Digital.setDigitalListener(expDigitalListener);
     }
 
     public void launchFeedback1(View view) {
         // Launch a feedback survey directly
-        ForeSeeFeedback.showFeedbackForName("Sample 1");
+        Digital.showDigitalSurveyForName("Sample 1");
     }
 
     public void launchFeedback2(View view) {
         // Check if a feedback survey is enabled, and only launch it when we know it is enabled
-        ForeSeeFeedback.checkIfFeedbackEnabledForName("Sample 2");
+        Digital.checkIfDigitalSurveyEnabledForName("Sample 2");
     }
 
-    private ForeSeeFeedbackListener foreSeeFeedbackListener = new ForeSeeFeedbackListener() {
+    private ExpDigitalListener expDigitalListener = new ExpDigitalListener() {
         @Override
-        public void onFeedbackPresented(String feedbackName) {
-            Log.d("ForeSeeFeedbackTest", String.format("onFeedbackPresented(%s)", feedbackName));
+        public void onDigitalSurveyPresented(String s) {
+            Log.d("EXPDigitalTest", String.format("onDigitalSurveyPresented(%s)", s));
         }
 
         @Override
-        public void onFeedbackNotPresentedWithNetworkError(String feedbackName) {
-            Log.d("ForeSeeFeedbackTest", String.format("onFeedbackNotPresentedWithNetworkError(%s)", feedbackName));
+        public void onDigitalSurveyNotPresentedWithNetworkError(String s) {
+            Log.d("EXPDigitalTest", String.format("onDigitalSurveyNotPresentedWithNetworkError(%s)", s));
         }
 
         @Override
-        public void onFeedbackNotPresentedWithDisabled(String feedbackName) {
-            Log.d("ForeSeeFeedbackTest", String.format("onFeedbackNotPresentedWithDisabled(%s)", feedbackName));
+        public void onDigitalSurveyNotPresentedWithDisabled(String s) {
+            Log.d("EXPDigitalTest", String.format("onDigitalSurveyNotPresentedWithDisabled(%s)", s));
         }
 
         @Override
-        public void onFeedbackSubmitted(String feedbackName) {
-            Log.d("ForeSeeFeedbackTest", String.format("onFeedbackSubmitted(%s)", feedbackName));
+        public void onDigitalSurveySubmitted(String s) {
+            Log.d("EXPDigitalTest", String.format("onDigitalSurveySubmitted(%s)", s));
         }
 
         @Override
-        public void onFeedbackNotSubmittedWithAbort(String feedbackName) {
-            Log.d("ForeSeeFeedbackTest", String.format("onFeedbackNotSubmittedWithAbort(%s)", feedbackName));
+        public void onDigitalSurveyNotSubmittedWithAbort(String s) {
+            Log.d("EXPDigitalTest", String.format("onDigitalSurveyNotSubmittedWithAbort(%s)", s));
         }
 
         @Override
-        public void onFeedbackNotSubmittedWithNetworkError(String feedbackName) {
-            Log.d("ForeSeeFeedbackTest", String.format("onFeedbackNotSubmittedWithNetworkError(%s)", feedbackName));
+        public void onDigitalSurveyNotSubmittedWithNetworkError(String s) {
+            Log.d("EXPDigitalTest", String.format("onDigitalSurveyNotSubmittedWithNetworkError(%s)", s));
         }
 
         @Override
-        public void onFeedbackStatusRetrieved(String feedbackName, boolean enabled) {
-            Log.d("ForeSeeFeedbackTest", String.format("onFeedbackStatusRetrieved(%s, %b)", feedbackName, enabled));
+        public void onDigitalSurveyStatusRetrieved(String s, boolean enabled) {
+            Log.d("EXPDigitalTest", String.format("onDigitalSurveyStatusRetrieved(%s)", s));
 
             if (enabled) {
-                ForeSeeFeedback.showFeedbackForName(feedbackName);
+                Digital.showDigitalSurveyForName(s);
             }
         }
     };

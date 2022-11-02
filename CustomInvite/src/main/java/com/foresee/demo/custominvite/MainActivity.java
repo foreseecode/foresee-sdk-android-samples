@@ -3,10 +3,9 @@ package com.foresee.demo.custominvite;
 import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 
-import com.foresee.sdk.ForeSee;
+import com.verint.xm.sdk.Core;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,6 +29,6 @@ public class MainActivity extends AppCompatActivity {
     public void resetState(View view) {
         // Reset the state of the ForeSee SDK. So that we may be eligible for a new invite
         // based on the criteria in foresee_configuration.json
-        ForeSee.resetState();
+        Core.resetState();
     }
 }

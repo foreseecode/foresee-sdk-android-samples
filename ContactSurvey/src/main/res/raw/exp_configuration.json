@@ -1,5 +1,5 @@
 {
-	"clientId":"FSRTESTINGCODECID12345==",
+	"customerId":"FSRTESTINGCODECID12345==",
 	"repeatDaysAfterDecline":5,
 	"repeatDaysAfterComplete":5,
 	"repeatDaysAfterAccept":3,

@@ -6,8 +6,8 @@ import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 
-import com.foresee.sdk.ForeSeeCxMeasure;
-import com.foresee.sdk.common.configuration.ContactType;
+import com.verint.xm.sdk.Predictive;
+import com.verint.xm.sdk.common.configuration.ContactType;
 
 /**
  * Created by alan.wang on 11/20/18.
@@ -49,9 +49,9 @@ public class SetContactDetailsActivity extends AppCompatActivity {
         super.onResume();
 
         // Setup UI components
-        contactInfoEmail.setText(ForeSeeCxMeasure.getContactDetails(ContactType.Email));
-        contactInfoPhone.setText(ForeSeeCxMeasure.getContactDetails(ContactType.PhoneNumber));
-        ContactType type = ForeSeeCxMeasure.getPreferredContactType();
+        contactInfoEmail.setText(Predictive.getContactDetails(ContactType.Email));
+        contactInfoPhone.setText(Predictive.getContactDetails(ContactType.PhoneNumber));
+        ContactType type = Predictive.getPreferredContactType();
         if (type != null) {
             switch (type) {
                 case Email:
@@ -74,17 +74,17 @@ public class SetContactDetailsActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
 
-        ForeSeeCxMeasure.setContactDetails(ContactType.Email,
+        Predictive.setContactDetails(ContactType.Email,
                 contactInfoEmail.getText().toString());
-        ForeSeeCxMeasure.setContactDetails(ContactType.PhoneNumber,
+        Predictive.setContactDetails(ContactType.PhoneNumber,
                 contactInfoPhone.getText().toString());
 
         switch (preferredContactType.getCheckedRadioButtonId()) {
             case R.id.preferredContactTypeEmail:
-                ForeSeeCxMeasure.setPreferredContactType(ContactType.Email);
+                Predictive.setPreferredContactType(ContactType.Email);
                 break;
             case R.id.preferredContactTypePhoneNumber:
-                ForeSeeCxMeasure.setPreferredContactType(ContactType.PhoneNumber);
+                Predictive.setPreferredContactType(ContactType.PhoneNumber);
                 break;
         }
 

@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
-import com.foresee.sdk.ForeSeeCxMeasure
+import com.verint.xm.sdk.Predictive
 
 class SignificantEventActivity : AppCompatActivity() {
 
@@ -32,16 +32,14 @@ class SignificantEventActivity : AppCompatActivity() {
 
         // Increment the significant event count so that we're eligible for an invite
         // based on the criteria in foresee_configuration.json
-        ForeSeeCxMeasure.incrementSignificantEventCountWithKey("custom_event")
+        Predictive.incrementSignificantEventCountWithKey("custom_event")
 
         // Launch an invite as a demo
-        ForeSeeCxMeasure.checkIfEligibleForSurvey()
+        Predictive.checkIfEligibleForSurvey()
     }
 
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
         return true
     }
-
-
 }

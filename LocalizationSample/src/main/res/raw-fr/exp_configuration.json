@@ -1,19 +1,19 @@
 {
-	"clientId":"FSRTESTINGCODECID12345==",
+	"customerId":"9NNs9GIBQIVdk1LpDlJpAQ==",
 	"notificationType": "IN_SESSION",
+	"repeatDaysAfterDecline":60,
+	"repeatDaysAfterComplete":120,
 	"measures":
 	[
 		{
-			"surveyId": "iphone_app_QA",
-			"surveyStyle": "modern",
+			"surveyId":"mobile_app-fr",
+			"daysSinceLaunch":0,
+			"launchCount":0,
 			"significantEventThresholds": {
 				"instant_invite":1
 			}
 		}
 	],
-	"cppParameters": {
-		"sample_app":"Kotlin Sample CPP"
-	},
 	"invite": {
 		"logo": "foresee_logo",
 		"baseColor": [235, 43, 61]

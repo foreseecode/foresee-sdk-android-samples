@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.view.View
-import com.foresee.sdk.ForeSee
+import com.verint.xm.sdk.Core
 
 class MainActivity : AppCompatActivity() {
 
@@ -15,11 +15,11 @@ class MainActivity : AppCompatActivity() {
 
     fun resetCounters(@Suppress("UNUSED_PARAMETER") view: View) {
         // Reset the state of the ForeSee SDK
-        ForeSee.resetState()
+        Core.resetState()
     }
 
     fun onPageViewsClicked(@Suppress("UNUSED_PARAMETER") view: View) {
-        ForeSee.resetState()
+        Core.resetState()
 
         PageActivity.pageId = 1
         // Invite will be triggered after 3 page views
@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun onLaunchCountClicked(@Suppress("UNUSED_PARAMETER") view: View) {
-        ForeSee.resetState()
+        Core.resetState()
 
         // Invite will be triggered after 5 launch count
         val intent = Intent(this, LaunchCountActivity::class.java)
@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun onSignificantEventClicked(@Suppress("UNUSED_PARAMETER") view: View) {
-        ForeSee.resetState()
+        Core.resetState()
 
         // Invite will be triggered after 5 launch count
         val intent = Intent(this, SignificantEventActivity::class.java)

@@ -1,12 +1,12 @@
 {
-	"clientId":"9NNs9GIBQIVdk1LpDlJpAQ==",
+	"customerId":"9NNs9GIBQIVdk1LpDlJpAQ==",
 	"notificationType": "IN_SESSION",
 	"repeatDaysAfterDecline":60,
 	"repeatDaysAfterComplete":120,
 	"measures":
 	[
 		{
-			"surveyId":"mobile_app-fr",
+			"surveyId":"mobile_app-en",
 			"daysSinceLaunch":0,
 			"launchCount":0,
 			"significantEventThresholds": {
