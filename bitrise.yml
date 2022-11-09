@@ -45,14 +45,32 @@ workflows:
     - cache-push@2: {}
     - deploy-to-bitrise-io@2: {}
   Build-AdvancedSample-QA:
+    steps:
+    - activate-ssh-key@4: {}
   Build-BasicSample-QA:
+    steps:
+    - activate-ssh-key@4: {}
   Build-ContactSurvey-QA:
+    steps:
+    - activate-ssh-key@4: {}
   Build-CustomInvite-QA:
+    steps:
+    - activate-ssh-key@4: {}
   Build-DbaSample-QA:
+    steps:
+    - activate-ssh-key@4: {}
   Build-FeedbackSample-QA:
+    steps:
+    - activate-ssh-key@4: {}
   Build-KotlinSample-QA:
+    steps:
+    - activate-ssh-key@4: {}
   Build-LocalizationSample-QA:
+    steps:
+    - activate-ssh-key@4: {}
   Build-All-QA:
+    steps:
+    - activate-ssh-key@4: {}
 meta:
   bitrise.io:
     stack: linux-docker-android-20.04
