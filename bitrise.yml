@@ -3,47 +3,6 @@ format_version: '11'
 default_step_lib_source: 'https://github.com/bitrise-io/bitrise-steplib.git'
 project_type: android
 workflows:
-  deploy:
-    description: >
-      Deploys app using [Deploy to bitrise.io
-      Step](https://devcenter.bitrise.io/en/getting-started/getting-started-with-android-apps.html#deploying-an-android-app-to-bitrise-io-53056).
-
-
-      Next steps:
-
-      - Check out [Getting started with Android
-      apps](https://devcenter.bitrise.io/en/getting-started/getting-started-with-android-apps.html)
-      for signing and deployment options.
-
-      - [Set up code signing with *Android Sign*
-      Step](https://devcenter.bitrise.io/en/code-signing/android-code-signing/android-code-signing-using-the-android-sign-step.html).
-    steps:
-    - activate-ssh-key@4: {}
-    - git-clone@6: {}
-    - cache-pull@2: {}
-    - install-missing-android-tools@3:
-        inputs:
-        - gradlew_path: $PROJECT_LOCATION/gradlew
-    - change-android-versioncode-and-versionname@1:
-        inputs:
-        - build_gradle_path: $PROJECT_LOCATION/$MODULE/build.gradle
-    - android-lint@0:
-        inputs:
-        - project_location: $PROJECT_LOCATION
-        - variant: $VARIANT
-    - android-unit-test@1:
-        inputs:
-        - project_location: $PROJECT_LOCATION
-        - variant: $VARIANT
-    - android-build@1:
-        inputs:
-        - project_location: $PROJECT_LOCATION
-        - module: $MODULE
-        - variant: $VARIANT
-    - sign-apk@1:
-        run_if: '{{getenv "BITRISEIO_ANDROID_KEYSTORE_URL" | ne ""}}'
-    - cache-push@2: {}
-    - deploy-to-bitrise-io@2: {}
   _Clone-Repo:
     steps:
       - activate-ssh-key@3.1.1:
@@ -66,9 +25,6 @@ workflows:
                 envman add --key MAIN_REPO_COMMIT_MESSAGE_BODY --value "$GIT_CLONE_COMMIT_MESSAGE_BODY"
   Build-AdvancedSample-QA:
     steps:
-    - deploy-to-bitrise-io@2.x.x:
-        inputs:
-        - deploy_path: "$BITRISE_TEST_DEPLOY_DIR"
     - fastlane@2.7:
         inputs:
         - verbose_log: 'yes'
@@ -78,15 +34,6 @@ workflows:
         inputs:
         - deploy_path: "$BITRISE_DEPLOY_DIR_FOR_QA"
         is_always_run: false
-    - script@1.1.5:
-        title: Set Advanced Sample app install url
-        inputs:
-        - content: |
-            #!/bin/bash
-            set -ex
-            if [ -n "$BITRISE_PUBLIC_INSTALL_PAGE_URL" ] ; then
-              envman add --key BITRISE_TRIGGERAPP_PUBLIC_INSTALL_PAGE_URL --value "$BITRISE_PUBLIC_INSTALL_PAGE_URL"
-            fi
     envs:
     - opts:
         is_expand: false
@@ -95,9 +42,6 @@ workflows:
     - _Setup-For-All-Workflows
   Build-BasicSample-QA:
     steps:
-    - deploy-to-bitrise-io@2.x.x:
-        inputs:
-        - deploy_path: "$BITRISE_TEST_DEPLOY_DIR"
     - fastlane@2.7:
         inputs:
         - verbose_log: 'yes'
@@ -107,15 +51,6 @@ workflows:
         inputs:
         - deploy_path: "$BITRISE_DEPLOY_DIR_FOR_QA"
         is_always_run: false
-    - script@1.1.5:
-        title: Set Basic Sample app install url
-        inputs:
-        - content: |
-            #!/bin/bash
-            set -ex
-            if [ -n "$BITRISE_PUBLIC_INSTALL_PAGE_URL" ] ; then
-              envman add --key BITRISE_TRIGGERAPP_PUBLIC_INSTALL_PAGE_URL --value "$BITRISE_PUBLIC_INSTALL_PAGE_URL"
-            fi
     envs:
     - opts:
         is_expand: false
@@ -124,9 +59,6 @@ workflows:
     - _Setup-For-All-Workflows
   Build-ContactSurvey-QA:
     steps:
-    - deploy-to-bitrise-io@2.x.x:
-        inputs:
-        - deploy_path: "$BITRISE_TEST_DEPLOY_DIR"
     - fastlane@2.7:
         inputs:
         - verbose_log: 'yes'
@@ -136,15 +68,6 @@ workflows:
         inputs:
         - deploy_path: "$BITRISE_DEPLOY_DIR_FOR_QA"
         is_always_run: false
-    - script@1.1.5:
-        title: Set Basic Sample app install url
-        inputs:
-        - content: |
-            #!/bin/bash
-            set -ex
-            if [ -n "$BITRISE_PUBLIC_INSTALL_PAGE_URL" ] ; then
-              envman add --key BITRISE_TRIGGERAPP_PUBLIC_INSTALL_PAGE_URL --value "$BITRISE_PUBLIC_INSTALL_PAGE_URL"
-            fi
     envs:
     - opts:
         is_expand: false
@@ -153,9 +76,6 @@ workflows:
     - _Setup-For-All-Workflows
   Build-CustomInvite-QA:
     steps:
-    - deploy-to-bitrise-io@2.x.x:
-        inputs:
-        - deploy_path: "$BITRISE_TEST_DEPLOY_DIR"
     - fastlane@2.7:
         inputs:
         - verbose_log: 'yes'
@@ -165,15 +85,6 @@ workflows:
         inputs:
         - deploy_path: "$BITRISE_DEPLOY_DIR_FOR_QA"
         is_always_run: false
-    - script@1.1.5:
-        title: Set custom invite app install url
-        inputs:
-        - content: |
-            #!/bin/bash
-            set -ex
-            if [ -n "$BITRISE_PUBLIC_INSTALL_PAGE_URL" ] ; then
-              envman add --key BITRISE_TRIGGERAPP_PUBLIC_INSTALL_PAGE_URL --value "$BITRISE_PUBLIC_INSTALL_PAGE_URL"
-            fi
     envs:
     - opts:
         is_expand: false
@@ -182,9 +93,6 @@ workflows:
     - _Setup-For-All-Workflows
   Build-DbaSample-QA:
     steps:
-    - deploy-to-bitrise-io@2.x.x:
-        inputs:
-        - deploy_path: "$BITRISE_TEST_DEPLOY_DIR"
     - fastlane@2.7:
         inputs:
         - verbose_log: 'yes'
@@ -194,15 +102,6 @@ workflows:
         inputs:
         - deploy_path: "$BITRISE_DEPLOY_DIR_FOR_QA"
         is_always_run: false
-    - script@1.1.5:
-        title: Set dba sample app install url
-        inputs:
-        - content: |
-            #!/bin/bash
-            set -ex
-            if [ -n "$BITRISE_PUBLIC_INSTALL_PAGE_URL" ] ; then
-              envman add --key BITRISE_TRIGGERAPP_PUBLIC_INSTALL_PAGE_URL --value "$BITRISE_PUBLIC_INSTALL_PAGE_URL"
-            fi
     envs:
     - opts:
         is_expand: false
@@ -211,9 +110,6 @@ workflows:
     - _Setup-For-All-Workflows
   Build-FeedbackSample-QA:
     steps:
-    - deploy-to-bitrise-io@2.x.x:
-        inputs:
-        - deploy_path: "$BITRISE_TEST_DEPLOY_DIR"
     - fastlane@2.7:
         inputs:
         - verbose_log: 'yes'
@@ -223,15 +119,6 @@ workflows:
         inputs:
         - deploy_path: "$BITRISE_DEPLOY_DIR_FOR_QA"
         is_always_run: false
-    - script@1.1.5:
-        title: Set feedback sample app install url
-        inputs:
-        - content: |
-            #!/bin/bash
-            set -ex
-            if [ -n "$BITRISE_PUBLIC_INSTALL_PAGE_URL" ] ; then
-              envman add --key BITRISE_TRIGGERAPP_PUBLIC_INSTALL_PAGE_URL --value "$BITRISE_PUBLIC_INSTALL_PAGE_URL"
-            fi
     envs:
     - opts:
         is_expand: false
@@ -240,9 +127,6 @@ workflows:
     - _Setup-For-All-Workflows
   Build-KotlinSample-QA:
     steps:
-    - deploy-to-bitrise-io@2.x.x:
-        inputs:
-        - deploy_path: "$BITRISE_TEST_DEPLOY_DIR"
     - fastlane@2.7:
         inputs:
         - verbose_log: 'yes'
@@ -252,15 +136,6 @@ workflows:
         inputs:
         - deploy_path: "$BITRISE_DEPLOY_DIR_FOR_QA"
         is_always_run: false
-    - script@1.1.5:
-        title: Set kotlin sample app install url
-        inputs:
-        - content: |
-            #!/bin/bash
-            set -ex
-            if [ -n "$BITRISE_PUBLIC_INSTALL_PAGE_URL" ] ; then
-              envman add --key BITRISE_TRIGGERAPP_PUBLIC_INSTALL_PAGE_URL --value "$BITRISE_PUBLIC_INSTALL_PAGE_URL"
-            fi
     envs:
     - opts:
         is_expand: false
@@ -269,9 +144,6 @@ workflows:
     - _Setup-For-All-Workflows
   Build-LocalizationSample-QA:
     steps:
-    - deploy-to-bitrise-io@2.x.x:
-        inputs:
-        - deploy_path: "$BITRISE_TEST_DEPLOY_DIR"
     - fastlane@2.7:
         inputs:
         - verbose_log: 'yes'
@@ -281,15 +153,6 @@ workflows:
         inputs:
         - deploy_path: "$BITRISE_DEPLOY_DIR_FOR_QA"
         is_always_run: false
-    - script@1.1.5:
-        title: Set localization sample app install url
-        inputs:
-        - content: |
-            #!/bin/bash
-            set -ex
-            if [ -n "$BITRISE_PUBLIC_INSTALL_PAGE_URL" ] ; then
-              envman add --key BITRISE_TRIGGERAPP_PUBLIC_INSTALL_PAGE_URL --value "$BITRISE_PUBLIC_INSTALL_PAGE_URL"
-            fi
     envs:
     - opts:
         is_expand: false
@@ -298,6 +161,8 @@ workflows:
     - _Setup-For-All-Workflows
 
   _Setup-For-All-Workflows:
+    before_run:
+    - _Clone-Repo
     steps:
       - set-java-version@1:
           run_if: .IsCI
