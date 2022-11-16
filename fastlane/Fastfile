@@ -13,26 +13,114 @@
 # Uncomment the line if you want fastlane to automatically update itself
 # update_fastlane
 
+AWS_ACCESS_KEY_ID = ENV['AWS_ACCESS_KEY']
+AWS_SECRET = ENV['AWS_SECRET']
+SRC_PATH = ENV['BITRISE_SOURCE_DIR']
+APPCENTER_ADVANCED_SAMPLE_APP_NAME= "Sample-App-Android-Advanced"
+APPCENTER_BASIC_SAMPLE_APP_NAME= "Sample-App-Android-Basic"
+APPCENTER_CONTACT_SURVEY_APP_NAME= "Sample-App-Android-Contact-Survey"
+APPCENTER_CUSTOM_INVITE_APP_NAME= "Sample-App-Android-Custom-Invite"
+APPCENTER_DBA_SAMPLE_APP_NAME= "Sample-App-Android-Dba"
+APPCENTER_FEEDBACK_SAMPLE_APP_NAME= "Sample-App-Android-Feedback"
+APPCENTER_KOTLIN_SAMPLE_APP_NAME= "Sample-App-Android-Kotlin"
+APPCENTER_LOCALIZATION_SAMPLE_APP_NAME= "Sample-App-Android-Localization"
+
+APP_DOWNLOAD_URLS = ""
+
+import ("../scripts/fastlane/Fastfile")
+
 default_platform(:android)
 
 platform :android do
-  desc "Runs all the tests"
-  lane :test do
-    gradle(task: "test")
-  end
+    desc "Make an Advanced Sample app QA build"
+        lane :build_advanced_sample_qa do
+            gradle(task: "clean :AdvancedSample:assemble")
 
-  desc "Submit a new Beta Build to Crashlytics Beta"
-  lane :beta do
-    gradle(task: "clean assembleRelease")
-    crashlytics
-  
-    # sh "your_script.sh"
-    # You can also use other beta testing services here
-  end
+            begin
+                upload_sample_app(APPCENTER_ADVANCED_SAMPLE_APP_NAME)
+            rescue => exception
+                UI.error(exception)
+            end
+        end
 
-  desc "Deploy a new version to the Google Play"
-  lane :deploy do
-    gradle(task: "clean assembleRelease")
-    upload_to_play_store
-  end
+    desc "Make a Basic Sample app QA build"
+        lane :build_sample_qa do
+            gradle(task: "clean :BasicSample:assemble")
+
+            begin
+                upload_basic_sample_qa(APPCENTER_BASIC_SAMPLE_APP_NAME)
+            rescue => exception
+                UI.error(exception)
+            end
+        end
+
+    desc "Make a Contact Survey app QA build"
+        lane :build_contact_survey_qa do
+            gradle(task: "clean :ContactSurvey:assemble")
+
+            begin
+                upload_contact_survey_qa(APPCENTER_CONTACT_SURVEY_APP_NAME)
+            rescue => exception
+                UI.error(exception)
+            end
+        end
+
+    desc "Make a Custom Invite app QA build"
+        lane :build_custom_invite_qa do
+            gradle(task: "clean :CustomInvite:assemble")
+
+            begin
+                upload_custom_invite_qa(APPCENTER_CUSTOM_INVITE_APP_NAME)
+            rescue => exception
+                UI.error(exception)
+            end
+        end
+
+    desc "Make a Dba Sample app QA build"
+        lane :build_dba_sample_qa do
+            gradle(task: "clean :DbaSample:assemble")
+
+            begin
+                upload_dba_sample_qa(APPCENTER_DBA_SAMPLE_APP_NAME)
+            rescue => exception
+                UI.error(exception)
+            end
+        end
+
+    desc "Make a Feedback Sample app QA build"
+        lane :build_feedback_sample_qa do
+            gradle(task: "clean :FeedbackSample:assemble")
+
+            begin
+                upload_feedback_sample_qa(APPCENTER_FEEDBACK_SAMPLE_APP_NAME)
+            rescue => exception
+                UI.error(exception)
+            end
+        end
+
+    desc "Make a Kotlin Sample app QA build"
+        lane :build_kotlin_sample_qa do
+            gradle(task: "clean :KotlinSample:assemble")
+
+            begin
+                upload_kotlin_sample_qa(APPCENTER_KOTLIN_SAMPLE_APP_NAME)
+            rescue => exception
+                UI.error(exception)
+            end
+        end
+
+    desc "Make a Localization Sample app QA build"
+        lane :build_localization_sample_qa do
+            gradle(task: "clean :LocalizationSample:assemble")
+
+            begin
+                upload_localization_sample_qa(APPCENTER_LOCALIZATION_SAMPLE_APP_NAME)
+            rescue => exception
+                UI.error(exception)
+            end
+        end
+
+    def upload_sample_app (appcenter_Name)
+        upload_app("#{appcenter_Name}", "#{lane_context[SharedValues::GRADLE_APK_OUTPUT_PATH]}")
+    end
 end

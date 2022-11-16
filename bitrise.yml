@@ -44,36 +44,265 @@ workflows:
         run_if: '{{getenv "BITRISEIO_ANDROID_KEYSTORE_URL" | ne ""}}'
     - cache-push@2: {}
     - deploy-to-bitrise-io@2: {}
+  _Clone-Repo:
+    steps:
+      - activate-ssh-key@3.1.1:
+          run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
+      - git-clone@4.0.11: { }
+      - cache-pull@2.0.1: { }
+      - script@1.1.5:
+          title: Backup the main repo commit data for use in later steps
+          inputs:
+            - content: |-
+                #!/usr/bin/env bash
+                # fail if any commands fails
+                set -e
+                # debug log
+                set -x
+                # rewrite the git output variables for later use (we have to do this because any other 
+                # git-clone steps in the workflow will overwrite these values)
+                envman add --key MAIN_REPO_COMMIT_AUTHOR_NAME --value "$GIT_CLONE_COMMIT_AUTHOR_NAME"
+                envman add --key MAIN_REPO_COMMIT_MESSAGE_SUBJECT --value "$GIT_CLONE_COMMIT_MESSAGE_SUBJECT"
+                envman add --key MAIN_REPO_COMMIT_MESSAGE_BODY --value "$GIT_CLONE_COMMIT_MESSAGE_BODY"
   Build-AdvancedSample-QA:
     steps:
-    - activate-ssh-key@4: {}
+    - deploy-to-bitrise-io@2.x.x:
+        inputs:
+        - deploy_path: "$BITRISE_TEST_DEPLOY_DIR"
+    - fastlane@2.7:
+        inputs:
+        - verbose_log: 'yes'
+        - lane: build_advanced_sample_qa
+        is_always_run: true
+    - deploy-to-bitrise-io@2.x.x:
+        inputs:
+        - deploy_path: "$BITRISE_DEPLOY_DIR_FOR_QA"
+        is_always_run: false
+    - script@1.1.5:
+        title: Set Advanced Sample app install url
+        inputs:
+        - content: |
+            #!/bin/bash
+            set -ex
+            if [ -n "$BITRISE_PUBLIC_INSTALL_PAGE_URL" ] ; then
+              envman add --key BITRISE_TRIGGERAPP_PUBLIC_INSTALL_PAGE_URL --value "$BITRISE_PUBLIC_INSTALL_PAGE_URL"
+            fi
+    envs:
+    - opts:
+        is_expand: false
+      BITRISE_DEPLOY_DIR_FOR_QA: "./AdvancedSample/build/outputs/apk/release/"
+    before_run:
+    - _Setup-For-All-Workflows
   Build-BasicSample-QA:
     steps:
-    - activate-ssh-key@4: {}
+    - deploy-to-bitrise-io@2.x.x:
+        inputs:
+        - deploy_path: "$BITRISE_TEST_DEPLOY_DIR"
+    - fastlane@2.7:
+        inputs:
+        - verbose_log: 'yes'
+        - lane: build_basic_sample_qa
+        is_always_run: true
+    - deploy-to-bitrise-io@2.x.x:
+        inputs:
+        - deploy_path: "$BITRISE_DEPLOY_DIR_FOR_QA"
+        is_always_run: false
+    - script@1.1.5:
+        title: Set Basic Sample app install url
+        inputs:
+        - content: |
+            #!/bin/bash
+            set -ex
+            if [ -n "$BITRISE_PUBLIC_INSTALL_PAGE_URL" ] ; then
+              envman add --key BITRISE_TRIGGERAPP_PUBLIC_INSTALL_PAGE_URL --value "$BITRISE_PUBLIC_INSTALL_PAGE_URL"
+            fi
+    envs:
+    - opts:
+        is_expand: false
+      BITRISE_DEPLOY_DIR_FOR_QA: "./BasicSample/build/outputs/apk/release/"
+    before_run:
+    - _Setup-For-All-Workflows
   Build-ContactSurvey-QA:
     steps:
-    - activate-ssh-key@4: {}
+    - deploy-to-bitrise-io@2.x.x:
+        inputs:
+        - deploy_path: "$BITRISE_TEST_DEPLOY_DIR"
+    - fastlane@2.7:
+        inputs:
+        - verbose_log: 'yes'
+        - lane: build_contact_survey_qa
+        is_always_run: true
+    - deploy-to-bitrise-io@2.x.x:
+        inputs:
+        - deploy_path: "$BITRISE_DEPLOY_DIR_FOR_QA"
+        is_always_run: false
+    - script@1.1.5:
+        title: Set Basic Sample app install url
+        inputs:
+        - content: |
+            #!/bin/bash
+            set -ex
+            if [ -n "$BITRISE_PUBLIC_INSTALL_PAGE_URL" ] ; then
+              envman add --key BITRISE_TRIGGERAPP_PUBLIC_INSTALL_PAGE_URL --value "$BITRISE_PUBLIC_INSTALL_PAGE_URL"
+            fi
+    envs:
+    - opts:
+        is_expand: false
+      BITRISE_DEPLOY_DIR_FOR_QA: "./ContactSurvey/build/outputs/apk/release/"
+    before_run:
+    - _Setup-For-All-Workflows
   Build-CustomInvite-QA:
     steps:
-    - activate-ssh-key@4: {}
+    - deploy-to-bitrise-io@2.x.x:
+        inputs:
+        - deploy_path: "$BITRISE_TEST_DEPLOY_DIR"
+    - fastlane@2.7:
+        inputs:
+        - verbose_log: 'yes'
+        - lane: build_custom_invite_qa
+        is_always_run: true
+    - deploy-to-bitrise-io@2.x.x:
+        inputs:
+        - deploy_path: "$BITRISE_DEPLOY_DIR_FOR_QA"
+        is_always_run: false
+    - script@1.1.5:
+        title: Set custom invite app install url
+        inputs:
+        - content: |
+            #!/bin/bash
+            set -ex
+            if [ -n "$BITRISE_PUBLIC_INSTALL_PAGE_URL" ] ; then
+              envman add --key BITRISE_TRIGGERAPP_PUBLIC_INSTALL_PAGE_URL --value "$BITRISE_PUBLIC_INSTALL_PAGE_URL"
+            fi
+    envs:
+    - opts:
+        is_expand: false
+      BITRISE_DEPLOY_DIR_FOR_QA: "./CustomInvite/build/outputs/apk/release/"
+    before_run:
+    - _Setup-For-All-Workflows
   Build-DbaSample-QA:
     steps:
-    - activate-ssh-key@4: {}
+    - deploy-to-bitrise-io@2.x.x:
+        inputs:
+        - deploy_path: "$BITRISE_TEST_DEPLOY_DIR"
+    - fastlane@2.7:
+        inputs:
+        - verbose_log: 'yes'
+        - lane: build_dba_sample_qa
+        is_always_run: true
+    - deploy-to-bitrise-io@2.x.x:
+        inputs:
+        - deploy_path: "$BITRISE_DEPLOY_DIR_FOR_QA"
+        is_always_run: false
+    - script@1.1.5:
+        title: Set dba sample app install url
+        inputs:
+        - content: |
+            #!/bin/bash
+            set -ex
+            if [ -n "$BITRISE_PUBLIC_INSTALL_PAGE_URL" ] ; then
+              envman add --key BITRISE_TRIGGERAPP_PUBLIC_INSTALL_PAGE_URL --value "$BITRISE_PUBLIC_INSTALL_PAGE_URL"
+            fi
+    envs:
+    - opts:
+        is_expand: false
+      BITRISE_DEPLOY_DIR_FOR_QA: "./DbaSample/build/outputs/apk/release/"
+    before_run:
+    - _Setup-For-All-Workflows
   Build-FeedbackSample-QA:
     steps:
-    - activate-ssh-key@4: {}
+    - deploy-to-bitrise-io@2.x.x:
+        inputs:
+        - deploy_path: "$BITRISE_TEST_DEPLOY_DIR"
+    - fastlane@2.7:
+        inputs:
+        - verbose_log: 'yes'
+        - lane: build_feedback_sample_qa
+        is_always_run: true
+    - deploy-to-bitrise-io@2.x.x:
+        inputs:
+        - deploy_path: "$BITRISE_DEPLOY_DIR_FOR_QA"
+        is_always_run: false
+    - script@1.1.5:
+        title: Set feedback sample app install url
+        inputs:
+        - content: |
+            #!/bin/bash
+            set -ex
+            if [ -n "$BITRISE_PUBLIC_INSTALL_PAGE_URL" ] ; then
+              envman add --key BITRISE_TRIGGERAPP_PUBLIC_INSTALL_PAGE_URL --value "$BITRISE_PUBLIC_INSTALL_PAGE_URL"
+            fi
+    envs:
+    - opts:
+        is_expand: false
+      BITRISE_DEPLOY_DIR_FOR_QA: "./FeedbackSample/build/outputs/apk/release/"
+    before_run:
+    - _Setup-For-All-Workflows
   Build-KotlinSample-QA:
     steps:
-    - activate-ssh-key@4: {}
+    - deploy-to-bitrise-io@2.x.x:
+        inputs:
+        - deploy_path: "$BITRISE_TEST_DEPLOY_DIR"
+    - fastlane@2.7:
+        inputs:
+        - verbose_log: 'yes'
+        - lane: build_kotlin_sample_qa
+        is_always_run: true
+    - deploy-to-bitrise-io@2.x.x:
+        inputs:
+        - deploy_path: "$BITRISE_DEPLOY_DIR_FOR_QA"
+        is_always_run: false
+    - script@1.1.5:
+        title: Set kotlin sample app install url
+        inputs:
+        - content: |
+            #!/bin/bash
+            set -ex
+            if [ -n "$BITRISE_PUBLIC_INSTALL_PAGE_URL" ] ; then
+              envman add --key BITRISE_TRIGGERAPP_PUBLIC_INSTALL_PAGE_URL --value "$BITRISE_PUBLIC_INSTALL_PAGE_URL"
+            fi
+    envs:
+    - opts:
+        is_expand: false
+      BITRISE_DEPLOY_DIR_FOR_QA: "./KotlinSample/build/outputs/apk/release/"
+    before_run:
+    - _Setup-For-All-Workflows
   Build-LocalizationSample-QA:
     steps:
-    - activate-ssh-key@4: {}
-  Build-All-QA:
+    - deploy-to-bitrise-io@2.x.x:
+        inputs:
+        - deploy_path: "$BITRISE_TEST_DEPLOY_DIR"
+    - fastlane@2.7:
+        inputs:
+        - verbose_log: 'yes'
+        - lane: build_localization_sample_qa
+        is_always_run: true
+    - deploy-to-bitrise-io@2.x.x:
+        inputs:
+        - deploy_path: "$BITRISE_DEPLOY_DIR_FOR_QA"
+        is_always_run: false
+    - script@1.1.5:
+        title: Set localization sample app install url
+        inputs:
+        - content: |
+            #!/bin/bash
+            set -ex
+            if [ -n "$BITRISE_PUBLIC_INSTALL_PAGE_URL" ] ; then
+              envman add --key BITRISE_TRIGGERAPP_PUBLIC_INSTALL_PAGE_URL --value "$BITRISE_PUBLIC_INSTALL_PAGE_URL"
+            fi
+    envs:
+    - opts:
+        is_expand: false
+      BITRISE_DEPLOY_DIR_FOR_QA: "./LocalizationSample/build/outputs/apk/release/"
+    before_run:
+    - _Setup-For-All-Workflows
+
+  _Setup-For-All-Workflows:
     steps:
-    - activate-ssh-key@4: {}
-meta:
-  bitrise.io:
-    stack: linux-docker-android-20.04
+      - set-java-version@1:
+          run_if: .IsCI
+          inputs:
+            - set_java_version: '11'
 app:
   envs:
   - opts:
@@ -85,3 +314,6 @@ app:
   - opts:
       is_expand: false
     VARIANT: ''
+meta:
+  bitrise.io:
+    stack: linux-docker-android-20.04
