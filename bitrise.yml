@@ -307,12 +307,6 @@ app:
   envs:
   - opts:
       is_expand: false
-    adobe_extension_folder: adobe_extension
-  - opts:
-      is_expand: false
-    ADOBE_EXTENSION_BRANCH_NAME: develop
-  - opts:
-      is_expand: false
     scripts_folder: scripts
   - opts:
       is_expand: false
@@ -328,28 +322,10 @@ app:
     _JAVA_OPTIONS: "-Xms1024m -Xmx4096m"
   - opts:
       is_expand: false
-    TEST_VARIANT_QA: qaDebug
-  - opts:
-      is_expand: false
-    TEST_VARIANT_RC: prodRelease
-  - opts:
-      is_expand: false
     GRADLEW_PATH: "./gradlew"
   - opts:
       is_expand: false
-    JIRA_QA_ASSIGNEE_ID: 5dd708b003eda50ef38756ba
-  - opts:
-      is_expand: false
-    JIRA_USER: kanajiraapi@verint.com
-  - opts:
-      is_expand: false
-    TESTS_MODULE: sdk:tests
-  - opts:
-      is_expand: false
     SCRIPTS_BRANCH_NAME: master
-  - opts:
-      is_expand: false
-    JIRA_SITE: https://kanasoftware.jira.com
   - opts:
       is_expand: false
     APPCENTER_DESTINATIONS: "*"
