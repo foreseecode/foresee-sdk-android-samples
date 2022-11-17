@@ -190,7 +190,7 @@ app:
   envs:
   - opts:
       is_expand: false
-    scripts_folder: scripts
+    scripts_folder: mobile_scripts
   - opts:
       is_expand: false
     PROJECT_LOCATION: "."
