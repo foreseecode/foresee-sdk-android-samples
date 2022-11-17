@@ -27,7 +27,7 @@ workflows:
         - content: |-
             #!/bin/bash
             set -ex
-            cd "$BITRISE_SOURCE_DIR/$mobile_scripts_folder"
+            cd "$BITRISE_SOURCE_DIR/$scripts_folder"
             git fetch
             if git show-branch "remotes/origin/$BITRISE_GIT_BRANCH"; then
               echo "Found branch in mobile-scripts $BITRISE_GIT_BRANCH"
