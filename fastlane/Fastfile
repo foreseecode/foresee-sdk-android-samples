@@ -13,8 +13,6 @@
 # Uncomment the line if you want fastlane to automatically update itself
 # update_fastlane
 
-AWS_ACCESS_KEY_ID = ENV['AWS_ACCESS_KEY']
-AWS_SECRET = ENV['AWS_SECRET']
 SRC_PATH = ENV['BITRISE_SOURCE_DIR']
 APPCENTER_ADVANCED_SAMPLE_APP_NAME= "Sample-App-Android-Advanced"
 APPCENTER_BASIC_SAMPLE_APP_NAME= "Sample-App-Android-Basic"

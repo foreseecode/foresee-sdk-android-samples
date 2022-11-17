@@ -20,7 +20,7 @@ workflows:
         - commit: ''
         - branch: "$SCRIPTS_BRANCH_NAME"
         - repository_url: git@github.com:foreseecode/mobile-scripts.git
-        - clone_into_dir: "$BITRISE_SOURCE_DIR/$scripts_folder"
+        - clone_into_dir: "$BITRISE_SOURCE_DIR/$mobile_scripts_folder"
     - script@1:
         title: Checkout BITRISE_GIT_BRANCH if it exists
         inputs:
