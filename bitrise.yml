@@ -11,6 +11,15 @@ workflows:
     - cache-pull@2.0.1: { }
   _Clone-Scripts-Repo:
     steps:
+    - script@1:
+        title: Copy the build configuration custom value of TEMP_SCRIPTS_BRANCH_NAME into SCRIPTS_BRANCH_NAME if defined
+        inputs:
+        - content: |-
+            #!/bin/bash
+            set -ex
+            if [ ! -z "$TEMP_SCRIPTS_BRANCH_NAME" ] ; then
+              envman add --key SCRIPTS_BRANCH_NAME --value "$TEMP_SCRIPTS_BRANCH_NAME"
+            fi
     - activate-ssh-key@3.1.1:
         run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
     - git-clone:
@@ -190,7 +199,7 @@ app:
   envs:
   - opts:
       is_expand: false
-    scripts_folder: fastlane/mobile-scripts
+    scripts_folder: mobile-scripts
   - opts:
       is_expand: false
     PROJECT_LOCATION: "."
