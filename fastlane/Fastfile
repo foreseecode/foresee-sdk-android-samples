@@ -27,7 +27,7 @@ APPCENTER_LOCALIZATION_SAMPLE_APP_NAME= "Sample-App-Android-Localization"
 
 APP_DOWNLOAD_URLS = ""
 
-import ("../scripts/fastlane/Fastfile")
+import ("../mobile-scripts/fastlane/Fastfile")
 
 default_platform(:android)
 

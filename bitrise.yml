@@ -5,24 +5,43 @@ project_type: android
 workflows:
   _Clone-Repo:
     steps:
-      - activate-ssh-key@3.1.1:
-          run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
-      - git-clone@4.0.11: { }
-      - cache-pull@2.0.1: { }
-      - script@1.1.5:
-          title: Backup the main repo commit data for use in later steps
-          inputs:
-            - content: |-
-                #!/usr/bin/env bash
-                # fail if any commands fails
-                set -e
-                # debug log
-                set -x
-                # rewrite the git output variables for later use (we have to do this because any other 
-                # git-clone steps in the workflow will overwrite these values)
-                envman add --key MAIN_REPO_COMMIT_AUTHOR_NAME --value "$GIT_CLONE_COMMIT_AUTHOR_NAME"
-                envman add --key MAIN_REPO_COMMIT_MESSAGE_SUBJECT --value "$GIT_CLONE_COMMIT_MESSAGE_SUBJECT"
-                envman add --key MAIN_REPO_COMMIT_MESSAGE_BODY --value "$GIT_CLONE_COMMIT_MESSAGE_BODY"
+    - activate-ssh-key@3.1.1:
+        run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
+    - git-clone@4.0.11: { }
+    - cache-pull@2.0.1: { }
+  _Clone-Scripts-Repo:
+    steps:
+    - script@1:
+        title: Copy the build configuration custom value of TEMP_SCRIPTS_BRANCH_NAME into SCRIPTS_BRANCH_NAME if defined
+        inputs:
+        - content: |-
+            #!/bin/bash
+            set -ex
+            if [ ! -z "$TEMP_SCRIPTS_BRANCH_NAME" ] ; then
+              envman add --key SCRIPTS_BRANCH_NAME --value "$TEMP_SCRIPTS_BRANCH_NAME"
+            fi
+    - activate-ssh-key@3.1.1:
+        run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
+    - git-clone:
+        title: Clone the scripts repo
+        inputs:
+        - tag: ''
+        - commit: ''
+        - branch: "$SCRIPTS_BRANCH_NAME"
+        - repository_url: git@github.com:foreseecode/mobile-scripts.git
+        - clone_into_dir: "$BITRISE_SOURCE_DIR/$scripts_folder"
+    - script@1:
+        title: Checkout BITRISE_GIT_BRANCH if it exists
+        inputs:
+        - content: |-
+            #!/bin/bash
+            set -ex
+            cd "$BITRISE_SOURCE_DIR/$mobile_scripts_folder"
+            git fetch
+            if git show-branch "remotes/origin/$BITRISE_GIT_BRANCH"; then
+              echo "Found branch in mobile-scripts $BITRISE_GIT_BRANCH"
+              git checkout "$BITRISE_GIT_BRANCH"
+            fi
   Build-AdvancedSample-QA:
     steps:
     - fastlane@2.7:
@@ -40,6 +59,7 @@ workflows:
       BITRISE_DEPLOY_DIR_FOR_QA: "./AdvancedSample/build/outputs/apk/release/"
     before_run:
     - _Setup-For-All-Workflows
+    - _Clone-Scripts-Repo
   Build-BasicSample-QA:
     steps:
     - fastlane@2.7:
@@ -57,6 +77,7 @@ workflows:
       BITRISE_DEPLOY_DIR_FOR_QA: "./BasicSample/build/outputs/apk/release/"
     before_run:
     - _Setup-For-All-Workflows
+    - _Clone-Scripts-Repo
   Build-ContactSurvey-QA:
     steps:
     - fastlane@2.7:
@@ -74,6 +95,7 @@ workflows:
       BITRISE_DEPLOY_DIR_FOR_QA: "./ContactSurvey/build/outputs/apk/release/"
     before_run:
     - _Setup-For-All-Workflows
+    - _Clone-Scripts-Repo
   Build-CustomInvite-QA:
     steps:
     - fastlane@2.7:
@@ -91,6 +113,7 @@ workflows:
       BITRISE_DEPLOY_DIR_FOR_QA: "./CustomInvite/build/outputs/apk/release/"
     before_run:
     - _Setup-For-All-Workflows
+    - _Clone-Scripts-Repo
   Build-DbaSample-QA:
     steps:
     - fastlane@2.7:
@@ -108,6 +131,7 @@ workflows:
       BITRISE_DEPLOY_DIR_FOR_QA: "./DbaSample/build/outputs/apk/release/"
     before_run:
     - _Setup-For-All-Workflows
+    - _Clone-Scripts-Repo
   Build-FeedbackSample-QA:
     steps:
     - fastlane@2.7:
@@ -125,6 +149,7 @@ workflows:
       BITRISE_DEPLOY_DIR_FOR_QA: "./FeedbackSample/build/outputs/apk/release/"
     before_run:
     - _Setup-For-All-Workflows
+    - _Clone-Scripts-Repo
   Build-KotlinSample-QA:
     steps:
     - fastlane@2.7:
@@ -142,6 +167,7 @@ workflows:
       BITRISE_DEPLOY_DIR_FOR_QA: "./KotlinSample/build/outputs/apk/release/"
     before_run:
     - _Setup-For-All-Workflows
+    - _Clone-Scripts-Repo
   Build-LocalizationSample-QA:
     steps:
     - fastlane@2.7:
@@ -159,6 +185,7 @@ workflows:
       BITRISE_DEPLOY_DIR_FOR_QA: "./LocalizationSample/build/outputs/apk/release/"
     before_run:
     - _Setup-For-All-Workflows
+    - _Clone-Scripts-Repo
 
   _Setup-For-All-Workflows:
     before_run:
