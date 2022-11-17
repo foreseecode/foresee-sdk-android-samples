@@ -32,7 +32,7 @@ default_platform(:android)
 platform :android do
     desc "Make an Advanced Sample app QA build"
         lane :build_advanced_sample_qa do
-            gradle(task: "clean :AdvancedSample:assemble")
+            gradle(task: "clean :AdvancedSample:assembleRelease")
 
             begin
                 upload_sample_app(APPCENTER_ADVANCED_SAMPLE_APP_NAME)
