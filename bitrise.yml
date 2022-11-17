@@ -190,7 +190,7 @@ app:
   envs:
   - opts:
       is_expand: false
-    scripts_folder: fastlane/mobile_scripts
+    scripts_folder: fastlane/mobile-scripts
   - opts:
       is_expand: false
     PROJECT_LOCATION: "."
