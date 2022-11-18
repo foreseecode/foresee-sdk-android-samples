@@ -186,7 +186,20 @@ workflows:
     before_run:
     - _Setup-For-All-Workflows
     - _Clone-Scripts-Repo
-
+  Build-All-QA:
+    before_run:
+      - _Setup-For-All-Workflows
+      - _Clone-Scripts-Repo
+    after_run:
+      - Build-AdvancedSample-QA
+      - Build-BasicSample-QA
+      - Build-ContactSurvey-QA
+      - Build-CustomInvite-QA
+      - Build-DbaSample-QA
+      - Build-FeedbackSample-QA
+      - Build-KotlinSample-QA
+      - Build-LocalizationSample-QA
+      
   _Setup-For-All-Workflows:
     before_run:
     - _Clone-Repo
