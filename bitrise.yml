@@ -3,85 +3,237 @@ format_version: '11'
 default_step_lib_source: 'https://github.com/bitrise-io/bitrise-steplib.git'
 project_type: android
 workflows:
-  deploy:
-    description: >
-      Deploys app using [Deploy to bitrise.io
-      Step](https://devcenter.bitrise.io/en/getting-started/getting-started-with-android-apps.html#deploying-an-android-app-to-bitrise-io-53056).
-
-
-      Next steps:
-
-      - Check out [Getting started with Android
-      apps](https://devcenter.bitrise.io/en/getting-started/getting-started-with-android-apps.html)
-      for signing and deployment options.
-
-      - [Set up code signing with *Android Sign*
-      Step](https://devcenter.bitrise.io/en/code-signing/android-code-signing/android-code-signing-using-the-android-sign-step.html).
+  _Clone-Repo:
     steps:
-    - activate-ssh-key@4: {}
-    - git-clone@6: {}
-    - cache-pull@2: {}
-    - install-missing-android-tools@3:
+    - activate-ssh-key@3.1.1:
+        run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
+    - git-clone@4.0.11: { }
+    - cache-pull@2.0.1: { }
+  _Clone-Scripts-Repo:
+    steps:
+    - script@1:
+        title: Copy the build configuration custom value of TEMP_SCRIPTS_BRANCH_NAME into SCRIPTS_BRANCH_NAME if defined
         inputs:
-        - gradlew_path: $PROJECT_LOCATION/gradlew
-    - change-android-versioncode-and-versionname@1:
+        - content: |-
+            #!/bin/bash
+            set -ex
+            if [ ! -z "$TEMP_SCRIPTS_BRANCH_NAME" ] ; then
+              envman add --key SCRIPTS_BRANCH_NAME --value "$TEMP_SCRIPTS_BRANCH_NAME"
+            fi
+    - activate-ssh-key@3.1.1:
+        run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
+    - git-clone:
+        title: Clone the scripts repo
         inputs:
-        - build_gradle_path: $PROJECT_LOCATION/$MODULE/build.gradle
-    - android-lint@0:
+        - tag: ''
+        - commit: ''
+        - branch: "$SCRIPTS_BRANCH_NAME"
+        - repository_url: git@github.com:foreseecode/mobile-scripts.git
+        - clone_into_dir: "$BITRISE_SOURCE_DIR/$scripts_folder"
+    - script@1:
+        title: Checkout BITRISE_GIT_BRANCH if it exists
         inputs:
-        - project_location: $PROJECT_LOCATION
-        - variant: $VARIANT
-    - android-unit-test@1:
-        inputs:
-        - project_location: $PROJECT_LOCATION
-        - variant: $VARIANT
-    - android-build@1:
-        inputs:
-        - project_location: $PROJECT_LOCATION
-        - module: $MODULE
-        - variant: $VARIANT
-    - sign-apk@1:
-        run_if: '{{getenv "BITRISEIO_ANDROID_KEYSTORE_URL" | ne ""}}'
-    - cache-push@2: {}
-    - deploy-to-bitrise-io@2: {}
+        - content: |-
+            #!/bin/bash
+            set -ex
+            cd "$BITRISE_SOURCE_DIR/$scripts_folder"
+            git fetch
+            if git show-branch "remotes/origin/$BITRISE_GIT_BRANCH"; then
+              echo "Found branch in mobile-scripts $BITRISE_GIT_BRANCH"
+              git checkout "$BITRISE_GIT_BRANCH"
+            fi
   Build-AdvancedSample-QA:
     steps:
-    - activate-ssh-key@4: {}
+    - fastlane@2.7:
+        inputs:
+        - verbose_log: 'yes'
+        - lane: build_advanced_sample_qa
+        is_always_run: true
+    - deploy-to-bitrise-io@2.x.x:
+        inputs:
+        - deploy_path: "$BITRISE_DEPLOY_DIR_FOR_QA"
+        is_always_run: false
+    envs:
+    - opts:
+        is_expand: false
+      BITRISE_DEPLOY_DIR_FOR_QA: "./AdvancedSample/build/outputs/apk/release/"
+    before_run:
+    - _Setup-For-All-Workflows
+    - _Clone-Scripts-Repo
   Build-BasicSample-QA:
     steps:
-    - activate-ssh-key@4: {}
+    - fastlane@2.7:
+        inputs:
+        - verbose_log: 'yes'
+        - lane: build_basic_sample_qa
+        is_always_run: true
+    - deploy-to-bitrise-io@2.x.x:
+        inputs:
+        - deploy_path: "$BITRISE_DEPLOY_DIR_FOR_QA"
+        is_always_run: false
+    envs:
+    - opts:
+        is_expand: false
+      BITRISE_DEPLOY_DIR_FOR_QA: "./BasicSample/build/outputs/apk/release/"
+    before_run:
+    - _Setup-For-All-Workflows
+    - _Clone-Scripts-Repo
   Build-ContactSurvey-QA:
     steps:
-    - activate-ssh-key@4: {}
+    - fastlane@2.7:
+        inputs:
+        - verbose_log: 'yes'
+        - lane: build_contact_survey_qa
+        is_always_run: true
+    - deploy-to-bitrise-io@2.x.x:
+        inputs:
+        - deploy_path: "$BITRISE_DEPLOY_DIR_FOR_QA"
+        is_always_run: false
+    envs:
+    - opts:
+        is_expand: false
+      BITRISE_DEPLOY_DIR_FOR_QA: "./ContactSurvey/build/outputs/apk/release/"
+    before_run:
+    - _Setup-For-All-Workflows
+    - _Clone-Scripts-Repo
   Build-CustomInvite-QA:
     steps:
-    - activate-ssh-key@4: {}
+    - fastlane@2.7:
+        inputs:
+        - verbose_log: 'yes'
+        - lane: build_custom_invite_qa
+        is_always_run: true
+    - deploy-to-bitrise-io@2.x.x:
+        inputs:
+        - deploy_path: "$BITRISE_DEPLOY_DIR_FOR_QA"
+        is_always_run: false
+    envs:
+    - opts:
+        is_expand: false
+      BITRISE_DEPLOY_DIR_FOR_QA: "./CustomInvite/build/outputs/apk/release/"
+    before_run:
+    - _Setup-For-All-Workflows
+    - _Clone-Scripts-Repo
   Build-DbaSample-QA:
     steps:
-    - activate-ssh-key@4: {}
+    - fastlane@2.7:
+        inputs:
+        - verbose_log: 'yes'
+        - lane: build_dba_sample_qa
+        is_always_run: true
+    - deploy-to-bitrise-io@2.x.x:
+        inputs:
+        - deploy_path: "$BITRISE_DEPLOY_DIR_FOR_QA"
+        is_always_run: false
+    envs:
+    - opts:
+        is_expand: false
+      BITRISE_DEPLOY_DIR_FOR_QA: "./DbaSample/build/outputs/apk/release/"
+    before_run:
+    - _Setup-For-All-Workflows
+    - _Clone-Scripts-Repo
   Build-FeedbackSample-QA:
     steps:
-    - activate-ssh-key@4: {}
+    - fastlane@2.7:
+        inputs:
+        - verbose_log: 'yes'
+        - lane: build_feedback_sample_qa
+        is_always_run: true
+    - deploy-to-bitrise-io@2.x.x:
+        inputs:
+        - deploy_path: "$BITRISE_DEPLOY_DIR_FOR_QA"
+        is_always_run: false
+    envs:
+    - opts:
+        is_expand: false
+      BITRISE_DEPLOY_DIR_FOR_QA: "./FeedbackSample/build/outputs/apk/release/"
+    before_run:
+    - _Setup-For-All-Workflows
+    - _Clone-Scripts-Repo
   Build-KotlinSample-QA:
     steps:
-    - activate-ssh-key@4: {}
+    - fastlane@2.7:
+        inputs:
+        - verbose_log: 'yes'
+        - lane: build_kotlin_sample_qa
+        is_always_run: true
+    - deploy-to-bitrise-io@2.x.x:
+        inputs:
+        - deploy_path: "$BITRISE_DEPLOY_DIR_FOR_QA"
+        is_always_run: false
+    envs:
+    - opts:
+        is_expand: false
+      BITRISE_DEPLOY_DIR_FOR_QA: "./KotlinSample/build/outputs/apk/release/"
+    before_run:
+    - _Setup-For-All-Workflows
+    - _Clone-Scripts-Repo
   Build-LocalizationSample-QA:
     steps:
-    - activate-ssh-key@4: {}
+    - fastlane@2.7:
+        inputs:
+        - verbose_log: 'yes'
+        - lane: build_localization_sample_qa
+        is_always_run: true
+    - deploy-to-bitrise-io@2.x.x:
+        inputs:
+        - deploy_path: "$BITRISE_DEPLOY_DIR_FOR_QA"
+        is_always_run: false
+    envs:
+    - opts:
+        is_expand: false
+      BITRISE_DEPLOY_DIR_FOR_QA: "./LocalizationSample/build/outputs/apk/release/"
+    before_run:
+    - _Setup-For-All-Workflows
+    - _Clone-Scripts-Repo
   Build-All-QA:
+    before_run:
+      - _Setup-For-All-Workflows
+      - _Clone-Scripts-Repo
+    after_run:
+      - Build-AdvancedSample-QA
+      - Build-BasicSample-QA
+      - Build-ContactSurvey-QA
+      - Build-CustomInvite-QA
+      - Build-DbaSample-QA
+      - Build-FeedbackSample-QA
+      - Build-KotlinSample-QA
+      - Build-LocalizationSample-QA
+
+  _Setup-For-All-Workflows:
+    before_run:
+    - _Clone-Repo
     steps:
-    - activate-ssh-key@4: {}
-meta:
-  bitrise.io:
-    stack: linux-docker-android-20.04
+      - set-java-version@1:
+          run_if: .IsCI
+          inputs:
+            - set_java_version: '11'
 app:
   envs:
   - opts:
       is_expand: false
-    PROJECT_LOCATION: .
+    scripts_folder: mobile-scripts
   - opts:
       is_expand: false
-    MODULE: app
+    PROJECT_LOCATION: "."
   - opts:
       is_expand: false
-    VARIANT: ''
+    MODULE: ''
+  - opts:
+      is_expand: false
+    GRADLE_OPTS: -Dorg.gradle.jvmargs="-Xmx4096m -XX:+HeapDumpOnOutOfMemoryError"
+  - opts:
+      is_expand: false
+    _JAVA_OPTIONS: "-Xms1024m -Xmx4096m"
+  - opts:
+      is_expand: false
+    GRADLEW_PATH: "./gradlew"
+  - opts:
+      is_expand: false
+    SCRIPTS_BRANCH_NAME: master
+  - opts:
+      is_expand: false
+    APPCENTER_DESTINATIONS: "*"
+meta:
+  bitrise.io:
+    machine_type: standard
