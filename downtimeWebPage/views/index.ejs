@@ -13,6 +13,8 @@
 
 <%- include('_header'); -%>
 
+<h1>Welcome!</h1>
+
 
     <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
     <script src="https://cdn.amcharts.com/lib/5/map.js"></script>
@@ -180,7 +182,7 @@
 
 
                 const s3SplitFileObject = new Object();
-                s3SplitFileObject.userId = obj.userId;
+                s3SplitFileObject.userId = '<a href="http://localhost:3000/users?'+obj.userId+'">'+obj.userId+'</a>';
                 s3SplitFileObject.deviceType = obj.deviceType
                 s3SplitFileObject.deviceVersion = obj.deviceVersion
                 s3SplitFileObject.latitude = obj.latitude
@@ -194,7 +196,7 @@
             // Builds the HTML Table out of myList.
             function buildHtmlTable(selector) {
 
-                console.log("array in function: " + parsedS3Array)
+                //console.log("array in function: " + parsedS3Array)
                 var columns = addAllColumnHeaders(parsedS3Array, selector);
 
                 for (var i = 0; i < parsedS3Array.length; i++) {

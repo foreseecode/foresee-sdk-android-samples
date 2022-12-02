@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+</head>
+
+<body class="container" onLoad="getUserId()">
+
+  <header>
+  </header>
+
+  <main>
+    <div class="jumbotron">
+      <h1>Users information</h1>
+      <h2><script>
+        var result = getUserId();
+        document.write(result);
+      </script></h2>
+    </div>
+  </main>
+
+  <footer>
+  </footer>
+
+</body>
+
+</html>
+
+
+<script>
+
+  function getUserId() {
+    const queryString = window.location.search;
+    return queryString;
+  }
+
+</script>

@@ -1,6 +1,7 @@
 var express = require("express");
 const AWS = require('aws-sdk');
 const json2html = require('node-json2html');
+const { WellArchitected } = require("aws-sdk");
 const bucket = "downtime-json";
 var responseFromS3Bucket = "";
 
@@ -26,7 +27,7 @@ router.get("/", async function (req, res, next) {
 
     s3.listObjects(params, function (err, data) {
         if (err) console.log(err, err.stack); // an error occurred
-        else console.log(data);
+        else //console.log(data);
         var jsonData = JSON.parse(JSON.stringify(data));
         for (var i = 0; i < jsonData.Contents.length; i++) {
             var content = jsonData.Contents[i];
@@ -34,12 +35,6 @@ router.get("/", async function (req, res, next) {
             var response = new String(content.Key);
             response = response.replace(".json", "");
             var splitResponse = response.split('_');
-            console.log(splitResponse[0]);
-            console.log(splitResponse[1]);
-            console.log(splitResponse[2]);
-            console.log(splitResponse[3]);
-            console.log(splitResponse[4]);
-            console.log(splitResponse[5]);
 
             const s3SplitFileObject = new Object();
             s3SplitFileObject.userId = splitResponse[0];
@@ -48,24 +43,29 @@ router.get("/", async function (req, res, next) {
             s3SplitFileObject.latitude = splitResponse[3];
             s3SplitFileObject.longitude = splitResponse[4];
             s3SplitFileObject.timestamp = splitResponse[5];
-        
+
 
             parsedS3Array.push(s3SplitFileObject)
-
-
 
         }
 
         res.render("index", { s3data: JSON.stringify(parsedS3Array) });
     });
 
-    console.log("Response is: " + responseFromS3Bucket);
+    //console.log("Response is: " + responseFromS3Bucket);
+
+
+
 
     //working 
 
     //const myObject = await getObject('downtime-json', 'usr109_android_9_480_456_1669911289867.json');
     //res.render("index", {s3data:myObject, device:"Android"})
 
+});
+
+router.get("/users", (req, res, next) => {
+    res.render("users");
 });
 
 async function getObject(bucket, objectKey) {
@@ -77,7 +77,7 @@ async function getObject(bucket, objectKey) {
 
         const data = await s3.getObject(params).promise();
 
-        console.log("response from s3: " + data.Body.toString('utf-8'))
+        //console.log("response from s3: " + data.Body.toString('utf-8'))
 
         parseS3JSON(data.Body.toString('utf-8'))
 
@@ -89,7 +89,7 @@ async function getObject(bucket, objectKey) {
 
 function parseS3JSON(s3Object) {
     const obj = JSON.parse(s3Object);
-    console.log("Parsed json: " + obj.testfield)
+    //console.log("Parsed json: " + obj.testfield)
 
 
 
@@ -102,10 +102,11 @@ function parseS3JSON(s3Object) {
     s3ParseObjectData.timestamp = "34324234234";
 
     parsedS3Array.push(s3ParseObjectData)
-    console.log("array size: " + parsedS3Array.length)
+    //console.log("array size: " + parsedS3Array.length)
 
-    console.log("Contents: " + JSON.stringify(parsedS3Array))
+    //console.log("Contents: " + JSON.stringify(parsedS3Array))
 }
+
 
 
 module.exports = router;
