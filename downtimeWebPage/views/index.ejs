@@ -1,162 +1,234 @@
 <style>
     body {
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-      }
-      
-      #chartdiv {
+    }
+
+    #chartdiv {
         width: 100%;
         height: 600px
-      }
-    </style>
+    }
+</style>
 
 
 
 <%- include('_header'); -%>
-<h1><%= s3data %></h1>
-
-<script src="https://cdn.amcharts.com/lib/5/index.js"></script>
-<script src="https://cdn.amcharts.com/lib/5/map.js"></script>
-<script src="https://cdn.amcharts.com/lib/5/geodata/worldLow.js"></script>
-<script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
-<div id="chartdiv"></div>
 
 
-<%- include('_footer'); -%>
+    <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/map.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/geodata/worldLow.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+    <div id="chartdiv"></div>
 
 
-<script>
-  var data = [
-    {
-      id: "US",
-      name: "United States",
-      value: 100
-    }, {
-      id: "GB",
-      name: "United Kingdom",
-      value: 100
-    }, {
-      id: "CN",
-      name: "China",
-      value: 100
-    }, {
-      id: "IN",
-      name: "India",
-      value: 100
-    }, {
-      id: "AU",
-      name: "Australia",
-      value: 100
-    }, {
-      id: "CA",
-      name: "Canada",
-      value: 100
-    }, {
-      id: "BR",
-      name: "Brasil",
-      value: 100
-    }, {
-      id: "ZA",
-      name: "South Africa",
-      value: 100
-    }
-  ];
-  
-  var root = am5.Root.new("chartdiv");
-  root.setThemes([am5themes_Animated.new(root)]);
-  
-  var chart = root.container.children.push(am5map.MapChart.new(root, {}));
-  
-  var polygonSeries = chart.series.push(
-    am5map.MapPolygonSeries.new(root, {
-      geoJSON: am5geodata_worldLow,
-      exclude: ["AQ"]
-    })
-  );
-  
-  var bubbleSeries = chart.series.push(
-    am5map.MapPointSeries.new(root, {
-      valueField: "value",
-      calculateAggregates: true,
-      polygonIdField: "id"
-    })
-  );
-  
-  var circleTemplate = am5.Template.new({});
-  
-  bubbleSeries.bullets.push(function(root, series, dataItem) {
-    var container = am5.Container.new(root, {});
-  
-    var circle = container.children.push(
-      am5.Circle.new(root, {
-        radius: 20,
-        fillOpacity: 0.7,
-        fill: am5.color(0xff0000),
-        cursorOverStyle: "pointer",
-        tooltipText: `{name}: [bold]{value}[/]`
-      }, circleTemplate)
-    );
-  
-    var countryLabel = container.children.push(
-      am5.Label.new(root, {
-        text: "{name}",
-        paddingLeft: 5,
-        populateText: true,
-        fontWeight: "bold",
-        fontSize: 13,
-        centerY: am5.p50
-      })
-    );
-  
-    circle.on("radius", function(radius) {
-      countryLabel.set("x", radius);
-    })
-  
-    return am5.Bullet.new(root, {
-      sprite: container,
-      dynamic: true
-    });
-  });
-  
-  bubbleSeries.bullets.push(function(root, series, dataItem) {
-    return am5.Bullet.new(root, {
-      sprite: am5.Label.new(root, {
-        text: "{value.formatNumber('#.')}",
-        fill: am5.color(0xffffff),
-        populateText: true,
-        centerX: am5.p50,
-        centerY: am5.p50,
-        textAlign: "center"
-      }),
-      dynamic: true
-    });
-  });
-  
-  
-  
-  // minValue and maxValue must be set for the animations to work
-  bubbleSeries.set("heatRules", [
-    {
-      target: circleTemplate,
-      dataField: "value",
-      min: 10,
-      max: 50,
-      minValue: 0,
-      maxValue: 100,
-      key: "radius"
-    }
-  ]);
-  
-  bubbleSeries.data.setAll(data);
-  
-  updateData();
-  setInterval(function() {
-    updateData();
-  }, 2000)
-  
-  function updateData() {
-    for (var i = 0; i < bubbleSeries.dataItems.length; i++) {
-      bubbleSeries.data.setIndex(i, { value: Math.round(Math.random() * 100), id: data[i].id, name: data[i].name })
-    }
-  } </script>
-  
 
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+    
+
+
+
+    <div id="mydiv" data-test=<%=s3data %>></div>
+
+
+
+    <body onLoad="buildHtmlTable('#excelDataTable')">
+        <table id="excelDataTable" border="1" style="width: 100%;">
+        </table>
+    </body>
+
+
+
+
+    <%- include('_footer'); -%>
+
+
+        <script>
+            var data = [
+                {
+                    id: "US",
+                    name: "United States",
+                    value: 100
+                }, {
+                    id: "GB",
+                    name: "United Kingdom",
+                    value: 75
+                }, {
+                    id: "CN",
+                    name: "China",
+                    value: 100
+                }, {
+                    id: "IN",
+                    name: "India",
+                    value: 100
+                }, {
+                    id: "AU",
+                    name: "Australia",
+                    value: 100
+                }, {
+                    id: "CA",
+                    name: "Canada",
+                    value: 100
+                }, {
+                    id: "BR",
+                    name: "Brasil",
+                    value: 100
+                }, {
+                    id: "ZA",
+                    name: "South Africa",
+                    value: 100
+                }
+            ];
+
+            var root = am5.Root.new("chartdiv");
+            root.setThemes([am5themes_Animated.new(root)]);
+
+            var chart = root.container.children.push(am5map.MapChart.new(root, {}));
+
+            var polygonSeries = chart.series.push(
+                am5map.MapPolygonSeries.new(root, {
+                    geoJSON: am5geodata_worldLow,
+                    exclude: ["AQ"]
+                })
+            );
+
+            var bubbleSeries = chart.series.push(
+                am5map.MapPointSeries.new(root, {
+                    valueField: "value",
+                    calculateAggregates: true,
+                    polygonIdField: "id"
+                })
+            );
+
+            var circleTemplate = am5.Template.new({});
+
+            bubbleSeries.bullets.push(function (root, series, dataItem) {
+                var container = am5.Container.new(root, {});
+
+                var circle = container.children.push(
+                    am5.Circle.new(root, {
+                        radius: 20,
+                        fillOpacity: 0.7,
+                        fill: am5.color(0xff0000),
+                        cursorOverStyle: "pointer",
+                        tooltipText: `{name}: [bold]{value}[/]`
+                    }, circleTemplate)
+                );
+
+                var countryLabel = container.children.push(
+                    am5.Label.new(root, {
+                        text: "{name}",
+                        paddingLeft: 5,
+                        populateText: true,
+                        fontWeight: "bold",
+                        fontSize: 13,
+                        centerY: am5.p50
+                    })
+                );
+
+                circle.on("radius", function (radius) {
+                    countryLabel.set("x", radius);
+                })
+
+                return am5.Bullet.new(root, {
+                    sprite: container,
+                    dynamic: true
+                });
+            });
+
+            bubbleSeries.bullets.push(function (root, series, dataItem) {
+                return am5.Bullet.new(root, {
+                    sprite: am5.Label.new(root, {
+                        text: "{value.formatNumber('#.')}",
+                        fill: am5.color(0xffffff),
+                        populateText: true,
+                        centerX: am5.p50,
+                        centerY: am5.p50,
+                        textAlign: "center"
+                    }),
+                    dynamic: true
+                });
+            });
+
+
+
+            //   // minValue and maxValue must be set for the animations to work
+            //   bubbleSeries.set("heatRules", [
+            //     {
+            //       target: circleTemplate,
+            //       dataField: "value",
+            //       min: 10,
+            //       max: 50,
+            //       minValue: 0,
+            //       maxValue: 100,
+            //       key: "radius"
+            //     }
+            //   ]);
+
+            bubbleSeries.data.setAll(data);
+
+            var array = document.getElementById('mydiv').dataset.test
+
+            var parsedS3Array = [];
+
+            var jsonData = JSON.parse(array);
+
+            for (var i = 0; i < jsonData.length; i++) {
+                var obj = jsonData[i];
+
+
+
+                const s3SplitFileObject = new Object();
+                s3SplitFileObject.userId = obj.userId;
+                s3SplitFileObject.deviceType = obj.deviceType
+                s3SplitFileObject.deviceVersion = obj.deviceVersion
+                s3SplitFileObject.latitude = obj.latitude
+                s3SplitFileObject.longitude = obj.longitude
+                s3SplitFileObject.timestamp = obj.timestamp
+
+                parsedS3Array.push(s3SplitFileObject)
+
+            }
+
+            // Builds the HTML Table out of myList.
+            function buildHtmlTable(selector) {
+
+                console.log("array in function: " + parsedS3Array)
+                var columns = addAllColumnHeaders(parsedS3Array, selector);
+
+                for (var i = 0; i < parsedS3Array.length; i++) {
+                    var row$ = $('<tr/>');
+                    for (var colIndex = 0; colIndex < columns.length; colIndex++) {
+                        var cellValue = parsedS3Array[i][columns[colIndex]];
+                        if (cellValue == null) cellValue = "";
+                        row$.append($('<td/>').html(cellValue));
+                    }
+                    $(selector).append(row$);
+                }
+            }
+
+            // Adds a header row to the table and returns the set of columns.
+            // Need to do union of keys from all records as some records may not contain
+            // all records.
+            function addAllColumnHeaders(parsedS3Array, selector) {
+                var columnSet = [];
+                var headerTr$ = $('<tr/>');
+
+                for (var i = 0; i < parsedS3Array.length; i++) {
+                    var rowHash = parsedS3Array[i];
+                    for (var key in rowHash) {
+                        if ($.inArray(key, columnSet) == -1) {
+                            columnSet.push(key);
+                            headerTr$.append($('<th/>').html(key));
+                        }
+                    }
+                }
+                $(selector).append(headerTr$);
+
+                return columnSet;
+            }
+
+
+
+        </script>
