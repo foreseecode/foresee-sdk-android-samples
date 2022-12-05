@@ -33,16 +33,19 @@ router.get("/", async function (req, res, next) {
             var content = jsonData.Contents[i];
             //console.log(content.Key);
             var response = new String(content.Key);
-            response = response.replace(".json", "");
+            response = response.replace(".json", "").replace(" ", "~");
+            console.log("response: "+response);
             var splitResponse = response.split('_');
 
             const s3SplitFileObject = new Object();
             s3SplitFileObject.userId = splitResponse[0];
             s3SplitFileObject.deviceType = splitResponse[1];
             s3SplitFileObject.deviceVersion = splitResponse[2];
-            s3SplitFileObject.latitude = splitResponse[3];
-            s3SplitFileObject.longitude = splitResponse[4];
-            s3SplitFileObject.timestamp = splitResponse[5];
+            s3SplitFileObject.country = splitResponse[3];
+            s3SplitFileObject.latitude = splitResponse[4];
+            s3SplitFileObject.longitude = splitResponse[5];
+            s3SplitFileObject.exception = splitResponse[6];
+            s3SplitFileObject.timestamp = splitResponse[7];
 
 
             parsedS3Array.push(s3SplitFileObject)
@@ -64,9 +67,44 @@ router.get("/", async function (req, res, next) {
 
 });
 
-router.get("/users", (req, res, next) => {
-    res.render("users");
+router.get("/users", async (req, res, next) => {
+    //res.render("users");
+    console.log("URL: "+req.url)
+
+
+    const url = new URL(
+        "http://localhost:3000"+req.url
+      );
+;
+    // console.log("URL user: "+url.searchParams.get('user'));
+    // console.log("URL device type: "+url.searchParams.get('deviceType'));
+    // console.log("URL device version: "+url.searchParams.get('deviceVersion'));
+    // console.log("URL country: "+url.searchParams.get('country'));
+    // console.log("URL latitude: "+url.searchParams.get('latitude'));
+    // console.log("URL longitude: "+url.searchParams.get('longitude'));
+    // console.log("URL timestamp: "+url.searchParams.get('timestamp'));
+
+
+    var urlS3 = url.searchParams.get('user') + "_" + url.searchParams.get('deviceType') + "_" 
+    + url.searchParams.get('deviceVersion') + "_" + url.searchParams.get('country') + "_"
+    + url.searchParams.get('latitude') + "_" + url.searchParams.get('longitude') + "_"
+    + url.searchParams.get('exception') + "_" +url.searchParams.get('timestamp') + ".json" 
+
+    console.log("url to send to s3 bucket: "+urlS3);
+
+    var formattedURL = urlS3.replace("~", " ");
+
+    console.log("Formatted url: "+formattedURL);
+
+
+    const myObject = await getObject('downtime-json', formattedURL);
+
+
+    res.render("users", {s3data:myObject})
 });
+
+
+
 
 async function getObject(bucket, objectKey) {
     try {

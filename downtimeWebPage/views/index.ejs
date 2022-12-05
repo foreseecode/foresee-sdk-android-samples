@@ -172,6 +172,8 @@
 
             var array = document.getElementById('mydiv').dataset.test
 
+            console.log("array: "+array);
+
             var parsedS3Array = [];
 
             var jsonData = JSON.parse(array);
@@ -182,11 +184,13 @@
 
 
                 const s3SplitFileObject = new Object();
-                s3SplitFileObject.userId = '<a href="http://localhost:3000/users?'+obj.userId+'">'+obj.userId+'</a>';
+                s3SplitFileObject.userId = '<a href="http://localhost:3000/users?user='+obj.userId+'&deviceType='+obj.deviceType+'&deviceVersion='+obj.deviceVersion+'&country='+obj.country+'&latitude='+obj.latitude+'&longitude='+obj.longitude+'&exception='+obj.exception+'&timestamp='+obj.timestamp+'">'+obj.userId+'</a>';
                 s3SplitFileObject.deviceType = obj.deviceType
                 s3SplitFileObject.deviceVersion = obj.deviceVersion
+                s3SplitFileObject.country = obj.country
                 s3SplitFileObject.latitude = obj.latitude
                 s3SplitFileObject.longitude = obj.longitude
+                s3SplitFileObject.exception = obj.exception
                 s3SplitFileObject.timestamp = obj.timestamp
 
                 parsedS3Array.push(s3SplitFileObject)

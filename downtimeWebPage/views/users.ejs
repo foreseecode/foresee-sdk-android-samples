@@ -4,34 +4,72 @@
 <head>
 </head>
 
-<body class="container" onLoad="getUserId()">
+<body class="container" onLoad="myfunction()">
 
   <header>
   </header>
 
   <main>
     <div class="jumbotron">
-      <h1>Users information</h1>
-      <h2><script>
-        var result = getUserId();
-        document.write(result);
-      </script></h2>
+      <h1><%= s3data%></h1>
+
     </div>
   </main>
 
   <footer>
   </footer>
 
+  <script>
+
+    function myfunction() {
+
+      const queryString = window.location.search;
+      const urlParams = new URLSearchParams(queryString);
+      const user = urlParams.get('user')
+      const deviceType = urlParams.get('deviceType')
+      const deviceVersion = urlParams.get('deviceVersion')
+      const country = urlParams.get('country')
+      const latitude = urlParams.get('latitude')
+      const longitude = urlParams.get('longitude')
+      const exception = urlParams.get('exception')
+      const timestamp = urlParams.get('timestamp')
+      console.log("User details: " + user);
+      let userDetails = user;
+      let deviceTypeDetails = deviceType;
+      let deviceVersionDetails = deviceVersion;
+      let latitudeDetails = latitude;
+      let longitudeDetails = longitude;
+      let timestampDetails = timestamp;
+      let url = user + "_" + deviceType + "_" + deviceVersion + "_" + country + "_" + latitude + "_" + longitude + "_" + exception + "_" + timestamp + ".json";
+      //document.getElementById("jsonURL").innerHTML = url;
+
+      //const myObject = await getObject('downtime-json', url);
+    }
+
+    function parseS3JSON(s3Object) {
+      const obj = JSON.parse(s3Object);
+      //console.log("Parsed json: " + obj.testfield)
+
+
+
+      const s3ParseObjectData = new Object();
+      s3ParseObjectData.userId = obj.testfield;
+      s3ParseObjectData.deviceType = "Android";
+      s3ParseObjectData.version = "9";
+      s3ParseObjectData.latitude = "-231321";
+      s3ParseObjectData.longitude = "677567";
+      s3ParseObjectData.timestamp = "34324234234";
+
+      parsedS3Array.push(s3ParseObjectData)
+      //console.log("array size: " + parsedS3Array.length)
+
+      console.log("Contents: " + JSON.stringify(parsedS3Array))
+    }
+
+
+  </script>
+
+
 </body>
 
 </html>
-
-
-<script>
-
-  function getUserId() {
-    const queryString = window.location.search;
-    return queryString;
-  }
-
-</script>
