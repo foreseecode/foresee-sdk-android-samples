@@ -3,9 +3,24 @@
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     }
 
-    #chartdiv {
+    #chartdiv1 {
         width: 100%;
-        height: 600px
+        height: 400px;
+    }
+
+    #chartdiv2 {
+        width: 100%;
+        height: 400px;
+    }
+
+    #chartdiv3 {
+        width: 100%;
+        height: 400px;
+    }
+
+    #chartdiv4 {
+        width: 100%;
+        height: 400px;
     }
 </style>
 
@@ -13,21 +28,26 @@
 
 <%- include('_header'); -%>
 
-<h1>Welcome!</h1>
-
-
     <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
     <script src="https://cdn.amcharts.com/lib/5/map.js"></script>
     <script src="https://cdn.amcharts.com/lib/5/geodata/worldLow.js"></script>
     <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
-    <div id="chartdiv"></div>
+    <script src="https://cdn.amcharts.com/lib/5/percent.js"></script>
 
 
+  
+    <h1>World Map</h1>
+    <div id="chartdiv1"></div>
+    <h1>Countries</h1>
+    <div id="chartdiv2"></div>
+    <h1>OS Versions</h1>
+    <div id="chartdiv3"></div>
+    <h1>Errors</h1>
+    <div id="chartdiv4"></div>
+    
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-
-    
 
 
 
@@ -47,6 +67,9 @@
 
 
         <script>
+
+            // MAP AREAD
+
             var data = [
                 {
                     id: "US",
@@ -83,7 +106,7 @@
                 }
             ];
 
-            var root = am5.Root.new("chartdiv");
+            var root = am5.Root.new("chartdiv1");
             root.setThemes([am5themes_Animated.new(root)]);
 
             var chart = root.container.children.push(am5map.MapChart.new(root, {}));
@@ -154,25 +177,15 @@
             });
 
 
-
-            //   // minValue and maxValue must be set for the animations to work
-            //   bubbleSeries.set("heatRules", [
-            //     {
-            //       target: circleTemplate,
-            //       dataField: "value",
-            //       min: 10,
-            //       max: 50,
-            //       minValue: 0,
-            //       maxValue: 100,
-            //       key: "radius"
-            //     }
-            //   ]);
-
             bubbleSeries.data.setAll(data);
+
+            // END OF MAP AREAD
+
+
 
             var array = document.getElementById('mydiv').dataset.test
 
-            console.log("array: "+array);
+            console.log("array: " + array);
 
             var parsedS3Array = [];
 
@@ -184,7 +197,7 @@
 
 
                 const s3SplitFileObject = new Object();
-                s3SplitFileObject.userId = '<a href="http://localhost:3000/users?user='+obj.userId+'&deviceType='+obj.deviceType+'&deviceVersion='+obj.deviceVersion+'&country='+obj.country+'&latitude='+obj.latitude+'&longitude='+obj.longitude+'&exception='+obj.exception+'&timestamp='+obj.timestamp+'">'+obj.userId+'</a>';
+                s3SplitFileObject.userId = '<a href="http://localhost:3000/users?user=' + obj.userId + '&deviceType=' + obj.deviceType + '&deviceVersion=' + obj.deviceVersion + '&country=' + obj.country + '&latitude=' + obj.latitude + '&longitude=' + obj.longitude + '&exception=' + obj.exception + '&timestamp=' + obj.timestamp + '">' + obj.userId + '</a>';
                 s3SplitFileObject.deviceType = obj.deviceType
                 s3SplitFileObject.deviceVersion = obj.deviceVersion
                 s3SplitFileObject.country = obj.country
@@ -236,5 +249,221 @@
             }
 
 
+
+            /**
+ * ---------------------------------------
+ * This demo was created using amCharts 5.
+ * 
+ * For more information visit:
+ * https://www.amcharts.com/
+ * 
+ * Documentation is available at:
+ * https://www.amcharts.com/docs/v5/
+ * ---------------------------------------
+ */
+
+            // Create root element
+            // https://www.amcharts.com/docs/v5/getting-started/#Root_element
+            var root = am5.Root.new("chartdiv2");
+
+            // Set themes
+            // https://www.amcharts.com/docs/v5/concepts/themes/
+            root.setThemes([
+                am5themes_Animated.new(root)
+            ]);
+
+            // Create chart
+            // https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/
+            var chart = root.container.children.push(
+                am5percent.PieChart.new(root, {
+                    endAngle: 270
+                })
+            );
+
+            // Create series
+            // https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Series
+            var series = chart.series.push(
+                am5percent.PieSeries.new(root, {
+                    valueField: "value",
+                    categoryField: "category",
+                    endAngle: 270
+                })
+            );
+
+            series.states.create("hidden", {
+                endAngle: -90
+            });
+
+            // Set data
+            // https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Setting_data
+            series.data.setAll([{
+                category: "Lithuania",
+                value: 501.9
+            }, {
+                category: "Czechia",
+                value: 301.9
+            }, {
+                category: "Ireland",
+                value: 201.1
+            }, {
+                category: "Germany",
+                value: 165.8
+            }, {
+                category: "Australia",
+                value: 139.9
+            }, {
+                category: "Austria",
+                value: 128.3
+            }, {
+                category: "UK",
+                value: 99
+            }]);
+
+            series.appear(1000, 100);
+
+
+                        /**
+ * ---------------------------------------
+ * This demo was created using amCharts 5.
+ * 
+ * For more information visit:
+ * https://www.amcharts.com/
+ * 
+ * Documentation is available at:
+ * https://www.amcharts.com/docs/v5/
+ * ---------------------------------------
+ */
+
+            // Create root element
+            // https://www.amcharts.com/docs/v5/getting-started/#Root_element
+            var root = am5.Root.new("chartdiv3");
+
+            // Set themes
+            // https://www.amcharts.com/docs/v5/concepts/themes/
+            root.setThemes([
+                am5themes_Animated.new(root)
+            ]);
+
+            // Create chart
+            // https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/
+            var chart = root.container.children.push(
+                am5percent.PieChart.new(root, {
+                    endAngle: 270
+                })
+            );
+
+            // Create series
+            // https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Series
+            var series = chart.series.push(
+                am5percent.PieSeries.new(root, {
+                    valueField: "value",
+                    categoryField: "category",
+                    endAngle: 270
+                })
+            );
+
+            series.states.create("hidden", {
+                endAngle: -90
+            });
+
+            // Set data
+            // https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Setting_data
+            series.data.setAll([{
+                category: "Lithuania",
+                value: 501.9
+            }, {
+                category: "Czechia",
+                value: 301.9
+            }, {
+                category: "Ireland",
+                value: 201.1
+            }, {
+                category: "Germany",
+                value: 165.8
+            }, {
+                category: "Australia",
+                value: 139.9
+            }, {
+                category: "Austria",
+                value: 128.3
+            }, {
+                category: "UK",
+                value: 99
+            }]);
+
+            series.appear(1000, 100);
+
+
+
+                        /**
+ * ---------------------------------------
+ * This demo was created using amCharts 5.
+ * 
+ * For more information visit:
+ * https://www.amcharts.com/
+ * 
+ * Documentation is available at:
+ * https://www.amcharts.com/docs/v5/
+ * ---------------------------------------
+ */
+
+            // Create root element
+            // https://www.amcharts.com/docs/v5/getting-started/#Root_element
+            var root = am5.Root.new("chartdiv4");
+
+            // Set themes
+            // https://www.amcharts.com/docs/v5/concepts/themes/
+            root.setThemes([
+                am5themes_Animated.new(root)
+            ]);
+
+            // Create chart
+            // https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/
+            var chart = root.container.children.push(
+                am5percent.PieChart.new(root, {
+                    endAngle: 270
+                })
+            );
+
+            // Create series
+            // https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Series
+            var series = chart.series.push(
+                am5percent.PieSeries.new(root, {
+                    valueField: "value",
+                    categoryField: "category",
+                    endAngle: 270
+                })
+            );
+
+            series.states.create("hidden", {
+                endAngle: -90
+            });
+
+            // Set data
+            // https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Setting_data
+            series.data.setAll([{
+                category: "Lithuania",
+                value: 501.9
+            }, {
+                category: "Czechia",
+                value: 301.9
+            }, {
+                category: "Ireland",
+                value: 201.1
+            }, {
+                category: "Germany",
+                value: 165.8
+            }, {
+                category: "Australia",
+                value: 139.9
+            }, {
+                category: "Austria",
+                value: 128.3
+            }, {
+                category: "UK",
+                value: 99
+            }]);
+
+            series.appear(1000, 100);
 
         </script>
