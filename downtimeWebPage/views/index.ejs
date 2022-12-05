@@ -35,7 +35,7 @@
     <script src="https://cdn.amcharts.com/lib/5/percent.js"></script>
 
 
-  
+
     <h1>World Map</h1>
     <div id="chartdiv1"></div>
     <h1>Countries</h1>
@@ -44,7 +44,7 @@
     <div id="chartdiv3"></div>
     <h1>Errors</h1>
     <div id="chartdiv4"></div>
-    
+
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -67,42 +67,136 @@
 
 
         <script>
+            // GLOBAL VARS
+            var usaCount = 0;
+            var irishCount = 0;
 
-            // MAP AREAD
+
+            var os8Count = 0;
+            var os9Count = 0;
+            var os10Count = 0;
+            var os11Count = 0;
+            var os12Count = 0;
+
+
+            var nullPointerCount = 0;
+            var error503Count = 0;
+            //
+
+            // TABLE CREATION
+
+            var array = document.getElementById('mydiv').dataset.test
+
+            console.log("array: " + array);
+
+            var parsedS3Array = [];
+
+            var jsonData = JSON.parse(array);
+
+            for (var i = 0; i < jsonData.length; i++) {
+                var obj = jsonData[i];
+
+
+
+                const s3SplitFileObject = new Object();
+                s3SplitFileObject.userId = '<a href="http://localhost:3000/users?user=' + obj.userId + '&deviceType=' + obj.deviceType + '&deviceVersion=' + obj.deviceVersion + '&country=' + obj.country + '&latitude=' + obj.latitude + '&longitude=' + obj.longitude + '&exception=' + obj.exception + '&timestamp=' + obj.timestamp + '">' + obj.userId + '</a>';
+                s3SplitFileObject.deviceType = obj.deviceType
+                s3SplitFileObject.deviceVersion = obj.deviceVersion
+                if (obj.deviceVersion == '8') {
+                    os8Count = os8Count + 1;
+                } else if (obj.deviceVersion == '9') {
+                    os9Count = os9Count + 1;
+                } else if (obj.deviceVersion == '10') {
+                    os10Count = os10Count + 1;
+                } else if (obj.deviceVersion == '11') {
+                    os11Count = os11Count + 1;
+                } else if (obj.deviceVersion == '12') {
+                    os12Count = os12Count + 1;
+                }
+
+                s3SplitFileObject.country = obj.country
+
+                if (obj.country == 'ireland') {
+                    irishCount = irishCount + 1;
+                }
+
+                if (obj.country == 'united~states') {
+                    usaCount = usaCount + 1;
+                }
+
+                s3SplitFileObject.latitude = obj.latitude
+                s3SplitFileObject.longitude = obj.longitude
+                s3SplitFileObject.exception = obj.exception
+
+                if (obj.exception == '503') {
+                    error503Count = error503Count + 1;
+                } else {
+                    nullPointerCount = nullPointerCount + 1;
+                }
+
+                s3SplitFileObject.timestamp = obj.timestamp
+
+                parsedS3Array.push(s3SplitFileObject)
+
+            }
+
+            // Builds the HTML Table out of myList.
+            function buildHtmlTable(selector) {
+
+                //console.log("array in function: " + parsedS3Array)
+                var columns = addAllColumnHeaders(parsedS3Array, selector);
+
+                for (var i = 0; i < parsedS3Array.length; i++) {
+                    var row$ = $('<tr/>');
+                    for (var colIndex = 0; colIndex < columns.length; colIndex++) {
+                        var cellValue = parsedS3Array[i][columns[colIndex]];
+                        if (cellValue == null) cellValue = "";
+                        row$.append($('<td/>').html(cellValue));
+                    }
+                    $(selector).append(row$);
+                }
+            }
+
+            // Adds a header row to the table and returns the set of columns.
+            // Need to do union of keys from all records as some records may not contain
+            // all records.
+            function addAllColumnHeaders(parsedS3Array, selector) {
+                var columnSet = [];
+                var headerTr$ = $('<tr/>');
+
+                for (var i = 0; i < parsedS3Array.length; i++) {
+                    var rowHash = parsedS3Array[i];
+                    for (var key in rowHash) {
+                        if ($.inArray(key, columnSet) == -1) {
+                            columnSet.push(key);
+                            headerTr$.append($('<th/>').html(key));
+                        }
+                    }
+                }
+                $(selector).append(headerTr$);
+
+                return columnSet;
+            }
+            // END OF TABLE CREATION
+            // -----------------------
+            // -----------------------
+
+
+
+
+            //-------------------------------
+            // MAP AREA
+            //------------------------------
 
             var data = [
                 {
                     id: "US",
                     name: "United States",
-                    value: 100
+                    value: usaCount
                 }, {
-                    id: "GB",
-                    name: "United Kingdom",
-                    value: 75
-                }, {
-                    id: "CN",
-                    name: "China",
-                    value: 100
-                }, {
-                    id: "IN",
-                    name: "India",
-                    value: 100
-                }, {
-                    id: "AU",
-                    name: "Australia",
-                    value: 100
-                }, {
-                    id: "CA",
-                    name: "Canada",
-                    value: 100
-                }, {
-                    id: "BR",
-                    name: "Brasil",
-                    value: 100
-                }, {
-                    id: "ZA",
-                    name: "South Africa",
-                    value: 100
+                    id: "IE",
+                    name: "Ireland",
+                    value: irishCount
                 }
             ];
 
@@ -179,88 +273,16 @@
 
             bubbleSeries.data.setAll(data);
 
+            // ------------------------
             // END OF MAP AREAD
+            // ------------------------
 
 
 
-            var array = document.getElementById('mydiv').dataset.test
 
-            console.log("array: " + array);
-
-            var parsedS3Array = [];
-
-            var jsonData = JSON.parse(array);
-
-            for (var i = 0; i < jsonData.length; i++) {
-                var obj = jsonData[i];
-
-
-
-                const s3SplitFileObject = new Object();
-                s3SplitFileObject.userId = '<a href="http://localhost:3000/users?user=' + obj.userId + '&deviceType=' + obj.deviceType + '&deviceVersion=' + obj.deviceVersion + '&country=' + obj.country + '&latitude=' + obj.latitude + '&longitude=' + obj.longitude + '&exception=' + obj.exception + '&timestamp=' + obj.timestamp + '">' + obj.userId + '</a>';
-                s3SplitFileObject.deviceType = obj.deviceType
-                s3SplitFileObject.deviceVersion = obj.deviceVersion
-                s3SplitFileObject.country = obj.country
-                s3SplitFileObject.latitude = obj.latitude
-                s3SplitFileObject.longitude = obj.longitude
-                s3SplitFileObject.exception = obj.exception
-                s3SplitFileObject.timestamp = obj.timestamp
-
-                parsedS3Array.push(s3SplitFileObject)
-
-            }
-
-            // Builds the HTML Table out of myList.
-            function buildHtmlTable(selector) {
-
-                //console.log("array in function: " + parsedS3Array)
-                var columns = addAllColumnHeaders(parsedS3Array, selector);
-
-                for (var i = 0; i < parsedS3Array.length; i++) {
-                    var row$ = $('<tr/>');
-                    for (var colIndex = 0; colIndex < columns.length; colIndex++) {
-                        var cellValue = parsedS3Array[i][columns[colIndex]];
-                        if (cellValue == null) cellValue = "";
-                        row$.append($('<td/>').html(cellValue));
-                    }
-                    $(selector).append(row$);
-                }
-            }
-
-            // Adds a header row to the table and returns the set of columns.
-            // Need to do union of keys from all records as some records may not contain
-            // all records.
-            function addAllColumnHeaders(parsedS3Array, selector) {
-                var columnSet = [];
-                var headerTr$ = $('<tr/>');
-
-                for (var i = 0; i < parsedS3Array.length; i++) {
-                    var rowHash = parsedS3Array[i];
-                    for (var key in rowHash) {
-                        if ($.inArray(key, columnSet) == -1) {
-                            columnSet.push(key);
-                            headerTr$.append($('<th/>').html(key));
-                        }
-                    }
-                }
-                $(selector).append(headerTr$);
-
-                return columnSet;
-            }
-
-
-
-            /**
- * ---------------------------------------
- * This demo was created using amCharts 5.
- * 
- * For more information visit:
- * https://www.amcharts.com/
- * 
- * Documentation is available at:
- * https://www.amcharts.com/docs/v5/
- * ---------------------------------------
- */
+            //-------------------------------
+            // PIE CHART Countries
+            //------------------------------
 
             // Create root element
             // https://www.amcharts.com/docs/v5/getting-started/#Root_element
@@ -297,42 +319,27 @@
             // Set data
             // https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Setting_data
             series.data.setAll([{
-                category: "Lithuania",
-                value: 501.9
-            }, {
-                category: "Czechia",
-                value: 301.9
-            }, {
                 category: "Ireland",
-                value: 201.1
+                value: irishCount
             }, {
-                category: "Germany",
-                value: 165.8
-            }, {
-                category: "Australia",
-                value: 139.9
-            }, {
-                category: "Austria",
-                value: 128.3
-            }, {
-                category: "UK",
-                value: 99
+                category: "USA",
+                value: usaCount
             }]);
 
             series.appear(1000, 100);
 
+            //-------------------------------
+            // END OF PIE CHART Countries
+            //------------------------------
 
-                        /**
- * ---------------------------------------
- * This demo was created using amCharts 5.
- * 
- * For more information visit:
- * https://www.amcharts.com/
- * 
- * Documentation is available at:
- * https://www.amcharts.com/docs/v5/
- * ---------------------------------------
- */
+
+
+
+
+
+            //-------------------------------
+            // START OF PIE CHART OS VERSION
+            //------------------------------
 
             // Create root element
             // https://www.amcharts.com/docs/v5/getting-started/#Root_element
@@ -369,43 +376,32 @@
             // Set data
             // https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Setting_data
             series.data.setAll([{
-                category: "Lithuania",
-                value: 501.9
+                category: "Android 12",
+                value: os12Count
             }, {
-                category: "Czechia",
-                value: 301.9
+                category: "Android 11",
+                value: os11Count
             }, {
-                category: "Ireland",
-                value: 201.1
+                category: "Android 10",
+                value: os10Count
             }, {
-                category: "Germany",
-                value: 165.8
+                category: "Android 9",
+                value: os9Count
             }, {
-                category: "Australia",
-                value: 139.9
-            }, {
-                category: "Austria",
-                value: 128.3
-            }, {
-                category: "UK",
-                value: 99
+                category: "Android 8",
+                value: os8Count
             }]);
 
             series.appear(1000, 100);
 
+            //-------------------------------
+            // END OF PIE CHART OS VERSION
+            //------------------------------
 
 
-                        /**
- * ---------------------------------------
- * This demo was created using amCharts 5.
- * 
- * For more information visit:
- * https://www.amcharts.com/
- * 
- * Documentation is available at:
- * https://www.amcharts.com/docs/v5/
- * ---------------------------------------
- */
+            //-------------------------------
+            // START OF PIE CHART ERRORS
+            //------------------------------
 
             // Create root element
             // https://www.amcharts.com/docs/v5/getting-started/#Root_element
@@ -442,28 +438,17 @@
             // Set data
             // https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Setting_data
             series.data.setAll([{
-                category: "Lithuania",
-                value: 501.9
+                category: "java.lang.NullPointerException",
+                value: nullPointerCount
             }, {
-                category: "Czechia",
-                value: 301.9
-            }, {
-                category: "Ireland",
-                value: 201.1
-            }, {
-                category: "Germany",
-                value: 165.8
-            }, {
-                category: "Australia",
-                value: 139.9
-            }, {
-                category: "Austria",
-                value: 128.3
-            }, {
-                category: "UK",
-                value: 99
+                category: "503 Service Unavailable",
+                value: error503Count
             }]);
 
             series.appear(1000, 100);
+
+            //-------------------------------
+            // END OF PIE CHART ERRORS
+            //------------------------------
 
         </script>
