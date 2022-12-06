@@ -6,6 +6,7 @@ const bucket = "downtime-json";
 var responseFromS3Bucket = "";
 
 let parsedS3Array = [];
+let parsedS3ArrayData = [];
 
 let s3 = new AWS.S3({
     region: 'us-east-1',
@@ -99,8 +100,31 @@ router.get("/users", async (req, res, next) => {
 
     const myObject = await getObject('downtime-json', formattedURL);
 
+    var jsonData = JSON.parse(myObject);
 
-    res.render("users", {s3data:myObject})
+    console.log("JSON file contents: "+myObject);
+
+    const s3SplitFileObject = new Object();
+    s3SplitFileObject.activity = jsonData.activity
+    s3SplitFileObject.currentMemoryUsage = jsonData.currentMemoryUsage
+    s3SplitFileObject.currentNetworkBandwidth = jsonData.currentNetworkBandwidth
+    s3SplitFileObject.currentNetworkType = jsonData.currentNetworkType
+    s3SplitFileObject.currentStorageAvailable = jsonData.currentStorageAvailable
+    s3SplitFileObject.error = jsonData.error
+    s3SplitFileObject.errorCount = jsonData.errorCount
+    s3SplitFileObject.modelName = jsonData.modelName
+    s3SplitFileObject.osName = jsonData.osName
+    s3SplitFileObject.osVersion = jsonData.osVersion
+    s3SplitFileObject.ramTotal = jsonData.ramTotal
+    s3SplitFileObject.storageTotal = jsonData.storageTotal
+
+    parsedS3ArrayData.push(s3SplitFileObject);
+
+    console.log("Activity: "+ parsedS3ArrayData)
+
+
+
+    res.render("users", { s3data: JSON.stringify(parsedS3ArrayData) });
 });
 
 

@@ -1,75 +1,96 @@
-<!DOCTYPE html>
-<html lang="en">
+<%- include('_header'); -%>
 
-<head>
-</head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
-<body class="container" onLoad="myfunction()">
 
-  <header>
-  </header>
-
-  <main>
-    <div class="jumbotron">
-      <h1><%= s3data%></h1>
-
-    </div>
-  </main>
-
-  <footer>
-  </footer>
-
-  <script>
-
-    function myfunction() {
-
-      const queryString = window.location.search;
-      const urlParams = new URLSearchParams(queryString);
-      const user = urlParams.get('user')
-      const deviceType = urlParams.get('deviceType')
-      const deviceVersion = urlParams.get('deviceVersion')
-      const country = urlParams.get('country')
-      const latitude = urlParams.get('latitude')
-      const longitude = urlParams.get('longitude')
-      const exception = urlParams.get('exception')
-      const timestamp = urlParams.get('timestamp')
-      console.log("User details: " + user);
-      let userDetails = user;
-      let deviceTypeDetails = deviceType;
-      let deviceVersionDetails = deviceVersion;
-      let latitudeDetails = latitude;
-      let longitudeDetails = longitude;
-      let timestampDetails = timestamp;
-      let url = user + "_" + deviceType + "_" + deviceVersion + "_" + country + "_" + latitude + "_" + longitude + "_" + exception + "_" + timestamp + ".json";
-      //document.getElementById("jsonURL").innerHTML = url;
-
-      //const myObject = await getObject('downtime-json', url);
-    }
-
-    function parseS3JSON(s3Object) {
-      const obj = JSON.parse(s3Object);
-      //console.log("Parsed json: " + obj.testfield)
+  <div id="mydiv" data-test=<%=s3data %>></div>
 
 
 
-      const s3ParseObjectData = new Object();
-      s3ParseObjectData.userId = obj.testfield;
-      s3ParseObjectData.deviceType = "Android";
-      s3ParseObjectData.version = "9";
-      s3ParseObjectData.latitude = "-231321";
-      s3ParseObjectData.longitude = "677567";
-      s3ParseObjectData.timestamp = "34324234234";
+  <body onLoad="buildHtmlTable('#excelDataTable')">
+    <table id="excelDataTable" border="1" style="width: 200%; align-items: center;"
 
-      parsedS3Array.push(s3ParseObjectData)
-      //console.log("array size: " + parsedS3Array.length)
-
-      console.log("Contents: " + JSON.stringify(parsedS3Array))
-    }
+    </table>
+  </body>
 
 
-  </script>
+  <%- include('_footer'); -%>
+
+    <script>
+
+      var array = document.getElementById('mydiv').dataset.test
+
+      var parsedS3Array = [];
+
+      console.log("Array: " + array)
+
+      var jsonData = JSON.parse(array);
+
+      for (var i = 0; i < jsonData.length; i++) {
+        var obj = jsonData[i];
+
+        const s3SplitFileObject = new Object();
+        s3SplitFileObject.activity = obj.activity
+        s3SplitFileObject.currentMemoryUsage = obj.currentMemoryUsage
+        s3SplitFileObject.currentNetworkBandwidth = obj.currentNetworkBandwidth
+        s3SplitFileObject.currentNetworkType = obj.currentNetworkType
+        s3SplitFileObject.currentStorageAvailable = obj.currentStorageAvailable
+        s3SplitFileObject.error = obj.error
+        s3SplitFileObject.errorCount = obj.errorCount
+        s3SplitFileObject.modelName = obj.modelName
+        s3SplitFileObject.osName = obj.osName
+        s3SplitFileObject.osVersion = obj.osVersion
+        s3SplitFileObject.ramTotal = obj.ramTotal
+        s3SplitFileObject.storageTotal = obj.storageTotal
+
+        parsedS3Array.push(s3SplitFileObject)
+
+      }
 
 
-</body>
 
-</html>
+
+      // Builds the HTML Table out of myList.
+      function buildHtmlTable(selector) {
+
+        //console.log("array in function: " + parsedS3Array)
+        var columns = addAllColumnHeaders(parsedS3Array, selector);
+
+        for (var i = 0; i < parsedS3Array.length; i++) {
+          var row$ = $('<tr/>');
+          for (var colIndex = 0; colIndex < columns.length; colIndex++) {
+            var cellValue = parsedS3Array[i][columns[colIndex]];
+            if (cellValue == null) cellValue = "";
+            row$.append($('<td/>').html(cellValue));
+          }
+          $(selector).append(row$);
+        }
+      }
+
+      // Adds a header row to the table and returns the set of columns.
+      // Need to do union of keys from all records as some records may not contain
+      // all records.
+      function addAllColumnHeaders(parsedS3Array, selector) {
+        var columnSet = [];
+        var headerTr$ = $('<tr/>');
+
+        for (var i = 0; i < parsedS3Array.length; i++) {
+          var rowHash = parsedS3Array[i];
+          for (var key in rowHash) {
+            if ($.inArray(key, columnSet) == -1) {
+              columnSet.push(key);
+              headerTr$.append($('<th/>').html(key));
+            }
+          }
+        }
+        $(selector).append(headerTr$);
+
+        return columnSet;
+      }
+
+    </script>
+
+
+    </body>
+
+    </html>
