@@ -87,7 +87,7 @@ platform :android do
 
     desc "Make a Feedback Sample app QA build"
         lane :build_feedback_sample_qa do
-            gradle(task: "clean :FeedbackSample:assemble")
+            gradle(task: "clean :FeedbackSample:assembleDebug")
 
             begin
                 upload_sample_app(APPCENTER_FEEDBACK_SAMPLE_APP_NAME)
