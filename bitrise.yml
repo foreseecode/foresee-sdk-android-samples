@@ -55,7 +55,7 @@ workflows:
     envs:
     - opts:
         is_expand: false
-      BITRISE_DEPLOY_DIR_FOR_QA: "./AdvancedSample/build/outputs/apk/release/"
+      BITRISE_DEPLOY_DIR_FOR_QA: "./AdvancedSample/build/outputs/apk/debug/"
     before_run:
     - _Setup-For-All-Workflows
     - _Clone-Scripts-Repo
@@ -73,7 +73,7 @@ workflows:
     envs:
     - opts:
         is_expand: false
-      BITRISE_DEPLOY_DIR_FOR_QA: "./BasicSample/build/outputs/apk/release/"
+      BITRISE_DEPLOY_DIR_FOR_QA: "./BasicSample/build/outputs/apk/debug/"
     before_run:
     - _Setup-For-All-Workflows
     - _Clone-Scripts-Repo
@@ -91,7 +91,7 @@ workflows:
     envs:
     - opts:
         is_expand: false
-      BITRISE_DEPLOY_DIR_FOR_QA: "./ContactSurvey/build/outputs/apk/release/"
+      BITRISE_DEPLOY_DIR_FOR_QA: "./ContactSurvey/build/outputs/apk/debug/"
     before_run:
     - _Setup-For-All-Workflows
     - _Clone-Scripts-Repo
@@ -109,7 +109,7 @@ workflows:
     envs:
     - opts:
         is_expand: false
-      BITRISE_DEPLOY_DIR_FOR_QA: "./CustomInvite/build/outputs/apk/release/"
+      BITRISE_DEPLOY_DIR_FOR_QA: "./CustomInvite/build/outputs/apk/debug/"
     before_run:
     - _Setup-For-All-Workflows
     - _Clone-Scripts-Repo
@@ -127,7 +127,7 @@ workflows:
     envs:
     - opts:
         is_expand: false
-      BITRISE_DEPLOY_DIR_FOR_QA: "./DbaSample/build/outputs/apk/release/"
+      BITRISE_DEPLOY_DIR_FOR_QA: "./DbaSample/build/outputs/apk/debug/"
     before_run:
     - _Setup-For-All-Workflows
     - _Clone-Scripts-Repo
@@ -163,7 +163,7 @@ workflows:
     envs:
     - opts:
         is_expand: false
-      BITRISE_DEPLOY_DIR_FOR_QA: "./KotlinSample/build/outputs/apk/release/"
+      BITRISE_DEPLOY_DIR_FOR_QA: "./KotlinSample/build/outputs/apk/debug/"
     before_run:
     - _Setup-For-All-Workflows
     - _Clone-Scripts-Repo
@@ -181,7 +181,7 @@ workflows:
     envs:
     - opts:
         is_expand: false
-      BITRISE_DEPLOY_DIR_FOR_QA: "./LocalizationSample/build/outputs/apk/release/"
+      BITRISE_DEPLOY_DIR_FOR_QA: "./LocalizationSample/build/outputs/apk/debug/"
     before_run:
     - _Setup-For-All-Workflows
     - _Clone-Scripts-Repo
