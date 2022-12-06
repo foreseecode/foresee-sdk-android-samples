@@ -8,7 +8,6 @@ workflows:
     - activate-ssh-key@3.1.1:
         run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
     - git-clone@4.0.11: { }
-    - cache-pull@2.0.1: { }
   _Clone-Scripts-Repo:
     steps:
     - script@1:
@@ -146,7 +145,7 @@ workflows:
     envs:
     - opts:
         is_expand: false
-      BITRISE_DEPLOY_DIR_FOR_QA: "./FeedbackSample/build/outputs/apk/release/"
+      BITRISE_DEPLOY_DIR_FOR_QA: "./FeedbackSample/build/outputs/apk/debug/"
     before_run:
     - _Setup-For-All-Workflows
     - _Clone-Scripts-Repo
