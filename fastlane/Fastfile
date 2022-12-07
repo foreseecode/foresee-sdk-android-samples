@@ -32,7 +32,7 @@ default_platform(:android)
 platform :android do
     desc "Make an Advanced Sample app QA build"
         lane :build_advanced_sample_qa do
-            gradle(task: "clean :AdvancedSample:assemble")
+            gradle(task: "clean :AdvancedSample:assembleDebug")
 
             begin
                 upload_sample_app(APPCENTER_ADVANCED_SAMPLE_APP_NAME)
@@ -43,7 +43,7 @@ platform :android do
 
     desc "Make a Basic Sample app QA build"
         lane :build_basic_sample_qa do
-            gradle(task: "clean :BasicSample:assemble")
+            gradle(task: "clean :BasicSample:assembleDebug")
 
             begin
                 upload_sample_app(APPCENTER_BASIC_SAMPLE_APP_NAME)
@@ -54,7 +54,7 @@ platform :android do
 
     desc "Make a Contact Survey app QA build"
         lane :build_contact_survey_qa do
-            gradle(task: "clean :ContactSurvey:assemble")
+            gradle(task: "clean :ContactSurvey:assembleDebug")
 
             begin
                 upload_sample_app(APPCENTER_CONTACT_SURVEY_APP_NAME)
@@ -65,7 +65,7 @@ platform :android do
 
     desc "Make a Custom Invite app QA build"
         lane :build_custom_invite_qa do
-            gradle(task: "clean :CustomInvite:assemble")
+            gradle(task: "clean :CustomInvite:assembleDebug")
 
             begin
                 upload_sample_app(APPCENTER_CUSTOM_INVITE_APP_NAME)
@@ -76,7 +76,7 @@ platform :android do
 
     desc "Make a Dba Sample app QA build"
         lane :build_dba_sample_qa do
-            gradle(task: "clean :DbaSample:assemble")
+            gradle(task: "clean :DbaSample:assembleDebug")
 
             begin
                 upload_sample_app(APPCENTER_DBA_SAMPLE_APP_NAME)
@@ -87,7 +87,7 @@ platform :android do
 
     desc "Make a Feedback Sample app QA build"
         lane :build_feedback_sample_qa do
-            gradle(task: "clean :FeedbackSample:assemble")
+            gradle(task: "clean :FeedbackSample:assembleDebug")
 
             begin
                 upload_sample_app(APPCENTER_FEEDBACK_SAMPLE_APP_NAME)
@@ -98,7 +98,7 @@ platform :android do
 
     desc "Make a Kotlin Sample app QA build"
         lane :build_kotlin_sample_qa do
-            gradle(task: "clean :KotlinSample:assemble")
+            gradle(task: "clean :KotlinSample:assembleDebug")
 
             begin
                 upload_sample_app(APPCENTER_KOTLIN_SAMPLE_APP_NAME)
@@ -109,7 +109,7 @@ platform :android do
 
     desc "Make a Localization Sample app QA build"
         lane :build_localization_sample_qa do
-            gradle(task: "clean :LocalizationSample:assemble")
+            gradle(task: "clean :LocalizationSample:assembleDebug")
 
             begin
                 upload_sample_app(APPCENTER_LOCALIZATION_SAMPLE_APP_NAME)
