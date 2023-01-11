@@ -1,5 +1,6 @@
 package com.verint.xm.DbaSample;
 
 public class Constants {
-    public static String FCP_VERSION = "mobsdk";
+    public static String CONFIG_VERSION = "mobsdk";
+    public static String APP_ID = "mobsdkSampleDBA";
 }
