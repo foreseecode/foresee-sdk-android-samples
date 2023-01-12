@@ -5,8 +5,6 @@ import android.util.Log;
 
 import com.verint.xm.sdk.Core;
 import com.verint.xm.sdk.DBA;
-import com.verint.xm.sdk.common.Logging;
-import com.verint.xm.sdk.internal.CoreProxy;
 
 
 public class DbaSampleApplication extends Application {
@@ -34,8 +32,7 @@ public class DbaSampleApplication extends Application {
         // Regular startup
         Core.setDebugLogEnabled(true);
         Core.setSDKListener(verintSDKListener);
-        String appId = getApplicationContext().getPackageName();
-        Core.startWithAppId(this, appId, Constants.FCP_VERSION);
+        Core.startWithAppId(this, Constants.APP_ID, Constants.CONFIG_VERSION);
         DBA.setMaskingDebugEnabled(true);
     }
 }
