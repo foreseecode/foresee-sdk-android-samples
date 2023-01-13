@@ -23,7 +23,7 @@ android {
 
 dependencies {
 
-    implementation 'com.verint.xm.sdk:predictive:7.0.0'
+    implementation 'com.verint.xm.sdk:predictive:7.0.1'
     
     implementation 'androidx.appcompat:appcompat:1.0.0'
 
