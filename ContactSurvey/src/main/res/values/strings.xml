@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string name="hello">This sample demonstrates the Contact invite type, which delivers survey links via email or SMS. Use the "Set Contact Details" page to pre-set contact details for the invite. The SDK transitions to an idle state after an invite is displayed. Use "Reset State" to test again. (This will also delete pre-set contact details.). Follow the instructions below to check eligibility. Internet connection is required.</string>
     <string name="launch_count_desc">Option 1: The app can trigger an invite by launching 3 times. Try exiting the app and re-entering again.</string>
     <string name="significant_event_count_desc">Option 2: Significant events can also be used to trigger an invite. Click the button below a few times to trigger an invite.</string>
@@ -8,4 +9,8 @@
     <string name="set_contact_details">Set Contact Details</string>
     <string name="launch_invite">Check eligibility</string>
     <string name="reset_counters">Reset state</string>
+
+    <string name="EXP_Misc_BrandName">Verint Contact Invitation Sample</string>
+    <string name="EXP_Misc_ClientPrivacyPolicyURL">https://www.verint.com/privacy-policy</string>
+
 </resources>
