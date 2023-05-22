@@ -114,7 +114,7 @@ platform :android do
             begin
                 upload_sample_app(APPCENTER_LOCALIZATION_SAMPLE_APP_NAME)
             rescue => exception
-                UI.user_error!exception)
+                UI.user_error!(exception)
             end
         end
 
