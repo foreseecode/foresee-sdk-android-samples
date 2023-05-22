@@ -37,7 +37,7 @@ platform :android do
             begin
                 upload_sample_app(APPCENTER_ADVANCED_SAMPLE_APP_NAME)
             rescue => exception
-                UI.error(exception)
+                UI.user_error!(exception)
             end
         end
 
@@ -48,7 +48,7 @@ platform :android do
             begin
                 upload_sample_app(APPCENTER_BASIC_SAMPLE_APP_NAME)
             rescue => exception
-                UI.error(exception)
+                UI.user_error!(exception)
             end
         end
 
@@ -59,7 +59,7 @@ platform :android do
             begin
                 upload_sample_app(APPCENTER_CONTACT_SURVEY_APP_NAME)
             rescue => exception
-                UI.error(exception)
+                UI.user_error!(exception)
             end
         end
 
@@ -70,7 +70,7 @@ platform :android do
             begin
                 upload_sample_app(APPCENTER_CUSTOM_INVITE_APP_NAME)
             rescue => exception
-                UI.error(exception)
+                UI.user_error!(exception)
             end
         end
 
@@ -81,7 +81,7 @@ platform :android do
             begin
                 upload_sample_app(APPCENTER_DBA_SAMPLE_APP_NAME)
             rescue => exception
-                UI.error(exception)
+                UI.user_error!(exception)
             end
         end
 
@@ -92,7 +92,7 @@ platform :android do
             begin
                 upload_sample_app(APPCENTER_FEEDBACK_SAMPLE_APP_NAME)
             rescue => exception
-                UI.error(exception)
+                UI.user_error!(exception)
             end
         end
 
@@ -103,7 +103,7 @@ platform :android do
             begin
                 upload_sample_app(APPCENTER_KOTLIN_SAMPLE_APP_NAME)
             rescue => exception
-                UI.error(exception)
+                UI.user_error!(exception)
             end
         end
 
@@ -114,7 +114,7 @@ platform :android do
             begin
                 upload_sample_app(APPCENTER_LOCALIZATION_SAMPLE_APP_NAME)
             rescue => exception
-                UI.error(exception)
+                UI.user_error!exception)
             end
         end
 
