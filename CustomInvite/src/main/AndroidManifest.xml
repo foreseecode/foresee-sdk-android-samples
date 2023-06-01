@@ -12,7 +12,7 @@
         android:theme="@style/CustomTheme.Base"
         android:icon="@mipmap/ic_launcher">
         <activity
-            android:name="com.foresee.demo.custominvite.MainActivity"
+            android:name="com.verint.xm.demo.custominvite.MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/CustomTheme.Base"
             android:exported="true">
@@ -26,13 +26,13 @@
             android:name=".CustomInvite1Activity"
             android:label="@string/title_activity_custom_invite_1"
             android:theme="@style/CustomTheme.Base"
-            android:parentActivityName="com.foresee.demo.custominvite.MainActivity">
+            android:parentActivityName="com.verint.xm.demo.custominvite.MainActivity">
         </activity>
         <activity
             android:name=".CustomInvite2Activity"
             android:label="@string/title_activity_custom_invite_2"
             android:theme="@style/CustomTheme.Base"
-            android:parentActivityName="com.foresee.demo.custominvite.MainActivity">
+            android:parentActivityName="com.verint.xm.demo.custominvite.MainActivity">
         </activity>
     </application>
 
