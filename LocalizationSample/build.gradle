@@ -7,7 +7,7 @@ android {
     useLibrary 'org.apache.http.legacy'
 
     defaultConfig {
-        applicationId "com.foresee.localizationsample"
+        applicationId "com.verint.xm.localizationsample"
         minSdkVersion 21 // The minimum minSdkVersion we support
         targetSdkVersion 33
         versionCode 2
