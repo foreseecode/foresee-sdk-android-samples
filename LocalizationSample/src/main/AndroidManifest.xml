@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.foresee.localizationSample" >
+    package="com.verint.xm.localizationSample" >
 
     <application
         android:name="com.foresee.localizationSample.CustomApplication"
