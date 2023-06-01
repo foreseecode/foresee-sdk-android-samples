@@ -12,5 +12,5 @@ pluginManagement {
     }
 }
 
-include ':CustomInvite', ':ContactSurvey', ':LocalizationSample', ':FeedbackSample', ':KotlinSample', 'AdvancedSample', 'BasicSample', 'DbaSample'
+include ':CustomInvite', ':ContactSurvey', ':LocalizationSample', ':DigitalSample', ':KotlinSample', 'AdvancedSample', 'BasicSample', 'DbaSample'
 
