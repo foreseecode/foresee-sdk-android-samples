@@ -4,13 +4,13 @@
 	<style name="CustomTheme.Base" parent="Theme.AppCompat.Light">
 		<item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/foresee_red</item>
+        <item name="colorAccent">@color/verint_blue</item>
         <item name="android:textColor">@color/textColor</item>
 	</style>
 
 	<style name="CustomTheme.Dialog" parent="Theme.AppCompat.Light.Dialog">
 		<!--<item name="android:textColor">@color/primary_text</item>-->
-        <item name="colorAccent">@color/foresee_red</item>
+        <item name="colorAccent">@color/verint_blue</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorPrimary">@color/colorPrimary</item>
     </style>
@@ -25,7 +25,7 @@
 	<style name="CustomTheme.Base.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
 
     <style name="AppTheme.Button" parent="Widget.AppCompat.Button.Colored">
-        <item name="colorButtonNormal">@color/foresee_red</item>
+        <item name="colorButtonNormal">@color/verint_blue</item>
         <item name="android:textColor">@color/colorPrimary</item>
     </style>
 </resources>
