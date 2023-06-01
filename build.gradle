@@ -25,6 +25,7 @@ allprojects {
             url = uri("https://maven.pkg.github.com/foreseecode/public-packages")
             credentials {
                 // Please see the 'Getting Started' guide for information on how to create these
+                // Should this be changed????
                 // https://developer.foresee.com/docs/tutorial
                 username = System.getenv("GITHUB_USERNAME")
                 password = System.getenv("GITHUB_PERSONAL_KEY")
