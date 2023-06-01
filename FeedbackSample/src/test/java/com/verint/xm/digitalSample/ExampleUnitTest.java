@@ -1,4 +1,4 @@
-package com.verint.xm.feedbackSample;
+package com.verint.xm.digitalSample;
 
 
 
