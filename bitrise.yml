@@ -144,13 +144,13 @@ workflows:
     before_run:
     - _Setup-For-All-Workflows
     - _Clone-Scripts-Repo
-  Build-FeedbackSample-QA:
+  Build-DigitalSample-QA:
     steps:
     - fastlane@2.7:
-        title: Run fastlane build_feedback_sample_qa
+        title: Run fastlane build_digital_sample_qa
         inputs:
         - verbose_log: 'yes'
-        - lane: build_feedback_sample_qa
+        - lane: build_digital_sample_qa
         is_always_run: true
     - deploy-to-bitrise-io@2.x.x:
         title: Deploy the QA dir to bitrise
@@ -160,7 +160,7 @@ workflows:
     envs:
     - opts:
         is_expand: false
-      BITRISE_DEPLOY_DIR_FOR_QA: "./FeedbackSample/build/outputs/apk/debug/"
+      BITRISE_DEPLOY_DIR_FOR_QA: "./DigitalSample/build/outputs/apk/debug/"
     before_run:
     - _Setup-For-All-Workflows
     - _Clone-Scripts-Repo
@@ -214,7 +214,7 @@ workflows:
       - Build-ContactSurvey-QA
       - Build-CustomInvite-QA
       - Build-DbaSample-QA
-      - Build-FeedbackSample-QA
+      - Build-DigitalSample-QA
       - Build-KotlinSample-QA
       - Build-LocalizationSample-QA
 

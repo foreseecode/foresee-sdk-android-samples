@@ -19,7 +19,7 @@ APPCENTER_BASIC_SAMPLE_APP_NAME= "Sample-Basic-sample"
 APPCENTER_CONTACT_SURVEY_APP_NAME= "Sample-Contact-Survey-Demo"
 APPCENTER_CUSTOM_INVITE_APP_NAME= "Sample-Custom-Invitation-Demo"
 APPCENTER_DBA_SAMPLE_APP_NAME= "Sample-Dba-sample"
-APPCENTER_FEEDBACK_SAMPLE_APP_NAME= "Sample-Feedback-sample"
+APPCENTER_DIGITAL_SAMPLE_APP_NAME= "Sample-Feedback-sample"
 APPCENTER_KOTLIN_SAMPLE_APP_NAME= "Sample-Kotlin-sample"
 APPCENTER_LOCALIZATION_SAMPLE_APP_NAME= "Sample-Localization-Sample"
 
@@ -85,12 +85,12 @@ platform :android do
             end
         end
 
-    desc "Make a Feedback Sample app QA build"
-        lane :build_feedback_sample_qa do
-            gradle(task: "clean :FeedbackSample:assembleDebug")
+    desc "Make a Digital Sample app QA build"
+        lane :build_digital_sample_qa do
+            gradle(task: "clean :DigitalSample:assembleDebug")
 
             begin
-                upload_sample_app(APPCENTER_FEEDBACK_SAMPLE_APP_NAME)
+                upload_sample_app(APPCENTER_DIGITAL_SAMPLE_APP_NAME)
             rescue => exception
                 UI.user_error!(exception)
             end
