@@ -51,9 +51,9 @@ This example shows how to use custom UI for a survey invite. Two types of custom
 
 ---
 
-## Feedback Sample
+## Digital Sample
 
-This example shows how to use the Feedback module. 
+This example shows how to use the Digital module. 
 
 ---
 
