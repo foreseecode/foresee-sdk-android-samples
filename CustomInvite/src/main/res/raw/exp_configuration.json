@@ -13,7 +13,7 @@
 	"invite": {
 		"logo": "invite_logo_qa",
 		"header": "custom_header",
-		"baseColor": [255, 159, 234]
+		"baseColor": [0, 122, 255]
 	},
 	"cppParameters":
 	{

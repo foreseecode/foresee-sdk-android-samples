@@ -15,7 +15,7 @@
 		"sample_app":"Kotlin Sample CPP"
 	},
 	"invite": {
-		"logo": "foresee_logo",
-		"baseColor": [235, 43, 61]
+		"logo": "exp_logo",
+		"baseColor": [0, 122, 255]
 	}
 }
