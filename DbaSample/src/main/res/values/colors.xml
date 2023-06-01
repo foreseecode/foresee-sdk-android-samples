@@ -2,7 +2,7 @@
 <resources>
     <!-- Foresee base colors -->
     <color name="foresee_quartz">#E9ECF2</color>
-    <color name="foresee_red">#EB2B3D</color>
+    <color name="verint_blue">#007AFF</color>
     <color name="foresee_black">#222B3B</color>
     <color name="foresee_coal">#3A475A</color>
     <color name="foresee_teal">#38D1C8</color>
