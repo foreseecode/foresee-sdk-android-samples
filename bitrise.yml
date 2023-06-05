@@ -5,14 +5,14 @@ project_type: android
 workflows:
   _Clone-Repo:
     steps:
-    - activate-ssh-key@3.1.1:
+    - activate-ssh-key:
         title: Activate SSH Key
         run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
-    - git-clone@4.0.11:
+    - git-clone:
         title: Clone the repo
   _Clone-Scripts-Repo:
     steps:
-    - script@1:
+    - script:
         title: Copy the build configuration custom value of TEMP_SCRIPTS_BRANCH_NAME into SCRIPTS_BRANCH_NAME if defined
         inputs:
         - content: |-
@@ -21,7 +21,7 @@ workflows:
             if [ ! -z "$TEMP_SCRIPTS_BRANCH_NAME" ] ; then
               envman add --key SCRIPTS_BRANCH_NAME --value "$TEMP_SCRIPTS_BRANCH_NAME"
             fi
-    - activate-ssh-key@3.1.1:
+    - activate-ssh-key:
         title: Activate SSH Key
         run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
     - git-clone:
@@ -32,7 +32,7 @@ workflows:
         - branch: "$SCRIPTS_BRANCH_NAME"
         - repository_url: git@github.com:foreseecode/mobile-scripts.git
         - clone_into_dir: "$BITRISE_SOURCE_DIR/$scripts_folder"
-    - script@1:
+    - script:
         title: Checkout BITRISE_GIT_BRANCH if it exists
         inputs:
         - content: |-
@@ -46,13 +46,13 @@ workflows:
             fi
   Build-AdvancedSample-QA:
     steps:
-    - fastlane@2.7:
+    - fastlane:
         title: Run fastlane build_advanced_sample_qa
         inputs:
         - verbose_log: 'yes'
         - lane: build_advanced_sample_qa
         is_always_run: true
-    - deploy-to-bitrise-io@2.x.x:
+    - deploy-to-bitrise-io:
         title: Deploy the QA dir to bitrise
         inputs:
         - deploy_path: "$BITRISE_DEPLOY_DIR_FOR_QA"
@@ -66,13 +66,13 @@ workflows:
     - _Clone-Scripts-Repo
   Build-BasicSample-QA:
     steps:
-    - fastlane@2.7:
+    - fastlane:
         title: Run fastlane build_basic_sample_qa
         inputs:
         - verbose_log: 'yes'
         - lane: build_basic_sample_qa
         is_always_run: true
-    - deploy-to-bitrise-io@2.x.x:
+    - deploy-to-bitrise-io:
         title: Deploy the QA dir to bitrise
         inputs:
         - deploy_path: "$BITRISE_DEPLOY_DIR_FOR_QA"
@@ -86,13 +86,13 @@ workflows:
     - _Clone-Scripts-Repo
   Build-ContactSurvey-QA:
     steps:
-    - fastlane@2.7:
+    - fastlane:
         title: Run fastlane build_contact_survey_qa
         inputs:
         - verbose_log: 'yes'
         - lane: build_contact_survey_qa
         is_always_run: true
-    - deploy-to-bitrise-io@2.x.x:
+    - deploy-to-bitrise-io:
         title: Deploy the QA dir to bitrise
         inputs:
         - deploy_path: "$BITRISE_DEPLOY_DIR_FOR_QA"
@@ -106,13 +106,13 @@ workflows:
     - _Clone-Scripts-Repo
   Build-CustomInvite-QA:
     steps:
-    - fastlane@2.7:
+    - fastlane:
         title: Run fastlane build_custom_invite_qa
         inputs:
         - verbose_log: 'yes'
         - lane: build_custom_invite_qa
         is_always_run: true
-    - deploy-to-bitrise-io@2.x.x:
+    - deploy-to-bitrise-io:
         title: Deploy the QA dir to bitrise
         inputs:
         - deploy_path: "$BITRISE_DEPLOY_DIR_FOR_QA"
@@ -126,13 +126,13 @@ workflows:
     - _Clone-Scripts-Repo
   Build-DbaSample-QA:
     steps:
-    - fastlane@2.7:
+    - fastlane:
         title: Run fastlane build_dba_sample_qa
         inputs:
         - verbose_log: 'yes'
         - lane: build_dba_sample_qa
         is_always_run: true
-    - deploy-to-bitrise-io@2.x.x:
+    - deploy-to-bitrise-io:
         title: Deploy the QA dir to bitrise
         inputs:
         - deploy_path: "$BITRISE_DEPLOY_DIR_FOR_QA"
@@ -146,13 +146,13 @@ workflows:
     - _Clone-Scripts-Repo
   Build-DigitalSample-QA:
     steps:
-    - fastlane@2.7:
+    - fastlane:
         title: Run fastlane build_digital_sample_qa
         inputs:
         - verbose_log: 'yes'
         - lane: build_digital_sample_qa
         is_always_run: true
-    - deploy-to-bitrise-io@2.x.x:
+    - deploy-to-bitrise-io:
         title: Deploy the QA dir to bitrise
         inputs:
         - deploy_path: "$BITRISE_DEPLOY_DIR_FOR_QA"
@@ -166,13 +166,13 @@ workflows:
     - _Clone-Scripts-Repo
   Build-KotlinSample-QA:
     steps:
-    - fastlane@2.7:
+    - fastlane:
         title: Run fastlane build_kotlin_sample_qa
         inputs:
         - verbose_log: 'yes'
         - lane: build_kotlin_sample_qa
         is_always_run: true
-    - deploy-to-bitrise-io@2.x.x:
+    - deploy-to-bitrise-io:
         title: Deploy the QA dir to bitrise
         inputs:
         - deploy_path: "$BITRISE_DEPLOY_DIR_FOR_QA"
@@ -186,13 +186,13 @@ workflows:
     - _Clone-Scripts-Repo
   Build-LocalizationSample-QA:
     steps:
-    - fastlane@2.7:
+    - fastlane:
         title: Run fastlane build_localization_sample_qa
         inputs:
         - verbose_log: 'yes'
         - lane: build_localization_sample_qa
         is_always_run: true
-    - deploy-to-bitrise-io@2.x.x:
+    - deploy-to-bitrise-io:
         title: Deploy the QA dir to bitrise
         inputs:
         - deploy_path: "$BITRISE_DEPLOY_DIR_FOR_QA"
@@ -222,7 +222,7 @@ workflows:
     before_run:
     - _Clone-Repo
     steps:
-      - set-java-version@1:
+      - set-java-version:
           title: Set java version 11
           run_if: .IsCI
           inputs:
