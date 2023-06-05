@@ -6,7 +6,7 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "com.foresee.kotlinsample"
+        applicationId "com.verint.xm.kotlinsample"
         minSdkVersion 21
         targetSdkVersion 33
         versionCode 2

@@ -10,7 +10,7 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "com.foresee.advancedsample"
+        applicationId "com.verint.xm.advancedsample"
         minSdkVersion 21
         targetSdkVersion 33
         versionCode 2
