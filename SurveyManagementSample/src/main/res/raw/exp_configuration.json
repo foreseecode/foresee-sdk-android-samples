@@ -1,19 +1,34 @@
 {
 	"customerId":"FSRTESTINGCODECID12345==",
 	"notificationType": "IN_SESSION",
-	"measures":
-	[
-		{
-			"surveyId": "iphone_app_QA",
-			"surveyStyle": "modern",
-			"launchCount": 3
-		}
-	],
-	"cppParameters": {
-		"sample_app":"In Session Sample CPP"
+	"cppParameters":
+	{
+		"foo":"bar"
 	},
 	"invite": {
-		"logo": "exp_logo",
-		"baseColor": [0, 122, 255]
+		"logo": "exp_logo.png",
+		"header": "invite_header.png",
+		"baseColor": [111, 212, 178]
+	},
+	"survey": {
+		"closeButtonColor": [71, 221, 22],
+		"closeButtonBackgroundColor": [16, 71, 198],
+		"headerColor": [187, 87, 251]
+	},
+	"supportLandscape": true,
+	"surveyManagement": {
+		"surveys":[
+			{
+				"notificationType": "IN_SESSION",
+				"samplingRate": 100,
+				"url": "https://efmpreview.verintefm.com/se/6464B38A5003CE70",
+				"name": "In-session",
+				"launchCount": 8,
+				"pageViews": 5,
+				"significantEventThresholds": {
+					"In-session": 3
+				}
+			}
+		]
 	}
 }
