@@ -1,19 +1,19 @@
 {
-	"customerId":"FSRTESTINGCODECID12345==",
 	"notificationType": "IN_SESSION",
-	"measures":
-	[
-		{
-			"surveyId": "iphone_app_QA",
-			"surveyStyle": "modern",
-			"launchCount": 3
-		}
-	],
 	"cppParameters": {
 		"sample_app":"In Session Sample CPP"
 	},
 	"invite": {
 		"logo": "exp_logo",
 		"baseColor": [0, 122, 255]
+	},
+	"surveyManagement": {
+		"surveys": [
+			{
+				"url": "https://efmpreview.verintefm.com/se/6464B38A5003CE70",
+				"name": "In-session",
+				"launchCount": 3
+			}
+		]
 	}
 }
