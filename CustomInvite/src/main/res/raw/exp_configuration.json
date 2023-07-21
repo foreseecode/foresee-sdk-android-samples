@@ -12,7 +12,10 @@
 	"surveyManagement": {
 		"surveys": [
 			{
-				"url": "https://survey.vovici.com/se/705E3F053FB8395201",
+				"campaignId": "0",
+				"groupId": "1885224709",
+				"projectId": "1069037906",
+				"url": "https://survey.vovici.com",
 				"name": "SampleSurvey",
 				"significantEventThresholds": {
 					"instant_invite":1
