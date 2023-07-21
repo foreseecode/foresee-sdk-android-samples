@@ -9,8 +9,8 @@
 	"surveyManagement": {
 		"surveys": [
 			{
-				"url": "https://efmpreview.verintefm.com/se/6464B38A5003CE70",
-				"name": "In-session",
+				"url": "https://survey.vovici.com/se/705E3F053FB8395201",
+				"name": "SampleSurvey",
 				"daysSinceLaunch":0,
 				"launchCount":0,
 				"significantEventThresholds": {
