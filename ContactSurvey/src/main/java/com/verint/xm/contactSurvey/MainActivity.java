@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 
 import com.verint.xm.sdk.Core;
-import com.verint.xm.sdk.Predictive;
+import com.verint.xm.sdk.SurveyManagement;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -27,16 +27,16 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
 
         // Launch an invite as a demo if we're eligible
-        Predictive.checkIfEligibleForSurvey();
+        SurveyManagement.checkIfEligibleForSurvey();
     }
 
     public void launchInvite(View view) {
         // Increment the significant event count so that we're eligible for an invite
         // based on the criteria in foresee_configuration.json
-        Predictive.incrementSignificantEventCountWithKey("instant_invite");
+        SurveyManagement.incrementSignificantEventCountWithKey("instant_invite");
 
         // Launch an invite as a demo if we're eligible
-        Predictive.checkIfEligibleForSurvey();
+        SurveyManagement.checkIfEligibleForSurvey();
     }
 
     public void resetCounters(View view) {

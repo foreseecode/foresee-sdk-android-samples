@@ -1,15 +1,5 @@
 {
-	"customerId":"FSRTESTINGCODECID12345==",
 	"notificationType":"CONTACT",
-	"measures":
-	[
-		{
-			"surveyId":"iphone_app_QA",
-			"significantEventThresholds": {
-				"instant_invite":1
-			}
-		}
-	],
 	"invite": {
 		"logo": "invite_logo_qa",
 		"header": "custom_header",
@@ -18,5 +8,16 @@
 	"cppParameters":
 	{
 		"sample_app":"Custom Invite 2.0"
+	},
+	"surveyManagement": {
+		"surveys": [
+			{
+				"url": "https://efmpreview.verintefm.com/se/6464B38A5003CE70",
+				"name": "In-session",
+				"significantEventThresholds": {
+					"instant_invite":1
+				}
+			}
+		]
 	}
 }

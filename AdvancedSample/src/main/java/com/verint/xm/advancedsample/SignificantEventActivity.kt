@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
-import com.verint.xm.sdk.Predictive
+import com.verint.xm.sdk.SurveyManagement
 
 class SignificantEventActivity : AppCompatActivity() {
 
@@ -32,10 +32,10 @@ class SignificantEventActivity : AppCompatActivity() {
 
         // Increment the significant event count so that we're eligible for an invite
         // based on the criteria in foresee_configuration.json
-        Predictive.incrementSignificantEventCountWithKey("custom_event")
+        SurveyManagement.incrementSignificantEventCountWithKey("custom_event")
 
         // Launch an invite as a demo
-        Predictive.checkIfEligibleForSurvey()
+        SurveyManagement.checkIfEligibleForSurvey()
     }
 
     override fun onSupportNavigateUp(): Boolean {
