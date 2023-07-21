@@ -6,7 +6,7 @@ import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 
-import com.verint.xm.sdk.Predictive;
+import com.verint.xm.sdk.SurveyManagement;
 import com.verint.xm.sdk.common.configuration.ContactType;
 
 /**
@@ -49,9 +49,9 @@ public class SetContactDetailsActivity extends AppCompatActivity {
         super.onResume();
 
         // Setup UI components
-        contactInfoEmail.setText(Predictive.getContactDetails(ContactType.Email));
-        contactInfoPhone.setText(Predictive.getContactDetails(ContactType.PhoneNumber));
-        ContactType type = Predictive.getPreferredContactType();
+        contactInfoEmail.setText(SurveyManagement.getContactDetails(ContactType.Email));
+        contactInfoPhone.setText(SurveyManagement.getContactDetails(ContactType.PhoneNumber));
+        ContactType type = SurveyManagement.getPreferredContactType();
         if (type != null) {
             switch (type) {
                 case Email:
@@ -74,17 +74,17 @@ public class SetContactDetailsActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
 
-        Predictive.setContactDetails(ContactType.Email,
+        SurveyManagement.setContactDetails(ContactType.Email,
                 contactInfoEmail.getText().toString());
-        Predictive.setContactDetails(ContactType.PhoneNumber,
+        SurveyManagement.setContactDetails(ContactType.PhoneNumber,
                 contactInfoPhone.getText().toString());
 
         switch (preferredContactType.getCheckedRadioButtonId()) {
             case R.id.preferredContactTypeEmail:
-                Predictive.setPreferredContactType(ContactType.Email);
+                SurveyManagement.setPreferredContactType(ContactType.Email);
                 break;
             case R.id.preferredContactTypePhoneNumber:
-                Predictive.setPreferredContactType(ContactType.PhoneNumber);
+                SurveyManagement.setPreferredContactType(ContactType.PhoneNumber);
                 break;
         }
 

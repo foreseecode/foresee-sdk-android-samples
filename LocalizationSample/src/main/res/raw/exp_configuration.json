@@ -1,21 +1,22 @@
 {
-	"customerId":"9NNs9GIBQIVdk1LpDlJpAQ==",
 	"notificationType": "IN_SESSION",
 	"repeatDaysAfterDecline":60,
 	"repeatDaysAfterComplete":120,
-	"measures":
-	[
-		{
-			"surveyId":"mobile_app-en",
-			"daysSinceLaunch":0,
-			"launchCount":0,
-			"significantEventThresholds": {
-				"instant_invite":1
-			}
-		}
-	],
 	"invite": {
 		"logo": "exp_logo",
 		"baseColor": [0, 122, 255]
+	},
+	"surveyManagement": {
+		"surveys": [
+			{
+				"url": "https://efmpreview.verintefm.com/se/6464B38A5003CE70",
+				"name": "In-session",
+				"daysSinceLaunch":0,
+				"launchCount":0,
+				"significantEventThresholds": {
+					"instant_invite":1
+				}
+			}
+		]
 	}
 }
