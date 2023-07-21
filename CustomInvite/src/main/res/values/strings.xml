@@ -25,5 +25,7 @@
     <string name="FORESEE.contactDetailsInvalidInputError">Format should be: name@domain.com or 123-456-7890</string>
     <string name="reset_button_desc">Once the invite is shown, the SDK drops into an idle state until the repeat days have elapsed. Tap \"Reset State\" to reset the state of the SDK.</string>
     <string name="main_screen_desc">This sample demonstrates some simple custom invitation styles. Select one of the \"Custom Invite\" buttons to show an invite. The SDK transitions to an idle state after an invite is displayed. Use \"Reset State\" to test again. (This will also delete pre-set contact details.). Internet connection is required.</string>
+    <string name="EXP_Misc_BrandName">Verint</string>
+    <string name="EXP_Misc_ClientPrivacyPolicyURL">https://www.verint.com</string>
 
 </resources>
