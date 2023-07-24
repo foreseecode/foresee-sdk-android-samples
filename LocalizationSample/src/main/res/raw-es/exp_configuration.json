@@ -1,21 +1,27 @@
 {
-	"customerId":"9NNs9GIBQIVdk1LpDlJpAQ==",
 	"notificationType": "IN_SESSION",
 	"repeatDaysAfterDecline":60,
 	"repeatDaysAfterComplete":120,
-	"measures":
-	[
-		{
-			"surveyId":"mobile_app-es",
-			"daysSinceLaunch":0,
-			"launchCount":0,
-			"significantEventThresholds": {
-				"instant_invite":1
-			}
-		}
-	],
 	"invite": {
 		"logo": "exp_logo",
 		"baseColor": [0, 122, 255]
+	},
+	"survey": {
+		"closeButtonColor": [255, 255, 255],
+		"closeButtonBackgroundColor": [0, 122, 255],
+		"headerColor": [0, 122, 255]
+	},
+	"surveyManagement": {
+		"surveys": [
+			{
+				"url": "https://survey.vovici.com/se/705E3F052D2CD0F2",
+				"name": "SampleSurveyEs",
+				"daysSinceLaunch":0,
+				"launchCount":0,
+				"significantEventThresholds": {
+					"instant_invite":1
+				}
+			}
+		]
 	}
 }
