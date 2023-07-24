@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
-import com.verint.xm.sdk.Predictive
+import com.verint.xm.sdk.SurveyManagement
 
 class PageActivity : AppCompatActivity() {
 
@@ -37,7 +37,7 @@ class PageActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
 
-        Predictive.checkIfEligibleForSurvey()
+        SurveyManagement.checkIfEligibleForSurvey()
     }
 
     override fun onSupportNavigateUp(): Boolean {

@@ -2,7 +2,7 @@ package com.verint.xm.advancedsample
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.verint.xm.sdk.Predictive
+import com.verint.xm.sdk.SurveyManagement
 
 class LaunchCountActivity : AppCompatActivity() {
 
@@ -18,7 +18,7 @@ class LaunchCountActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
 
-        Predictive.checkIfEligibleForSurvey()
+        SurveyManagement.checkIfEligibleForSurvey()
     }
 
     override fun onSupportNavigateUp(): Boolean {

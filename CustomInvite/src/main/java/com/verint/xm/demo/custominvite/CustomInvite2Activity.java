@@ -7,10 +7,10 @@ import android.os.Bundle;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
 import com.verint.xm.sdk.Core;
-import com.verint.xm.sdk.Predictive;
+import com.verint.xm.sdk.SurveyManagement;
 import com.verint.xm.sdk.common.configuration.ContactType;
 import com.verint.xm.sdk.common.configuration.EligibleMeasureConfigurations;
-import com.verint.xm.sdk.predictive.tracker.listeners.CustomContactInviteListener;
+import com.verint.xm.sdk.common.storyEngine.listeners.CustomContactInviteListener;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -50,7 +50,7 @@ public class CustomInvite2Activity extends AppCompatActivity {
 
     public void launchCustomInvite2(View view) {
 
-        Predictive.setInviteListener(new CustomContactInviteListener() {
+        SurveyManagement.setInviteListener(new CustomContactInviteListener() {
             @Override
             public void showInvite(EligibleMeasureConfigurations eligibleMeasureConfigurations) {
                 Log.d(TAG, "showInvite");
@@ -62,7 +62,7 @@ public class CustomInvite2Activity extends AppCompatActivity {
                     public void onClick(View v) {
                         showProgress();
 
-                        Predictive.customInviteAccepted();
+                        SurveyManagement.customInviteAccepted();
                     }
                 });
 
@@ -82,7 +82,7 @@ public class CustomInvite2Activity extends AppCompatActivity {
                                 || event == Snackbar.Callback.DISMISS_EVENT_SWIPE) {
 
                             // Call the iContactInviteResultListener.contactInviteDeclined() method whenever the custom invite is dismissed
-                            Predictive.customInviteDeclined();
+                            SurveyManagement.customInviteDeclined();
                         }
                     }
                 });
@@ -115,7 +115,7 @@ public class CustomInvite2Activity extends AppCompatActivity {
             public void onInviteCompleteWithAccept(EligibleMeasureConfigurations eligibleMeasureConfigurations) {
                 Log.d(TAG, "onCompleteWithAccept");
                 // By this point the SDK is finished with the invite process, this is for information only
-                Toast.makeText(getApplicationContext(), "A survey will be sent to " + Predictive.getContactDetails(Predictive.getPreferredContactType()), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "A survey will be sent to " + SurveyManagement.getContactDetails(SurveyManagement.getPreferredContactType()), Toast.LENGTH_SHORT).show();
 
                 hideProgress();
 
@@ -167,10 +167,10 @@ public class CustomInvite2Activity extends AppCompatActivity {
 
         // Increment the significant event count so that we're eligible for an invite
         // based on the criteria in foresee_configuration.json
-        Predictive.incrementSignificantEventCountWithKey("instant_invite");
+        SurveyManagement.incrementSignificantEventCountWithKey("instant_invite");
 
         // Launch an invite as a demo
-        Predictive.checkIfEligibleForSurvey();
+        SurveyManagement.checkIfEligibleForSurvey();
     }
 
     @Override
@@ -260,7 +260,7 @@ public class CustomInvite2Activity extends AppCompatActivity {
         messageView.setText(messageText);
 
         // Setup UI components
-        ContactType type = Predictive.getPreferredContactType();
+        ContactType type = SurveyManagement.getPreferredContactType();
         if (type != null) {
             switch (type) {
                 case Email:
@@ -272,7 +272,7 @@ public class CustomInvite2Activity extends AppCompatActivity {
                 default:
                     break;
             }
-            contactInput.setText(Predictive.getContactDetails(type));
+            contactInput.setText(SurveyManagement.getContactDetails(type));
         }
 
         if (errorMessage != null) {
@@ -288,17 +288,17 @@ public class CustomInvite2Activity extends AppCompatActivity {
                 switch (preferredContactType.getCheckedRadioButtonId()) {
                     case R.id.preferredContactTypeEmail:
                         type = ContactType.Email;
-                        Predictive.setPreferredContactType(ContactType.Email);
+                        SurveyManagement.setPreferredContactType(ContactType.Email);
                         break;
                     case R.id.preferredContactTypePhoneNumber:
                         type = ContactType.PhoneNumber;
-                        Predictive.setPreferredContactType(ContactType.PhoneNumber);
+                        SurveyManagement.setPreferredContactType(ContactType.PhoneNumber);
                         break;
                 }
-                Predictive.setPreferredContactType(type);
-                Predictive.setContactDetails(type, contactInput.getText().toString());
+                SurveyManagement.setPreferredContactType(type);
+                SurveyManagement.setContactDetails(type, contactInput.getText().toString());
                 showProgress();
-                Predictive.customInviteAccepted();
+                SurveyManagement.customInviteAccepted();
 
             }
         });
@@ -314,7 +314,7 @@ public class CustomInvite2Activity extends AppCompatActivity {
             @Override
             public void onCancel(DialogInterface dialog) {
                 showProgress();
-                Predictive.customInviteDeclined();
+                SurveyManagement.customInviteDeclined();
             }
         });
 

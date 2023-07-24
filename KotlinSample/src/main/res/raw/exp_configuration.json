@@ -1,21 +1,26 @@
 {
-	"customerId":"FSRTESTINGCODECID12345==",
 	"notificationType": "IN_SESSION",
-	"measures":
-	[
-		{
-			"surveyId": "iphone_app_QA",
-			"surveyStyle": "modern",
-			"significantEventThresholds": {
-				"instant_invite":1
-			}
-		}
-	],
 	"cppParameters": {
 		"sample_app":"Kotlin Sample CPP"
 	},
 	"invite": {
 		"logo": "exp_logo",
 		"baseColor": [0, 122, 255]
+	},
+	"survey": {
+		"closeButtonColor": [255, 255, 255],
+		"closeButtonBackgroundColor": [0, 122, 255],
+		"headerColor": [0, 122, 255]
+	},
+	"surveyManagement": {
+		"surveys": [
+			{
+				"url": "https://survey.vovici.com/se/705E3F053FB8395201",
+				"name": "SampleSurvey",
+				"significantEventThresholds": {
+					"instant_invite":1
+				}
+			}
+		]
 	}
 }

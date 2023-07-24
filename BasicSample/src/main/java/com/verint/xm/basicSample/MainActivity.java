@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 
 import com.verint.xm.sdk.Core;
-import com.verint.xm.sdk.Predictive;
+import com.verint.xm.sdk.SurveyManagement;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     public void onCheckEligibilityClicked(View view) {
 
         // Launch an invite as a demo
-        Predictive.checkIfEligibleForSurvey();
+        SurveyManagement.checkIfEligibleForSurvey();
     }
 
     public void resetCounters(View view) {
