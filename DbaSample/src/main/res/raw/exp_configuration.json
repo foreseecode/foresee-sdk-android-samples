@@ -14,12 +14,6 @@
 	},
 
 	"notificationType": "CONTACT",
-	"measures": [
-		{
-			"surveyId": "app_test_1",
-			"launchCount": 1
-		}
-	],
 	"invite": {
 		"logo": "cat",
 		"header": "custom_header",
@@ -29,5 +23,17 @@
 		"closeButtonColor": [255, 255, 255],
 		"closeButtonBackgroundColor": [0, 122, 255],
 		"headerColor": [0, 122, 255]
+	},
+	"surveyManagement": {
+		"surveys": [
+			{
+				"campaignId": "0",
+				"groupId": "1885224709",
+				"projectId": "1069037906",
+				"url": "https://survey.vovici.com",
+				"name": "SampleSurvey",
+				"launchCount": 1
+			}
+		]
 	}
 }

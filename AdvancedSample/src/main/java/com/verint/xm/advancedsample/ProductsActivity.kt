@@ -8,9 +8,9 @@ import com.verint.xm.advancedsample.customInvite.ProductCardData
 import android.util.Log
 import android.view.View
 import com.verint.xm.advancedsample.customInvite.Adapter
-import com.verint.xm.sdk.Predictive
+import com.verint.xm.sdk.SurveyManagement
 import com.verint.xm.sdk.common.configuration.EligibleMeasureConfigurations
-import com.verint.xm.sdk.predictive.tracker.listeners.CustomInSessionInviteListener
+import com.verint.xm.sdk.common.storyEngine.listeners.CustomInSessionInviteListener
 
 
 class ProductsActivity : AppCompatActivity() {
@@ -41,13 +41,13 @@ class ProductsActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
 
-        Predictive.checkIfEligibleForSurvey()
+        SurveyManagement.checkIfEligibleForSurvey()
     }
 
     override fun onDestroy() {
         super.onDestroy()
 
-        Predictive.setInviteListener(null)
+        SurveyManagement.setInviteListener(null)
     }
 
 
@@ -57,7 +57,7 @@ class ProductsActivity : AppCompatActivity() {
     }
 
     private fun setupCustomInvite() {
-        Predictive.setInviteListener(object : CustomInSessionInviteListener {
+        SurveyManagement.setInviteListener(object : CustomInSessionInviteListener {
             override fun showInvite(eligibleMeasureConfigurations: EligibleMeasureConfigurations?) {
                 Log.d(TAG, "showInvite")
                 reloadCards(hasInvite = true)
@@ -127,7 +127,6 @@ class ProductsActivity : AppCompatActivity() {
     }
 
     fun onInviteAcceptedClicked(@Suppress("UNUSED_PARAMETER") view: View) {
-        Predictive.customInviteAccepted()
-
+        SurveyManagement.customInviteAccepted()
     }
 }
