@@ -5,11 +5,6 @@
 		"header": "custom_header",
 		"baseColor": [0, 122, 255]
 	},
-	"survey": {
-		"closeButtonColor": [255, 255, 255],
-		"closeButtonBackgroundColor": [0, 122, 255],
-		"headerColor": [0, 122, 255]
-	},
 	"cppParameters":
 	{
 		"sample_app":"Custom Invite 2.0"
