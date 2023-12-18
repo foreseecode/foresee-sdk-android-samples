@@ -91,18 +91,25 @@ To generate the personal key follow these steps;
 8) Select the scopes, or permissions, you'd like to grant this token. To use your token to access repositories from the command line, select repo. (The token will need the read:packages permission)
 9) Click Generate token.
 
-Once you have that key, you should set 2 environment variables on your machine: `GITHUB_USERNAME` for your username, and `GITHUB_PERSONAL_KEY` for your personal key - these will be used in the next step
+Once you have that key, you should add the credentials to your local.properties file:
+```
+github.user=<YOUR_GITHUB_USERNAME>
+github.key=<YOUR_GITHUB_KEY>
+```
 
-Those environment variables will be picked up by the following lines in the sample project's [build.gradle](./build.gradle) file
+Those credentials will be picked up by the following lines in the sample project's [build.gradle](./build.gradle) file
 ```
 allprojects {
+    Properties properties = new Properties()
+    properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
     repositories {
         maven {
             name = "GitHubPackages"
             url = uri("https://maven.pkg.github.com/foreseecode/public-packages")
             credentials {
-                username = System.getenv("GITHUB_USERNAME")
-                password = System.getenv("GITHUB_PERSONAL_KEY")
+                username = properties.getProperty('github.user')
+                password = properties.getProperty('github.key')
             }
         }
     }
