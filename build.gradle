@@ -17,6 +17,9 @@ plugins  {
 }
 
 allprojects {
+    Properties properties = new Properties()
+    properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
     repositories {
         google()
         mavenLocal()
@@ -25,9 +28,9 @@ allprojects {
             url = uri("https://maven.pkg.github.com/foreseecode/public-packages")
             credentials {
                 // Please see the 'Getting Started' guide for information on how to create these
-                // https://developer.foresee.com/docs/tutorial
-                username = System.getenv("GITHUB_USERNAME")
-                password = System.getenv("GITHUB_PERSONAL_KEY")
+                // https://connect.verint.com/developers/fscxs/w/mobilesdk/30843/getting-started-with-verint-xm-android-sdk
+                username = properties.getProperty('github.user')
+                password = properties.getProperty('github.key')
             }
         }
         jcenter()
