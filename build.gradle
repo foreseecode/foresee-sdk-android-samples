@@ -14,6 +14,9 @@ buildscript {
 
 
 allprojects {
+    Properties properties = new Properties()
+    properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
     repositories {
         google()
         mavenLocal()
@@ -23,8 +26,8 @@ allprojects {
             credentials {
                 // Please see the 'Getting Started' guide for information on how to create these
                 // https://developer.foresee.com/docs/tutorial
-                username = System.getenv("GITHUB_USERNAME")
-                password = System.getenv("GITHUB_PERSONAL_KEY")
+                username = properties.getProperty('github.user')
+                password = properties.getProperty('github.key')
             }
         }
         jcenter()

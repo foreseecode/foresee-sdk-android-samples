@@ -5,8 +5,9 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 
-import com.foresee.sdk.ForeSee;
-import com.foresee.sdk.ForeSeeCxMeasure;
+import com.verint.xm.sdk.SurveyManagement;
+import com.verint.xm.sdk.Core;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,11 +20,11 @@ public class MainActivity extends AppCompatActivity {
     public void onCheckEligibilityClicked(View view) {
 
         // Launch an invite as a demo
-        ForeSeeCxMeasure.checkIfEligibleForSurvey();
+        SurveyManagement.checkIfEligibleForSurvey();
     }
 
     public void resetCounters(View view) {
         // Reset the SDK
-        ForeSee.resetState();
+        Core.resetState();
     }
 }
