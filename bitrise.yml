@@ -213,7 +213,8 @@ workflows:
           - content: |-
               #!/bin/bash
               set -ex
-              echo "github.user=irrelevant\ngithub.key=$GITHUB_PERSONAL_KEY" > local.properties
+              echo "github.user=irrelevant" > local.properties
+              echo "github.key=$GITHUB_PERSONAL_KEY" >> local.properties
               cat local.properties
 app:
   envs:
