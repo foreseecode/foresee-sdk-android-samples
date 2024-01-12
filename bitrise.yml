@@ -214,6 +214,7 @@ workflows:
               #!/bin/bash
               set -ex
               echo "github.user=irrelevant\ngithub.key=$GITHUB_PERSONAL_KEY" > local.properties
+              cat local.properties
 app:
   envs:
   - opts:
