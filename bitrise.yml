@@ -228,6 +228,13 @@ workflows:
           run_if: .IsCI
           inputs:
             - set_java_version: '11'
+      - script:
+          title: Set up the local.properties
+          inputs:
+          - content: |-
+              #!/bin/bash
+              set -ex
+              echo "github.user=irrelevant\ngithub.key=$GITHUB_PERSONAL_KEY" > local.properties
 app:
   envs:
   - opts:
