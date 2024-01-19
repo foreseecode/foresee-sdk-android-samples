@@ -17,7 +17,8 @@
 			{
 				"url": "https://survey.vovici.com/se/705E3F053FB8395201",
 				"name": "SampleSurvey",
-				"launchCount": 3
+				"launchCount": 3,
+				"samplingRate": 100
 			}
 		]
 	}
