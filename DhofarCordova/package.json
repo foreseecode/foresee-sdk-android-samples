@@ -17,7 +17,8 @@
       "android"
     ]
   },
-  "devDependencies": {
+  "dependencies": {
+    "cordova": "^9.0.0",
     "cordova-android": "^9.1.0"
   }
 }
