@@ -21,6 +21,8 @@ package com.verint.xm.sdk.dhofarCordova;
 
 import android.os.Bundle;
 import org.apache.cordova.*;
+import com.verint.xm.sdk.Core;
+import com.verint.xm.sdk.SurveyManagement;
 
 public class MainActivity extends CordovaActivity
 {
@@ -37,5 +39,14 @@ public class MainActivity extends CordovaActivity
 
         // Set by <content src="index.html" /> in config.xml
         loadUrl(launchUrl);
+
+        Core.startWithAppId(this.getApplication(), "BasicSample");
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        SurveyManagement.checkIfEligibleForSurvey();
     }
 }

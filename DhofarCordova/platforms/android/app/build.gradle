@@ -24,6 +24,32 @@ if (cdvHelpers.getConfigPreference('GradlePluginKotlinEnabled', 'false').toBoole
     apply plugin: 'kotlin-android-extensions'
 }
 
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+repositories {
+    google()
+    mavenLocal()
+    maven {
+        name = "GitHubPackages"
+        url = uri("https://maven.pkg.github.com/foreseecode/public-packages")
+        credentials {
+            // Please see the 'Getting Started' guide for information on how to create these
+            // https://connect.verint.com/developers/fscxs/w/mobilesdk/30843/getting-started-with-verint-xm-android-sdk
+            username = properties.getProperty('github.user')
+            password = properties.getProperty('github.key')
+        }
+    }
+    jcenter()
+    flatDir {
+        dirs '../libs'
+    }
+}
+
+dependencies {
+    implementation 'com.verint.xm.sdk:surveymanagement:7.1.1'
+}
+
 buildscript {
     apply from: '../CordovaLib/cordova.gradle'
 
