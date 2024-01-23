@@ -40,7 +40,8 @@ public class MainActivity extends CordovaActivity
         // Set by <content src="index.html" /> in config.xml
         loadUrl(launchUrl);
 
-        Core.startWithAppId(this.getApplication(), "BasicSample");
+        Core.setDebugLogEnabled(true);
+        Core.startWithAppId(this.getApplication(), "BankDhofarMobileApp");
     }
 
     @Override
