@@ -31,19 +31,20 @@ workflows:
         - commit: ''
         - branch: "$SCRIPTS_BRANCH_NAME"
         - repository_url: git@github.com:foreseecode/mobile-scripts.git
-        - clone_into_dir: "$BITRISE_SOURCE_DIR/$scripts_folder"
+        - clone_into_dir: "$BITRISE_SOURCE_DIR/../$scripts_folder"
     - script:
         title: Checkout BITRISE_GIT_BRANCH if it exists
         inputs:
         - content: |-
             #!/bin/bash
             set -ex
-            cd "$BITRISE_SOURCE_DIR/$scripts_folder"
+            cd "$BITRISE_SOURCE_DIR/../$scripts_folder"
             git fetch
             if git show-branch "remotes/origin/$BITRISE_GIT_BRANCH"; then
               echo "Found branch in mobile-scripts $BITRISE_GIT_BRANCH"
               git checkout "$BITRISE_GIT_BRANCH"
             fi
+            cd $BITRISE_SOURCE_DIR
   Build-AdvancedSample-QA:
     steps:
     - fastlane:
@@ -144,26 +145,6 @@ workflows:
     before_run:
     - _Setup-For-All-Workflows
     - _Clone-Scripts-Repo
-  Build-DigitalSample-QA:
-    steps:
-    - fastlane:
-        title: Run fastlane build_digital_sample_qa
-        inputs:
-        - verbose_log: 'yes'
-        - lane: build_digital_sample_qa
-        is_always_run: true
-    - deploy-to-bitrise-io:
-        title: Deploy the QA dir to bitrise
-        inputs:
-        - deploy_path: "$BITRISE_DEPLOY_DIR_FOR_QA"
-        is_always_run: false
-    envs:
-    - opts:
-        is_expand: false
-      BITRISE_DEPLOY_DIR_FOR_QA: "./DigitalSample/build/outputs/apk/debug/"
-    before_run:
-    - _Setup-For-All-Workflows
-    - _Clone-Scripts-Repo
   Build-KotlinSample-QA:
     steps:
     - fastlane:
@@ -214,7 +195,6 @@ workflows:
       - Build-ContactSurvey-QA
       - Build-CustomInvite-QA
       - Build-DbaSample-QA
-      - Build-DigitalSample-QA
       - Build-KotlinSample-QA
       - Build-LocalizationSample-QA
 
@@ -227,6 +207,15 @@ workflows:
           run_if: .IsCI
           inputs:
             - set_java_version: '11'
+      - script:
+          title: Set up the local.properties
+          inputs:
+          - content: |-
+              #!/bin/bash
+              set -ex
+              echo "github.user=irrelevant" > local.properties
+              echo "github.key=$GITHUB_PERSONAL_KEY" >> local.properties
+              cat local.properties
 app:
   envs:
   - opts:
@@ -249,7 +238,7 @@ app:
     GRADLEW_PATH: "./gradlew"
   - opts:
       is_expand: false
-    SCRIPTS_BRANCH_NAME: master
+    SCRIPTS_BRANCH_NAME: core
   - opts:
       is_expand: false
     APPCENTER_DESTINATIONS: "*"
