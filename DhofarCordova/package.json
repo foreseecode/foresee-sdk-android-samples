@@ -15,10 +15,16 @@
   "cordova": {
     "platforms": [
       "android"
-    ]
+    ],
+    "plugins": {
+      "blinkid-cordova": {}
+    }
   },
   "dependencies": {
     "cordova": "^10.0.0",
     "cordova-android": "^10.1.2"
+  },
+  "devDependencies": {
+    "blinkid-cordova": "^6.4.0"
   }
 }

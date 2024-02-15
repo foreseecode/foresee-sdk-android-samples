@@ -12,4 +12,7 @@
     <preference name="AndroidXEnabled" value="true" />
     <preference name="android-minSdkVersion" value="31" />
     <preference name="android-targetSdkVersion" value="31" />
+    <feature name="BlinkIDScanner">
+        <param name="android-package" value="com.microblink.blinkid.plugins.cordova.BlinkIDScanner" />
+    </feature>
 </widget>
