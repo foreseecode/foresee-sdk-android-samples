@@ -22,10 +22,8 @@
 				"url": "https://survey.vovici.com/se/705E3F053FB8395201",
 				"name": "SampleSurvey",
 				"significantEventThresholds": {
-					"custom_event": 3
-				},
-				"launchCount": 5,
-				"pageViews": 3
+					"custom_event": 5
+				}
 			}
 		]
 	}

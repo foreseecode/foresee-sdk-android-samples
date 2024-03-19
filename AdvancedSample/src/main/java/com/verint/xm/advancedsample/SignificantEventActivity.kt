@@ -8,19 +8,9 @@ import com.verint.xm.sdk.SurveyManagement
 
 class SignificantEventActivity : AppCompatActivity() {
 
-    private var customEvent: Int = 0
-        set(value) {
-            field = value
-            val textView: TextView = findViewById(R.id.significantEventTextView)
-            textView.text = "Custom event value = " + value
-        }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_significant_event)
-
-        customEvent = 0
-
 
         // action bar
         supportActionBar!!.title = "Significant Event Sample"
@@ -28,7 +18,6 @@ class SignificantEventActivity : AppCompatActivity() {
     }
 
     fun onIncrementClicked(@Suppress("UNUSED_PARAMETER") view: View) {
-        customEvent++
 
         // Increment the significant event count so that we're eligible for an invite
         // based on the criteria in foresee_configuration.json

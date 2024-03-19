@@ -31,39 +31,12 @@
             android:gravity="fill_horizontal"
             android:text="@string/hello" />
 
-        <Button
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/page_views_button"
-            android:onClick="onPageViewsClicked"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            style="@style/AppTheme.Button"/>
-
-
-        <Button
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/launch_count_button"
-            android:onClick="onLaunchCountClicked"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            style="@style/AppTheme.Button"/>
 
         <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="@string/significant_event_button"
             android:onClick="onSignificantEventClicked"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            style="@style/AppTheme.Button"/>
-
-        <Button
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/custom_invite_button"
-            android:onClick="onCustomInviteClicked"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
             style="@style/AppTheme.Button"/>
