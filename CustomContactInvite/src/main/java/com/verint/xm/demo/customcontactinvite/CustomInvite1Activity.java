@@ -171,10 +171,6 @@ public class CustomInvite1Activity extends AppCompatActivity {
         SurveyManagement.setPreferredContactType(type);
         SurveyManagement.setContactDetails(type, contactInput.getText().toString());
 
-        // Increment the significant event count so that we're eligible for an invite
-        // based on the criteria in foresee_configuration.json
-        SurveyManagement.incrementSignificantEventCountWithKey("instant_invite");
-
         // Launch an invite as a demo
         SurveyManagement.checkIfEligibleForSurvey();
 
@@ -183,6 +179,11 @@ public class CustomInvite1Activity extends AppCompatActivity {
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
+    public void fulfilCriteria(View view) {
+        // Increment the significant event count so that we're eligible for an invite
+        // based on the criteria in foresee_configuration.json
+        SurveyManagement.incrementSignificantEventCountWithKey("instant_invite");
+    }
 
     private void showProgress()
     {

@@ -36,8 +36,8 @@
             android:layout_margin="10dp"
             android:layout_marginBottom="5dp"
             android:layout_marginTop="5dp"
-            android:onClick="launchCustomInvite1Activity"
-            android:text="@string/custom_invite_1"
+            android:onClick="fulfilCriteria"
+            android:text="@string/fulfil_criteria"
             android:textAllCaps="false"
             style="@style/AppTheme.Button"/>
 
@@ -47,8 +47,8 @@
             android:layout_margin="10dp"
             android:layout_marginBottom="5dp"
             android:layout_marginTop="5dp"
-            android:onClick="launchCustomInvite2Activity"
-            android:text="@string/custom_invite_2"
+            android:onClick="launchCustomInvite"
+            android:text="@string/launch_invite"
             android:textAllCaps="false"
             style="@style/AppTheme.Button"/>
 

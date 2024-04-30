@@ -3,7 +3,8 @@
 
 
     <string name="app_name">Custom Invitation Demo</string>
-    <string name="launch_invite">Launch Invitation</string>
+    <string name="fulfil_criteria">Fulfil Criteria</string>
+    <string name="check_eligibility">Check Eligibility</string>
     <string name="set_contact_details">Set Contact Details</string>
     <string name="contact">Enter an email or mobile number...</string>
     <string name="preferred_contact_type">Select A Preferred Contact Type</string>

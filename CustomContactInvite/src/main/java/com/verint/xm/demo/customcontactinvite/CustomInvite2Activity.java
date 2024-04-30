@@ -164,13 +164,14 @@ public class CustomInvite2Activity extends AppCompatActivity {
             }
         });
 
+        // Launch an invite as a demo
+        SurveyManagement.checkIfEligibleForSurvey();
+    }
 
+    public void fulfilCriteria(View view) {
         // Increment the significant event count so that we're eligible for an invite
         // based on the criteria in foresee_configuration.json
         SurveyManagement.incrementSignificantEventCountWithKey("instant_invite");
-
-        // Launch an invite as a demo
-        SurveyManagement.checkIfEligibleForSurvey();
     }
 
     @Override
