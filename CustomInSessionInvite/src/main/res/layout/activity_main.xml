@@ -48,7 +48,7 @@
             android:layout_marginBottom="5dp"
             android:layout_marginTop="5dp"
             android:onClick="launchCustomInvite"
-            android:text="@string/launch_invite"
+            android:text="@string/check_eligibility"
             android:textAllCaps="false"
             style="@style/AppTheme.Button"/>
 

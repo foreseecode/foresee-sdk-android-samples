@@ -21,18 +21,6 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity
-            android:name="com.verint.xm.demo.custominsessioninvite.CustomInvite1Activity"
-            android:label="@string/title_activity_custom_invite_1"
-            android:theme="@style/CustomTheme.Base"
-            android:parentActivityName="com.verint.xm.demo.custominsessioninvite.MainActivity">
-        </activity>
-        <activity
-            android:name="com.verint.xm.demo.custominsessioninvite.CustomInvite2Activity"
-            android:label="@string/title_activity_custom_invite_2"
-            android:theme="@style/CustomTheme.Base"
-            android:parentActivityName="com.verint.xm.demo.custominsessioninvite.MainActivity">
-        </activity>
     </application>
 
 </manifest>

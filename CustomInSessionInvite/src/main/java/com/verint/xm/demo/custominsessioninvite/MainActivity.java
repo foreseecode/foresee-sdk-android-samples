@@ -1,19 +1,13 @@
 package com.verint.xm.demo.custominsessioninvite;
 
 import android.app.ProgressDialog;
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.util.Log;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
-
 import com.verint.xm.sdk.Core;
 import com.verint.xm.sdk.SurveyManagement;
-import com.verint.xm.sdk.common.configuration.ContactType;
 import com.verint.xm.sdk.common.configuration.EligibleMeasureConfigurations;
 import com.verint.xm.sdk.common.storyEngine.listeners.CustomInSessionInviteListener;
 
@@ -39,17 +33,20 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onSurveyPresented() {
-                //no-op
+                Log.d(TAG, "onSurveyPresented");
+                hideProgress();
             }
 
             @Override
             public void onSurveyCompleted() {
-                //no-op
+                Log.d(TAG, "onSurveyCompleted");
+                hideProgress();
             }
 
             @Override
             public void onSurveyCancelledByUser() {
-                //no-op
+                Log.d(TAG, "onSurveyCancelledByUser");
+                hideProgress();
             }
 
             @Override

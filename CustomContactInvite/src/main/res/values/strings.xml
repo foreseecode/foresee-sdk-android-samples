@@ -2,7 +2,7 @@
 <resources>
 
 
-    <string name="app_name">Custom Invitation Demo</string>
+    <string name="app_name">Custom Contact Invitation Demo</string>
     <string name="fulfil_criteria">Fulfil Criteria</string>
     <string name="check_eligibility">Check Eligibility</string>
     <string name="set_contact_details">Set Contact Details</string>
