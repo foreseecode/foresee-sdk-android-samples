@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void resetState(View view) {
         // Reset the state of the ForeSee SDK. So that we may be eligible for a new invite
-        // based on the criteria in foresee_configuration.json
+        // based on the criteria in exp_configuration.json
         Core.resetState();
     }
 }

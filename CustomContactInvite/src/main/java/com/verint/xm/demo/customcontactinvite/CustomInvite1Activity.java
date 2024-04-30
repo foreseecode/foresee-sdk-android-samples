@@ -181,7 +181,7 @@ public class CustomInvite1Activity extends AppCompatActivity {
 
     public void fulfilCriteria(View view) {
         // Increment the significant event count so that we're eligible for an invite
-        // based on the criteria in foresee_configuration.json
+        // based on the criteria in exp_configuration.json
         SurveyManagement.incrementSignificantEventCountWithKey("instant_invite");
     }
 
@@ -202,7 +202,7 @@ public class CustomInvite1Activity extends AppCompatActivity {
     public void resetState(View view)
     {
         // Reset the state of the ForeSee SDK. So that we may be eligible for a new invite
-        // based on the criteria in foresee_configuration.json
+        // based on the criteria in exp_configuration.json
         Core.resetState();
     }
 }
