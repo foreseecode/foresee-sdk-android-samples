@@ -1,10 +1,9 @@
-package com.verint.xm.demo.custominvite;
+package com.verint.xm.demo.custominsessioninvite;
 
 import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
-
 import com.verint.xm.sdk.Core;
 
 public class MainActivity extends AppCompatActivity {

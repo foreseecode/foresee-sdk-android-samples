@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <string name="app_name">Custom Invitation Demo</string>
+    <string name="launch_invite">Launch Invitation</string>
+    <string name="set_contact_details">Set Contact Details</string>
+    <string name="contact">Enter an email or mobile number...</string>
+    <string name="preferred_contact_type">Select A Preferred Contact Type</string>
+    <string name="sms">Mobile number</string>
+    <string name="email">Email</string>
+    <string name="title_activity_main">Custom Invite Demo App</string>
+    <string name="title_activity_default_invite">Default Invite Demo</string>
+    <string name="title_activity_custom_invite_1">Custom Invite Demo #1</string>
+    <string name="title_activity_custom_invite_2">Custom Invite Demo #2</string>
+    <string name="default_invite">Default Invite</string>
+    <string name="custom_invite_1">Custom Invite #1</string>
+    <string name="custom_invite_2">Custom Invite #2</string>
+    <string name="set_contact_details_launch_invite">Set contact details &amp; launch invite</string>
+    <string name="reset_state">Reset State</string>
+    <string name="description_default">This example demonstrates how you can supply your user\'s contact details to speed up the invite process, and also use the default invite listener interface to be informed of any events involving the invitation and survey process</string>
+    <string name="description_custom1">This example shows how to use the custom invite framework to include an in-line prompt to receive an email or SMS survey. Enter contact details in the text field and click the button to receive a sample survey.</string>
+    <string name="description_custom2">This example shows a simple snackbar implementation of the invite process. Tap \"Launch invitation\" to see a custom invitation appear at the bottom of the screen</string>
+    <string name="FORESEE.contactDetailsEmptyInputError">Enter a mobile number or email address</string>
+    <string name="FORESEE.contactDetailsInvalidInputError">Format should be: name@domain.com or 123-456-7890</string>
+    <string name="reset_button_desc">Once the invite is shown, the SDK drops into an idle state until the repeat days have elapsed. Tap \"Reset State\" to reset the state of the SDK.</string>
+    <string name="main_screen_desc">This sample demonstrates some simple custom invitation styles. Select one of the \"Custom Invite\" buttons to show an invite. The SDK transitions to an idle state after an invite is displayed. Use \"Reset State\" to test again. (This will also delete pre-set contact details.). Internet connection is required.</string>
+    <string name="EXP_Misc_BrandName">Verint</string>
+    <string name="EXP_Misc_ClientPrivacyPolicyURL">https://www.verint.com</string>
+
+</resources>

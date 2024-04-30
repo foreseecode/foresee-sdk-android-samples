@@ -1,4 +1,4 @@
-package com.verint.xm.demo.custominvite;
+package com.verint.xm.demo.customcontactinvite;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -10,7 +10,6 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Toast;
-
 import com.verint.xm.sdk.Core;
 import com.verint.xm.sdk.SurveyManagement;
 import com.verint.xm.sdk.common.configuration.ContactType;

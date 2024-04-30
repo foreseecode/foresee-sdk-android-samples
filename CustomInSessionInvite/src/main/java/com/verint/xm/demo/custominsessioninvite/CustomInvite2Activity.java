@@ -1,4 +1,4 @@
-package com.verint.xm.demo.custominvite;
+package com.verint.xm.demo.custominsessioninvite;
 
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
