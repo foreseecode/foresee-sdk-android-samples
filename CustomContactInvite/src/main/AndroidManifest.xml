@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
+    <application
+        android:name="com.verint.xm.demo.customcontactinvite.CustomApplication"
+        android:label="@string/app_name"
+        android:theme="@style/CustomTheme.Base"
+        android:icon="@mipmap/ic_launcher">
+        <activity
+            android:name="com.verint.xm.demo.customcontactinvite.MainActivity"
+            android:label="@string/title_activity_main"
+            android:theme="@style/CustomTheme.Base"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.verint.xm.demo.customcontactinvite.CustomInvite1Activity"
+            android:label="@string/title_activity_custom_invite_1"
+            android:theme="@style/CustomTheme.Base"
+            android:parentActivityName="com.verint.xm.demo.customcontactinvite.MainActivity">
+        </activity>
+        <activity
+            android:name="com.verint.xm.demo.customcontactinvite.CustomInvite2Activity"
+            android:label="@string/title_activity_custom_invite_2"
+            android:theme="@style/CustomTheme.Base"
+            android:parentActivityName="com.verint.xm.demo.customcontactinvite.MainActivity">
+        </activity>
+    </application>
+
+</manifest>

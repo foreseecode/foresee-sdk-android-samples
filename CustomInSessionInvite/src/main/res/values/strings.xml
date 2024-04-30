@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="fulfil_criteria">Fulfil Criteria</string>
+    <string name="check_eligibility">Check Eligibility</string>
+    <string name="app_name">Custom Invitation Demo</string>
+    <string name="launch_invite">Launch Invitation</string>
+    <string name="title_activity_main">Custom Invite Demo App</string>
+    <string name="reset_state">Reset State</string>
+    <string name="reset_button_desc">Once the invite is shown, the SDK drops into an idle state until the repeat days have elapsed. Tap \"Reset State\" to reset the state of the SDK.</string>
+    <string name="main_screen_desc">This example shows how to use the custom invite framework to show a no-invite In Session Survey. Tap \"Fulfil Criteria\" to become eligible and tap \"Check Eligibility\" to show a survey.</string>
+    <string name="EXP_Misc_BrandName">Verint</string>
+    <string name="EXP_Misc_ClientPrivacyPolicyURL">https://www.verint.com</string>
+
+</resources>
