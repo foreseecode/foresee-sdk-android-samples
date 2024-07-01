@@ -31,7 +31,7 @@ class SignificantEventActivity : AppCompatActivity() {
         customEvent++
 
         // Increment the significant event count so that we're eligible for an invite
-        // based on the criteria in foresee_configuration.json
+        // based on the criteria in exp_configuration.json
         SurveyManagement.incrementSignificantEventCountWithKey("custom_event")
 
         // Launch an invite as a demo
