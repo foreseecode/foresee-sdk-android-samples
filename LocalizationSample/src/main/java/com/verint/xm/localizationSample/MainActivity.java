@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     public void launchInvite(View view)
     {
         // Increment the significant event count so that we're eligible for an invite
-        // based on the criteria in foresee_configuration.json
+        // based on the criteria in exp_configuration.json
         SurveyManagement.incrementSignificantEventCountWithKey("instant_invite");
 
         // Launch an invite as a demo
