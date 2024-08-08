@@ -63,9 +63,9 @@ platform :android do
             end
         end
 
-    desc "Make a Custom Invite app QA build"
+    desc "Make a Custom InSession Invite app QA build"
         lane :build_custom_invite_qa do
-            gradle(task: "clean :CustomInvite:assembleDebug")
+            gradle(task: "clean :CustomInSessionInvite:assembleDebug")
 
             begin
                 upload_sample_app(APPCENTER_CUSTOM_INVITE_APP_NAME)
