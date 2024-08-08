@@ -119,6 +119,6 @@ platform :android do
         end
 
     def upload_sample_app (appcenter_Name)
-        upload_app("#{appcenter_Name}", "#{lane_context[SharedValues::GRADLE_APK_OUTPUT_PATH]}")
+        upload_app("#{appcenter_Name}", "#{lane_context[SharedValues::GRADLE_APK_OUTPUT_PATH]}", false)
     end
 end
