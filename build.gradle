@@ -27,8 +27,8 @@ allprojects {
             name = "GitHubPackages"
             url = uri("https://maven.pkg.github.com/foreseecode/public-packages")
             credentials {
-                // Please see the 'Getting Started' guide for information on how to create these
-                // https://connect.verint.com/developers/fscxs/w/mobilesdk/30843/getting-started-with-verint-xm-android-sdk
+                // Please refer to the README.md for detailed instructions on generating your personal key.
+                // README.md can be found in the root of repository.
                 username = properties.getProperty('github.user')
                 password = properties.getProperty('github.key')
             }

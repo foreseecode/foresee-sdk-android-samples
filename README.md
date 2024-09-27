@@ -77,27 +77,19 @@ This example shows how to use DBA module. The recording is started using the req
 
 ## Authenticating with the package repository
 
-You'll need to authenticate with GitHub Packages to download our library. To do so, you'll need a personal key which can be generated from your GitHub account.
-
-To generate the personal key follow these steps;
-
-1) Verify your email address, if it hasn't been verified yet.
-2) In the upper-right corner of any page, click your profile photo, then click Settings.
-3) In the left sidebar, click  Developer settings.
-4) In the left sidebar, click Personal access tokens.
-5) Click Generate new token.
-6) Give your token a descriptive name.
-7) To give your token an expiration, select the Expiration drop-down menu, then click a default or use the calendar picker.
-8) Select the scopes, or permissions, you'd like to grant this token. To use your token to access repositories from the command line, select repo. (The token will need the read:packages permission)
-9) Click Generate token.
+You will need to authenticate with GitHub Packages to download our library.
+To do so, you'll need a personal key which can be generated from your GitHub account by following the [instructions](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-fine-grained-personal-access-token). 
+The token will need the `read:packages` permission.
 
 Once you have that key, you should add the credentials to your local.properties file:
+
 ```
 github.user=<YOUR_GITHUB_USERNAME>
 github.key=<YOUR_GITHUB_KEY>
 ```
 
-Those credentials will be picked up by the following lines in the sample project's [build.gradle](./build.gradle) file
+Those credentials will be picked up by the following lines in the project's `/build.gradle` file:
+
 ```
 allprojects {
     Properties properties = new Properties()
@@ -116,5 +108,4 @@ allprojects {
 }
 ```
 
-
-
+See [Getting Started guide](https://connect.verint.com/developers/xmsdk/w/mobilesdk/39022/getting-started-with-verint-xm-android-sdk) for more information.
