@@ -28,7 +28,7 @@ allprojects {
             url = uri("https://maven.pkg.github.com/foreseecode/public-packages")
             credentials {
                 // Please refer to the README.md for detailed instructions on generating your personal key.
-                // README.md could be found in the root of repository.
+                // README.md can be found in the root of repository.
                 username = properties.getProperty('github.user')
                 password = properties.getProperty('github.key')
             }
