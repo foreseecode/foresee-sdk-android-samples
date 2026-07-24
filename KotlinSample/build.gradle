@@ -27,7 +27,7 @@ dependencies {
 
     implementation 'com.verint.xm.sdk:surveymanagement:8.0.0'
 
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.6.1'
 
     // This is not the latest available, but the latest that is compatible with the required appCompat library
